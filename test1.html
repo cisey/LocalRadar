@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>İslahiye · Local Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+:root {
+  --bg: #0b0f17;
+  --card-bg: rgba(26, 32, 44, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-hover: rgba(36, 45, 62, 0.9);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.25);
+  --gold: #fbbf24;
+  --yesil: #34d399;
+  --danger: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.12) 0px, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  padding: 20px 14px 60px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 600px; margin: 0 auto; }
+h1 { font-size: 24px; font-weight: 800; margin: 6px 0 4px; letter-spacing: -0.03em; color: #fff; }
+.sub { color: var(--text-muted); font-size: 13.5px; margin-bottom: 14px; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; position: sticky; top: 0; background: rgba(11, 15, 23, 0.85); backdrop-filter: blur(12px); padding: 10px 0; z-index: 500; margin-bottom: 10px; }
+.tabs button { flex: 0 0 auto; border: 1px solid var(--card-border); background: var(--card-bg); color: var(--text-main); font-family: inherit; font-weight: 600; font-size: 13px; padding: 7px 14px; border-radius: 99px; cursor: pointer; backdrop-filter: blur(8px); }
+.tabs button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #0b0f17; box-shadow: 0 4px 12px var(--accent-glow); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0 12px; }
+.chips button { flex: 0 0 auto; border: 1px solid var(--card-border); background: rgba(255,255,255,0.03); color: var(--text-muted); font-family: inherit; font-size: 12px; padding: 4px 10px; border-radius: 99px; cursor: pointer; }
+.chips button[aria-pressed="true"] { background: rgba(56, 189, 248, 0.15); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+input, select { width: 100%; font-family: inherit; font-size: 14px; padding: 11px 14px; border: 1px solid var(--card-border); border-radius: 14px; background: rgba(255,255,255,0.05); color: #fff; margin: 5px 0 6px; outline: none; }
+input:focus, select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+select option { background: #1e293b; color: #fff; }
+.f-row { display: flex; gap: 10px; margin: 4px 0; }
+.f-row div { flex: 1; }
+.f-row label { display: block; font-size: 12px; color: var(--text-muted); margin: 0 0 3px 4px; font-weight: 600; }
+h2 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--card-border); padding-bottom: 4px; }
+.row { display: flex; gap: 12px; align-items: center; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 14px; margin-bottom: 10px; backdrop-filter: blur(12px); }
+.pt { flex: 0 0 48px; text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 6px 0; }
+.pt b { display: block; font-size: 16px; color: var(--accent); font-weight: 800; }
+.pt small { font-size: 10px; color: var(--text-muted); }
+.body { flex: 1; min-width: 0; }
+.nm { font-weight: 700; font-size: 15.5px; color: #fff; margin-bottom: 2px; }
+.meta { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+.mah { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 3px; }
+.fy { color: var(--gold); font-weight: 600; }
+a.go { display: inline-flex; align-items: center; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: none; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); padding: 5px 12px; border-radius: 99px; }
+.ikon { border: 1px solid var(--card-border); background: rgba(255,255,255,0.04); color: var(--text-main); border-radius: 99px; padding: 5px 12px; font-family: inherit; font-size: 12.5px; margin-left: 4px; cursor: pointer; }
+.foot { color: var(--text-muted); font-size: 11.5px; margin-top: 28px; text-align: center; }
+.none { color: var(--text-muted); padding: 24px 0; text-align: center; }
+#map { display: none; height: 55vh; border-radius: 16px; border: 1px solid var(--card-border); margin-top: 10px; }
+.leaflet-popup-content { font-family: inherit; font-size: 13.5px; color: #1e293b; }
+@media (max-width: 680px) {
+  .f-row { flex-direction: column; gap: 4px; }
+  .tabs button { padding: 6px 12px; font-size: 12.5px; }
+}
+</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head><body><div class="wrap">
+
+<h1>📡 İslahiye · Local Radar</h1>
+<p class="sub" style="margin-bottom: 4px;">Scan, discover, plan. Google Maps results filtered and organized by Local Radar.</p>
+<div style="font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 16px;">📅 29.10.2026 · Local Radar Görünümü</div>
+
+<div class="f-row" style="margin-bottom: 8px;">
+  <button class="ikon" style="margin-left:0;color:var(--danger);border-color:rgba(248,113,113,0.3)" onclick="favorileriTemizle()">🗑️ Sıfırla</button>
+</div>
+
+<select id="ic" aria-label="İlçe"></select>
+<div style="margin-bottom: 4px;">
+<input id="mq" type="search" placeholder="📍 Hızlı Mahalle Ara (Örn: Çarşı, Karataş)">
+</div>
+<select id="mh" aria-label="Mahalle"></select>
+<div class="f-row">
+  <div><label for="mp">En az puan</label><input id="mp" type="number" step="0.1" placeholder="örn. 4.5"></div>
+  <div><label for="my">En az yorum</label><input id="my" type="number" step="10" placeholder="örn. 200"></div>
+</div>
+<input id="q" type="search" placeholder="Listede kelime ara (örn. pide, kebap)">
+<div class="f-row">
+  <select id="sirala" aria-label="Sıralama" style="flex:2">
+    <option value="skor">Sıralama: Güvenilir skor</option>
+    <option value="puan">Sıralama: Puan (yüksekten)</option>
+    <option value="yorum">Sıralama: Yorum sayısı (çoktan)</option>
+    <option value="yakin">Sıralama: Bana yakın</option>
+  </select>
+  <select id="gs" style="flex:1">
+    <option value="">Hepsi</option>
+    <option value="fav">Favoriler</option>
+  </select>
+</div>
+
+<div class="tabs" id="tabs" role="tablist"></div>
+
+<div class="chips" id="chips"></div>
+<div id="map"></div>
+<div id="list"></div>
+<p class="foot"><b>📡 Local Radar</b> · Data source: Google Maps. Ratings reflect the day the guide was created. Verify opening hours before visiting. Map: © OpenStreetMap contributors.</p>
+</div>
+<script>
+const V={"O": {"Yemek": ["Döner & Kebap", "Çiğ Köfte", "Pide & Lahmacun", "Fast food & Burger & Pizza", "Türk & Aile Restoranı", "Kafe & Kahve", "Kahvaltı", "Fırın & Tatlı", "Kasap"]}, "I": [{"n": "Altın Şiş Kebap Salonu", "p": "4,2", "y": 19, "u": 0, "s": 4.131, "t": "Kebap Restoranı", "a": "Kurtuluş Sk.", "f": "", "m": "Kurtuluş Sk. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Alt%C4%B1n+%C5%9Ei%C5%9F+Kebap+Salonu/data=!4m7!3m6!1s0x152e55bdb6e42c95:0xe68258ab462c2f2f!8m2!3d37.0259262!4d36.6334011!16s%2Fg%2F11byclhwrp!19sChIJlSzktr1VLhURLy8sRqtYguY", "e": 37.0259262, "b": 36.6334011, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Avcıbey döner kebab", "p": "5,0", "y": 7, "u": 0, "s": 4.412, "t": "Dönerci", "a": "Eylül eczanesi yani, Barazi Cd.", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/Avc%C4%B1bey+d%C3%B6ner+kebab/data=!4m7!3m6!1s0x152e5533b1cd5f27:0xe66392360af2f264!8m2!3d37.0303797!4d36.6374134!16s%2Fg%2F11npvw5pqn!19sChIJJ1_NsTNVLhURZPLyCjaSY-Y", "e": 37.0303797, "b": 36.6374134, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Battal bey çiğköfte", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Çiğ Köfteci", "a": "Avcılar çiftliği küme evleri no51", "f": "", "m": "Avcılar Çiftliği Küme Evleri No51 Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Battal+bey+%C3%A7i%C4%9Fk%C3%B6fte/data=!4m7!3m6!1s0x152e558aa52109e1:0xa2d674c1287a249f!8m2!3d37.0262123!4d36.6505993!16s%2Fg%2F11z2gxkywr!19sChIJ4QkhpYpVLhURnyR6KMF01qI", "e": 37.0262123, "b": 36.6505993, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "BAYRAM USTA ADANA KEBAP VE PİDE SALONU", "p": "5,0", "y": 3, "u": 0, "s": 4.231, "t": "Kebap Restoranı", "a": "Yeni mah. Hatay yolu bul. No:186 d.no:1 (Akman apt altı", "f": "", "m": "Yeni Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/BAYRAM+USTA+ADANA+KEBAP+VE+P%C4%B0DE+SALONU/data=!4m7!3m6!1s0x152e55e0ec2fdec5:0x5fe28b18530eab9b!8m2!3d37.0180472!4d36.6265783!16s%2Fg%2F11r_tpp8p7!19sChIJxd4v7OBVLhURm6sOUxiL4l8", "e": 37.0180472, "b": 36.6265783, "w": 1, "A": "Yemek", "S": "Pide & Lahmacun"}, {"n": "Beknaw çiğköfte", "p": "4,0", "y": 6, "u": 0, "s": 4.0, "t": "Çiğ Köfteci", "a": "Kurtuluş Sk.", "f": "", "m": "Kurtuluş Sk. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Beknaw+%C3%A7i%C4%9Fk%C3%B6fte/data=!4m7!3m6!1s0x152e55bdb6c14815:0x796f808d5e94c774!8m2!3d37.0260306!4d36.6329558!16s%2Fg%2F11ddzhj53g!19sChIJFUjBtr1VLhURdMeUXo2Ab3k", "e": 37.0260306, "b": 36.6329558, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "Belinay döner", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Dönerci", "a": "Cumhuriyet mahallesi yüncü ler caddesi, 17 Nolu Sk. no:1/D", "f": "", "m": "Cumhuriyet Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Belinay+d%C3%B6ner/data=!4m7!3m6!1s0x152e55e4e7ad6f23:0xf22c03aa03c16234!8m2!3d37.0232632!4d36.6362155!16s%2Fg%2F11zymf7ww4!19sChIJI2-t5-RVLhURNGLBA6oDLPI", "e": 37.0232632, "b": 36.6362155, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Bizim Kebap Salonu", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/Bizim+Kebap+Salonu/data=!4m7!3m6!1s0x152e556f045d4681:0xde056dc5891bdb09!8m2!3d37.0053593!4d36.6224624!16s%2Fg%2F11hj9r5x2y!19sChIJgUZdBG9VLhURCdsbicVtBd4", "e": 37.0053593, "b": 36.6224624, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Bodrum Döner", "p": "5,0", "y": 2, "u": 0, "s": 4.167, "t": "Dönerci", "a": "Garnizon Cd.", "f": "", "m": "Garnizon Cd. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Bodrum+D%C3%B6ner/data=!4m7!3m6!1s0x152e55c4092a5919:0x67361b3cfacd4e71!8m2!3d37.0262524!4d36.6328647!16s%2Fg%2F11gjq1qk70!19sChIJGVkqCcRVLhURcU7N-jwbNmc", "e": 37.0262524, "b": 36.6328647, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Cadde Döner", "p": "4,7", "y": 66, "u": 0, "s": 4.608, "t": "Dönerci", "a": "İsmet Paşa Cd. No:11", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/Cadde+D%C3%B6ner/data=!4m7!3m6!1s0x152e55ae7f838c0f:0xa39ddbf20ab4a724!8m2!3d37.0256921!4d36.6345577!16s%2Fg%2F11yrh0f5zq!19sChIJD4yDf65VLhURJKe0CvLbnaM", "e": 37.0256921, "b": 36.6345577, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Can kebap hakan usta", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/Can+kebap+hakan+usta/data=!4m7!3m6!1s0x152e550008f29615:0x39c4c6d33f12f6dc!8m2!3d37.0253161!4d36.6311571!16s%2Fg%2F11wqbhzlv4!19sChIJFZbyCABVLhUR3PYSP9PGxDk", "e": 37.0253161, "b": 36.6311571, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "canavar ustanın yeri", "p": "4,8", "y": 79, "u": 0, "s": 4.71, "t": "Dürüm Restoranı", "a": "9 Nolu Sk. No:15", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/canavar+ustan%C4%B1n+yeri/data=!4m7!3m6!1s0x152e5543c67740db:0xd1e41761958562dc!8m2!3d37.0250573!4d36.6317479!16s%2Fg%2F11gy16t5d8!19sChIJ20B3xkNVLhUR3GKFlWEX5NE", "e": 37.0250573, "b": 36.6317479, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "ÇİĞKÖFTECİ ÖMER USTA", "p": "5,0", "y": 3, "u": 0, "s": 4.231, "t": "Restoran", "a": "", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/%C3%87%C4%B0%C4%9EK%C3%96FTEC%C4%B0+%C3%96MER+USTA/data=!4m7!3m6!1s0x152e550ca0f6a779:0x3405cbc4acdea8de!8m2!3d37.0261747!4d36.6505698!16s%2Fg%2F11mld4v95d!19sChIJeaf2oAxVLhUR3qjerMTLBTQ", "e": 37.0261747, "b": 36.6505698, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "Çiğköfteci Ömer Usta", "p": "4,1", "y": 84, "u": 0, "s": 4.089, "t": "Çiğ Köfteci", "a": "Hükümet Konağı Cd. No:1", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/%C3%87i%C4%9Fk%C3%B6fteci+%C3%96mer+Usta/data=!4m7!3m6!1s0x152e55bda9ad3fd3:0x69ad51b77d7c49f4!8m2!3d37.025201!4d36.6330673!16s%2Fg%2F11clyd8shf!19sChIJ0z-tqb1VLhUR9El8fbdRrWk", "e": 37.025201, "b": 36.6330673, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "Çiğköfteci ömer usta serinevler", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Çiğ Köfteci", "a": "", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/%C3%87i%C4%9Fk%C3%B6fteci+%C3%B6mer+usta+serinevler/data=!4m7!3m6!1s0x152e55725f1dcc49:0x6d4fea6d8dea22ac!8m2!3d36.9887893!4d36.6361506!16s%2Fg%2F11wv6xqsdj!19sChIJScwdX3JVLhURrCLqjW3qT20", "e": 36.9887893, "b": 36.6361506, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "Dağ Kebap ve Kasap Salonu", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "Kebap Restoranı", "a": "Atatürk Blv.", "f": "", "m": "Atatürk Blv. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Da%C4%9F+Kebap+ve+Kasap+Salonu/data=!4m7!3m6!1s0x152e55049fbeb4c3:0x58c2db6b46659f43!8m2!3d37.0175054!4d36.6265496!16s%2Fg%2F11wc8zwwwm!19sChIJw7S-nwRVLhURQ59lRmvbwlg", "e": 37.0175054, "b": 36.6265496, "w": 1, "A": "Yemek", "S": "Kasap"}, {"n": "DAMLA DONER KEBAP VE PAÇA SALONU", "p": "3,0", "y": 8, "u": 0, "s": 3.556, "t": "Restoran", "a": "Çamlıca, Atatürk Blv.", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/DAMLA+DONER+KEBAP+VE+PA%C3%87A+SALONU/data=!4m7!3m6!1s0x152e55bdec74dc21:0xa83410d463a0ba!8m2!3d37.0270501!4d36.6319843!16s%2Fg%2F11cn94nv2g!19sChIJIdx07L1VLhURuqBj1BA0qAA", "e": 37.0270501, "b": 36.6319843, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Döner durağı çınaraltı", "p": "4,6", "y": 12, "u": 0, "s": 4.327, "t": "Dönerci", "a": "Hatay bulvarı no 30c", "f": "", "m": "Hatay Bulvarı No 30c Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/D%C3%B6ner+dura%C4%9F%C4%B1+%C3%A7%C4%B1naralt%C4%B1/data=!4m7!3m6!1s0x152e55baeac5bbbb:0xe7f4481e6eea1ce0!8m2!3d37.0236689!4d36.6304737!16s%2Fg%2F11vz4_8p14!19sChIJu7vF6rpVLhUR4Bzqbh5I9Oc", "e": 37.0236689, "b": 36.6304737, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Dönerci Naci Usta", "p": "4,3", "y": 129, "u": 0, "s": 4.278, "t": "Dönerci", "a": "Ulus Cd.", "f": "", "m": "Ulus Cd. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/D%C3%B6nerci+Naci+Usta/data=!4m7!3m6!1s0x152e55bd7a90744d:0xf741f8a312f0ca69!8m2!3d37.0253552!4d36.6315975!16s%2Fg%2F11b7p_zh0s!19sChIJTXSQer1VLhURacrwEqP4Qfc", "e": 37.0253552, "b": 36.6315975, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Dostlar Ciğer Kebap", "p": "4,3", "y": 22, "u": 0, "s": 4.206, "t": "Kebap Restoranı", "a": "Ulus Cd.", "f": "", "m": "Ulus Cd. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Dostlar+Ci%C4%9Fer+Kebap/data=!4m7!3m6!1s0x152e55bd0623ef45:0x30152ffb9e0b27c3!8m2!3d37.025092!4d36.633032!16s%2Fg%2F11b7q09vgj!19sChIJRe8jBr1VLhURwycLnvsvFTA", "e": 37.025092, "b": 36.633032, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "DOSTLAR KASABI TAVA LAHMACUN VE KEBAB SALONU", "p": "4,6", "y": 12, "u": 0, "s": 4.327, "t": "Kasap", "a": "ŞEN GARAJI YANI, Atatürk Blv. 48/C", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/DOSTLAR+KASABI+TAVA+LAHMACUN+VE+KEBAB+SALONU/data=!4m7!3m6!1s0x152e5597db6c4c8d:0x3d0720929ceecde6!8m2!3d37.0273245!4d36.632389!16s%2Fg%2F11bycm12y4!19sChIJjUxs25dVLhUR5s3unJIgBz0", "e": 37.0273245, "b": 36.632389, "w": 1, "A": "Yemek", "S": "Kasap"}, {"n": "Doy Doy Kebap", "p": "4,3", "y": 7, "u": 0, "s": 4.124, "t": "Kebap Restoranı", "a": "Atatürk Blv.", "f": "", "m": "Atatürk Blv. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Doy+Doy+Kebap/data=!4m7!3m6!1s0x152e556fa54f733f:0x496722f621a8a05f!8m2!3d37.006422!4d36.622159!16s%2Fg%2F11bycrr9d0!19sChIJP3NPpW9VLhURX6CoIfYiZ0k", "e": 37.006422, "b": 36.622159, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Esnaf Lokantası", "p": "5,0", "y": 12, "u": 0, "s": 4.545, "t": "Et Lokantası", "a": "Kurtuluş Sk.", "f": "", "m": "Kurtuluş Sk. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Esnaf+Lokantas%C4%B1/data=!4m7!3m6!1s0x152e55d8b64f33e7:0x87dc8d6813b1c481!8m2!3d37.0261233!4d36.6333735!16s%2Fg%2F11t59h38r1!19sChIJ5zNPtthVLhURgcSxE2iN3Ic", "e": 37.0261233, "b": 36.6333735, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Gönlümce Kebap Evi Yavuz Usta", "p": "3,4", "y": 59, "u": 0, "s": 3.487, "t": "Restoran", "a": "Şht. Ömer Karaoğlu Sk. No:1", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/G%C3%B6nl%C3%BCmce+Kebap+Evi+Yavuz+Usta/data=!4m7!3m6!1s0x152e550068d0635d:0x984eea1e419dc63d!8m2!3d37.0284096!4d36.632736!16s%2Fg%2F11x29620sl!19sChIJXWPQaABVLhURPcadQR7qTpg", "e": 37.0284096, "b": 36.632736, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Gönlümce Kebap Muhtarın Yeri", "p": "4,5", "y": 46, "u": 0, "s": 4.411, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/G%C3%B6nl%C3%BCmce+Kebap+Muhtar%C4%B1n+Yeri/data=!4m7!3m6!1s0x152e55007316e513:0xd4e063aa01f19fea!8m2!3d37.0251537!4d36.6307579!16s%2Fg%2F11l_3k8bf7!19sChIJE-UWcwBVLhUR6p_xAapj4NQ", "e": 37.0251537, "b": 36.6307579, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Gönül Kebap", "p": "4,2", "y": 5, "u": 0, "s": 4.067, "t": "Kebap Restoranı", "a": "Atatürk Blv.", "f": "", "m": "Atatürk Blv. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/G%C3%B6n%C3%BCl+Kebap/data=!4m7!3m6!1s0x152e5597dffb39ef:0x60ad6959d394fd05!8m2!3d37.0249402!4d36.6309977!16s%2Fg%2F11b7q5wvcg!19sChIJ7zn735dVLhURBf2U01lprWA", "e": 37.0249402, "b": 36.6309977, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Hatay Sos Döner", "p": "3,8", "y": 74, "u": 0, "s": 3.824, "t": "Dönerci", "a": "Ulus Cd.", "f": "", "m": "Ulus Cd. Mahallesi", "c": "İslahiye", "l": "https://www.google.com/maps/place/Hatay+Sos+D%C3%B6ner/data=!4m7!3m6!1s0x152e55bd73aee6a3:0xe05c2fc1e91a0476!8m2!3d37.0248997!4d36.632358!16s%2Fg%2F11g01_xky8!19sChIJo-auc71VLhURdgQa6cEvXOA", "e": 37.0248997, "b": 36.632358, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "İSKENDERUN SOS DÖNER İslahiye", "p": "4,9", "y": 59, "u": 0, "s": 4.77, "t": "Tavuk Lokantası", "a": "", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/%C4%B0SKENDERUN+SOS+D%C3%96NER+%C4%B0slahiye/data=!4m7!3m6!1s0x152e559a28db19b1:0x3fc9742c77418cf2!8m2!3d37.0264083!4d36.6479701!16s%2Fg%2F11n_z843r2!19sChIJsRnbKJpVLhUR8oxBdyx0yT8", "e": 37.0264083, "b": 36.6479701, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "İsminur Dürüm Evi", "p": "4,8", "y": 6, "u": 0, "s": 4.3, "t": "Fast food lokantası", "a": "Belediye Başkanı Ökkeş Özer Cd. No:38", "f": "", "m": "Bilinmiyor", "c": "İslahiye", "l": "https://www.google.com/maps/place/%C4%B0sminur+D%C3%BCr%C3%BCm+Evi/data=!4m7!3m6!1s0x152e55ddc9a8ca1f:0x547180e1e366718b!8m2!3d37.0079414!4d36.6257131!16s%2Fg%2F11vkrj58h_
