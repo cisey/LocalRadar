@@ -25,9 +25,8 @@ input,select{width:100%;font:inherit;font-size:14px;padding:10px 12px;border:1px
 input:focus,select:focus{border-color:var(--accent)}
 input::placeholder{color:var(--muted)}
 .reset{align-self:flex-end;background:none;border:0;color:var(--muted);font:inherit;font-size:12.5px;font-weight:600;padding:2px 4px;cursor:pointer}
-.tabs,.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -12px 10px;padding:0 12px}
-.tabs::-webkit-scrollbar,.chips::-webkit-scrollbar{display:none}
-.tabs button,.chips button{flex:0 0 auto;white-space:nowrap;font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:99px;padding:6px 13px;cursor:pointer}
+.tabs,.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.tabs button,.chips button{flex:0 0 auto;font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:99px;padding:6px 13px;cursor:pointer}
 .tabs button[aria-selected="true"],.chips button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 h2{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:18px 4px 8px}
 #list>div{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
