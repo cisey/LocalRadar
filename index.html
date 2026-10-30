@@ -21,8 +21,7 @@ input:focus{border-color:#38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.2)}
 .card:hover{transform:translateY(-4px);border-color:#38bdf8;box-shadow:0 8px 24px rgba(56,189,248,.15)}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#38bdf8,#818cf8)}
 .card h3{font-size:1.1rem;margin-bottom:8px;color:#f1f5f9}
-.badge{background:#0f172a;color:#38bdf8;padding:4px 10px;border-radius:20px;border:1px solid #334155;font-size:.8rem;display:inline-block}
-.badge.cat{color:#a78bfa}
+.badge{background:#0f172a;color:#a78bfa;padding:4px 10px;border-radius:20px;border:1px solid #334155;font-size:.8rem;display:inline-block}
 .empty{text-align:center;padding:60px 20px;color:#64748b;display:none}
 footer{text-align:center;padding:30px 0;color:#475569;font-size:.8rem;border-top:1px solid #1e293b;margin-top:40px}
 footer a{color:#38bdf8;text-decoration:none}
@@ -65,7 +64,6 @@ const ilIlceData = {
 function dosyaBilgisiCikar(dosyaAdi) {
   const temelAd = dosyaAdi.replace(/\.html$/i, "");
   
-  // ilIlceData sözlüğünde ara
   if (ilIlceData[temelAd]) {
     return {
       dosya: dosyaAdi,
@@ -76,7 +74,6 @@ function dosyaBilgisiCikar(dosyaAdi) {
     };
   }
   
-  // Sözlükte yoksa eski kalıbı dene (Yemek-Ilce_guide.html)
   let ad = temelAd.replace(/_guide$/i, "");
   let kategori = "";
   let ilce = ad;
@@ -104,7 +101,6 @@ const empty = document.getElementById('empty');
 function render() {
   const q = searchInput.value.trim().toLowerCase();
   
-  // Arama filtresi
   const filtreli = rehberler.filter(r => {
     if (!q) return true;
     const haystack = (r.baslik + " " + r.il + " " + r.ilce + " " + r.kategori).toLowerCase();
@@ -119,14 +115,12 @@ function render() {
   }
   empty.style.display = "none";
 
-  // İllere göre grupla
   const gruplar = {};
   filtreli.forEach(r => {
     if (!gruplar[r.il]) gruplar[r.il] = [];
     gruplar[r.il].push(r);
   });
 
-  // İl başlıklarına göre ekrana bas
   for (const il in gruplar) {
     const ilDiv = document.createElement('div');
     ilDiv.className = 'il-grup';
@@ -142,13 +136,15 @@ function render() {
     gruplar[il].forEach(r => {
       const card = document.createElement('div');
       card.className = 'card';
+      
+      // İlçe etiketi kaldırıldı, sadece kategori kaldı (varsa)
       card.innerHTML = `
         <h3>📍 ${escapeHtml(r.baslik)}</h3>
         <div>
-          ${r.ilce ? `<span class="badge">${escapeHtml(r.ilce)}</span>` : ""}
-          ${r.kategori ? `<span class="badge cat">${escapeHtml(r.kategori)}</span>` : ""}
+          ${r.kategori ? `<span class="badge">${escapeHtml(r.kategori)}</span>` : ""}
         </div>
       `;
+      
       card.addEventListener('click', () => {
         window.location.href = encodeURIComponent(r.dosya);
       });
