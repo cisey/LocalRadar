@@ -1,169 +1,26 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LocalRadar - Yerel Rehberler</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;padding:20px}
-.container{max-width:1000px;margin:0 auto}
-header{text-align:center;padding:30px 0;border-bottom:1px solid #1e293b;margin-bottom:30px}
-h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
-.subtitle{color:#94a3b8;font-size:.95rem}
-.search-box{display:flex;justify-content:center;margin-bottom:30px}
-input{background:#1e293b;border:1px solid #334155;color:#e2e8f0;padding:12px 20px;border-radius:8px;font-size:1rem;outline:none;transition:.2s;width:100%;max-width:400px}
-input:focus{border-color:#38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.2)}
-.il-grup{margin-bottom:40px}
-.il-baslik{font-size:1.2rem;color:#f1f5f9;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{background:#1e293b;border-radius:12px;padding:20px;border:1px solid #334155;transition:.25s;cursor:pointer;position:relative;overflow:hidden}
-.card:hover{transform:translateY(-4px);border-color:#38bdf8;box-shadow:0 8px 24px rgba(56,189,248,.15)}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#38bdf8,#818cf8)}
-.card h3{font-size:1.1rem;margin-bottom:8px;color:#f1f5f9}
-.badge{background:#0f172a;color:#a78bfa;padding:4px 10px;border-radius:20px;border:1px solid #334155;font-size:.8rem;display:inline-block}
-.empty{text-align:center;padding:60px 20px;color:#64748b;display:none}
-footer{text-align:center;padding:30px 0;color:#475569;font-size:.8rem;border-top:1px solid #1e293b;margin-top:40px}
-footer a{color:#38bdf8;text-decoration:none}
-</style>
-</head>
-<body>
-<div class="container">
-<header>
-<h1>📡 LocalRadar</h1>
-<p class="subtitle">Yerel mekan rehberleriniz</p>
-</header>
+name: Rehber Listesini Güncelle
 
-<div class="search-box">
-<input type="text" id="searchInput" placeholder="🔍 Rehber ara...">
-</div>
+on:
+  push:
+    branches:
+      - main # Eğer ana dalın 'master' ise burayı 'master' yap
 
-<div id="rehberAlani"></div>
-<div class="empty" id="empty">Sonuç bulunamadı</div>
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repoyu Çek
+        uses: actions/checkout@v3
 
-<footer>LocalRadar &copy; 2025 &middot; <a href="https://github.com/cisey/LocalRadar" target="_blank">GitHub</a></footer>
-</div>
+      - name: HTML Dosyalarını Tara ve JSON Oluştur
+        run: |
+          # index.html ve rehberler.json hariç tüm html dosyalarını bul
+          files=$(ls *.html | grep -v "index.html" | jq -R -s -c 'split("\n")[:-1]')
+          echo "$files" > rehberler.json
 
-<script>
-// ===== MANUEL DOSYA LİSTESİ =====
-// Yeni rehber eklediğinizde buraya bir satır ekleyin
-const MANUEL_DOSYA_LISTESI = [
-  "Islahiye.html",
-  "Karkamis.html"
-  // "YeniIlce.html",
-];
-
-// ===== İL/İLÇE/KATEGORİ VERİSİ =====
-const ilIlceData = {
-  "Islahiye": { il: "Gaziantep", ilce: "İslahiye", kategori: "Yemek" },
-  "Karkamis": { il: "Gaziantep", ilce: "Karkamış", kategori: "Yemek" },
-  // "YeniIlce": { il: "İl", ilce: "İlçe", kategori: "Kategori" },
-};
-
-// ===== DOSYA ADINDAN BİLGİ ÇIKARIMI =====
-function dosyaBilgisiCikar(dosyaAdi) {
-  const temelAd = dosyaAdi.replace(/\.html$/i, "");
-  
-  if (ilIlceData[temelAd]) {
-    return {
-      dosya: dosyaAdi,
-      baslik: temelAd,
-      il: ilIlceData[temelAd].il || "Diğer",
-      ilce: ilIlceData[temelAd].ilce || temelAd,
-      kategori: ilIlceData[temelAd].kategori || ""
-    };
-  }
-  
-  let ad = temelAd.replace(/_guide$/i, "");
-  let kategori = "";
-  let ilce = ad;
-  const dashIdx = ad.indexOf("-");
-  if (dashIdx > 0) {
-    kategori = ad.substring(0, dashIdx);
-    ilce = ad.substring(dashIdx + 1);
-  }
-
-  return {
-    dosya: dosyaAdi,
-    baslik: ilce,
-    il: "Diğer",
-    ilce: ilce,
-    kategori: kategori
-  };
-}
-
-// ===== REHBERLERİ OLUŞTUR =====
-const rehberler = MANUEL_DOSYA_LISTESI.map(dosyaBilgisiCikar);
-const searchInput = document.getElementById('searchInput');
-const rehberAlani = document.getElementById('rehberAlani');
-const empty = document.getElementById('empty');
-
-function render() {
-  const q = searchInput.value.trim().toLowerCase();
-  
-  const filtreli = rehberler.filter(r => {
-    if (!q) return true;
-    const haystack = (r.baslik + " " + r.il + " " + r.ilce + " " + r.kategori).toLowerCase();
-    return haystack.includes(q);
-  });
-
-  rehberAlani.innerHTML = "";
-  
-  if (filtreli.length === 0) {
-    empty.style.display = "block";
-    return;
-  }
-  empty.style.display = "none";
-
-  const gruplar = {};
-  filtreli.forEach(r => {
-    if (!gruplar[r.il]) gruplar[r.il] = [];
-    gruplar[r.il].push(r);
-  });
-
-  for (const il in gruplar) {
-    const ilDiv = document.createElement('div');
-    ilDiv.className = 'il-grup';
-    
-    const baslik = document.createElement('div');
-    baslik.className = 'il-baslik';
-    baslik.textContent = il;
-    ilDiv.appendChild(baslik);
-
-    const grid = document.createElement('div');
-    grid.className = 'grid';
-
-    gruplar[il].forEach(r => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      
-      // İlçe etiketi kaldırıldı, sadece kategori kaldı (varsa)
-      card.innerHTML = `
-        <h3>📍 ${escapeHtml(r.baslik)}</h3>
-        <div>
-          ${r.kategori ? `<span class="badge">${escapeHtml(r.kategori)}</span>` : ""}
-        </div>
-      `;
-      
-      card.addEventListener('click', () => {
-        window.location.href = encodeURIComponent(r.dosya);
-      });
-      grid.appendChild(card);
-    });
-
-    ilDiv.appendChild(grid);
-    rehberAlani.appendChild(ilDiv);
-  }
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, c => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[c]));
-}
-
-searchInput.addEventListener('input', render);
-render();
-</script>
-</body>
-</html>
+      - name: Değişiklikleri Commitle
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add rehberler.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Otomatik: Rehber listesi güncellendi" && git push)
