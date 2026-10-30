@@ -7,25 +7,23 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;padding:20px}
-.container{max-width:1200px;margin:0 auto}
+.container{max-width:1000px;margin:0 auto}
 header{text-align:center;padding:30px 0;border-bottom:1px solid #1e293b;margin-bottom:30px}
 h1{font-size:2rem;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
 .subtitle{color:#94a3b8;font-size:.95rem}
-.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;justify-content:center}
-select,input{background:#1e293b;border:1px solid #334155;color:#e2e8f0;padding:10px 14px;border-radius:8px;font-size:.9rem;outline:none;transition:.2s}
-select:focus,input:focus{border-color:#38bdf8}
-input{min-width:200px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.search-box{display:flex;justify-content:center;margin-bottom:30px}
+input{background:#1e293b;border:1px solid #334155;color:#e2e8f0;padding:12px 20px;border-radius:8px;font-size:1rem;outline:none;transition:.2s;width:100%;max-width:400px}
+input:focus{border-color:#38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.2)}
+.il-grup{margin-bottom:40px}
+.il-baslik{font-size:1.2rem;color:#f1f5f9;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1e293b;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .card{background:#1e293b;border-radius:12px;padding:20px;border:1px solid #334155;transition:.25s;cursor:pointer;position:relative;overflow:hidden}
 .card:hover{transform:translateY(-4px);border-color:#38bdf8;box-shadow:0 8px 24px rgba(56,189,248,.15)}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#38bdf8,#818cf8)}
-.card h3{font-size:1.1rem;margin-bottom:10px;color:#f1f5f9}
-.card .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:.8rem}
-.badge{background:#0f172a;color:#38bdf8;padding:4px 10px;border-radius:20px;border:1px solid #334155}
+.card h3{font-size:1.1rem;margin-bottom:8px;color:#f1f5f9}
+.badge{background:#0f172a;color:#38bdf8;padding:4px 10px;border-radius:20px;border:1px solid #334155;font-size:.8rem;display:inline-block}
 .badge.cat{color:#a78bfa}
-.empty{text-align:center;padding:60px 20px;color:#64748b}
-.empty svg{width:60px;height:60px;margin-bottom:16px;opacity:.5}
-.count{text-align:center;color:#64748b;font-size:.85rem;margin-bottom:20px}
+.empty{text-align:center;padding:60px 20px;color:#64748b;display:none}
 footer{text-align:center;padding:30px 0;color:#475569;font-size:.8rem;border-top:1px solid #1e293b;margin-top:40px}
 footer a{color:#38bdf8;text-decoration:none}
 </style>
@@ -37,19 +35,12 @@ footer a{color:#38bdf8;text-decoration:none}
 <p class="subtitle">Yerel mekan rehberleriniz</p>
 </header>
 
-<div class="filters">
-<select id="ilFilter"><option value="">Tüm İller</option></select>
-<select id="ilceFilter"><option value="">Tüm İlçeler</option></select>
-<select id="kategoriFilter"><option value="">Tüm Kategoriler</option></select>
+<div class="search-box">
 <input type="text" id="searchInput" placeholder="🔍 Rehber ara...">
 </div>
 
-<div class="count" id="count"></div>
-<div class="grid" id="grid"></div>
-<div class="empty" id="empty" style="display:none">
-<svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-<p>Sonuç bulunamadı</p>
-</div>
+<div id="rehberAlani"></div>
+<div class="empty" id="empty">Sonuç bulunamadı</div>
 
 <footer>LocalRadar &copy; 2025 &middot; <a href="https://github.com/cisey/LocalRadar" target="_blank">GitHub</a></footer>
 </div>
@@ -73,124 +64,100 @@ const ilIlceData = {
 // ===== DOSYA ADINDAN BİLGİ ÇIKARIMI =====
 function dosyaBilgisiCikar(dosyaAdi) {
   const temelAd = dosyaAdi.replace(/\.html$/i, "");
-
-  // 1) Önce ilIlceData sözlüğünde ara (tam eşleşme)
+  
+  // ilIlceData sözlüğünde ara
   if (ilIlceData[temelAd]) {
     return {
       dosya: dosyaAdi,
       baslik: temelAd,
-      il: ilIlceData[temelAd].il || "",
+      il: ilIlceData[temelAd].il || "Diğer",
       ilce: ilIlceData[temelAd].ilce || temelAd,
       kategori: ilIlceData[temelAd].kategori || ""
     };
   }
-
-  // 2) Sözlükte yoksa: eski kalıpları dene (Ilce_guide, Yemek-Ilce_guide vb.)
+  
+  // Sözlükte yoksa eski kalıbı dene (Yemek-Ilce_guide.html)
   let ad = temelAd.replace(/_guide$/i, "");
   let kategori = "";
   let ilce = ad;
-
   const dashIdx = ad.indexOf("-");
   if (dashIdx > 0) {
     kategori = ad.substring(0, dashIdx);
     ilce = ad.substring(dashIdx + 1);
   }
 
-  // ilIlceData içinde ilçe adına göre de ara
-  for (const key in ilIlceData) {
-    if (key.toLowerCase() === ilce.toLowerCase()) {
-      const d = ilIlceData[key];
-      return {
-        dosya: dosyaAdi,
-        baslik: key,
-        il: d.il || "",
-        ilce: d.ilce || key,
-        kategori: d.kategori || kategori
-      };
-    }
-  }
-
   return {
     dosya: dosyaAdi,
-    baslik: ilce || temelAd,
-    il: "",
-    ilce: ilce || temelAd,
+    baslik: ilce,
+    il: "Diğer",
+    ilce: ilce,
     kategori: kategori
   };
 }
 
 // ===== REHBERLERİ OLUŞTUR =====
 const rehberler = MANUEL_DOSYA_LISTESI.map(dosyaBilgisiCikar);
-
-// ===== FİLTRE SEÇENEKLERİNİ DOLDUR =====
-function benzersizDegerler(alan) {
-  return [...new Set(rehberler.map(r => r[alan]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'tr'));
-}
-
-const ilSelect = document.getElementById('ilFilter');
-const ilceSelect = document.getElementById('ilceFilter');
-const kategoriSelect = document.getElementById('kategoriFilter');
-
-benzersizDegerler('il').forEach(v => {
-  const o = document.createElement('option'); o.value = v; o.textContent = v; ilSelect.appendChild(o);
-});
-benzersizDegerler('ilce').forEach(v => {
-  const o = document.createElement('option'); o.value = v; o.textContent = v; ilceSelect.appendChild(o);
-});
-benzersizDegerler('kategori').forEach(v => {
-  const o = document.createElement('option'); o.value = v; o.textContent = v; kategoriSelect.appendChild(o);
-});
-
-// ===== RENDER =====
-const grid = document.getElementById('grid');
-const empty = document.getElementById('empty');
-const countEl = document.getElementById('count');
 const searchInput = document.getElementById('searchInput');
+const rehberAlani = document.getElementById('rehberAlani');
+const empty = document.getElementById('empty');
 
 function render() {
-  const il = ilSelect.value;
-  const ilce = ilceSelect.value;
-  const kategori = kategoriSelect.value;
   const q = searchInput.value.trim().toLowerCase();
-
+  
+  // Arama filtresi
   const filtreli = rehberler.filter(r => {
-    if (il && r.il !== il) return false;
-    if (ilce && r.ilce !== ilce) return false;
-    if (kategori && r.kategori !== kategori) return false;
-    if (q) {
-      const haystack = (r.baslik + " " + r.il + " " + r.ilce + " " + r.kategori).toLowerCase();
-      if (!haystack.includes(q)) return false;
-    }
-    return true;
+    if (!q) return true;
+    const haystack = (r.baslik + " " + r.il + " " + r.ilce + " " + r.kategori).toLowerCase();
+    return haystack.includes(q);
   });
 
-  grid.innerHTML = "";
-  countEl.textContent = filtreli.length + " rehber gösteriliyor";
-
+  rehberAlani.innerHTML = "";
+  
   if (filtreli.length === 0) {
     empty.style.display = "block";
-    grid.style.display = "none";
     return;
   }
   empty.style.display = "none";
-  grid.style.display = "grid";
 
+  // İllere göre grupla
+  const gruplar = {};
   filtreli.forEach(r => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <h3>📍 ${escapeHtml(r.baslik)}</h3>
-      <div class="meta">
-        ${r.il ? `<span class="badge">${escapeHtml(r.il)}</span>` : ""}
-        ${r.ilce ? `<span class="badge">${escapeHtml(r.ilce)}</span>` : ""}
-        ${r.kategori ? `<span class="badge cat">${escapeHtml(r.kategori)}</span>` : ""}
-      </div>
-    `;
-    card.addEventListener('click', () => {
-      window.location.href = encodeURIComponent(r.dosya);
-    });
-    grid.appendChild(card);
+    if (!gruplar[r.il]) gruplar[r.il] = [];
+    gruplar[r.il].push(r);
   });
+
+  // İl başlıklarına göre ekrana bas
+  for (const il in gruplar) {
+    const ilDiv = document.createElement('div');
+    ilDiv.className = 'il-grup';
+    
+    const baslik = document.createElement('div');
+    baslik.className = 'il-baslik';
+    baslik.textContent = il;
+    ilDiv.appendChild(baslik);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+
+    gruplar[il].forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>📍 ${escapeHtml(r.baslik)}</h3>
+        <div>
+          ${r.ilce ? `<span class="badge">${escapeHtml(r.ilce)}</span>` : ""}
+          ${r.kategori ? `<span class="badge cat">${escapeHtml(r.kategori)}</span>` : ""}
+        </div>
+      `;
+      card.addEventListener('click', () => {
+        window.location.href = encodeURIComponent(r.dosya);
+      });
+      grid.appendChild(card);
+    });
+
+    ilDiv.appendChild(grid);
+    rehberAlani.appendChild(ilDiv);
+  }
 }
 
 function escapeHtml(s) {
@@ -199,11 +166,7 @@ function escapeHtml(s) {
   }[c]));
 }
 
-ilSelect.addEventListener('change', render);
-ilceSelect.addEventListener('change', render);
-kategoriSelect.addEventListener('change', render);
 searchInput.addEventListener('input', render);
-
 render();
 </script>
 </body>
