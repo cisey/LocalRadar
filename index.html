@@ -1,26 +1,312 @@
-name: Rehber Listesini Güncelle
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocalRadar - Yerel Rehberler</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 40px 20px 30px;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  header p {
+    color: #94a3b8;
+    font-size: 1.05rem;
+  }
+  .search-box {
+    max-width: 500px;
+    margin: 25px auto 40px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 14px 20px 14px 48px;
+    background: #1e293b;
+    border: 2px solid #334155;
+    border-radius: 12px;
+    color: #e2e8f0;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-box input:focus { border-color: #38bdf8; }
+  .search-box input::placeholder { color: #64748b; }
+  .search-box::before {
+    content: "🔍";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    padding-bottom: 40px;
+  }
+  .card {
+    background: #1e293b;
+    border-radius: 14px;
+    padding: 22px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #334155;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: #38bdf8;
+    box-shadow: 0 12px 24px rgba(56, 189, 248, 0.15);
+  }
+  .card:hover::before { opacity: 1; }
+  .card-icon { font-size: 1.8rem; }
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+  .card-location {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-count {
+    font-size: 0.8rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 4px 10px;
+    border-radius: 20px;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .empty, .loading, .error {
+    text-align: center;
+    padding: 60px 20px;
+    color: #94a3b8;
+    grid-column: 1 / -1;
+  }
+  .loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px; height: 20px;
+    margin-left: 10px;
+    border: 2px solid #38bdf8;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #64748b;
+    font-size: 0.85rem;
+    border-top: 1px solid #1e293b;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.9rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🗺️ LocalRadar</h1>
+    <p>Keşfetmek istediğin şehri seç, mekanlarını gör</p>
+  </header>
 
-on:
-  push:
-    branches:
-      - main # Eğer ana dalın 'master' ise burayı 'master' yap
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Şehir veya ilçe ara...">
+  </div>
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Repoyu Çek
-        uses: actions/checkout@v3
+  <div class="grid" id="grid">
+    <div class="loading">Rehberler yükleniyor</div>
+  </div>
 
-      - name: HTML Dosyalarını Tara ve JSON Oluştur
-        run: |
-          # index.html ve rehberler.json hariç tüm html dosyalarını bul
-          files=$(ls *.html | grep -v "index.html" | jq -R -s -c 'split("\n")[:-1]')
-          echo "$files" > rehberler.json
+  <footer>
+    © LocalRadar · Veriler Google Maps üzerinden derlenmiştir
+  </footer>
+</div>
 
-      - name: Değişiklikleri Commitle
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add rehberler.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Otomatik: Rehber listesi güncellendi" && git push)
+<script>
+// ============================================================
+// AKILLI DOSYA ADI ANALİZ SÖZLÜĞÜ (Türkçe karakter & il/ilçe)
+// ============================================================
+const ilIlceData = {
+  "adana": "Adana", "adiyaman": "Adıyaman", "afyonkarahisar": "Afyonkarahisar",
+  "agri": "Ağrı", "amasya": "Amasya", "ankara": "Ankara", "antalya": "Antalya",
+  "artvin": "Artvin", "aydin": "Aydın", "balikesir": "Balıkesir", "bilecik": "Bilecik",
+  "bingol": "Bingöl", "bitlis": "Bitlis", "bolu": "Bolu", "burdur": "Burdur",
+  "bursa": "Bursa", "canakkale": "Çanakkale", "cankiri": "Çankırı", "corum": "Çorum",
+  "denizli": "Denizli", "diyarbakir": "Diyarbakır", "edirne": "Edirne",
+  "elazig": "Elazığ", "erzincan": "Erzincan", "erzurum": "Erzurum",
+  "eskisehir": "Eskişehir", "gaziantep": "Gaziantep", "giresun": "Giresun",
+  "gumushane": "Gümüşhane", "hakkari": "Hakkari", "hatay": "Hatay",
+  "isparta": "Isparta", "mersin": "Mersin", "istanbul": "İstanbul", "izmir": "İzmir",
+  "kars": "Kars", "kastamonu": "Kastamonu", "kayseri": "Kayseri", "kirklareli": "Kırklareli",
+  "kirsehir": "Kırşehir", "kocaeli": "Kocaeli", "konya": "Konya", "kutahya": "Kütahya",
+  "malatya": "Malatya", "manisa": "Manisa", "kahramanmaras": "Kahramanmaraş",
+  "mardin": "Mardin", "mugla": "Muğla", "mus": "Muş", "nevsehir": "Nevşehir",
+  "nigde": "Niğde", "ordu": "Ordu", "rize": "Rize", "sakarya": "Sakarya",
+  "samsun": "Samsun", "siirt": "Siirt", "sinop": "Sinop", "sivas": "Sivas",
+  "tekirdag": "Tekirdağ", "tokat": "Tokat", "trabzon": "Trabzon", "tunceli": "Tunceli",
+  "sanliurfa": "Şanlıurfa", "usak": "Uşak", "van": "Van", "yozgat": "Yozgat",
+  "zonguldak": "Zonguldak", "aksaray": "Aksaray", "bayburt": "Bayburt",
+  "karaman": "Karaman", "kirikkale": "Kırıkkale", "batman": "Batman",
+  "sirnak": "Şırnak", "bartin": "Bartın", "ardahan": "Ardahan", "igdir": "Iğdır",
+  "yalova": "Yalova", "karabuk": "Karabük", "kilis": "Kilis", "osmaniye": "Osmaniye",
+  "duzce": "Düzce",
+  // Öne çıkan ilçeler
+  "islahiye": "İslahiye", "karkamis": "Karkamış", "nurdagi": "Nurdağı",
+  "sehitkamil": "Şehitkamil", "sahinbey": "Şahinbey", "oguzeli": "Oğuzeli",
+  "besni": "Besni", "kahta": "Kâhta", "golbasi": "Gölbaşı", "tut": "Tut",
+  "araban": "Araban", "yavuzeli": "Yavuzeli", "pazarcik": "Pazarcık",
+  "elbistan": "Elbistan", "afsin": "Afşin", "goksun": "Göksun",
+  "turkey": "Türkiye", "turkiye": "Türkiye"
+};
+
+const TURKCE_MAP = {
+  'c':'ç','g':'ğ','i':'ı','o':'ö','s':'ş','u':'ü',
+  'C':'Ç','G':'Ğ','I':'İ','O':'Ö','S':'Ş','U':'Ü'
+};
+
+function slugify(text) {
+  return text.toString().toLowerCase()
+    .replace(/[çÇ]/g, 'c').replace(/[ğĞ]/g, 'g')
+    .replace(/[ıİi]/g, 'i').replace(/[öÖ]/g, 'o')
+    .replace(/[şŞ]/g, 's').replace(/[üÜ]/g, 'u')
+    .replace(/[^a-z0-9]/g, '');
+}
+
+function smartTitle(filename) {
+  const base = filename.replace(/\.html?$/i, '');
+  const slug = slugify(base);
+  if (ilIlceData[slug]) return ilIlceData[slug];
+  // CamelCase veya tire/altçizgi ile ayrılmışsa
+  const parts = base.split(/[-_\s]+/).filter(Boolean);
+  if (parts.length > 1) {
+    return parts.map(p => {
+      const key = slugify(p);
+      return ilIlceData[key] || (p.charAt(0).toUpperCase() + p.slice(1).toLowerCase());
+    }).join(' ');
+  }
+  // Tek kelime bilinmiyorsa baş harf büyüt
+  return base.charAt(0).toUpperCase() + base.slice(1);
+}
+
+// ============================================================
+// VERİ YÜKLEME (rehberler.json)
+// ============================================================
+const grid = document.getElementById('grid');
+const searchInput = document.getElementById('searchInput');
+let allGuides = [];
+
+async function loadGuides() {
+  try {
+    const res = await fetch('rehberler.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('rehberler.json yüklenemedi (HTTP ' + res.status + ')');
+    const data = await res.json();
+
+    // Hem dizi hem obje formatını destekle
+    let files = [];
+    if (Array.isArray(data)) {
+      files = data.map(item => typeof item === 'string' ? item : item.file).filter(Boolean);
+    } else if (data && Array.isArray(data.files)) {
+      files = data.files;
+    } else if (data && typeof data === 'object') {
+      files = Object.keys(data);
+    }
+
+    if (!files.length) {
+      grid.innerHTML = '<div class="empty">📭 Henüz rehber eklenmemiş</div>';
+      return;
+    }
+
+    allGuides = files
+      .filter(f => /\.html?$/i.test(f) && !/^index\.html?$/i.test(f))
+      .map(f => ({
+        file: f,
+        title: smartTitle(f),
+        slug: slugify(f.replace(/\.html?$/i, ''))
+      }))
+      .sort((a, b) => a.title.localeCompare(b.title, 'tr'));
+
+    renderGuides(allGuides);
+  } catch (err) {
+    console.error(err);
+    grid.innerHTML = '<div class="error">⚠️ Rehber listesi yüklenemedi.<br><small>' +
+      (err.message || 'Bilinmeyen hata') + '</small></div>';
+  }
+}
+
+function renderGuides(list) {
+  if (!list.length) {
+    grid.innerHTML = '<div class="empty">🔎 Sonuç bulunamadı</div>';
+    return;
+  }
+  grid.innerHTML = list.map(g => `
+    <a class="card" href="${encodeURI(g.file)}">
+      <div class="card-icon">📍</div>
+      <div class="card-title">${g.title}</div>
+      <div class="card-location">Yerel Rehber</div>
+      <div class="card-count">Mekanları gör →</div>
+    </a>
+  `).join('');
+}
+
+// ============================================================
+// ARAMA
+// ============================================================
+searchInput.addEventListener('input', e => {
+  const q = slugify(e.target.value);
+  if (!q) return renderGuides(allGuides);
+  const filtered = allGuides.filter(g =>
+    g.slug.includes(q) || slugify(g.title).includes(q)
+  );
+  renderGuides(filtered);
+});
+
+// ============================================================
+// BAŞLANGIÇ
+// ============================================================
+loadGuides();
+</script>
+</body>
+</html>
