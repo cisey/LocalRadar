@@ -312,13 +312,22 @@ p.desc { color: var(--text-muted); font-size: 14.5px; margin-top: 6px; line-heig
         }
       }
 
+      // "Gaziantep-Tum-Ilceler.html" gibi birleşik il rehberleri
+      const isTum = /(^|[-_ ])tum[-_ ]?ilceler$/i.test(bolgeStr);
+
       const temizIlce = bolgeStr.replace(/[-_]+/g, ' ').trim();
-      const bolgeBaslik = basHarfBuyut(temizIlce);
-      const tip = isYemek ? 'Yemek & Mekan' : (isHersey ? 'Genel Rehber' : 'Rehber');
-      const icon = isYemek ? '🍽️' : (isHersey ? '🧭' : '📍');
+      let bolgeBaslik = basHarfBuyut(temizIlce);
+      let tip = isYemek ? 'Yemek & Mekan' : (isHersey ? 'Genel Rehber' : 'Rehber');
+      let icon = isYemek ? '🍽️' : (isHersey ? '🧭' : '📍');
       const badgeClass = isYemek ? 'badge-food' : 'badge-all';
 
-      return { baslik: bolgeBaslik, il: il, altBaslik: tip, icon: icon, badgeClass: badgeClass, dosya: dosyaAdi };
+      if (isTum) {
+        bolgeBaslik = (il !== 'Diğer' ? il + ' · ' : '') + 'Tüm İlçeler';
+        tip = 'Tüm İlçeler';
+        icon = '🗺️';
+      }
+
+      return { baslik: bolgeBaslik, il: il, altBaslik: tip, icon: icon, badgeClass: badgeClass, dosya: dosyaAdi, tum: isTum };
     }
 
     function kartCiz(liste) {
@@ -352,9 +361,10 @@ p.desc { color: var(--text-muted); font-size: 14.5px; margin-top: 6px; line-heig
         listeDiv.className = 'list';
 
 
-        gruplar[il].sort((a, b) => a.baslik.localeCompare(b.baslik, 'tr')).forEach(info => {
+        // "Tüm İlçeler" rehberi hep en üstte, geri kalanlar alfabetik
+        gruplar[il].sort((a, b) => (b.tum - a.tum) || a.baslik.localeCompare(b.baslik, 'tr')).forEach(info => {
           const a = document.createElement('a');
-          a.className = 'card';
+          a.className = info.tum ? 'card card-all' : 'card';
           a.href = encodeURI(KLASOR + info.dosya);
           a.innerHTML = `
             <div class="card-icon">${info.icon}</div>
