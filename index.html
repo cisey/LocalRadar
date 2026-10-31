@@ -351,21 +351,6 @@ p.desc { color: var(--text-muted); font-size: 14.5px; margin-top: 6px; line-heig
         const listeDiv = document.createElement('div');
         listeDiv.className = 'list';
 
-        // "Tüm ilçeler" satırı (en az 2 rehberi olan iller için)
-        if (il !== 'Diğer' && gruplar[il].length >= 2) {
-          const all = document.createElement('a');
-          all.className = 'card card-all';
-          all.href = '#il=' + encodeURIComponent(il);
-          all.innerHTML = `
-            <div class="card-icon">🗺️</div>
-            <div class="card-info">
-              <div class="card-title">${il} · Tüm İlçeler</div>
-              <div class="card-meta"><span class="badge badge-all">${gruplar[il].length} ilçe rehberi</span></div>
-            </div>
-            <div class="card-arrow">→</div>
-          `;
-          listeDiv.appendChild(all);
-        }
 
         gruplar[il].sort((a, b) => a.baslik.localeCompare(b.baslik, 'tr')).forEach(info => {
           const a = document.createElement('a');
@@ -438,17 +423,9 @@ p.desc { color: var(--text-muted); font-size: 14.5px; margin-top: 6px; line-heig
     }
 
     function goster() {
-      const p = new URLSearchParams(location.hash.replace(/^#/, ''));
-      const il = p.get('il');
-      if (il) {
-        ilSayfasiCiz(il, p.get('ilce'));
-      } else {
-        searchWrap.style.display = '';
-        searchInput.value = '';
-        kartCiz(tumRehberler);
-      }
+      searchWrap.style.display = '';
+      kartCiz(tumRehberler);
     }
-    window.addEventListener('hashchange', goster);
 
     function listeyiYukle(dosyalar) {
       tumRehberler = dosyalar
