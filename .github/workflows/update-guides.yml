@@ -1,45 +1,32 @@
 name: Rehber Listesini Güncelle
-
 on:
   push:
     branches: [ main, master ]
     paths:
-      - '**.html'
-      - '!index.html'
+      - 'rehberler/**'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   update-json:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
       - name: rehberler.json oluştur
         run: |
-          python3 - <<'EOF'
-          import json, os, glob
+          python3 - <<'PY'
+          import json, glob, os
           files = sorted(
-              [os.path.basename(f) for f in glob.glob('*.html')
-               if os.path.basename(f).lower() != 'index.html'],
+              [os.path.basename(f) for f in glob.glob('rehberler/*.html')],
               key=str.lower
           )
           with open('rehberler.json', 'w', encoding='utf-8') as fh:
               json.dump(files, fh, ensure_ascii=False, indent=2)
-          print(f"✅ {len(files)} rehber bulundu:", files)
-          EOF
-
-      - name: Değişiklik varsa commit et
+          PY
+      - name: Commit
         run: |
-          if [ -n "$(git status --porcelain rehberler.json)" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add rehberler.json
-            git commit -m "🤖 rehberler.json otomatik güncellendi"
-            git push
-          else
-            echo "Değişiklik yok, commit atlanıyor."
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add rehberler.json
+          git diff --staged --quiet || git commit -m "rehberler.json otomatik güncellendi"
+          git push
