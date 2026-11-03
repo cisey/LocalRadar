@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 <title>Local Radar · Keşif Rehberi</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +20,8 @@
   --text-muted: #94a3b8;
   --accent: #38bdf8;
   --accent-glow: rgba(56, 189, 248, 0.25);
-  --badge-food: rgba(249, 115, 22, 0.15);
-  --badge-food-text: #fb923c;
-  --badge-all: rgba(56, 189, 248, 0.15);
-  --badge-all-text: #38bdf8;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body {
   background-color: var(--bg);
   background-image:
@@ -35,137 +32,79 @@ body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: 60px;
+  padding-bottom: 48px;
 }
-.container { max-width: 580px; margin: 0 auto; padding: 24px 18px; }
-.top-nav { display: flex; align-items: center; margin-bottom: 24px; }
+.container { max-width: 580px; margin: 0 auto; padding: 16px 16px 24px; }
+
+.top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .back-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: var(--text-muted); text-decoration: none;
-  font-size: 13.5px; font-weight: 500;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 6px 14px; border-radius: 20px;
-  border: 1px solid var(--card-border);
-  backdrop-filter: blur(8px);
-  transition: all 0.2s ease;
+  display: inline-flex; align-items: center; color: var(--text-muted); text-decoration: none;
+  font-size: 13px; font-weight: 500; background: rgba(255,255,255,0.05);
+  padding: 6px 12px; border-radius: 20px; border: 1px solid var(--card-border); white-space: nowrap;
 }
-.back-btn:active { transform: scale(0.96); background: rgba(255, 255, 255, 0.1); }
-.header { margin-bottom: 24px; }
 .radar-icon {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 52px; height: 52px; border-radius: 16px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.2));
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  font-size: 26px; margin-bottom: 14px;
-  box-shadow: 0 8px 20px var(--accent-glow);
+  width: 38px; height: 38px; border-radius: 12px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 19px;
+  background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(99,102,241,0.2));
+  border: 1px solid rgba(56,189,248,0.3);
 }
-h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.2; }
-p.desc { color: var(--text-muted); font-size: 14.5px; margin-top: 6px; line-height: 1.5; }
-.search-wrap { margin-bottom: 20px; }
+h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+p.desc { color: var(--text-muted); font-size: 13.5px; margin: 2px 0 14px; line-height: 1.45; }
+
+.search-wrap { position: sticky; top: 0; z-index: 5; padding: 6px 0 12px; background: linear-gradient(var(--bg) 70%, transparent); }
 .search-input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-  padding: 12px 16px;
-  font-size: 14.5px;
-  color: #fff;
-  outline: none;
-  backdrop-filter: blur(10px);
-  transition: all 0.2s;
+  width: 100%; background: rgba(255,255,255,0.07); border: 1px solid var(--card-border);
+  border-radius: 14px; padding: 14px 16px; font-size: 16px; color: #fff; outline: none;
+  font-family: inherit; transition: border-color .2s, box-shadow .2s;
 }
-.search-input:focus {
-  border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
+.search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
 .search-input::placeholder { color: #64748b; }
-.il-grup { margin-bottom: 28px; }
-.il-baslik {
-  font-size: 13px; font-weight: 800; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 0.08em;
-  margin-bottom: 12px; padding-left: 4px;
-  display: flex; align-items: center; gap: 12px;
+
+details.il { margin-bottom: 8px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; }
+details.il[open] { border-color: rgba(56,189,248,0.28); }
+summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  min-height: 56px; padding: 0 18px; font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em;
 }
-.il-baslik::after {
-  content: ""; flex-grow: 1; height: 1px;
-  background: linear-gradient(to right, var(--card-border), transparent);
+summary::-webkit-details-marker { display: none; }
+.chev { color: #64748b; font-size: 22px; line-height: 1; transition: transform .2s; }
+details[open] .chev { transform: rotate(90deg); color: var(--accent); }
+
+.il-ic { padding: 2px 14px 16px; }
+.tum-btn {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  min-height: 54px; padding: 0 16px; margin-bottom: 12px; border-radius: 14px;
+  text-decoration: none; color: #fff; font-weight: 700; font-size: 15.5px;
+  background: linear-gradient(135deg, rgba(56,189,248,0.22), rgba(99,102,241,0.22));
+  border: 1px solid rgba(56,189,248,0.4);
 }
-.list { display: flex; flex-direction: column; gap: 12px; }
-.card {
-  display: flex; align-items: center; gap: 16px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 18px; padding: 16px;
-  text-decoration: none; color: inherit;
-  backdrop-filter: blur(12px);
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-  position: relative;
-}
-.card:hover { background: var(--card-hover); border-color: rgba(255, 255, 255, 0.16); }
-.card:active { transform: scale(0.98); }
-.card-icon {
-  flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; border: 1px solid rgba(255, 255, 255, 0.06);
-}
-.card-info { flex-grow: 1; min-width: 0; }
-.card-title {
-  font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.card-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; }
-.badge {
-  display: inline-block; padding: 2px 8px; border-radius: 6px;
-  font-weight: 600; font-size: 11px; letter-spacing: 0.02em;
-}
-.badge-food { background: var(--badge-food); color: var(--badge-food-text); }
-.badge-all { background: var(--badge-all); color: var(--badge-all-text); }
-.card-filename {
-  color: var(--text-muted);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.card-arrow { color: #64748b; font-size: 18px; transition: transform 0.2s, color 0.2s; }
-.card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
-.card-all {
-  background: linear-gradient(135deg, rgba(56,189,248,0.14), rgba(99,102,241,0.14));
-  border-color: rgba(56,189,248,0.35);
-}
-.card-all .card-icon { background: rgba(56,189,248,0.15); }
-.ilce-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tum-btn:active { transform: scale(0.98); }
+.tum-btn span.ok { color: var(--accent); }
+.alt-baslik { font-size: 11.5px; font-weight: 700; color: var(--text-muted); letter-spacing: .06em; text-transform: uppercase; margin: 2px 2px 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
-  padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
-  color: var(--text-muted); text-decoration: none;
-  background: rgba(255,255,255,0.05); border: 1px solid var(--card-border);
-  transition: all 0.15s;
+  display: inline-flex; align-items: center; min-height: 42px; padding: 0 16px; border-radius: 21px;
+  font-size: 14.5px; font-weight: 600; color: #e2e8f0; text-decoration: none;
+  background: rgba(255,255,255,0.06); border: 1px solid var(--card-border);
 }
-.chip:hover { color: #fff; border-color: rgba(255,255,255,0.2); }
-.chip.aktif { color: #0b0f17; background: var(--accent); border-color: var(--accent); }
-.il-sayfa-baslik { font-size: 22px; font-weight: 800; margin-bottom: 14px; letter-spacing: -0.02em; }
-.frame-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 13px; color: var(--text-muted); }
-.frame-bar a { color: var(--accent); text-decoration: none; font-weight: 600; }
-.rehber-frame {
-  width: 100%; height: 78vh; border: 1px solid var(--card-border);
-  border-radius: 16px; background: #fff;
-}
+.chip:hover { border-color: rgba(255,255,255,0.2); background: var(--card-hover); }
+.chip:active { transform: scale(0.96); background: rgba(56,189,248,0.2); }
 .state-msg { text-align: center; color: var(--text-muted); padding: 40px 0; font-size: 14px; }
 </style>
 </head>
 <body>
   <div class="container">
-    <div class="top-nav">
+    <div class="top">
       <a href="/" class="back-btn">← Ana sayfa</a>
     </div>
-
-    <div class="header">
+    <div class="top" style="margin-bottom:4px">
       <div class="radar-icon">📡</div>
       <h1>Local Radar</h1>
-      <p class="desc">Bölge ve mekan rehberleri. İncelemek istediğiniz rehbere dokunun.</p>
     </div>
+    <p class="desc">Bölge ve mekan rehberleri. Bir ile dokunup rehberi seçin.</p>
 
     <div class="search-wrap" id="searchWrap">
-      <input type="text" id="searchInput" class="search-input" placeholder="İl, ilçe veya rehber ara...">
+      <input type="search" id="searchInput" class="search-input" placeholder="İl veya ilçe ara…" autocomplete="off">
     </div>
 
     <div id="rehberListesi">
@@ -264,184 +203,154 @@ p.desc { color: var(--text-muted); font-size: 14.5px; margin-top: 6px; line-heig
     };
 
     function normalize(str) {
-      return str
+      return String(str)
         .toLocaleLowerCase('tr')
         .replace(/ı/g, 'i').replace(/ş/g, 's').replace(/ğ/g, 'g')
         .replace(/ü/g, 'u').replace(/ö/g, 'o').replace(/ç/g, 'c')
         .replace(/İ/g, 'i').replace(/[^a-z0-9]/g, '');
     }
+    function basHarfBuyut(s) {
+      return s.replace(/\b\p{L}/gu, c => c.toLocaleUpperCase('tr'));
+    }
 
-    const ilceIlSozlugu = {};
-    const ilSozlugu = new Set();
+    const ilceIlSozlugu = {};   // ilçe (normalize) -> il
+    const ilSozlugu = new Map(); // il (normalize) -> il adı
+    const ilceAdlari = {};      // il -> Map(ilçe normalize -> düzgün yazılışı)
 
     // Gaziantep en sona işlenir: aynı isimli ilçelerde Gaziantep öncelikli olur.
     const ilSirasi = Object.keys(ilIlceData).filter(i => i !== 'Gaziantep').concat('Gaziantep');
     for (const il of ilSirasi) {
-      ilSozlugu.add(normalize(il));
+      ilSozlugu.set(normalize(il), il);
+      ilceAdlari[il] = new Map();
       ilIlceData[il].split(',').forEach(ilce => {
         const n = normalize(ilce);
+        ilceAdlari[il].set(n, ilce);
         if (n === 'merkez') return; // "Merkez" tek başına il belirlemez
         ilceIlSozlugu[n] = il;
       });
     }
 
-    function basHarfBuyut(s) {
-      return s.replace(/\b\p{L}/gu, c => c.toLocaleUpperCase('tr'));
-    }
-
     function dosyaAnaliz(dosyaAdi) {
       const ad = dosyaAdi.replace(/\.html?$/i, '');
-      const isYemek = ad.toLowerCase().includes('yemek');
-      const isHersey = ad.toLowerCase().includes('hersey') || ad.toLowerCase().includes('her-sey');
+      const bolge = ad.replace(/-(yemek|hersey|her-sey)$/i, '');
+      let kelimeler = bolge.split(/[-_ ]+/).filter(Boolean);
+      const isTum = /(^|[-_ ])tum[-_ ]?ilceler$/i.test(bolge);
 
-      let bolgeStr = ad.replace(/-(yemek|hersey|her-sey)$/i, '');
       let il = 'Diğer';
-      const kelimeler = bolgeStr.split(/[-_ ]+/);
+      for (const k of kelimeler) {
+        const n = normalize(k);
+        if (ilSozlugu.has(n)) { il = ilSozlugu.get(n); break; }
+        if (ilceIlSozlugu[n]) { il = ilceIlSozlugu[n]; break; }
+      }
 
-      for (let i = 0; i < kelimeler.length; i++) {
-        const k = kelimeler[i];
-        if (!k) continue;
-        const normK = normalize(k);
-
-        if (ilSozlugu.has(normK)) {
-          il = ilSirasi.find(x => normalize(x) === normK);
-          break;
-        } else if (ilceIlSozlugu[normK]) {
-          il = ilceIlSozlugu[normK];
-          break;
+      let label = '';
+      if (!isTum) {
+        let kalan = kelimeler.slice();
+        if (kalan.length > 1 && ilSozlugu.has(normalize(kalan[0]))) kalan = kalan.slice(1); // il öneki
+        const ham = kalan.join(' ');
+        const nHam = normalize(ham);
+        if (il !== 'Diğer' && nHam === normalize(il)) {
+          label = 'Merkez';
+        } else if (il !== 'Diğer' && ilceAdlari[il].has(nHam)) {
+          label = ilceAdlari[il].get(nHam);
+        } else {
+          label = basHarfBuyut(ham);
         }
       }
-
-      // "Gaziantep-Tum-Ilceler.html" gibi birleşik il rehberleri
-      const isTum = /(^|[-_ ])tum[-_ ]?ilceler$/i.test(bolgeStr);
-
-      const temizIlce = bolgeStr.replace(/[-_]+/g, ' ').trim();
-      let bolgeBaslik = basHarfBuyut(temizIlce);
-      let tip = isYemek ? 'Yemek & Mekan' : (isHersey ? 'Genel Rehber' : 'Rehber');
-      let icon = isYemek ? '🍽️' : (isHersey ? '🧭' : '📍');
-      const badgeClass = isYemek ? 'badge-food' : 'badge-all';
-
-      if (isTum) {
-        bolgeBaslik = (il !== 'Diğer' ? il + ' · ' : '') + 'Tüm İlçeler';
-        tip = 'Tüm İlçeler';
-        icon = '🗺️';
-      }
-
-      return { baslik: bolgeBaslik, il: il, altBaslik: tip, icon: icon, badgeClass: badgeClass, dosya: dosyaAdi, tum: isTum };
+      return { il, label, dosya: dosyaAdi, tum: isTum };
     }
 
-    function kartCiz(liste) {
+    function yolu(dosya) { return encodeURI(KLASOR + dosya); }
+
+    function ciz(sorgu) {
+      const qn = normalize(sorgu || '');
       container.innerHTML = '';
-      if (!liste.length) {
-        container.innerHTML = '<div class="state-msg">Eşleşen rehber bulunamadı.</div>';
-        return;
-      }
 
       const gruplar = {};
-      liste.map(dosyaAnaliz).forEach(info => {
-        (gruplar[info.il] = gruplar[info.il] || []).push(info);
-      });
-
-      const siraliIller = Object.keys(gruplar).sort((a, b) => {
+      tumRehberler.map(dosyaAnaliz).forEach(i => (gruplar[i.il] = gruplar[i.il] || []).push(i));
+      const iller = Object.keys(gruplar).sort((a, b) => {
         if (a === 'Diğer') return 1;
         if (b === 'Diğer') return -1;
         return a.localeCompare(b, 'tr');
       });
 
-      siraliIller.forEach(il => {
-        const ilDiv = document.createElement('div');
-        ilDiv.className = 'il-grup';
+      let goruntulenen = 0;
+      iller.forEach(il => {
+        const tumu = gruplar[il].find(i => i.tum);
+        let ilceler = gruplar[il].filter(i => !i.tum)
+          .sort((a, b) => a.label.localeCompare(b.label, 'tr'));
 
-        const ilBaslik = document.createElement('div');
-        ilBaslik.className = 'il-baslik';
-        ilBaslik.textContent = il;
-        ilDiv.appendChild(ilBaslik);
+        if (qn) {
+          const ilEslesti = normalize(il).includes(qn);
+          if (!ilEslesti) {
+            ilceler = ilceler.filter(c => normalize(c.label).includes(qn) || normalize(c.dosya).includes(qn));
+            if (!ilceler.length) return;
+          }
+        }
+        goruntulenen++;
 
-        const listeDiv = document.createElement('div');
-        listeDiv.className = 'list';
+        const d = document.createElement('details');
+        d.className = 'il';
+        if (qn) d.open = true;
 
+        const s = document.createElement('summary');
+        const ad = document.createElement('span');
+        ad.textContent = il;
+        const ch = document.createElement('span');
+        ch.className = 'chev'; ch.textContent = '›';
+        s.append(ad, ch);
+        d.appendChild(s);
 
-        // "Tüm İlçeler" rehberi hep en üstte, geri kalanlar alfabetik
-        gruplar[il].sort((a, b) => (b.tum - a.tum) || a.baslik.localeCompare(b.baslik, 'tr')).forEach(info => {
+        const ic = document.createElement('div');
+        ic.className = 'il-ic';
+
+        if (tumu) {
           const a = document.createElement('a');
-          a.className = info.tum ? 'card card-all' : 'card';
-          a.href = encodeURI(KLASOR + info.dosya);
-          a.innerHTML = `
-            <div class="card-icon">${info.icon}</div>
-            <div class="card-info">
-              <div class="card-title">${info.baslik}</div>
-              <div class="card-meta">
-                <span class="badge ${info.badgeClass}">${info.altBaslik}</span>
-                <span class="card-filename">${info.dosya}</span>
-              </div>
-            </div>
-            <div class="card-arrow">→</div>
-          `;
-          listeDiv.appendChild(a);
-        });
+          a.className = 'tum-btn';
+          a.href = yolu(tumu.dosya);
+          const t = document.createElement('span');
+          t.textContent = '📚  ' + (il === 'Diğer' ? '' : il + ' · ') + 'Tüm İlçeler';
+          const o = document.createElement('span');
+          o.className = 'ok'; o.textContent = '→';
+          a.append(t, o);
+          ic.appendChild(a);
+        }
 
-        ilDiv.appendChild(listeDiv);
-        container.appendChild(ilDiv);
+        if (ilceler.length) {
+          if (tumu) {
+            const b = document.createElement('div');
+            b.className = 'alt-baslik';
+            b.textContent = 'İlçeler';
+            ic.appendChild(b);
+          }
+          const chips = document.createElement('div');
+          chips.className = 'chips';
+          ilceler.forEach(i => {
+            const a = document.createElement('a');
+            a.className = 'chip';
+            a.href = yolu(i.dosya);
+            a.textContent = i.label;
+            chips.appendChild(a);
+          });
+          ic.appendChild(chips);
+        }
+
+        d.appendChild(ic);
+        container.appendChild(d);
       });
-    }
 
-    // Arama: dosya adı, ilçe başlığı veya il adı
-    searchInput.addEventListener('input', (e) => {
-      const q = normalize(e.target.value);
-      if (!q) return kartCiz(tumRehberler);
-      kartCiz(tumRehberler.filter(f => {
-        const info = dosyaAnaliz(f);
-        return normalize(f).includes(q) || normalize(info.baslik).includes(q) || normalize(info.il).includes(q);
-      }));
-    });
-
-    const searchWrap = document.getElementById('searchWrap');
-
-    // İl sayfası: o ile ait tüm ilçeler + ilçe seçici
-    function ilSayfasiCiz(il, secilenDosya) {
-      searchWrap.style.display = 'none';
-      const liste = tumRehberler.map(dosyaAnaliz).filter(i => i.il === il)
-        .sort((a, b) => a.baslik.localeCompare(b.baslik, 'tr'));
-
-      if (!liste.length) { location.hash = ''; return; }
-      const secili = liste.find(i => i.dosya === secilenDosya);
-      const ilHash = '#il=' + encodeURIComponent(il);
-
-      let html = `<div class="il-sayfa-baslik">${il}</div><div class="ilce-chips">`;
-      html += `<a class="chip ${secili ? '' : 'aktif'}" href="${ilHash}">Tümü (${liste.length})</a>`;
-      liste.forEach(i => {
-        html += `<a class="chip ${secili && secili.dosya === i.dosya ? 'aktif' : ''}" href="${ilHash}&ilce=${encodeURIComponent(i.dosya)}">${i.baslik}</a>`;
-      });
-      html += `</div>`;
-
-      if (secili) {
-        html += `<div class="frame-bar"><span>${secili.baslik}</span><a href="${encodeURI(KLASOR + secili.dosya)}" target="_blank">Yeni sekmede aç ↗</a></div>`;
-        html += `<iframe class="rehber-frame" src="${encodeURI(KLASOR + secili.dosya)}"></iframe>`;
-      } else {
-        html += `<div class="list">` + liste.map(i => `
-          <a class="card" href="${ilHash}&ilce=${encodeURIComponent(i.dosya)}">
-            <div class="card-icon">${i.icon}</div>
-            <div class="card-info">
-              <div class="card-title">${i.baslik}</div>
-              <div class="card-meta"><span class="badge ${i.badgeClass}">${i.altBaslik}</span></div>
-            </div>
-            <div class="card-arrow">→</div>
-          </a>`).join('') + `</div>`;
+      if (!goruntulenen) {
+        container.innerHTML = '<div class="state-msg">Eşleşen rehber bulunamadı.</div>';
       }
-      container.innerHTML = html;
-      window.scrollTo(0, 0);
     }
 
-    function goster() {
-      searchWrap.style.display = '';
-      kartCiz(tumRehberler);
-    }
+    searchInput.addEventListener('input', e => ciz(e.target.value));
 
     function listeyiYukle(dosyalar) {
       tumRehberler = dosyalar
         .filter(f => /\.html?$/i.test(f) && !/^index\.html?$/i.test(f))
         .sort((a, b) => a.localeCompare(b, 'tr'));
-      goster();
+      ciz('');
     }
 
     // 1) rehberler.json (GitHub Actions üretir)  2) olmazsa GitHub API
