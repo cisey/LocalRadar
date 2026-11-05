@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr"><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-8E6VV7GT3C"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8E6VV7GT3C');</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Yayladağı · Local Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0;}.leaflet-container{overflow:hidden;}.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none;}.leaflet-tile::selection{background:transparent;}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast;}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0;}.leaflet-marker-icon,.leaflet-marker-shadow{display:block;}.leaflet-container .leaflet-overlay-pane svg{max-width:none !important;max-height:none !important;}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer,.leaflet-container .leaflet-tile{max-width:none !important;max-height:none !important;width:auto;padding:0;}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter;}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y;}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom;}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none;}.leaflet-container{-webkit-tap-highlight-color:transparent;}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,0.4);}.leaflet-tile{filter:inherit;visibility:hidden;}.leaflet-tile-loaded{visibility:inherit;}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800;}.leaflet-overlay-pane svg{-moz-user-select:none;}.leaflet-pane{z-index:400;}.leaflet-tile-pane{z-index:200;}.leaflet-overlay-pane{z-index:400;}.leaflet-shadow-pane{z-index:500;}.leaflet-marker-pane{z-index:600;}.leaflet-tooltip-pane{z-index:650;}.leaflet-popup-pane{z-index:700;}.leaflet-map-pane canvas{z-index:100;}.leaflet-map-pane svg{z-index:200;}.leaflet-vml-shape{width:1px;height:1px;}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute;}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto;}.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none;}.leaflet-top{top:0;}.leaflet-right{right:0;}.leaflet-bottom{bottom:0;}.leaflet-left{left:0;}.leaflet-control{float:left;clear:both;}.leaflet-right .leaflet-control{float:right;}.leaflet-top .leaflet-control{margin-top:10px;}.leaflet-bottom .leaflet-control{margin-bottom:10px;}.leaflet-left .leaflet-control{margin-left:10px;}.leaflet-right .leaflet-control{margin-right:10px;}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity 0.2s linear;-moz-transition:opacity 0.2s linear;transition:opacity 0.2s linear;}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1;}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;}svg.leaflet-zoom-animated{will-change:transform;}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform 0.25s cubic-bezier(0,0,0.25,1);-moz-transition:-moz-transform 0.25s cubic-bezier(0,0,0.25,1);transition:transform 0.25s cubic-bezier(0,0,0.25,1);}.leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none;}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden;}.leaflet-interactive{cursor:pointer;}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab;}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair;}.leaflet-popup-pane,.leaflet-control{cursor:auto;}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing;}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-image-layer,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none;}.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto;}.leaflet-container{background:#ddd;outline-offset:1px;}.leaflet-container a{color:#0078A8;}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,0.5);}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:0.75rem;line-height:1.5;}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,0.65);border-radius:4px;}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:black;}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block;}.leaflet-bar a:hover,.leaflet-bar a:focus{background-color:#f4f4f4;}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px;}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none;}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb;}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px;}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px;}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px;}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px;}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px;}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,0.4);background:#fff;border-radius:5px;}.leaflet-control-layers-toggle{background-image:none;width:36px;height:36px;}.leaflet-retina .leaflet-control-layers-toggle{background-image:none;background-size:26px 26px;}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px;}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none;}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative;}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff;}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px;}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px;}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em;}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px;}.leaflet-default-icon-path{background-image:none;}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,0.8);margin:0;}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4;}.leaflet-control-attribution a{text-decoration:none;}.leaflet-control-attribution a:hover,.leaflet-control-attribution a:focus{text-decoration:underline;}.leaflet-attribution-flag{display:inline !important;vertical-align:baseline !important;width:1em;height:0.6669em;}.leaflet-left .leaflet-control-scale{margin-left:5px;}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px;}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,0.8);text-shadow:1px 1px #fff;}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px;}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777;}.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{box-shadow:none;}.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{border:2px solid rgba(0,0,0,0.2);background-clip:padding-box;}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px;}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px;}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px;}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0;}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none;}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:white;color:#333;box-shadow:0 3px 14px rgba(0,0,0,0.4);}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:transparent;}.leaflet-container a.leaflet-popup-close-button:hover,.leaflet-container a.leaflet-popup-close-button:focus{color:#585858;}.leaflet-popup-scrolled{overflow:auto;}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1;}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto;-ms-filter:"progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678,M12=0.70710678,M21=-0.70710678,M22=0.70710678)";filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678,M12=0.70710678,M21=-0.70710678,M22=0.70710678);}.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999;}.leaflet-div-icon{background:#fff;border:1px solid #666;}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,0.4);}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto;}.leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{position:absolute;pointer-events:none;border:6px solid transparent;background:transparent;content:"";}.leaflet-tooltip-bottom{margin-top:6px;}.leaflet-tooltip-top{margin-top:-6px;}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px;}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff;}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff;}.leaflet-tooltip-left{margin-left:-6px;}.leaflet-tooltip-right{margin-left:6px;}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px;}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff;}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff;}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}</style>
+<style>
+:root {
+  --bg: #f3f4f6; --card: #ffffff; --text: #111827; --muted: #6b7280;
+  --line: #e5e7eb; --accent: #2563eb; --accent-soft: rgba(37,99,235,.08); --gold: #d97706;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root {
+    --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --muted: #94a3b8;
+    --line: #334155; --accent: #3b82f6; --accent-soft: rgba(59,130,246,.15); --gold: #fbbf24;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;line-height:1.45;padding:12px 12px 56px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:580px;margin:0 auto}
+a.back{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;padding:4px 2px 10px}
+.head{padding:0 2px 12px}
+h1{font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--text)}
+.sub-meta{color:var(--muted);font-size:13px;margin-top:4px;font-weight:500}
+.filters{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.frow{display:flex;gap:8px}
+.frow>*{flex:1;min-width:0}
+input,select{width:100%;font:inherit;font-size:14px;padding:11px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);outline:none;transition:all 0.2s}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.frow input,.frow select{font-size:13px;padding:10px}
+input:focus,select:focus{border-color:var(--accent)}
+input::placeholder{color:var(--muted)}
+.reset{align-self:flex-end;background:none;border:0;color:var(--muted);font:inherit;font-size:12.5px;font-weight:600;padding:2px 4px;cursor:pointer}
+.tabs,.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.tabs button,.chips button{flex:0 0 auto;font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:99px;padding:6px 13px;cursor:pointer}
+.tabs button:hover,.chips button:hover{border-color:var(--muted);color:var(--text)}
+.tabs button[aria-selected="true"],.chips button[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
+h2{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:18px 4px 8px}
+#list>div{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:16px}
+@media (prefers-color-scheme:dark){#list>div{box-shadow:0 4px 20px rgba(0,0,0,0.2)}}
+.row{position:relative;display:flex;align-items:center;gap:16px;padding:16px 18px;border-bottom:1px solid var(--line);transition:background 0.15s}
+.row:last-child{border-bottom:0}
+@media (prefers-color-scheme:dark){.row:hover{background:rgba(255,255,255,0.02)}}
+.row:last-child{border-bottom:0}
+.row:hover{background:rgba(0,0,0,0.015)}
+@media (prefers-color-scheme:dark){.row:hover{background:rgba(255,255,255,0.03)}}
+.row:active{background:var(--accent-soft)}
+.pt{flex:0 0 44px;text-align:center}
+.pt b{display:block;font-size:16px;font-weight:800;color:var(--gold);letter-spacing:-0.02em}
+.pt small{display:block;font-size:11.5px;color:var(--muted);margin-top:3px}
+.body{flex:1;min-width:0}
+.nm{font-weight:700;font-size:15px;overflow-wrap:anywhere}
+a.nm-link{color:inherit;text-decoration:none}
+a.nm-link::after{content:'';position:absolute;inset:0}
+.meta-tags{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.4}
+.meta-adres{font-size:12.5px;color:var(--muted);margin-top:3px;overflow-wrap:anywhere;line-height:1.4}
+.map-btn{display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;border-radius:10px;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:700;text-decoration:none;position:relative;z-index:2;white-space:nowrap;margin-left:10px;flex-shrink:0;transition:background 0.2s}
+.map-btn:hover{background:var(--accent);color:#fff}
+.foot{color:var(--muted);font-size:11.5px;margin-top:32px;text-align:center}
+.none{color:var(--muted);text-align:center;padding:40px 0}
+#map{display:none;height:60vh;border-radius:16px;border:1px solid var(--line)}
+</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head><body><div class="wrap">
+
+<a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
+
+<div class="head">
+  <h1>📡 Yayladağı · Local Radar</h1>
+  <div class="sub-meta">05.11.2026 · <span id="yerSayisi">0</span> mekan</div>
+</div>
+
+<div class="filters">
+  <input id="q" type="search" placeholder="🔍 Mekan, yemek veya mahalle ara">
+  <input id="mq" type="hidden">
+  <div class="frow">
+    <select id="mh" aria-label="Mahalle"></select>
+    <select id="sirala" aria-label="Sıralama">
+      <option value="skor">Güvenilir Skor</option>
+      <option value="puan">Puan (Yüksek)</option>
+      <option value="yorum">Yorum (Çok)</option>
+      <option value="yakin">Bana Yakın</option>
+    </select>
+  </div>
+  <div class="frow">
+    <input id="mp" type="number" step="0.1" inputmode="decimal" placeholder="En az puan">
+    <input id="my" type="number" step="10" inputmode="numeric" placeholder="En az yorum">
+    <select id="gs" aria-label="Görünüm" style="display:none;">
+      <option value="">Tümü</option>
+    </select>
+  </div>
+  <select id="ic" aria-label="İlçe" style="display:none;"></select>
+  <button class="reset" onclick="tumVerileriTemizle()">↺ Sıfırla</button>
+</div>
+
+<div class="tabs" id="tabs" role="tablist"></div>
+<div class="chips" id="chips"></div>
+
+<div id="map"></div>
+<div id="list"></div>
+
+<p class="foot">📡 Local Radar · Google Maps verileri · Harita: © OpenStreetMap</p>
+</div>
+
+<script>
+const V={"O": {"Yemek": ["Döner & Kebap", "Çiğ Köfte", "Pide & Lahmacun", "Fast food & Burger & Pizza", "Türk & Aile Restoranı", "Kafe & Kahve", "Kahvaltı", "Fırın & Tatlı", "Kasap"]}, "I": [{"n": "Antakya Bizim Döner Yayladağı", "p": "4,3", "y": 17, "u": 0, "s": 4.189, "t": "Yeme İçme Bölümü", "a": "Ziraat Bankası Karşısı ANTAKYA BİZİM DÖNER, Atatürk 13 caddesi no 78", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Antakya+Bizim+D%C3%B6ner+Yaylada%C4%9F%C4%B1/data=!4m7!3m6!1s0x15242d4027ff5189:0x391bf930f436c3ba!8m2!3d35.9012428!4d36.0645622!16s%2Fg%2F11lmchz8d4!19sChIJiVH_J0AtJBURusM29DD5Gzk", "e": 35.9012428, "b": 36.0645622, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Çetin Köfte & Dondurma & Tost", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "Köfteci", "a": "ZİRAAT BANKASI YANI, Fevzi Çakmak Cd. NO:4", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/%C3%87etin+K%C3%B6fte+%26+Dondurma+%26+Tost/data=!4m7!3m6!1s0x15242d072056898b:0xfc26e565945f0454!8m2!3d35.901292!4d36.064055!16s%2Fg%2F11xkxlhn3b!19sChIJi4lWIActJBURVARflGXlJvw", "e": 35.901292, "b": 36.064055, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Çiğköfteci Ömer usta", "p": "4,2", "y": 5, "u": 0, "s": 4.067, "t": "Çiğ Köfteci", "a": "Atatürk Cd. NO : 37", "f": "", "m": "Atatürk Cd. No : 37 Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/%C3%87i%C4%9Fk%C3%B6fteci+%C3%96mer+usta/data=!4m7!3m6!1s0x15242d36b556c95b:0x2ae0512f216058d8!8m2!3d35.89853!4d36.0734107!16s%2Fg%2F11pw1w78hw!19sChIJW8lWtTYtJBUR2FhgIS9R4Co", "e": 35.89853, "b": 36.0734107, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "Dürümcü Galip Usta", "p": "5,0", "y": 2, "u": 0, "s": 4.167, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/D%C3%BCr%C3%BCmc%C3%BC+Galip+Usta/data=!4m7!3m6!1s0x15242d0051934927:0xa8b0e03eba3d4a09!8m2!3d35.8955848!4d36.0781246!16s%2Fg%2F11nvhmt7q8!19sChIJJ0mTUQAtJBURCUo9uj7gsKg", "e": 35.8955848, "b": 36.0781246, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Hatay Kervan Döner", "p": "3,0", "y": 2, "u": 0, "s": 3.833, "t": "Dönerci", "a": "Atatürk Cd. No:92 D:a", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Hatay+Kervan+D%C3%B6ner/data=!4m7!3m6!1s0x15242d0056655239:0xfaec2597faf9d908!8m2!3d35.9012142!4d36.0644812!16s%2Fg%2F11v_3pk881!19sChIJOVJlVgAtJBURCNn5-pcl7Po", "e": 35.9012142, "b": 36.0644812, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Köşem Kebap Salonu", "p": "4,5", "y": 6, "u": 0, "s": 4.188, "t": "Kebap Restoranı", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/K%C3%B6%C5%9Fem+Kebap+Salonu/data=!4m7!3m6!1s0x15242ddc6e562a3b:0xf29185044301a5e9!8m2!3d35.90291!4d36.063007!16s%2Fg%2F11bycg0p9x!19sChIJOypWbtwtJBUR6aUBQwSFkfI", "e": 35.90291, "b": 36.063007, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Ocakbaşı Kebal Resteaurant", "p": "3,6", "y": 49, "u": 0, "s": 3.668, "t": "Mangal", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Ocakba%C5%9F%C4%B1+Kebal+Resteaurant/data=!4m7!3m6!1s0x15242ddc2b290bc7:0x3b89962bfbfdb7ef!8m2!3d35.9008258!4d36.064849!16s%2Fg%2F11f38mfl5_!19sChIJxwspK9wtJBUR77f9-yuWiTs", "e": 35.9008258, "b": 36.064849, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Taşkale çiğköfte", "p": "3,6", "y": 15, "u": 0, "s": 3.76, "t": "Çiğ Köfteci", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Ta%C5%9Fkale+%C3%A7i%C4%9Fk%C3%B6fte/data=!4m7!3m6!1s0x15242dcaab0c8945:0x3443ac4b2f72d776!8m2!3d35.9005336!4d36.0657945!16s%2Fg%2F11h07vjqwz!19sChIJRYkMq8otJBURdtdyL0usQzQ", "e": 35.9005336, "b": 36.0657945, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "Tiryaki Döner", "p": "3,9", "y": 10, "u": 0, "s": 3.95, "t": "Fast food lokantası", "a": "Gül Sk. No:1", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Tiryaki+D%C3%B6ner/data=!4m7!3m6!1s0x15242dff5107d5fd:0xedce96337599c89d!8m2!3d35.902829!4d36.0613125!16s%2Fg%2F11m_kyw_j2!19sChIJ_dUHUf8tJBURnciZdTOWzu0", "e": 35.902829, "b": 36.0613125, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "White City Köfte", "p": "4,0", "y": 5, "u": 0, "s": 4.0, "t": "Köfteci", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/White+City+K%C3%B6fte/data=!4m7!3m6!1s0x15242d9a68d14ed1:0xd65e66beef69d570!8m2!3d35.9000521!4d36.0685793!16s%2Fg%2F11t5b6sq12!19sChIJ0U7RaJotJBURcNVp775mXtY", "e": 35.9000521, "b": 36.0685793, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Yayladağı Köfte & Döner", "p": "5,0", "y": 12, "u": 0, "s": 4.545, "t": "Aile restoranı", "a": "Atatürk 12. Cadde No : 19", "f": "", "m": "Atatürk 12. Cadde No : 19 Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Yaylada%C4%9F%C4%B1+K%C3%B6fte+%26+D%C3%B6ner/data=!4m7!3m6!1s0x15242d938a9b4fb7:0xc69729ed670c2b9a!8m2!3d35.9004149!4d36.070341!16s%2Fg%2F11zzm29r4s!19sChIJt0-bipMtJBURmisMZ-0pl8Y", "e": 35.9004149, "b": 36.070341, "w": 1, "A": "Yemek", "S": "Döner & Kebap"}, {"n": "Armada Restaurant", "p": "4,3", "y": 120, "u": 0, "s": 4.277, "t": "Restoran", "a": "Fatih Sk.", "f": "", "m": "Fatih Sk. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Armada+Restaurant/data=!4m7!3m6!1s0x15242ddc31cdea33:0x5dfa7caa08bf251b!8m2!3d35.9014583!4d36.0643988!16s%2Fg%2F11byclf1vm!19sChIJM-rNMdwtJBURGyW_CKp8-l0", "e": 35.9014583, "b": 36.0643988, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Bizim Lokanta", "p": "3,5", "y": 4, "u": 0, "s": 3.857, "t": "Restoran", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Bizim+Lokanta/data=!4m7!3m6!1s0x15242ddc6996ab41:0xb2d21279ff466969!8m2!3d35.9024911!4d36.0631574!16s%2Fg%2F11b7q0h169!19sChIJQauWadwtJBURaWlG_3kS0rI", "e": 35.9024911, "b": 36.0631574, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Habeşin Yeri", "p": "4,0", "y": 4, "u": 0, "s": 4.0, "t": "Restoran", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Habe%C5%9Fin+Yeri/data=!4m7!3m6!1s0x15242ddc69361aff:0xed9e330bc0adc8c7!8m2!3d35.9028666!4d36.063122!16s%2Fg%2F11b7q8b41j!19sChIJ_xo2adwtJBURx8itwAsznu0", "e": 35.9028666, "b": 36.063122, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Kasap Halil Restaurant - Fırın ( ERGÜDER )", "p": "4,5", "y": 51, "u": 0, "s": 4.418, "t": "Aile restoranı", "a": "Alparslan Türkeş Cd.", "f": "", "m": "Alparslan Türkeş Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Kasap+Halil+Restaurant+-+F%C4%B1r%C4%B1n+%28+ERG%C3%9CDER+%29/data=!4m7!3m6!1s0x15242ddc6ccc468d:0x62cd087406c4539d!8m2!3d35.902485!4d36.063064!16s%2Fg%2F11b7q7dchm!19sChIJjUbMbNwtJBURnVPEBnQIzWI", "e": 35.902485, "b": 36.063064, "w": 1, "A": "Yemek", "S": "Kasap"}, {"n": "RAMBONUN YERI", "p": "4,3", "y": 116, "u": 0, "s": 4.276, "t": "Barbekü restoranı", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/RAMBONUN+YERI/data=!4m7!3m6!1s0x15242dcfe012db6f:0xc790c6c315aa2c23!8m2!3d35.908751!4d36.0554116!16s%2Fg%2F11f3w6gd_f!19sChIJb9sS4M8tJBURIyyqFcPGkMc", "e": 35.908751, "b": 36.0554116, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Ravza Kasap Fırın", "p": "5,0", "y": 2, "u": 0, "s": 4.167, "t": "Türk restoranı", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Ravza+Kasap+F%C4%B1r%C4%B1n/data=!4m7!3m6!1s0x15242d665e88a87b:0x3fdc3ed0ea904128!8m2!3d35.935752!4d36.0431325!16s%2Fg%2F11zf67zc1p!19sChIJe6iIXmYtJBURKEGQ6tA-3D8", "e": 35.935752, "b": 36.0431325, "w": 1, "A": "Yemek", "S": "Kasap"}, {"n": "ŞÜKÜR SOFRASI", "p": "4,5", "y": 37, "u": 0, "s": 4.394, "t": "Türk restoranı", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/%C5%9E%C3%9CK%C3%9CR+SOFRASI/data=!4m7!3m6!1s0x15242ddc6e7a60b5:0x9b3b43fc980f9ce1!8m2!3d35.9029116!4d36.0630172!16s%2Fg%2F11byck0j00!19sChIJtWB6btwtJBUR4ZwPmPxDO5s", "e": 35.9029116, "b": 36.0630172, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Yayladağı Balıkçısı", "p": "3,8", "y": 19, "u": 0, "s": 3.869, "t": "Balık Restoranı", "a": "Muradiye Cd.", "f": "", "m": "Muradiye Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Yaylada%C4%9F%C4%B1+Bal%C4%B1k%C3%A7%C4%B1s%C4%B1/data=!4m7!3m6!1s0x15242dc4bbbe36db:0x72e1535138d848b2!8m2!3d35.9084002!4d36.0529101!16s%2Fg%2F11gmf2tlq4!19sChIJ2za-u8QtJBURskjYOFFT4XI", "e": 35.9084002, "b": 36.0529101, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Yayladağı Belediyesi Devrent Sosyal Tesisleri.", "p": "4,6", "y": 98, "u": 0, "s": 4.544, "t": "Sosyal Hizmetler Kurumu", "a": "Atatürk Caddesi", "f": "", "m": "Atatürk Caddesi Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Yaylada%C4%9F%C4%B1+Belediyesi+Devrent+Sosyal+Tesisleri./data=!4m7!3m6!1s0x15242fcc19197e0f:0x828915a8288433d7!8m2!3d35.9085421!4d36.0245137!16s%2Fg%2F11pdr7rdys!19sChIJD34ZGcwvJBUR1zOEKKgViYI", "e": 35.9085421, "b": 36.0245137, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Yayladağı Komagene", "p": "3,9", "y": 73, "u": 0, "s": 3.912, "t": "Restoran", "a": "Kurtuluş mahallesi Eller Sokak Nu 2/D", "f": "", "m": "Kurtuluş Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Yaylada%C4%9F%C4%B1+Komagene/data=!4m7!3m6!1s0x15242d6f230be9dd:0xedd527e310f016da!8m2!3d35.9007387!4d36.0653277!16s%2Fg%2F11ppz4s2k5!19sChIJ3ekLI28tJBUR2hbwEOMn1e0", "e": 35.9007387, "b": 36.0653277, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Elzahra Burger", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Elzahra+Burger/data=!4m7!3m6!1s0x15242ddbe916e33f:0xb9039620bcc46f69!8m2!3d35.9027742!4d36.0610399!16s%2Fg%2F11lyw0nv02!19sChIJP-MW6dstJBURaW_EvCCWA7k", "e": 35.9027742, "b": 36.0610399, "w": 1, "A": "Yemek", "S": "Fast food & Burger & Pizza"}, {"n": "ENTERESAN PİZZA HAMBURGER", "p": "5,0", "y": 8, "u": 0, "s": 4.444, "t": "Pizza restoranı", "a": "Atatürk Cd. No:123", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/ENTERESAN+P%C4%B0ZZA+HAMBURGER/data=!4m7!3m6!1s0x15242d6fcf126cd9:0x5b8eb2e9ed583075!8m2!3d35.9024417!4d36.0605889!16s%2Fg%2F11z9g_lq9w!19sChIJ2WwSz28tJBURdTBY7emyjls", "e": 35.9024417, "b": 36.0605889, "w": 1, "A": "Yemek", "S": "Fast food & Burger & Pizza"}, {"n": "Olgunlar Kasap Lahmacun Salonu", "p": "3,9", "y": 60, "u": 0, "s": 3.914, "t": "Pizza restoranı", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Olgunlar+Kasap+Lahmacun+Salonu/data=!4m7!3m6!1s0x15242ddc3a8aa269:0x8c1b6d1e550c165c!8m2!3d35.9015735!4d36.0641602!16s%2Fg%2F11b7p_3r5m!19sChIJaaKKOtwtJBURXBYMVR5tG4w", "e": 35.9015735, "b": 36.0641602, "w": 1, "A": "Yemek", "S": "Kasap"}, {"n": "Relax", "p": "5,0", "y": 5, "u": 0, "s": 4.333, "t": "Pizza restoranı", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Relax/data=!4m7!3m6!1s0x15242b000522ad73:0xf42e107036faf4c4!8m2!3d35.9269701!4d35.9853269!16s%2Fg%2F11vm6r3f50!19sChIJc60iBQArJBURxPT6NnAQLvQ", "e": 35.9269701, "b": 35.9853269, "w": 1, "A": "Yemek", "S": "Fast food & Burger & Pizza"}, {"n": "Shant Burger", "p": "4,7", "y": 3, "u": 0, "s": 4.162, "t": "Restoran", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Shant+Burger/data=!4m7!3m6!1s0x15242b462996d6fb:0x8bb901f2161312be!8m2!3d35.9269588!4d35.9862864!16s%2Fg%2F11fmbd1h71!19sChIJ-9aWKUYrJBURvhITFvIBuYs", "e": 35.9269588, "b": 35.9862864, "w": 1, "A": "Yemek", "S": "Fast food & Burger & Pizza"}, {"n": "Aydınay Baklava", "p": "4,6", "y": 9, "u": 0, "s": 4.284, "t": "Tatlı Dükkanı", "a": "Hüseyin Dağıstanlı Sk. No:4", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Ayd%C4%B1nay+Baklava/data=!4m7!3m6!1s0x15242ddc7058ea9f:0x854b1b373538cbcf!8m2!3d35.9031194!4d36.0625753!16s%2Fg%2F11bzrnwq0x!19sChIJn-pYcNwtJBURz8s4NTcbS4U", "e": 35.9031194, "b": 36.0625753, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Dondurmacı İshak", "p": "4,1", "y": 24, "u": 0, "s": 4.071, "t": "Dondurma dükkanı", "a": "Yusuf Şerifoğlu Cd.", "f": "", "m": "Yusuf Şerifoğlu Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Dondurmac%C4%B1+%C4%B0shak/data=!4m7!3m6!1s0x15242ddc39282bc1:0xd4f5c91a77c16102!8m2!3d35.902037!4d36.06389!16s%2Fg%2F11b7p_39bz!19sChIJwSsoOdwtJBURAmHBdxrJ9dQ", "e": 35.902037, "b": 36.06389, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "EFENDI TATLILARI _ حلويات الأفندي", "p": "3,9", "y": 7, "u": 0, "s": 3.959, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/EFENDI+TATLILARI+_+%D8%AD%D9%84%D9%88%D9%8A%D8%A7%D8%AA+%D8%A7%D9%84%D8%A3%D9%81%D9%86%D8%AF%D9%8A%E2%80%AD/data=!4m7!3m6!1s0x15242d127dd382a7:0x64796b70558eb563!8m2!3d35.9028401!4d36.0614162!16s%2Fg%2F11pcky47pr!19sChIJp4LTfRItJBURY7WOVXBreWQ", "e": 35.9028401, "b": 36.0614162, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Epen Dialoğullari Baklava", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Epen+Dialo%C4%9Fullari+Baklava/data=!4m7!3m6!1s0x15242ddbd8236fd7:0xb7b0e2251ca292f5!8m2!3d35.9023815!4d36.0601533!16s%2Fg%2F11lyw0twq9!19sChIJ128j2NstJBUR9ZKiHCXisLc", "e": 35.9023815, "b": 36.0601533, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Esila pastanesi", "p": "5,0", "y": 2, "u": 0, "s": 4.167, "t": "Pastane", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Esila+pastanesi/data=!4m7!3m6!1s0x15242d697b46aaa3:0xa36931e97f38c11f!8m2!3d35.9023151!4d36.0601402!16s%2Fg%2F11kpd_f47j!19sChIJo6pGe2ktJBURH8E4f-kxaaM", "e": 35.9023151, "b": 36.0601402, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Has yayladağı lokumcusu", "p": "5,0", "y": 2, "u": 0, "s": 4.167, "t": "Tatlıcı", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Has+yaylada%C4%9F%C4%B1+lokumcusu/data=!4m7!3m6!1s0x1525cd202dd9226f:0xf218eab293d3abc8!8m2!3d35.9702881!4d36.1176994!16s%2Fg%2F11z3z9m8ts!19sChIJbyLZLSDNJRURyKvTk7LqGPI", "e": 35.9702881, "b": 36.1176994, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Hülya Pastanesi", "p": "3,8", "y": 13, "u": 0, "s": 3.887, "t": "Fırın", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/H%C3%BClya+Pastanesi/data=!4m7!3m6!1s0x15242ddc6e0e69e3:0x8ef885714623c3ad!8m2!3d35.9029391!4d36.0629431!16s%2Fg%2F11b7q64wm5!19sChIJ42kObtwtJBURrcMjRnGF-I4", "e": 35.9029391, "b": 36.0629431, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "İkram Maraş Dondurma", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "Dondurma dükkanı", "a": "Şht. Bahtiyar Karaca Sk. No:2", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/%C4%B0kram+Mara%C5%9F+Dondurma/data=!4m7!3m6!1s0x15242d00105275e1:0x4a13dcfd9994d329!8m2!3d35.9002684!4d36.0685486!16s%2Fg%2F11zf75hrrm!19sChIJ4XVSEAAtJBURKdOUmf3cE0o", "e": 35.9002684, "b": 36.0685486, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "İkram Maraş Dondurma ve Çiğköfte", "p": "4,4", "y": 7, "u": 0, "s": 4.165, "t": "Dondurma dükkanı", "a": "Atatürk 13 CD no 31a", "f": "", "m": "Atatürk 13 Cd No 31a Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/%C4%B0kram+Mara%C5%9F+Dondurma+ve+%C3%87i%C4%9Fk%C3%B6fte/data=!4m7!3m6!1s0x15242d98676b6ced:0xaa9a941be2402c4b!8m2!3d35.9000907!4d36.0685318!16s%2Fg%2F11zx46vr0c!19sChIJ7WxrZ5gtJBURSyxA4huUmqo", "e": 35.9000907, "b": 36.0685318, "w": 1, "A": "Yemek", "S": "Çiğ Köfte"}, {"n": "Künefeci Kemal usta", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Tatlıcı", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/K%C3%BCnefeci+Kemal+usta/data=!4m7!3m6!1s0x15242dcdc2925869:0x97ed2ed570008ae8!8m2!3d35.9028627!4d36.0642827!16s%2Fg%2F11ymnbdppf!19sChIJaViSws0tJBUR6IoAcNUu7Zc", "e": 35.9028627, "b": 36.0642827, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Okay Künefe", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "Tatlıcı", "a": "Alparslan Türkeş Cd.", "f": "", "m": "Alparslan Türkeş Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Okay+K%C3%BCnefe/data=!4m7!3m6!1s0x15242d29e115ee65:0x9e7dab3c33620e68!8m2!3d35.9024845!4d36.0630528!16s%2Fg%2F11khsdh442!19sChIJZe4V4SktJBURaA5iMzyrfZ4", "e": 35.9024845, "b": 36.0630528, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Yayladağ Lokumcusu", "p": "4,6", "y": 111, "u": 0, "s": 4.55, "t": "Bakkal", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Yaylada%C4%9F+Lokumcusu/data=!4m7!3m6!1s0x15242ddc6e7111b5:0xdbccceafe0aa972e!8m2!3d35.9029183!4d36.0629992!16s%2Fg%2F11b7q4608y!19sChIJtRFxbtwtJBURLpeq4K_OzNs", "e": 35.9029183, "b": 36.0629992, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Bİ'MOLA TERAS KAFE", "p": "4,1", "y": 9, "u": 0, "s": 4.047, "t": "Kafe", "a": "Çamaltı,31550", "f": "", "m": "Çamaltı Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/B%C4%B0%27MOLA+TERAS+KAFE/data=!4m7!3m6!1s0x15242d01f9b2c109:0xb1f81d80945af7f!8m2!3d35.9016894!4d36.0640538!16s%2Fg%2F11nqfllg4l!19sChIJCcGy-QEtJBURf69FCdiBHws", "e": 35.9016894, "b": 36.0640538, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}, {"n": "HİSAR KURUYEMİŞ YAYLADAĞI ŞUBE", "p": "5,0", "y": 5, "u": 0, "s": 4.333, "t": "Kahve dükkanı", "a": "Atatürk Cd.", "f": "", "m": "Atatürk Cd. Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/H%C4%B0SAR+KURUYEM%C4%B0%C5%9E+YAYLADA%C4%9EI+%C5%9EUBE/data=!4m7!3m6!1s0x15242dff5e045617:0xcf0201ae22b442c2!8m2!3d35.9023248!4d36.0635003!16s%2Fg%2F11ksl00kx5!19sChIJF1YEXv8tJBURwkK0Iq4BAs8", "e": 35.9023248, "b": 36.0635003, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}, {"n": "Kafe Antioche", "p": "5,0", "y": 9, "u": 0, "s": 4.474, "t": "Kafe", "a": "Atatürk Cd. 13 caddesj", "f": "", "m": "Atatürk Cd. 13 Caddesj Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Kafe+Antioche/data=!4m7!3m6!1s0x15242df7173da9df:0xe0156a01e2e69e27!8m2!3d35.9000243!4d36.0679587!16s%2Fg%2F11ty2ydd2d!19sChIJ36k9F_ctJBURJ57m4gFqFeA", "e": 35.9000243, "b": 36.0679587, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}, {"n": "M Cafe", "p": "4,4", "y": 8, "u": 0, "s": 4.178, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/M+Cafe/data=!4m7!3m6!1s0x15242d0033caac69:0xb076da19e1a4a68d!8m2!3d35.8951057!4d36.0799334!16s%2Fg%2F11w1wj_kcj!19sChIJaazKMwAtJBURjaak4RnadrA", "e": 35.8951057, "b": 36.0799334, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}, {"n": "TADIM DİYARI CAFE", "p": "4,7", "y": 17, "u": 0, "s": 4.441, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/TADIM+D%C4%B0YARI+CAFE/data=!4m7!3m6!1s0x15242d3f5ce8e035:0xac29941f50932ede!8m2!3d35.9001942!4d36.0692321!16s%2Fg%2F11qpfwhykj!19sChIJNeDoXD8tJBUR3i6TUB-UKaw", "e": 35.9001942, "b": 36.0692321, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}, {"n": "YAYLADAĞI TANDIR", "p": "4,2", "y": 95, "u": 0, "s": 4.181, "t": "Çay bahçesi", "a": "Atatürk Cd. No:310", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/YAYLADA%C4%9EI+TANDIR/data=!4m7!3m6!1s0x15242c2a04cccc1f:0xee6aad3bb9bdaa36!8m2!3d35.9048066!4d36.040858!16s%2Fg%2F11c453_vss!19sChIJH8zMBCosJBURNqq9uTutau4", "e": 35.9048066, "b": 36.040858, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "Aile kasabı Ahmet çetın", "p": "3,5", "y": 2, "u": 0, "s": 3.917, "t": "Kasap", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/Aile+kasab%C4%B1+Ahmet+%C3%A7et%C4%B1n/data=!4m7!3m6!1s0x1525cd5259a620cb:0xfa2be3900bb7bf02!8m2!3d35.967699!4d36.160361!16s%2Fg%2F11h0vyc8x2!19sChIJyyCmWVLNJRURAr-3C5DjK_o", "e": 35.967699, "b": 36.160361, "w": 1, "A": "Yemek", "S": "Kasap"}, {"n": "Çetin Kasap Manav Bakkal", "p": "5,0", "y": 2, "u": 0, "s": 4.167, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Yayladağı", "l": "https://www.google.com/maps/place/%C3%87etin+Kasap+Manav+Bakkal/data=!4m7!3m6!1s0x1525cc8d8ad1ccc3:0xc6481728ea09bc99!8m2!3d35.9679307!4d36.158582!16s%2Fg%2F11wt_5yys9!19sChIJw8zRio3MJRURmbwJ6igXSMY", "e": 35.9679307, "b": 36.158582, "w": 1, "A": "Yemek", "S": "Kasap"}, {"n": "ECEM PİLİÇ ( TAVUKCU SELÇUK )", "p": "5,0", "y": 2, "u": 0, "s": 4.167, "t": "Şarküteri Kasap", "a": "Atatürk Cd. no.85/A", "f": "", "m": "Atatürk Cd. No.85/a Mahallesi", "c": "Yayladağı", "l": "https://www.google.com/maps/place/ECEM+P%C4%B0L%C4%B0%C3%87+%28+TAVUKCU+SEL%C3%87UK+%29/data=!4m7!3m6!1s0x15242dafafa89823:0xd974137bf7e16a36!8m2!3d35.9013923!4d36.064231!16s%2Fg%2F11f5q0ysbc!19sChIJI5ior68tJBURNmrh93sTdNk", "e": 35.9013923, "b": 36.064231, "w": 1, "A": "Yemek", "S": "Kasap"}]},O=V.O,I=V.I,ANA=Object.keys(O);
+let ana='',alt='',map=null,katman=null;
+const HARITA='__MAP__';
+const RENK={'Yemek':'#fb923c','Gezilecek yerler':'#38bdf8','Alışveriş':'#34d399','Diğer':'#94a3b8'};
+const $=id=>document.getElementById(id);
+const tabs=$('tabs'),chips=$('chips'),list=$('list'),q=$('q'),mh=$('mh'),mq=$('mq'),ic=$('ic'),mp=$('mp'),my=$('my'),sirala=$('sirala'),gs=$('gs'),mapEl=$('map'),yerSayisi=$('yerSayisi');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tl=s=>String(s).toLocaleLowerCase('tr');
+
+function durumOku(){try{return JSON.parse(localStorage.getItem('gezi_durum')||'{}')}catch(e){return {}}}
+function durumYaz(){try{localStorage.setItem('gezi_durum',JSON.stringify(durum))}catch(e){}}
+let durum=durumOku();
+let konum=null;
+
+function km(a,b,c,d){const t=x=>x*Math.PI/180,R=6371,dl=t(c-a),dg=t(d-b);
+  const h=Math.sin(dl/2)**2+Math.cos(t(a))*Math.cos(t(c))*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+function uzak(x){return(konum&&x.e!=null)?km(konum.lat,konum.lon,x.e,x.b):null}
+
+function konumAl(sonra){
+  if(!navigator.geolocation)return;
+  navigator.geolocation.getCurrentPosition(
+    p=>{konum={lat:p.coords.latitude,lon:p.coords.longitude};if(sonra)sonra();},
+    null,{enableHighAccuracy:true,timeout:10000});
+}
+
+const ilceler=[...new Set(I.map(x=>x.c).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'tr'));
+if(ilceler.length>=2) {
+  ic.style.display='';
+  ic.innerHTML='<option value="">Tüm ilçeler</option>'+ilceler.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+}
+
+const mahSayisi=new Set(I.filter(x=>x.m!=='Bilinmiyor').map(x=>x.c+'|'+x.m)).size;
+function mahalleListe(){
+  if(mahSayisi<2){mh.style.display='none';return;}
+  const c=ic.value,t=tl(mq.value.trim()),say={};
+  I.forEach(x=>{if((c&&x.c!==c)||x.m==='Bilinmiyor')return;const k=x.c+'|'+x.m;say[k]=(say[k]||0)+1});
+  const ks=Object.keys(say).filter(k=>tl(k.split('|')[1]).includes(t)).sort((a,b)=>a.split('|')[1].localeCompare(b.split('|')[1],'tr'));
+  const onceki=mh.value;
+  mh.innerHTML='<option value="">Tüm mahalleler</option>'+ks.map(k=>{const p=k.split('|');
+    return `<option value="${esc(k)}">${esc(p[1])}${(!c&&p[0])?' · '+esc(p[0]):''} (${say[k]})</option>`}).join('');
+  if(ks.includes(onceki))mh.value=onceki;
+}
+
+function ok(x){
+  const t=tl(q.value.trim()),p0=parseFloat(mp.value)||0,y0=parseInt(my.value,10)||0;
+  return (!ic.value||x.c===ic.value)&&(!mh.value||(x.c+'|'+x.m)===mh.value)&&
+    (!t||tl(x.n+' '+x.t+' '+x.m).includes(t))&&(p0===0&&y0===0&&x.u ? true : (parseFloat(x.p.replace(',','.'))>=p0&&(x.y||0)>=y0))&&
+    (gs.value===''||(gs.value==='fav'&&(durum[x.l]||{}).fav));
+}
+
+function kiyas(a,b){
+  const s=sirala.value;
+  if(s==='puan')return parseFloat(b.p.replace(',','.'))-parseFloat(a.p.replace(',','.'));
+  if(s==='yorum')return b.y-a.y;
+  if(s==='yakin'){ if(!konum){konumAl(draw);return 0;} return (uzak(a)??1e9)-(uzak(b)??1e9); }
+  return b.s-a.s;
+}
+
+function haritaCiz(){
+  list.style.display='none';mapEl.style.display='block';
+  if(!map){
+    map=L.map('map');
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  }
+  setTimeout(()=>map.invalidateSize(),60);
+  if(katman)map.removeLayer(katman);
+  const pts=I.filter(x=>ok(x)&&typeof x.e==='number'&&typeof x.b==='number');
+  const isaretler=pts.map(x=>L.circleMarker([x.e,x.b],{radius:7,weight:2,color:'#fff',fillColor:RENK[x.A]||'#3b82f6',fillOpacity:.9})
+    .bindPopup('<b>'+esc(x.n)+'</b><br>⭐ '+esc(x.p)+' · '+x.y+' yorum<br>'+esc(x.m!=='Bilinmiyor'?x.m:'')+
+      '<br><a href="'+esc(x.l)+'" target="_blank" rel="noopener">Google Haritalar\'da aç</a>'));
+  katman=L.featureGroup(isaretler).addTo(map);
+  if(pts.length)map.fitBounds(katman.getBounds().pad(0.15));
+  else map.setView([37.0,37.5],10);
+}
+
+function satir(x){
+  const puan=x.u?'<b>—</b><small>puansız</small>':`<b>★ ${x.p}</b><small>${x.y} oy</small>`;
+  const mah=x.m!=='Bilinmiyor'?x.m.replace(' Mahallesi',''):'';
+  const meta=[x.t,mah].filter(Boolean).map(esc).join(' · ');
+  return `<div class="row">
+    <div class="pt">${puan}</div>
+    <div class="body">
+      <div class="nm"><a class="nm-link" href="#" onclick="return false;" style="cursor:default;text-decoration:none;">${esc(x.n)}</a></div>
+      ${meta?`<div class="meta-tags">${meta}</div>`:''}
+      ${x.a?`<div class="meta-adres">${esc(x.a)}</div>`:''}
+    </div>
+    <a class="map-btn" href="${esc(x.l)}" target="_blank" rel="noopener">🗺️ Haritada Aç</a>
+  </div>`;
+}
+
+function tumVerileriTemizle(){
+  if(!confirm('Tüm favoriler ve filtreler sıfırlansın mı?'))return;
+  localStorage.removeItem('gezi_durum');
+  durum={};
+  ic.value='';mq.value='';mahalleListe();mh.value='';
+  mp.value='';my.value='';q.value='';
+  sirala.value='skor';gs.value='';ana='';alt='';
+  draw();
+}
+
+function draw(){
+  if(ana===HARITA){haritaCiz();}
+  else{mapEl.style.display='none';list.style.display='';}
+  const f=I.filter(ok),arama=q.value.trim()!=='';
+  yerSayisi.textContent=f.length;
+
+  const cnt={};f.forEach(x=>{cnt[x.A]=(cnt[x.A]||0)+1});
+  const TEK=ANA.length===1;
+  if(TEK){
+    const a0=ANA[0],c3={};f.forEach(x=>{c3[x.S]=(c3[x.S]||0)+1});
+    tabs.innerHTML=`<button role="tab" aria-selected="${ana===''}" data-a="">✨ Tümü (${f.length})</button>`+
+      O[a0].filter(s=>c3[s]).map(s=>`<button role="tab" aria-selected="${ana===a0&&alt===s}" data-a="${esc(a0)}" data-s="${esc(s)}">${esc(s)} (${c3[s]})</button>`).join('')+
+      `<button role="tab" aria-selected="${ana===HARITA}" data-a="${HARITA}">🗺️ Harita</button>`;
+  }else{
+    tabs.innerHTML=`<button role="tab" aria-selected="${ana===''}" data-a="">✨ Tümü (${f.length})</button>`+
+      ANA.map(a=>`<button role="tab" aria-selected="${ana===a}" data-a="${esc(a)}">${esc(a)} (${cnt[a]||0})</button>`).join('')+
+      `<button role="tab" aria-selected="${ana===HARITA}" data-a="${HARITA}">🗺️ Harita</button>`;
+  }
+
+  if(!TEK&&ana&&ana!==HARITA){
+    const c2={};f.filter(x=>x.A===ana).forEach(x=>{c2[x.S]=(c2[x.S]||0)+1});
+    chips.innerHTML=`<button aria-pressed="${alt===''}" data-s="">Hepsi</button>`+
+      O[ana].filter(s=>c2[s]).map(s=>`<button aria-pressed="${alt===s}" data-s="${esc(s)}">${esc(s)} (${c2[s]})</button>`).join('');
+    chips.style.display='';
+  }else chips.style.display='none';
+
+  if(ana===HARITA)return;
+
+  const sec=f.filter(x=>arama||!ana||(x.A===ana&&(!alt||x.S===alt)));
+  const tumu=arama||!ana;let out='';
+
+  ANA.forEach(a=>O[a].forEach(s=>{
+    const it=sec.filter(x=>x.A===a&&x.S===s);if(!it.length)return;
+    it.sort(kiyas);
+    const bas=tumu?a+' · '+s:(alt?'':s);
+    out+=(bas?`<h2>${esc(bas)}</h2>`:'')+'<div>'+it.map(satir).join('')+'</div>';
+  }));
+  list.innerHTML=out||'<p class="none">Aramanıza uygun mekan bulunamadı.</p>';
+}
+
+tabs.onclick=e=>{const b=e.target.closest('button');if(b){ana=b.dataset.a;alt=b.dataset.s||'';draw();}};
+chips.onclick=e=>{const b=e.target.closest('button');if(b){alt=b.dataset.s;draw()}};
+ic.onchange=()=>{mahalleListe();draw()};
+mh.onchange=draw;mp.oninput=draw;my.oninput=draw;q.oninput=draw;gs.onchange=draw;sirala.onchange=draw;
+
+mahalleListe();
+draw();
+</script></body></html>
