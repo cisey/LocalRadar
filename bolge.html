@@ -85,6 +85,10 @@ svg .gout path{fill:none!important;stroke:#0b0f17;stroke-width:1.3px;pointer-eve
 svg.yakin .gout path{stroke:#e2e8f0;stroke-opacity:.45;stroke-width:1.2px}
 svg .gil path{stroke:#0b0f17;stroke-width:.8px}
 svg .getiket text{fill:#f1f5f9;stroke:#0b0f17;stroke-width:3px;paint-order:stroke;stroke-linejoin:round;font-weight:700;pointer-events:none;font-family:system-ui,sans-serif;vector-effect:non-scaling-stroke}
+.tf{display:flex;gap:7px;flex-wrap:wrap;margin:4px 0 10px}
+.tf button{white-space:nowrap;flex:0 0 auto;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#1b2434;color:var(--text);font-size:13px}
+.tf button small{color:var(--muted);margin-left:3px}
+.tf button.on{background:#1f5f86;border-color:#7dd3fc;font-weight:700}
 .sec-kutu{width:100%;margin-top:10px;padding:12px;border-radius:12px;background:#141b29;color:var(--text);border:1px solid var(--line);font-size:15px}
 </style>
 </head>
@@ -405,16 +409,33 @@ function ozetDoldur(il, ilce, dosya, jeton) {
     const yemek = liste.filter(x => x.A === 'Yemek' && !x.u);
     let h = '<div class="et">' + yemek.length + ' YEMEK YERİ</div>';
     const buradayim = userPos && konumKey === il + '|' + ilce;
+    let aday = [];
     if (buradayim) {
-      const yakin = yemek.filter(x => x.e != null && x.b != null && puanSayi(x) >= 4 && x.y >= 100)
-        .map(x => [x, km(userPos.lat, userPos.lon, x.e, x.b)]).sort((a, b) => a[1] - b[1]).slice(0, 5);
+      aday = yemek.filter(x => x.e != null && x.b != null && puanSayi(x) >= 4 && x.y >= 100)
+        .map(x => [x, km(userPos.lat, userPos.lon, x.e, x.b)]).sort((a, b) => a[1] - b[1]);
+      const say = {}; aday.forEach(([x]) => { say[x.S] = (say[x.S] || 0) + 1; });
+      const tipler = Object.keys(say).sort((a, b) => say[b] - say[a]);
       h += '<div class="et" style="color:#7dd3fc">YAKINIMDAKİ İYİ YERLER (4,0+ puan, 100+ yorum)</div>';
-      h += yakin.length ? yakin.map(([x, d]) => yerKarti(x, d)).join('') : '<p class="bilgi">Bu ilçede yakınında şartlara uyan yer bulunamadı.</p>';
+      h += '<div class="tf" id="tfiltre"><button data-f="" class="on">Hepsi</button>' +
+        tipler.map(t => '<button data-f="' + esc(t) + '">' + esc(t) + ' <small>' + say[t] + '</small></button>').join('') + '</div>';
+      h += '<div id="yakinliste"></div>';
     } else {
       const ust = yemek.slice().sort((a, b) => (b.s || 0) - (a.s || 0)).slice(0, 3);
       h += '<div class="et" style="color:#7dd3fc">EN GÜVENİLİR 3 YER</div>' + ust.map(x => yerKarti(x)).join('');
     }
     kutu.innerHTML = h;
+    if (buradayim) {
+      const cizYakin = f => {
+        const l = aday.filter(([x]) => !f || x.S === f).slice(0, 5);
+        document.getElementById('yakinliste').innerHTML = l.length ? l.map(([x, d]) => yerKarti(x, d)).join('')
+          : '<p class="bilgi">Bu türde yakınında şartlara uyan yer bulunamadı.</p>';
+      };
+      cizYakin('');
+      document.querySelectorAll('#tfiltre button').forEach(b => b.onclick = () => {
+        document.querySelectorAll('#tfiltre button').forEach(x => x.classList.toggle('on', x === b));
+        cizYakin(b.dataset.f);
+      });
+    }
   }).catch(() => { if (kutu) kutu.innerHTML = '<p class="bilgi">Özet yüklenemedi, rehberi açabilirsin.</p>'; });
 }
 
