@@ -1,40 +1,44 @@
-# 🌐 Local Radar · Live Guides
+# 🌐 Local Radar · Canlı Rehberler
 
-This repository hosts the **live output** of the [Local Radar](https://github.com/cisey/local-radar) project. 
+Bu depo, [Local Radar](https://github.com/cisey/local-radar) projesinin **canlı çıktılarını** barındırır.
 
-Local Radar is a Python-based scraper and guide generator. It scans Google Maps for highly-rated places, filters them by rating and reviews, and builds interactive HTML guides. The generated HTML files are published here and served via **GitHub Pages**.
+Local Radar, Google Haritalar'da yüksek puanlı yerleri tarayan, puan ve yorum sayısına göre eleyen ve her ilçe için etkileşimli HTML rehberler üreten Python tabanlı bir araçtır. Üretilen rehberler buraya yüklenir ve **GitHub Pages** ile yayınlanır.
 
-👉 **Explore the live guides:** **[https://cisey.github.io/LocalRadar/](https://cisey.github.io/LocalRadar/)**
+👉 **Canlı rehberler:** [https://cisey.github.io/LocalRadar/](https://cisey.github.io/LocalRadar/)
 
-## ✨ Features
+## ✨ Özellikler
 
-- 📱 **Mobile-First Design** — Clean, responsive UI tailored for phone screens
-- 🌙 **Modern Dark Mode** — Glassmorphism cards, soft gradients, and readable typography
-- 🔍 **Instant Search** — Filter guides by city, district, or filename
-- 🗂️ **Smart Grouping** — Automatically categorizes and sorts guides by province
-- 🏷️ **Dynamic Badges** — Visual indicators for food guides vs. general guides
-- ⚡ **Automated Index** — A GitHub Action (`update-guides.yml`) automatically updates `rehberler.json` whenever a new guide is pushed
+- 📱 **Telefon öncelikli tasarım:** Telefon ekranına göre hazırlanmış sade ve hızlı arayüz
+- 🌙 **Koyu tema:** Okunaklı yazılar, yumuşak geçişler ve kart tasarımı
+- 🔍 **Anlık arama:** İl, ilçe veya dosya adına göre rehber bulma
+- 🗂️ **Akıllı gruplama:** Rehberler illere göre otomatik gruplanır, iller kapalı başlar
+- 📚 **Tüm İlçeler rehberi:** Her ilin ilçeleri tek bir rehberde birleşir, aynı mekan bir kez görünür
+- 🗺️ **Haritadan seçim:** Türkiye haritasında ile ya da ilçeye dokunarak rehbere ulaşma
+- 📍 **Konumumu bul:** Bulunduğun ilçeyi bulur, yakınındaki iyi yerleri (4,0+ puan, 100+ yorum) uzaklığa göre sıralar
+- 🍽️ **Tür filtresi:** Yakındaki yerleri kebap, kahvaltı, tatlı, kafe gibi türlere göre süzme
+- ⚡ **Otomatik dizin:** Yeni bir rehber yüklendiğinde bir GitHub Action (`update-guides.yml`) `rehberler.json` dosyasını otomatik günceller
 
-## 📁 How It Works
+## 📁 Nasıl Çalışır?
 
-1. **Generation**: The Python program generates a new `.html` guide for a district.
-2. **Push**: The guide is pushed to this repository.
-3. **Automation**: GitHub Actions detects the new file and automatically updates `rehberler.json`.
-4. **Publishing**: GitHub Pages serves the new guide, and `index.html` instantly lists it in the UI.
+1. **Üretim:** Python programı bir ilçe için yeni bir `.html` rehber üretir.
+2. **Yükleme:** Rehber bu depodaki `rehberler/` klasörüne yüklenir.
+3. **Otomasyon:** GitHub Actions yeni dosyayı algılar ve `rehberler.json` dosyasını günceller.
+4. **Yayın:** GitHub Pages yeni rehberi sunar. Ana sayfa (`index.html`) ve harita sayfaları (`harita.html`, `bolge.html`) rehberi hemen listeler.
 
-## 🛠️ Architecture
+## 🛠️ Mimari
 
-- **Frontend**: Vanilla HTML, CSS, and JavaScript (no frameworks, fast loading)
-- **Data Source**: `rehberler.json` (with GitHub API fallback)
-- **Automation**: GitHub Actions for indexing
-- **Hosting**: GitHub Pages
+- **Arayüz:** Saf HTML, CSS ve JavaScript (kütüphane yok, hızlı açılır)
+- **Veri kaynağı:** `rehberler.json` (yedek olarak GitHub API)
+- **Otomasyon:** Dizin güncellemesi için GitHub Actions
+- **Yayın:** GitHub Pages
+- **Harita:** İl ve ilçe sınırları SVG olarak sayfanın içine gömülüdür, dış harita servisi gerekmez
 
-## 🤝 Related Projects
+## 🤝 İlgili Projeler
 
-- **[cisey/local-radar](https://github.com/cisey/local-radar)** — The core Python scraper, GUI, and guide generator.
+- [cisey/local-radar](https://github.com/cisey/local-radar): Çekirdek Python tarayıcı, arayüz ve rehber üretici
 
-## ⚠️ Disclaimer
+## ⚠️ Uyarı
 
-The data displayed in these guides is scraped from publicly available Google Maps data. This is for personal and educational use only. Not affiliated with Google.
+Bu rehberlerde gösterilen veriler, herkese açık Google Haritalar verilerinden toplanmıştır. Kişisel ve eğitim amaçlı kullanım içindir. Google ile bir bağlantısı yoktur.
 
-Made with ❤️ for travelers and foodies.
+Gezginler ve yemek sevenler için ❤️ ile yapıldı.
