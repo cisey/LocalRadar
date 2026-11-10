@@ -420,7 +420,8 @@ function ozetDoldur(il, ilce, dosya, jeton) {
         tipler.map(t => '<button data-f="' + esc(t) + '">' + esc(t) + ' <small>' + say[t] + '</small></button>').join('') + '</div>';
       h += '<div id="yakinliste"></div>';
     } else {
-      const ust = yemek.slice().sort((a, b) => (b.s || 0) - (a.s || 0)).slice(0, 3);
+      const guv = x => { const y = +x.y || 0, p = parseFloat(String(x.p).replace(',', '.')) || 0; return x.u ? 0 : (y / (y + 100)) * p + (100 / (y + 100)) * 4; };
+      const ust = yemek.slice().sort((a, b) => guv(b) - guv(a)).slice(0, 3);
       h += '<div class="et" style="color:#7dd3fc">EN GÜVENİLİR 3 YER</div>' + ust.map(x => yerKarti(x)).join('');
     }
     kutu.innerHTML = h;
