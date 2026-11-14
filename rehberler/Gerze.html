@@ -66,7 +66,7 @@ a.nm-link::after{content:'';position:absolute;inset:0}
 #map{display:none;height:60vh;border-radius:16px;border:1px solid var(--line)}
 </style>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-</head><body><div class="wrap">
+<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style></head><body><div class="wrap">
 
 <a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
 
@@ -208,6 +208,17 @@ function tumVerileriTemizle(){
   draw();
 }
 
+
+function enIyiKutusu(f,tumu,arama){
+  if(ana!==''||arama)return '';
+  const pn=x=>parseFloat(String(x.p).replace(',','.'))||0;
+  const ad=f.filter(x=>!x.u&&pn(x)>=4.3).sort((a,b)=>(b.y||0)-(a.y||0)||pn(b)-pn(a)).slice(0,10);
+  if(!ad.length)return '';
+  return '<h2 class="eniyi-h">⭐ En iyi '+ad.length+'</h2><div>'+ad.map(satir).join('')+'</div>'+
+    '<p class="eniyi-not"><b>Bu liste nasıl seçildi?</b> Google Haritalar puanı <b>4,3 ve üzeri</b> olan yerler alınır, '+
+    '<b>yorum sayısı en çok olandan başlayarak</b> sıralanır. Yani çok kişinin gidip beğendiği yerler öne çıkar; '+
+    'az yorumlu yüksek puanlar ve puanı düşük kalabalık yerler listeye girmez. Veriler Google Haritalar\'dan alınmıştır ve değişebilir.</p>';
+}
 function draw(){
   if(ana===HARITA){haritaCiz();}
   else{mapEl.style.display='none';list.style.display='';}
@@ -245,7 +256,7 @@ function draw(){
     const bas=tumu?a+' · '+s:(alt?'':s);
     out+=(bas?`<h2>${esc(bas)}</h2>`:'')+'<div>'+it.map(satir).join('')+'</div>';
   }));
-  list.innerHTML=out||'<p class="none">Aramanıza uygun mekan bulunamadı.</p>';
+  list.innerHTML=enIyiKutusu(f,tumu,arama)+(out||'<p class="none">Aramanıza uygun mekan bulunamadı.</p>');
 }
 
 tabs.onclick=e=>{const b=e.target.closest('button');if(b){ana=b.dataset.a;alt=b.dataset.s||'';draw();}};
