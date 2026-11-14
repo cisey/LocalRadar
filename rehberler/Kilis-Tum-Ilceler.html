@@ -199,7 +199,7 @@ function satir(x){
   return `<div class="row">
     <div class="pt">${puan}</div>
     <div class="body">
-      <div class="nm"><a class="nm-link" href="#" onclick="return false;" style="cursor:default;text-decoration:none;">${esc(x.n)}</a> <button class="fav" data-l="${esc(x.l)}" aria-label="Favori">${(durum[x.l]||{}).fav?'❤️':'🤍'}</button></div>
+      <div class="nm"><a class="nm-link" href="#" onclick="return false;" style="cursor:default;text-decoration:none;">${esc(x.n)}</a></div>
       ${meta?`<div class="meta-tags">${meta}</div>`:''}
       ${/*adresGizli*/''}
     </div>
@@ -208,7 +208,7 @@ function satir(x){
 }
 
 function tumVerileriTemizle(){
-  if(!confirm('Tüm favoriler ve filtreler sıfırlansın mı?'))return;
+  if(!confirm('Filtreler sıfırlansın mı?'))return;
   localStorage.removeItem('gezi_durum');
   durum={};
   ic.value='';mq.value='';mahalleListe();mh.value='';
@@ -344,6 +344,10 @@ list.addEventListener('click',e=>{
   const p=g.dataset.gec.split('|');gs.value='';ana=p[0];alt=p[1];draw();
   tabs.scrollIntoView({behavior:'smooth',block:'start'});
 });
+
+/*favoriKaldirildi*/
+favSekme=function(){};
+gs.value='';
 function draw(){
   if(ana===HARITA){haritaCiz();}
   else{mapEl.style.display='none';list.style.display='';}
