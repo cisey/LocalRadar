@@ -79,6 +79,7 @@ summary {
 }
 summary::-webkit-details-marker { display: none; }
 .chev { color: #64748b; font-size: 22px; line-height: 1; transition: transform .2s; }
+details.il .ozet { display:block; font-size:12px; font-weight:500; color:#64748b; margin-top:2px; letter-spacing:0; }
 details[open] .chev { transform: rotate(90deg); color: var(--accent); }
 
 .il-ic { padding: 2px 14px 16px; }
@@ -309,6 +310,14 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
         const s = document.createElement('summary');
         const ad = document.createElement('span');
         ad.textContent = il;
+        const nIlce = gruplar[il].filter(i => !i.tum).length;
+        const nMekan = (tumu && ozet[tumu.dosya]) ? ozet[tumu.dosya] : gruplar[il].reduce((t, i) => t + (i.tum ? 0 : (ozet[i.dosya] || 0)), 0);
+        if (nMekan) {
+          const oz = document.createElement('small');
+          oz.className = 'ozet';
+          oz.textContent = (nIlce ? nIlce + ' ilçe · ' : '') + nMekan.toLocaleString('tr-TR') + ' mekan';
+          ad.appendChild(oz);
+        }
         const ch = document.createElement('span');
         ch.className = 'chev'; ch.textContent = '›';
         s.append(ad, ch);
@@ -365,6 +374,13 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
         .sort((a, b) => a.localeCompare(b, 'tr'));
       ciz('');
     }
+
+    // Rehber başına mekan sayısı (ozet.json, GitHub Actions üretir; yoksa özet gösterilmez)
+    let ozet = {};
+    fetch('ozet.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : {})
+      .then(o => { ozet = o || {}; if (tumRehberler.length) ciz(searchInput.value); })
+      .catch(() => {});
 
     // 1) rehberler.json (GitHub Actions üretir)  2) olmazsa GitHub API
     fetch('rehberler.json', { cache: 'no-cache' })
