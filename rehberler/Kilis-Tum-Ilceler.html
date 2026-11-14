@@ -74,7 +74,7 @@ a.nm-link::after{content:'';position:absolute;inset:0}
   text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .ilce-sec select{width:100%;font-size:17px;font-weight:700;padding:13px 14px;border-radius:12px}
 </style>
-<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><style>/*ozellikPaketi*/.daha{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}.fav{display:block;margin:2px auto 0;position:relative;z-index:2;background:none;border:0;font-size:17px;line-height:1;padding:4px;cursor:pointer}</style></head><body><div class="wrap">
+<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><style>/*ozellikPaketi*/.daha{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}.fav{display:inline;position:relative;z-index:2;background:none;border:0;font-size:14px;line-height:1;padding:0;margin:0;cursor:pointer}</style><style>/*paket2Paketi*/.gec{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}@media (prefers-color-scheme:dark){#map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.95)}}</style></head><body><div class="wrap">
 
 <a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
 
@@ -179,7 +179,7 @@ function haritaCiz(){
   list.style.display='none';mapEl.style.display='block';
   if(!map){
     map=L.map('map');
-    const koyu=!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);L.tileLayer(koyu?'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png':'https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap'+(koyu?' © CARTO':'')}).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
   }
   setTimeout(()=>map.invalidateSize(),60);
   if(katman)map.removeLayer(katman);
@@ -188,7 +188,7 @@ function haritaCiz(){
     .bindPopup('<b>'+esc(x.n)+'</b><br>⭐ '+esc(x.p)+' · '+x.y+' yorum<br>'+esc(x.m!=='Bilinmiyor'?x.m:'')+
       '<br><a href="'+esc(x.l)+'" target="_blank" rel="noopener">Google Haritalar\'da aç</a>'));
   katman=(L.markerClusterGroup?L.markerClusterGroup({chunkedLoading:true,maxClusterRadius:50,disableClusteringAtZoom:17}):L.featureGroup());isaretler.forEach(m=>katman.addLayer(m));katman.addTo(map);
-  if(pts.length)map.fitBounds(katman.getBounds().pad(0.15));
+  if(pts.length){const la=pts.map(x=>x.e).sort((a,b)=>a-b),lo=pts.map(x=>x.b).sort((a,b)=>a-b),a1=Math.floor(pts.length*.01),a2=Math.max(a1,Math.ceil(pts.length*.99)-1);map.fitBounds([[la[a1],lo[a1]],[la[a2],lo[a2]]],{padding:[20,20]});}
   else map.setView([37.0,37.5],10);
 }
 
@@ -197,9 +197,9 @@ function satir(x){
   const mah=x.m!=='Bilinmiyor'?x.m.replace(' Mahallesi',''):'';
   const dm=uzak(x);const meta=[x.t,dm!=null?'📍 '+mesafeYazi(dm):''].filter(Boolean).map(esc).join(' · ');
   return `<div class="row">
-    <div class="pt">${puan}<button class="fav" data-l="${esc(x.l)}" aria-label="Favori">${(durum[x.l]||{}).fav?'❤️':'🤍'}</button></div>
+    <div class="pt">${puan}</div>
     <div class="body">
-      <div class="nm"><a class="nm-link" href="#" onclick="return false;" style="cursor:default;text-decoration:none;">${esc(x.n)}</a></div>
+      <div class="nm"><a class="nm-link" href="#" onclick="return false;" style="cursor:default;text-decoration:none;">${esc(x.n)}</a> <button class="fav" data-l="${esc(x.l)}" aria-label="Favori">${(durum[x.l]||{}).fav?'❤️':'🤍'}</button></div>
       ${meta?`<div class="meta-tags">${meta}</div>`:''}
       ${/*adresGizli*/''}
     </div>
@@ -219,7 +219,7 @@ function tumVerileriTemizle(){
 
 
 function enIyiKutusu(f,tumu,arama){
-  if(ana!==''||arama)return '';
+  if(ana!==''||arama||gs.value==='fav')return '';
   const pn=x=>parseFloat(String(x.p).replace(',','.'))||0;
   const ad=f.filter(x=>!x.u&&pn(x)>=4.3).sort((a,b)=>(b.y||0)-(a.y||0)||pn(b)-pn(a)).slice(0,10);
   if(!ad.length)return '';
@@ -305,6 +305,45 @@ hashOku();
   w.style.cssText='display:flex;flex-direction:column;gap:3px;flex:1;min-width:0;font-size:11.5px;font-weight:600;color:var(--muted)';
   el.parentNode.insertBefore(w,el);w.append(t,el);if(ph)el.placeholder=ph;
 });
+
+/*paket2Paketi*/
+let ONIZ=false;const ONIZ_N=5;
+function bolumHtml2(it,k){
+  if(ONIZ){
+    let s='<div>'+it.slice(0,ONIZ_N).map(satir).join('')+'</div>';
+    if(it.length>ONIZ_N)s+='<button class="gec" data-gec="'+esc(k)+'">'+esc(k.split('|')[1])+' bölümünün tamamını gör ('+it.length+') →</button>';
+    return s;
+  }
+  return bolumHtml(it,k);
+}
+(gs.closest('label')||gs).style.display='none';
+const _drawEski=draw;
+draw=function(){
+  ONIZ=(ana===''&&q.value.trim()===''&&gs.value!=='fav');
+  _drawEski();
+  favSekme();
+};
+function favSekme(){
+  const eski=tabs.querySelector('button[data-fav]');if(eski)eski.remove();
+  const n=I.filter(x=>(durum[x.l]||{}).fav).length;
+  if(n>0||gs.value==='fav'){
+    if(gs.value==='fav')tabs.querySelectorAll('button[aria-selected="true"]').forEach(b=>b.setAttribute('aria-selected','false'));
+    const bt=document.createElement('button');bt.setAttribute('role','tab');bt.dataset.fav='1';
+    bt.textContent='❤️ Favorilerim ('+n+')';bt.setAttribute('aria-selected',gs.value==='fav'?'true':'false');
+    tabs.appendChild(bt);
+  }
+}
+list.addEventListener('click',e=>{if(e.target.closest('.fav'))favSekme();});
+tabs.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.fav){e.stopPropagation();gs.value=gs.value==='fav'?'':'fav';ana='';alt='';draw();}
+  else if(gs.value==='fav')gs.value='';
+},true);
+list.addEventListener('click',e=>{
+  const g=e.target.closest('.gec');if(!g)return;
+  const p=g.dataset.gec.split('|');gs.value='';ana=p[0];alt=p[1];draw();
+  tabs.scrollIntoView({behavior:'smooth',block:'start'});
+});
 function draw(){
   if(ana===HARITA){haritaCiz();}
   else{mapEl.style.display='none';list.style.display='';}
@@ -340,7 +379,7 @@ function draw(){
     const it=sec.filter(x=>x.A===a&&x.S===s);if(!it.length)return;
     it.sort(kiyas);
     const bas=tumu?a+' · '+s:(alt?'':s);
-    out+=(bas?`<h2>${esc(bas)}</h2>`:'')+bolumHtml(it,a+'|'+s);
+    out+=(bas?`<h2>${esc(bas)}</h2>`:'')+bolumHtml2(it,a+'|'+s);
   }));
   list.innerHTML=enIyiKutusu(f,tumu,arama)+(out||'<p class="none">Aramanıza uygun mekan bulunamadı.</p>');
 }
