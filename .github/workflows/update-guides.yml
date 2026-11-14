@@ -15,18 +15,24 @@ jobs:
       - name: rehberler.json oluştur
         run: |
           python3 - <<'PY'
-          import json, glob, os
+          import json, glob, os, re
           files = sorted(
               [os.path.basename(f) for f in glob.glob('rehberler/*.html')],
               key=str.lower
           )
           with open('rehberler.json', 'w', encoding='utf-8') as fh:
               json.dump(files, fh, ensure_ascii=False, indent=2)
+          ozet = {}
+          for f in files:
+              with open('rehberler/' + f, encoding='utf-8', errors='ignore') as fh:
+                  ozet[f] = len(re.findall(r'"l": ?"http', fh.read()))
+          with open('ozet.json', 'w', encoding='utf-8') as fh:
+              json.dump(ozet, fh, ensure_ascii=False)
           PY
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add rehberler.json
+          git add rehberler.json ozet.json
           git diff --staged --quiet || git commit -m "rehberler.json otomatik güncellendi"
           git push
