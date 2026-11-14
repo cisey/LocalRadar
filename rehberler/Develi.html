@@ -66,7 +66,7 @@ a.nm-link::after{content:'';position:absolute;inset:0}
 #map{display:none;height:60vh;border-radius:16px;border:1px solid var(--line)}
 </style>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style></head><body><div class="wrap">
+<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><style>/*ozellikPaketi*/.daha{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}.fav{display:block;margin:2px auto 0;position:relative;z-index:2;background:none;border:0;font-size:17px;line-height:1;padding:4px;cursor:pointer}</style></head><body><div class="wrap">
 
 <a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
 
@@ -163,14 +163,14 @@ function kiyas(a,b){
   if(s==='puan')return parseFloat(b.p.replace(',','.'))-parseFloat(a.p.replace(',','.'));
   if(s==='yorum')return b.y-a.y;
   if(s==='yakin'){ if(!konum){konumAl(draw);return 0;} return (uzak(a)??1e9)-(uzak(b)??1e9); }
-  return b.s-a.s;
+  return sk(b)-sk(a);
 }
 
 function haritaCiz(){
   list.style.display='none';mapEl.style.display='block';
   if(!map){
     map=L.map('map');
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+    const koyu=!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);L.tileLayer(koyu?'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png':'https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap'+(koyu?' © CARTO':'')}).addTo(map);
   }
   setTimeout(()=>map.invalidateSize(),60);
   if(katman)map.removeLayer(katman);
@@ -178,7 +178,7 @@ function haritaCiz(){
   const isaretler=pts.map(x=>L.circleMarker([x.e,x.b],{radius:7,weight:2,color:'#fff',fillColor:RENK[x.A]||'#3b82f6',fillOpacity:.9})
     .bindPopup('<b>'+esc(x.n)+'</b><br>⭐ '+esc(x.p)+' · '+x.y+' yorum<br>'+esc(x.m!=='Bilinmiyor'?x.m:'')+
       '<br><a href="'+esc(x.l)+'" target="_blank" rel="noopener">Google Haritalar\'da aç</a>'));
-  katman=L.featureGroup(isaretler).addTo(map);
+  katman=(L.markerClusterGroup?L.markerClusterGroup({chunkedLoading:true,maxClusterRadius:50,disableClusteringAtZoom:17}):L.featureGroup());isaretler.forEach(m=>katman.addLayer(m));katman.addTo(map);
   if(pts.length)map.fitBounds(katman.getBounds().pad(0.15));
   else map.setView([37.0,37.5],10);
 }
@@ -186,9 +186,9 @@ function haritaCiz(){
 function satir(x){
   const puan=x.u?'<b>—</b><small>puansız</small>':`<b>★ ${x.p}</b><small>${x.y} oy</small>`;
   const mah=x.m!=='Bilinmiyor'?x.m.replace(' Mahallesi',''):'';
-  const meta=[x.t].filter(Boolean).map(esc).join(' · ');
+  const dm=uzak(x);const meta=[x.t,dm!=null?'📍 '+mesafeYazi(dm):''].filter(Boolean).map(esc).join(' · ');
   return `<div class="row">
-    <div class="pt">${puan}</div>
+    <div class="pt">${puan}<button class="fav" data-l="${esc(x.l)}" aria-label="Favori">${(durum[x.l]||{}).fav?'❤️':'🤍'}</button></div>
     <div class="body">
       <div class="nm"><a class="nm-link" href="#" onclick="return false;" style="cursor:default;text-decoration:none;">${esc(x.n)}</a></div>
       ${meta?`<div class="meta-tags">${meta}</div>`:''}
@@ -219,11 +219,88 @@ function enIyiKutusu(f,tumu,arama){
     '<b>yorum sayısı en çok olandan başlayarak</b> sıralanır. Yani çok kişinin gidip beğendiği yerler öne çıkar; '+
     'az yorumlu yüksek puanlar ve puanı düşük kalabalık yerler listeye girmez. Veriler Google Haritalar\'dan alınmıştır ve değişebilir.</p>';
 }
+
+/*ozellikPaketi*/
+const LIM=60;let ekstra={},sonImza='',qt=null;
+const sk=x=>{if(x.u)return -1;const y=x.y||0,p=parseFloat(String(x.p).replace(',','.'))||0;return y/(y+100)*p+100/(y+100)*4};
+function mesafeYazi(d){return d<1?Math.round(d*1000)+' m':d.toFixed(1).replace('.',',')+' km'}
+function bolumHtml(it,k){
+  const n=LIM+(ekstra[k]||0);
+  let s='<div>'+it.slice(0,n).map(satir).join('')+'</div>';
+  if(it.length>n)s+='<button class="daha" data-k="'+esc(k)+'">Daha fazla göster ('+(it.length-n)+' mekan daha)</button>';
+  return s;
+}
+mh.style.display='none';
+gs.style.display='';
+gs.innerHTML='<option value="">Tümü</option><option value="fav">❤️ Favori</option>';
+function favSay(){const n=I.filter(x=>(durum[x.l]||{}).fav).length;gs.options[1].textContent='❤️ Favori ('+n+')';}
+function hashYaz(){
+  try{
+    const p=new URLSearchParams();
+    if(q.value.trim())p.set('q',q.value.trim());
+    if(mp.value)p.set('mp',mp.value);
+    if(my.value)p.set('my',my.value);
+    if(ic.value)p.set('ic',ic.value);
+    if(sirala.value==='puan'||sirala.value==='yorum')p.set('s',sirala.value);
+    if(ana&&ana!==HARITA){p.set('a',ana);if(alt)p.set('t',alt);}
+    if(gs.value)p.set('g',gs.value);
+    const s=p.toString();
+    history.replaceState(null,'',location.pathname+location.search+(s?'#'+s:''));
+  }catch(e){}
+}
+function hashOku(){
+  try{
+    const p=new URLSearchParams(location.hash.slice(1));
+    if(p.get('q'))q.value=p.get('q');
+    if(p.get('mp'))mp.value=p.get('mp');
+    if(p.get('my'))my.value=p.get('my');
+    const i0=p.get('ic');if(i0&&[...ic.options].some(o=>o.value===i0))ic.value=i0;
+    const s0=p.get('s');if(s0==='puan'||s0==='yorum')sirala.value=s0;
+    if(p.get('g')==='fav')gs.value='fav';
+    const a0=p.get('a');if(a0&&ANA.includes(a0)){ana=a0;alt=p.get('t')||'';}
+  }catch(e){}
+}
+function ozetGuncelle(){
+  const im=[q.value,mp.value,my.value,ic.value,sirala.value,ana,alt,gs.value].join('|');
+  if(im!==sonImza){ekstra={};sonImza=im;}
+  favSay();hashYaz();
+}
+list.addEventListener('click',e=>{
+  const d=e.target.closest('.daha');
+  if(d){const y=window.scrollY;ekstra[d.dataset.k]=(ekstra[d.dataset.k]||0)+100;draw();window.scrollTo(0,y);return;}
+  const b=e.target.closest('.fav');
+  if(b){
+    const l=b.dataset.l;durum[l]=durum[l]||{};durum[l].fav=!durum[l].fav;
+    if(!durum[l].fav)delete durum[l];
+    durumYaz();b.textContent=(durum[l]||{}).fav?'❤️':'🤍';favSay();
+    if(gs.value==='fav')draw();
+  }
+});
+(function(){
+  const r=document.querySelector('button.reset');if(!r)return;
+  const w=document.createElement('div');w.style.cssText='display:flex;justify-content:flex-end;gap:14px';
+  const b=document.createElement('button');b.className='reset';b.textContent='🔗 Bu görünümü paylaş';
+  b.onclick=()=>{
+    hashYaz();const u=location.href;
+    if(navigator.share){navigator.share({title:document.title,url:u}).catch(()=>{});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(u).then(()=>{b.textContent='✓ Link kopyalandı';setTimeout(()=>{b.textContent='🔗 Bu görünümü paylaş'},2000)},()=>{prompt('Linki kopyala',u)});}
+    else prompt('Linki kopyala',u);
+  };
+  r.parentNode.insertBefore(w,r);w.appendChild(b);w.appendChild(r);
+})();
+hashOku();
+
+/*etiketPaketi*/
+[[mp,'En az puan','örn. 4,3'],[my,'En az yorum','örn. 50'],[gs,'Görünüm','']].forEach(([el,t,ph])=>{
+  const w=document.createElement('label');
+  w.style.cssText='display:flex;flex-direction:column;gap:3px;flex:1;min-width:0;font-size:11.5px;font-weight:600;color:var(--muted)';
+  el.parentNode.insertBefore(w,el);w.append(t,el);if(ph)el.placeholder=ph;
+});
 function draw(){
   if(ana===HARITA){haritaCiz();}
   else{mapEl.style.display='none';list.style.display='';}
   const f=I.filter(ok),arama=q.value.trim()!=='';
-  yerSayisi.textContent=f.length;
+  yerSayisi.textContent=f.length;ozetGuncelle();
 
   const cnt={};f.forEach(x=>{cnt[x.A]=(cnt[x.A]||0)+1});
   const TEK=ANA.length===1;
@@ -254,7 +331,7 @@ function draw(){
     const it=sec.filter(x=>x.A===a&&x.S===s);if(!it.length)return;
     it.sort(kiyas);
     const bas=tumu?a+' · '+s:(alt?'':s);
-    out+=(bas?`<h2>${esc(bas)}</h2>`:'')+'<div>'+it.map(satir).join('')+'</div>';
+    out+=(bas?`<h2>${esc(bas)}</h2>`:'')+bolumHtml(it,a+'|'+s);
   }));
   list.innerHTML=enIyiKutusu(f,tumu,arama)+(out||'<p class="none">Aramanıza uygun mekan bulunamadı.</p>');
 }
@@ -262,7 +339,7 @@ function draw(){
 tabs.onclick=e=>{const b=e.target.closest('button');if(b){ana=b.dataset.a;alt=b.dataset.s||'';draw();}};
 chips.onclick=e=>{const b=e.target.closest('button');if(b){alt=b.dataset.s;draw()}};
 ic.onchange=()=>{mahalleListe();draw()};
-mh.onchange=draw;mp.oninput=draw;my.oninput=draw;q.oninput=draw;gs.onchange=draw;sirala.onchange=draw;
+mh.onchange=draw;mp.oninput=()=>{clearTimeout(qt);qt=setTimeout(draw,200)};my.oninput=mp.oninput;q.oninput=()=>{clearTimeout(qt);qt=setTimeout(draw,200)};gs.onchange=draw;sirala.onchange=draw;
 
 mahalleListe();
 draw();
