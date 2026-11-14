@@ -154,7 +154,7 @@ function mahalleListe(){
 function ok(x){
   const t=tl(q.value.trim()),p0=parseFloat(mp.value)||0,y0=parseInt(my.value,10)||0;
   return (!ic.value||x.c===ic.value)&&(!mh.value||(x.c+'|'+x.m)===mh.value)&&
-    (!t||tl(x.n+' '+x.t+' '+x.m).includes(t))&&(p0===0&&y0===0&&x.u ? true : (parseFloat(x.p.replace(',','.'))>=p0&&(x.y||0)>=y0))&&
+    (!t||tl(x.n+' '+x.t+' '+x.m+' '+(x.a||'')).includes(t))&&(p0===0&&y0===0&&x.u ? true : (parseFloat(x.p.replace(',','.'))>=p0&&(x.y||0)>=y0))&&
     (gs.value===''||(gs.value==='fav'&&(durum[x.l]||{}).fav));
 }
 
@@ -186,13 +186,13 @@ function haritaCiz(){
 function satir(x){
   const puan=x.u?'<b>—</b><small>puansız</small>':`<b>★ ${x.p}</b><small>${x.y} oy</small>`;
   const mah=x.m!=='Bilinmiyor'?x.m.replace(' Mahallesi',''):'';
-  const meta=[x.t,mah].filter(Boolean).map(esc).join(' · ');
+  const meta=[x.t].filter(Boolean).map(esc).join(' · ');
   return `<div class="row">
     <div class="pt">${puan}</div>
     <div class="body">
       <div class="nm"><a class="nm-link" href="#" onclick="return false;" style="cursor:default;text-decoration:none;">${esc(x.n)}</a></div>
       ${meta?`<div class="meta-tags">${meta}</div>`:''}
-      ${x.a?`<div class="meta-adres">${esc(x.a)}</div>`:''}
+      ${/*ilceMahalleSatiri*/mah?`<div class="meta-adres">${esc(mah)}</div>`:''}
     </div>
     <a class="map-btn" href="${esc(x.l)}" target="_blank" rel="noopener">🗺️ Haritada Aç</a>
   </div>`;
