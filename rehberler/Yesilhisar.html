@@ -212,12 +212,12 @@ function tumVerileriTemizle(){
 function enIyiKutusu(f,tumu,arama){
   if(ana!==''||arama||gs.value==='fav')return '';
   const pn=x=>parseFloat(String(x.p).replace(',','.'))||0;
-  /*skorDinamik*/let mxY=0;f.forEach(x=>{if((x.y||0)>mxY)mxY=x.y||0;});const WB=Math.max(250,Math.round(mxY*0.05));const bs=x=>{const y=x.y||0;return y/(y+WB)*pn(x)+WB/(y+WB)*4};const ad=f.filter(x=>!x.u&&pn(x)>=4.3).sort((a,b)=>bs(b)-bs(a)).slice(0,10);
+  /*skorDinamik*/let mxY=0;f.forEach(x=>{if((x.y||0)>mxY)mxY=x.y||0;});const WB=Math.max(250,Math.round(mxY*0.05));const bs=x=>{const y=x.y||0;return y/(y+WB)*pn(x)+WB/(y+WB)*4};/*kotaVar*/const NN=(ic.value===''&&/Tum-Ilceler/i.test(location.pathname))?20:10,CAP=NN>10?4:3,sc={},ad=[],ar=[];f.filter(x=>!x.u&&pn(x)>=4.3).sort((a,b)=>bs(b)-bs(a)||(b.y||0)-(a.y||0)).forEach(x=>{if(ad.length<NN&&(sc[x.S]||0)<CAP){sc[x.S]=(sc[x.S]||0)+1;ad.push(x);}else ar.push(x);});if(ad.length<NN){ar.slice(0,NN-ad.length).forEach(x=>ad.push(x));ad.sort((a,b)=>bs(b)-bs(a)||(b.y||0)-(a.y||0));}
   if(!ad.length)return '';
   return '<h2 class="eniyi-h">⭐ En iyi '+ad.length+'</h2><div>'+ad.map(satir).join('')+'</div>'+
     '<p class="eniyi-not"><b>Bu liste nasıl seçildi?</b> (<a href="../puanlama.html" style="color:inherit;text-decoration:underline">detaylı açıklama</a>) Google Haritalar puanı <b>4,3 ve üzeri</b> olan yerler alınır, '+
     '<b>puan ve yorum sayısı birlikte</b> değerlendirilerek sıralanır: çok yorumu olan yerlerin puanı olduğu gibi geçerli sayılır, az yorumlu yerlerin puanı ise ortalamaya doğru çekilir. Yani hem çok sevilen hem çok kişi tarafından onaylanan yerler öne çıkar; '+
-    'az yorumlu yüksek puanlar ve puanı düşük kalabalık yerler listeye girmez. Veriler Google Haritalar\'dan alınmıştır ve değişebilir.</p>';
+    'az yorumlu yüksek puanlar ve puanı düşük kalabalık yerler listeye girmez. Çeşitlilik için aynı türden en fazla 3 yer (il rehberlerinde 4) gösterilir. Veriler Google Haritalar\'dan alınmıştır ve değişebilir.</p>';
 }
 
 /*ozellikPaketi*/
@@ -339,6 +339,15 @@ list.addEventListener('click',e=>{
 /*favoriKaldirildi*/
 favSekme=function(){};
 gs.value='';
+
+/*kotaVar*/
+function WKyenile(){
+  for(const k in WK)delete WK[k];
+  const il=ic.value;
+  I.forEach(x=>{if(il&&x.c!==il)return;const k=x.S||'';if((x.y||0)>(WK[k]||0))WK[k]=x.y||0;});
+}
+const _drawKapsam=draw;
+draw=function(){WKyenile();_drawKapsam();};
 function draw(){
   if(ana===HARITA){haritaCiz();}
   else{mapEl.style.display='none';list.style.display='';}
