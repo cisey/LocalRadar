@@ -212,17 +212,17 @@ function tumVerileriTemizle(){
 function enIyiKutusu(f,tumu,arama){
   if(ana!==''||arama||gs.value==='fav')return '';
   const pn=x=>parseFloat(String(x.p).replace(',','.'))||0;
-  const ad=f.filter(x=>!x.u&&pn(x)>=4.3).sort((a,b)=>(b.y||0)-(a.y||0)||pn(b)-pn(a)).slice(0,10);
+  /*skorDinamik*/let mxY=0;f.forEach(x=>{if((x.y||0)>mxY)mxY=x.y||0;});const WB=Math.max(250,Math.round(mxY*0.05));const bs=x=>{const y=x.y||0;return y/(y+WB)*pn(x)+WB/(y+WB)*4};const ad=f.filter(x=>!x.u&&pn(x)>=4.3).sort((a,b)=>bs(b)-bs(a)).slice(0,10);
   if(!ad.length)return '';
   return '<h2 class="eniyi-h">⭐ En iyi '+ad.length+'</h2><div>'+ad.map(satir).join('')+'</div>'+
-    '<p class="eniyi-not"><b>Bu liste nasıl seçildi?</b> Google Haritalar puanı <b>4,3 ve üzeri</b> olan yerler alınır, '+
-    '<b>yorum sayısı en çok olandan başlayarak</b> sıralanır. Yani çok kişinin gidip beğendiği yerler öne çıkar; '+
+    '<p class="eniyi-not"><b>Bu liste nasıl seçildi?</b> (<a href="../puanlama.html" style="color:inherit;text-decoration:underline">detaylı açıklama</a>) Google Haritalar puanı <b>4,3 ve üzeri</b> olan yerler alınır, '+
+    '<b>puan ve yorum sayısı birlikte</b> değerlendirilerek sıralanır: çok yorumu olan yerlerin puanı olduğu gibi geçerli sayılır, az yorumlu yerlerin puanı ise ortalamaya doğru çekilir. Yani hem çok sevilen hem çok kişi tarafından onaylanan yerler öne çıkar; '+
     'az yorumlu yüksek puanlar ve puanı düşük kalabalık yerler listeye girmez. Veriler Google Haritalar\'dan alınmıştır ve değişebilir.</p>';
 }
 
 /*ozellikPaketi*/
 const LIM=60;let ekstra={},sonImza='',qt=null;
-const sk=x=>{if(x.u)return -1;const y=x.y||0,p=parseFloat(String(x.p).replace(',','.'))||0;return y/(y+100)*p+100/(y+100)*4};
+/*skorDinamik*/const WK={};I.forEach(x=>{const k=x.S||'';if((x.y||0)>(WK[k]||0))WK[k]=x.y||0;});const sk=x=>{if(x.u)return -1;const y=x.y||0,p=parseFloat(String(x.p).replace(',','.'))||0,W=Math.max(50,Math.round((WK[x.S||'']||0)*0.05));return y/(y+W)*p+W/(y+W)*4};
 function mesafeYazi(d){return d<1?Math.round(d*1000)+' m':d.toFixed(1).replace('.',',')+' km'}
 function bolumHtml(it,k){
   const n=LIM+(ekstra[k]||0);
@@ -298,7 +298,7 @@ hashOku();
 });
 
 /*paket2Paketi*/
-let ONIZ=false;const ONIZ_N=5;
+let ONIZ=false;const ONIZ_N=7;
 function bolumHtml2(it,k){
   if(ONIZ){
     let s='<div>'+it.slice(0,ONIZ_N).map(satir).join('')+'</div>';
