@@ -13,22 +13,33 @@ Bu depo, [Local Radar](https://github.com/cisey/local-radar) projesinin **canlı
 - 🔍 **Anlık arama:** İl, ilçe veya dosya adına göre rehber bulma; rehberin içinde mekan, yemek türü ve adres araması
 - 🗂️ **Akıllı gruplama:** Rehberler illere göre otomatik gruplanır, iller kapalı başlar
 - 📚 **Tüm İlçeler rehberi:** 75 ilin ilçeleri tek bir rehberde birleşir, aynı mekan bir kez görünür
-- ⭐ **En iyi 10:** Her rehberin en üstünde, o bölgenin en çok yorum alan ve beğenilen 10 yeri (aşağıda nasıl seçildiği yazıyor)
+- ⭐ **En iyi 10 / 20:** Her rehberin en üstünde o bölgenin en iyi yerleri: ilçe rehberlerinde 10, il rehberlerinde 20 (aşağıda nasıl seçildiği yazıyor)
+- 👀 **Tümü görünümü:** Her kategoriden en iyi 7 yer, altında "tamamını gör" düğmesi. Büyük şehirlerde sayfa hızlı açılır, uzun listeler "Daha fazla göster" ile yüklenir
+- 🔗 **Paylaşılabilir görünüm:** Arama ve filtre seçimini tek linkle arkadaşına gönderme
+- 📍 **Mesafe rozeti:** "Bana yakın" sıralamasında her mekanın yanında uzaklık
 - 🗺️ **Haritadan seçim:** Türkiye haritasında ile ya da ilçeye dokunarak rehbere ulaşma
 - 📍 **Konumumu bul:** Bulunduğun ilçeyi bulur, yakınındaki iyi yerleri uzaklığa göre sıralar
 - 🍽️ **Tür filtresi:** Yakındaki yerleri kebap, kahvaltı, tatlı, kafe gibi türlere göre süzme
-- 🏷️ **Yemek türüne göre bölümler:** Döner & Kebap, Pide & Lahmacun, Çiğ Köfte, Fast food, Türk & Aile Restoranı, Kafe & Kahve, Kahvaltı, Fırın & Tatlı, Kasap
+- 🏷️ **Yemek türüne göre bölümler:** Döner & Kebap, Pide & Lahmacun, Çiğ Köfte, Fast food, Türk & Aile Restoranı, Balık & Deniz Ürünleri, Kafe & Kahve, Kahvaltı, Fırın & Tatlı, Kasap
 - ⚡ **Otomatik dizin:** Yeni bir rehber yüklendiğinde bir GitHub Action (`update-guides.yml`) `rehberler.json` dosyasını otomatik günceller
 
-## ⭐ "En iyi 10" nasıl seçiliyor?
+## ⭐ Sıralama nasıl yapılıyor?
 
-Her rehberin "Tümü" görünümünde en üstte çıkan kutu şöyle hazırlanır:
+Rehberler sadece puana ya da sadece yorum sayısına göre dizilmez. Az sayıda oyla alınmış 5,0 puanlar sıralamayı yanıltmasın diye, her yerin puanı **yorum sayısıyla birlikte** değerlendirilir:
 
-1. Google Haritalar puanı **4,3 ve üzeri** olan yerler alınır.
-2. Bu yerler **yorum sayısına göre** çoktan aza sıralanır.
-3. İlk 10 yer gösterilir.
+- Çok yorumu olan yerin puanına olduğu gibi güvenilir.
+- Az yorumlu yerin puanı ortalamaya (4,0) doğru çekilir.
+- Ölçek, rehberin büyüklüğüne göre ayarlanır: İstanbul veya Gaziantep gibi büyük şehirlerde daha yüksek, küçük ilçelerde daha düşük.
 
-Böylece çok kişinin gidip beğendiği yerler öne çıkar. Az yorumlu ama yüksek puanlı yerler (örneğin 5,0 puanlı 6 yorumlu bir yer) ve puanı düşük kalabalık yerler listeye girmez. Veriler Google Haritalar'dan alınmıştır ve zamanla değişebilir.
+**En iyi 10 / 20 kutusu:**
+1. Google puanı **4,3 ve üzeri** olan yerler alınır.
+2. Bu yerler yukarıdaki güven skoruna göre sıralanır.
+3. Çeşitlilik için aynı türden en fazla 3 yer (il rehberlerinde 4) girer.
+4. İlçe rehberlerinde ilk 10, il rehberlerinde ilk 20 yer gösterilir.
+
+Aynı mekan farklı taramalarda iki kez bulunmuşsa Google'ın mekan kimliğine göre tek kayda indirilir.
+
+Hesabın ayrıntıları, örnekler ve küçük bir hesap makinesi için: [Puanlama nasıl çalışıyor?](https://cisey.github.io/LocalRadar/puanlama.html)
 
 ## 📁 Nasıl Çalışır?
 
