@@ -427,7 +427,7 @@ function ozetDoldur(il, ilce, dosya, jeton) {
     kutu.innerHTML = h;
     if (buradayim) {
       const cizYakin = f => {
-        const l = aday.filter(([x]) => !f || x.S === f).slice(0, 5);
+        const l = aday.filter(([x]) => !f || x.S === f).slice(0, 10);
         document.getElementById('yakinliste').innerHTML = l.length ? l.map(([x, d]) => yerKarti(x, d)).join('')
           : '<p class="bilgi">Bu türde yakınında şartlara uyan yer bulunamadı.</p>';
       };
