@@ -370,7 +370,7 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
 
     function listeyiYukle(dosyalar) {
       tumRehberler = dosyalar
-        .filter(f => /\.html?$/i.test(f) && !/^index\.html?$/i.test(f))
+        .filter(f => /\.html?$/i.test(f) && !/^(index|harita|bolge)\.html?$/i.test(f))
         .sort((a, b) => a.localeCompare(b, 'tr'));
       ciz('');
     }
