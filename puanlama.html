@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8E6VV7GT3C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8E6VV7GT3C');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Puanlama Nasıl Çalışır? · Local Radar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0f17;--card:rgba(26,32,44,.7);--line:rgba(255,255,255,.08);--text:#f8fafc;--muted:#94a3b8;--accent:#38bdf8;--gold:#fbbf24}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);background-image:radial-gradient(at 0% 0%,rgba(56,189,248,.12) 0,transparent 50%),radial-gradient(at 100% 100%,rgba(99,102,241,.12) 0,transparent 50%);background-attachment:fixed;color:var(--text);font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:48px}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
+.back{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;background:rgba(255,255,255,.05);padding:6px 12px;border-radius:20px;border:1px solid var(--line);margin-bottom:14px}
+h1{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:6px}
+h2{font-size:17px;font-weight:800;margin:26px 0 8px;color:var(--gold)}
+p{color:#cbd5e1;font-size:14.5px;margin:8px 0}
+.lead{color:var(--muted);font-size:14.5px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:12px 0}
+.box b{color:var(--text)}
+ul{margin:8px 0 8px 20px;color:#cbd5e1;font-size:14.5px}li{margin:4px 0}
+.formul{font-size:15px;font-weight:700;color:var(--accent);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.25);border-radius:14px;padding:12px 14px;margin:12px 0;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:12px}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.hesap label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px;font-weight:600}
+.hesap input,.hesap select{width:100%;font:inherit;font-size:15px;color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.sonuc{font-size:22px;font-weight:800;color:var(--gold);margin-top:12px}
+.sonuc small{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./">← Ana sayfa</a>
+  <h1>⭐ Puanlama nasıl çalışıyor?</h1>
+  <p class="lead">Rehberlerdeki sıralamalar tek bir sayıya bakmaz. Hem Google puanına hem de kaç kişinin oy verdiğine bakar. Bu sayfa nasıl yaptığımızı sade bir dille anlatıyor.</p>
+
+  <h2>Kısaca</h2>
+  <div class="box">
+    <ul>
+      <li>Veriler <b>Google Haritalar'dan</b> gelir: bir yerin puanı ve yorum sayısı.</li>
+      <li><b>Çok yorumu olan</b> yerin puanına daha çok güveniriz.</li>
+      <li><b>Az yorumu olan</b> yerin puanı ortalamaya doğru çekilir, böylece 6 kişinin 5 yıldız verdiği bir yer, 8 bin kişinin 4,8 verdiği yerin önüne geçemez.</li>
+    </ul>
+  </div>
+
+  <h2>Neden sadece puana bakmıyoruz?</h2>
+  <p>5,0 puanlı bir yerin 6 yorumu olabilir. Bu, arkadaşların yazdığı birkaç yorum da olabilir. 4,7 puanlı ve 8 bin yorumlu bir yer ise binlerce farklı kişinin gerçekten beğendiği bir yerdir. Sadece puana bakarsak ilki öne çıkar, bu da yanıltıcı olur.</p>
+  <p>Sadece yorum sayısına bakmak da yanlış: 4,3 puanlı ama çok kalabalık bir yer, 5,0 puanlı ve 8 bin yorumlu bir yerin önüne geçebilir.</p>
+
+  <h2>Çözüm: "ortalama yorum" ekleme fikri</h2>
+  <p>Her yere, ortalaması <b>4,0</b> olan bir miktar "varsayılan yorum" eklenmiş gibi hesap yaparız. Gerçek yorumu çok olan yerde bu eklenen kısım önemsizleşir. Az yorumlu yerde ise puanı 4,0'a doğru çeker.</p>
+  <div class="formul">Skor = gerçek puan × (yorum ÷ (yorum + K)) + 4,0 × (K ÷ (yorum + K))</div>
+  <p>Buradaki <b>K</b>, eklenen varsayılan yorum sayısıdır. K büyüdükçe az yorumlu yerler daha çok aşağı çekilir.</p>
+
+  <h2>K sayısı nasıl seçiliyor?</h2>
+  <p>Tek bir sayı her yerde çalışmaz. İstanbul veya Gaziantep'te en popüler yerin 25 bin yorumu varken, küçük bir ilçede en kalabalık yerin 300 yorumu olabilir. Bu yüzden K, rehberin ölçeğine göre belirlenir:</p>
+  <div class="box">
+    <ul>
+      <li><b>⭐ En iyi 10 kutusu:</b> K = o rehberdeki en yüksek yorum sayısının <b>%5'i</b>, ama en az <b>250</b>. Sadece Google puanı <b>4,3 ve üzeri</b> olan yerler girer. Gaziantep'te K yaklaşık 1.300, küçük bir ilçede 250 olur.</li>
+      <li><b>Kategori sekmeleri (Güvenilir Skor sıralaması):</b> K = o kategorinin kendi en yüksek yorum sayısının %5'i, ama en az <b>50</b>. Böylece küçük bir kafe veya çiğ köfteci, kebapçıların büyüklüğüne göre cezalandırılmaz.</li>
+      <li><b>Haritadaki "en güvenilir 3 yer":</b> sabit K = 100 kullanılır.</li>
+    </ul>
+  </div>
+
+  <h2>Örnek: Gaziantep (K ≈ 1.300)</h2>
+  <table>
+    <tr><th>Yer</th><th class="n">Puan</th><th class="n">Yorum</th><th class="n">Skor</th></tr>
+    <tr><td>Ömer Kozan Baklava</td><td class="n">5,0</td><td class="n">8.244</td><td class="n">4,86</td></tr>
+    <tr><td>Kelebek Restoran</td><td class="n">4,6</td><td class="n">22.538</td><td class="n">4,57</td></tr>
+    <tr><td>Sakıp Usta Paça Beyran</td><td class="n">4,5</td><td class="n">23.430</td><td class="n">4,47</td></tr>
+    <tr><td>Mahalle büfesi (örnek)</td><td class="n">5,0</td><td class="n">300</td><td class="n">4,19</td></tr>
+  </table>
+  <p>300 yorumlu 5,0 puanlı bir yer, 22 bin yorumlu 4,6'lık Kelebek'in önüne geçemez. Çünkü 300 yorum, bu şehirde "yeterince kanıtlanmış" sayılmaz.</p>
+
+  <h2>Kendin dene</h2>
+  <div class="box hesap">
+    <label for="p">Google puanı</label>
+    <input id="p" type="number" step="0.1" min="1" max="5" value="4.8" inputmode="decimal">
+    <label for="y">Yorum sayısı</label>
+    <input id="y" type="number" min="0" value="500" inputmode="numeric">
+    <label for="k">Rehber ölçeği (K)</label>
+    <select id="k">
+      <option value="250">Küçük ilçe (K = 250)</option>
+      <option value="700">Orta büyüklükte il (K ≈ 700)</option>
+      <option value="1300" selected>Gaziantep gibi büyük il (K ≈ 1.300)</option>
+      <option value="2500">İstanbul gibi dev şehir (K ≈ 2.500)</option>
+    </select>
+    <div class="sonuc"><span id="s">–</span><small id="a"></small></div>
+  </div>
+
+  <h2>Dikkat edilmesi gerekenler</h2>
+  <ul>
+    <li>Puanlar ve yorum sayıları Google Haritalar'dan tarama tarihinde alınır, sonradan değişebilir.</li>
+    <li>Google'daki yorumların hepsi gerçek olmayabilir. Skor bunu tamamen engelleyemez, sadece "az yorumlu şişirilmiş puanların" öne çıkmasını zorlaştırır.</li>
+    <li>Mekanlar kapanmış veya el değiştirmiş olabilir. Gitmeden önce Google Haritalar'dan kontrol etmek iyi olur.</li>
+    <li>Bu bir "tavsiye listesi" değil, verilere dayalı bir <b>sıralamadır</b>. Zevkler farklıdır.</li>
+  </ul>
+</div>
+<script>
+function hesapla(){
+  const p=parseFloat(document.getElementById('p').value.replace(',','.')),y=parseFloat(document.getElementById('y').value),K=parseFloat(document.getElementById('k').value);
+  const s=document.getElementById('s'),a=document.getElementById('a');
+  if(!(p>=1&&p<=5)||!(y>=0)){s.textContent='–';a.textContent='';return;}
+  const skor=y/(y+K)*p+K/(y+K)*4;
+  s.textContent='Skor: '+skor.toFixed(2).replace('.',',');
+  a.textContent='Gerçek puan '+p.toFixed(1).replace('.',',')+', '+Math.round(y/(y+K)*100)+'% gerçek yoruma, %'+Math.round(K/(y+K)*100)+' ortalamaya (4,0) dayanıyor.';
+}
+['p','y','k'].forEach(i=>document.getElementById(i).addEventListener('input',hesapla));hesapla();
+</script>
+</body>
+</html>
