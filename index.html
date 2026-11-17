@@ -347,6 +347,17 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
           o.className = 'ok'; o.textContent = '→';
           a.append(t, o);
           ic.appendChild(a);
+          if (populer.includes(tumu.dosya)) {
+            const y = document.createElement('a');
+            y.className = 'tum-btn';
+            y.href = 'populer/' + encodeURI(tumu.dosya.replace('-Tum-Ilceler', ''));
+            const yt = document.createElement('span');
+            yt.textContent = '🍽  ' + ekDe(il) + ' neler yenir?';
+            const yo = document.createElement('span');
+            yo.className = 'ok'; yo.textContent = '→';
+            y.append(yt, yo);
+            ic.appendChild(y);
+          }
         }
 
         if (ilceler.length) {
@@ -385,6 +396,20 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
         .sort((a, b) => a.localeCompare(b, 'tr'));
       ciz('');
     }
+
+    function ekDe(s) {
+      const l = s.replace(/İ/g, 'i').replace(/I/g, 'ı').toLowerCase();
+      const v = l.match(/[aıoueiöü](?=[^aıoueiöü]*$)/);
+      const son = l[l.length - 1];
+      const unlu = 'aıoueiöü'.includes(son);
+      return s + "'" + ((!unlu && 'fstkçşhp'.includes(son)) ? 't' : 'd') + ((v && 'aıou'.includes(v[0])) ? 'a' : 'e');
+    }
+    // "Neler yenir?" sayfası olan iller (populer.json, programın 8 numaralı menüsü üretir)
+    let populer = [];
+    fetch('populer.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : [])
+      .then(o => { populer = Array.isArray(o) ? o : []; if (tumRehberler.length) ciz(searchInput.value); })
+      .catch(() => {});
 
     // Rehber başına mekan sayısı (ozet.json, GitHub Actions üretir; yoksa özet gösterilmez)
     let ozet = {};
