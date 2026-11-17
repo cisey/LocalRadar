@@ -136,7 +136,7 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
 
   <script>
     const KLASOR = 'rehberler/'; // rehber dosyalarının bulunduğu klasör
-    const SABIT_IL = 'Gaziantep'; // listenin en üstünde gösterilecek il
+    const SABIT_ILLER = ['Gaziantep', 'İstanbul']; // listenin en üstünde sırayla gösterilecek iller
     const container = document.getElementById('rehberListesi');
     const searchInput = document.getElementById('searchInput');
     let tumRehberler = [];
@@ -241,7 +241,7 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
     const ilceAdlari = {};      // il -> Map(ilçe normalize -> düzgün yazılışı)
 
     // Gaziantep en sona işlenir: aynı isimli ilçelerde Gaziantep öncelikli olur.
-    const ilSirasi = Object.keys(ilIlceData).filter(i => i !== 'Gaziantep').concat('Gaziantep');
+    const ilSirasi = Object.keys(ilIlceData).filter(i => !SABIT_ILLER.includes(i)).concat(SABIT_ILLER);
     for (const il of ilSirasi) {
       ilSozlugu.set(normalize(il), il);
       ilceAdlari[il] = new Map();
@@ -292,10 +292,13 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
       const gruplar = {};
       tumRehberler.map(dosyaAnaliz).forEach(i => (gruplar[i.il] = gruplar[i.il] || []).push(i));
       const iller = Object.keys(gruplar).sort((a, b) => {
+        const ai = SABIT_ILLER.indexOf(a);
+        const bi = SABIT_ILLER.indexOf(b);
+        if (ai !== -1 && bi !== -1) return ai - bi;
+        if (ai !== -1) return -1;
+        if (bi !== -1) return 1;
         if (a === 'Diğer') return 1;
         if (b === 'Diğer') return -1;
-        if (a === SABIT_IL) return -1;
-        if (b === SABIT_IL) return 1;
         return a.localeCompare(b, 'tr');
       });
 
