@@ -66,13 +66,37 @@ a.nm-link::after{content:'';position:absolute;inset:0}
 #map{display:none;height:60vh;border-radius:16px;border:1px solid var(--line)}
 </style>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><style>/*ozellikPaketi*/.daha{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}.fav{display:inline;position:relative;z-index:2;background:none;border:0;font-size:14px;line-height:1;padding:0;margin:0;cursor:pointer}</style><style>/*paket2Paketi*/.gec{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}@media (prefers-color-scheme:dark){#map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.95)}}</style></head><body><div class="wrap">
+<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><style>/*ozellikPaketi*/.daha{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}.fav{display:inline;position:relative;z-index:2;background:none;border:0;font-size:14px;line-height:1;padding:0;margin:0;cursor:pointer}</style><style>/*paket2Paketi*/.gec{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}@media (prefers-color-scheme:dark){#map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.95)}}</style><script>/*paket3Paketi*/try{var _m=/[?&]harita=(\d)/.exec(location.search);if(_m)localStorage.setItem('hv',_m[1]);document.documentElement.setAttribute('data-hv',_m?_m[1]:(localStorage.getItem('hv')||'1'))}catch(e){document.documentElement.setAttribute('data-hv','1')}</script>
+<style>/*paket3Paketi*/
+html[data-hv="1"] #map .leaflet-tile-pane{filter:saturate(.65) contrast(.95) brightness(1.03)}
+html[data-hv="2"] #map .leaflet-tile-pane{filter:grayscale(.6) brightness(1.04)}
+html[data-hv="3"] #map .leaflet-tile-pane{filter:sepia(.15) saturate(.7)}
+#map .leaflet-tile{outline:1px solid transparent}
+#map .marker-cluster-small,#map .marker-cluster-medium,#map .marker-cluster-large{background:rgba(37,99,235,.28)}
+#map .marker-cluster-small div,#map .marker-cluster-medium div,#map .marker-cluster-large div{background:rgba(37,99,235,.85);color:#fff;font-weight:700}
+#map .leaflet-bar{border:0;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+#map .leaflet-bar a{border-radius:10px;margin-bottom:4px;border:0}
+.nesec{margin:0 0 14px;padding:12px;background:var(--card);border:1px solid var(--accent);border-radius:14px}
+.nesec h4{margin:0 0 8px;font-size:13.5px}
+.nesec a.ny{display:block;padding:8px 0;border-top:1px solid var(--line);color:var(--text);text-decoration:none;font-size:14px;font-weight:600}
+.nesec small{display:block;color:var(--muted);font-weight:400}
+.nesec button{font:inherit;font-size:13px;font-weight:700;color:var(--accent);background:none;border:0;cursor:pointer;padding:6px 10px 0 0}
+@media (prefers-color-scheme:dark){
+html[data-hv="1"] #map .leaflet-tile-pane{filter:grayscale(.85) invert(.92) hue-rotate(185deg) brightness(.95) contrast(.9)}
+html[data-hv="2"] #map .leaflet-tile-pane{filter:invert(1) hue-rotate(200deg) saturate(.55) brightness(.8) contrast(.9)}
+html[data-hv="3"] #map .leaflet-tile-pane{filter:grayscale(1) invert(1) brightness(.75) contrast(1.05)}
+#map{background:#0f172a}
+#map .leaflet-bar a{background:#1e293b;color:#e2e8f0}
+#map .leaflet-bar a:hover{background:#334155}
+}
+</style>
+</head><body><div class="wrap">
 
 <a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
 
 <div class="head">
   <h1>📡 Antakya · Local Radar</h1>
-  <div class="sub-meta">31.10.2026 · <span id="yerSayisi">0</span> mekan</div>
+  <div class="sub-meta">Veri tarihi: 31.10.2026 · <span id="yerSayisi">0</span> mekan</div>
 </div>
 
 <div class="filters">
@@ -115,7 +139,7 @@ const RENK={'Yemek':'#fb923c','Gezilecek yerler':'#38bdf8','Alışveriş':'#34d3
 const $=id=>document.getElementById(id);
 const tabs=$('tabs'),chips=$('chips'),list=$('list'),q=$('q'),mh=$('mh'),mq=$('mq'),ic=$('ic'),mp=$('mp'),my=$('my'),sirala=$('sirala'),gs=$('gs'),mapEl=$('map'),yerSayisi=$('yerSayisi');
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const tl=s=>String(s).toLocaleLowerCase('tr');
+const tl=s=>String(s).toLocaleLowerCase('tr').replace(/[çğıöşü]/g,c=>({'ç':'c','ğ':'g','ı':'i','ö':'o','ş':'s','ü':'u'}[c]));
 
 function durumOku(){try{return JSON.parse(localStorage.getItem('gezi_durum')||'{}')}catch(e){return {}}}
 function durumYaz(){try{localStorage.setItem('gezi_durum',JSON.stringify(durum))}catch(e){}}
@@ -395,4 +419,40 @@ mh.onchange=draw;mp.oninput=()=>{clearTimeout(qt);qt=setTimeout(draw,200)};my.on
 
 mahalleListe();
 draw();
-</script></body></html>
+</script><script>/*paket3Paketi*/
+(function(){
+  const r=document.querySelector('button.reset');if(!r)return;
+  const w=r.parentNode;
+  const kutu=document.createElement('div');kutu.className='nesec';kutu.style.display='none';
+  const liste=document.getElementById('list');if(liste)liste.parentNode.insertBefore(kutu,liste);
+  function cek(){
+    const adaylar=I.filter(x=>ok(x)&&!x.u&&parseFloat(String(x.p).replace(',','.'))>=4.5&&(x.y||0)>=50);
+    for(let i=adaylar.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[adaylar[i],adaylar[j]]=[adaylar[j],adaylar[i]];}
+    const s=adaylar.slice(0,3);
+    kutu.style.display='block';
+    kutu.innerHTML='<h4>🎲 Bugün şunlara bak</h4>'+(s.length?s.map(x=>'<a class="ny" href="'+esc(x.l)+'" target="_blank" rel="noopener">'+esc(x.n)+'<small>'+esc(x.t||'')+' · ⭐ '+esc(x.p)+' · '+(x.y||0)+' yorum</small></a>').join(''):'<div style="font-size:13px;color:var(--muted)">Bu filtreyle 4,5+ puanlı ve 50+ yorumlu yer yok. Filtreleri gevşet.</div>')
+      +'<button id="nyTekrar">🔄 Başka öner</button><button id="nyKapat">✕ Kapat</button>';
+    document.getElementById('nyTekrar').onclick=cek;
+    document.getElementById('nyKapat').onclick=()=>{kutu.style.display='none'};
+  }
+  const b=document.createElement('button');b.className='reset';b.textContent='🎲 Ne yesem?';b.onclick=cek;
+  const wa=document.createElement('button');wa.className='reset';wa.textContent='💬 WhatsApp';
+  wa.onclick=()=>{try{hashYaz();}catch(e){}window.open('https://wa.me/?text='+encodeURIComponent(document.title+' '+location.href),'_blank');};
+  w.insertBefore(b,w.firstChild);w.insertBefore(wa,r);
+  w.style.flexWrap='wrap';
+})();
+</script>
+<script>/*populerLink*/
+(function(){
+  const m=location.pathname.match(/\/([^\/]+)-Tum-Ilceler\.html$/i);if(!m)return;
+  const u='../populer/'+m[1]+'.html';
+  fetch(u,{method:'HEAD'}).then(r=>{
+    if(!r.ok)return;
+    const hedef=document.querySelector('.sub-meta');if(!hedef)return;
+    const a=document.createElement('a');a.href=u;a.textContent='🍽 Neler yenir? Misafir rehberi →';
+    a.style.cssText='display:block;margin-top:10px;padding:10px 14px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:14px;text-decoration:none';
+    hedef.parentNode.insertBefore(a,hedef.nextSibling);
+  }).catch(()=>{});
+})();
+</script>
+</body></html>
