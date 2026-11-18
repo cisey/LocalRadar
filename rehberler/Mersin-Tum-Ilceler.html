@@ -66,7 +66,7 @@ a.nm-link::after{content:'';position:absolute;inset:0}
 #map{display:none;height:60vh;border-radius:16px;border:1px solid var(--line)}
 </style>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><style>/*ozellikPaketi*/.daha{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}.fav{display:inline;position:relative;z-index:2;background:none;border:0;font-size:14px;line-height:1;padding:0;margin:0;cursor:pointer}</style><style>/*paket2Paketi*/.gec{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}@media (prefers-color-scheme:dark){#map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.95)}}</style><script>/*paket3Paketi*/try{var _m=/[?&]harita=(\d)/.exec(location.search);if(_m)localStorage.setItem('hv',_m[1]);document.documentElement.setAttribute('data-hv',_m?_m[1]:(localStorage.getItem('hv')||'1'))}catch(e){document.documentElement.setAttribute('data-hv','1')}</script>
+<style>.eniyi-not{font-size:12px;line-height:1.5;color:var(--muted);margin:10px 6px 4px}.eniyi-h{color:var(--gold)}</style><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"><link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"><script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script><style>/*ozellikPaketi*/.daha{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}.fav{display:inline;position:relative;z-index:2;background:none;border:0;font-size:14px;line-height:1;padding:0;margin:0;cursor:pointer}</style><style>/*paket2Paketi*/.gec{display:block;width:100%;margin:-4px 0 16px;padding:12px;font:inherit;font-size:13.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;cursor:pointer}@media (prefers-color-scheme:dark){#map .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.95)}}</style><script>/*paket3Paketi*/try{var _m=/[?&]harita=(\d)/.exec(location.search);document.documentElement.setAttribute('data-hv',_m?_m[1]:'0')}catch(e){document.documentElement.setAttribute('data-hv','0')}/*haritaNormal*/</script>
 <style>/*paket3Paketi*/
 html[data-hv="1"] #map .leaflet-tile-pane{filter:saturate(.65) contrast(.95) brightness(1.03)}
 html[data-hv="2"] #map .leaflet-tile-pane{filter:grayscale(.6) brightness(1.04)}
@@ -90,13 +90,21 @@ html[data-hv="3"] #map .leaflet-tile-pane{filter:grayscale(1) invert(1) brightne
 #map .leaflet-bar a:hover{background:#334155}
 }
 </style>
+<style>/*harita456Paketi*/
+@media (prefers-color-scheme:dark){
+html[data-hv="4"] #map .leaflet-tile-pane{filter:saturate(.5) brightness(.7) contrast(1.05)}
+html[data-hv="5"] #map .leaflet-tile-pane{filter:grayscale(.7) invert(.9) hue-rotate(185deg) brightness(1.25) contrast(.85)}
+html[data-hv="6"] #map .leaflet-tile-pane{filter:saturate(.55) brightness(.92)}
+}
+</style>
+<style>/*haritaNormal*/html[data-hv="0"] #map .leaflet-tile-pane{filter:none}</style>
 </head><body><div class="wrap">
 
 <a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
 
 <div class="head">
   <h1>📡 Mersin · Tüm İlçeler</h1>
-  <div class="sub-meta">Veri tarihi: 14.11.2026 · <span id="yerSayisi">0</span> mekan</div>
+  <div class="sub-meta">Veri tarihi: 18.11.2026 · <span id="yerSayisi">0</span> mekan</div>
 </div>
 
 <div class="filters">
@@ -234,9 +242,9 @@ function tumVerileriTemizle(){
 
 
 function enIyiKutusu(f,tumu,arama){
-  if(ana!==''||arama||gs.value==='fav')return '';
+  if(ana!==''||arama||gs.value==='fav')return '';if(/Tum-Ilceler/i.test(location.pathname))return '';/*TumEnIyiYok*/
   const pn=x=>parseFloat(String(x.p).replace(',','.'))||0;
-  /*skorDinamik*/let mxY=0;f.forEach(x=>{if((x.y||0)>mxY)mxY=x.y||0;});const WB=Math.max(250,Math.round(mxY*0.05));const bs=x=>{const y=x.y||0;return y/(y+WB)*pn(x)+WB/(y+WB)*4};/*kotaVar*/const NN=(ic.value===''&&/Tum-Ilceler/i.test(location.pathname))?20:10,CAP=NN>10?4:3,sc={},ad=[],ar=[];f.filter(x=>!x.u&&pn(x)>=4.3).sort((a,b)=>bs(b)-bs(a)||(b.y||0)-(a.y||0)).forEach(x=>{if(ad.length<NN&&(sc[x.S]||0)<CAP){sc[x.S]=(sc[x.S]||0)+1;ad.push(x);}else ar.push(x);});if(ad.length<NN){ar.slice(0,NN-ad.length).forEach(x=>ad.push(x));ad.sort((a,b)=>bs(b)-bs(a)||(b.y||0)-(a.y||0));}
+  /*skorDinamik*/let mxY=0;f.forEach(x=>{if((x.y||0)>mxY)mxY=x.y||0;});const WB=Math.max(250,Math.round(mxY*0.05));const bs=x=>{const y=x.y||0;return y/(y+WB)*pn(x)+WB/(y+WB)*4};/*kotaVar*/const NN=(ic.value===''&&/Tum-Ilceler/i.test(location.pathname))?20:10,CAP=NN>10?4:3,sc={},ad=[],ar=[];f.filter(x=>!x.u&&pn(x)>=4.3&&(x.y||0)>=10).sort((a,b)=>bs(b)-bs(a)||(b.y||0)-(a.y||0)).forEach(x=>{if(ad.length<NN&&(sc[x.S]||0)<CAP){sc[x.S]=(sc[x.S]||0)+1;ad.push(x);}else ar.push(x);});if(ad.length<NN){ar.slice(0,NN-ad.length).forEach(x=>ad.push(x));ad.sort((a,b)=>bs(b)-bs(a)||(b.y||0)-(a.y||0));}
   if(!ad.length)return '';
   return '<h2 class="eniyi-h">⭐ En iyi '+ad.length+'</h2><div>'+ad.map(satir).join('')+'</div>'+
     '<p class="eniyi-not"><b>Bu liste nasıl seçildi?</b> (<a href="../puanlama.html" style="color:inherit;text-decoration:underline">detaylı açıklama</a>) Google Haritalar puanı <b>4,3 ve üzeri</b> olan yerler alınır, '+
@@ -449,8 +457,9 @@ draw();
   fetch(u,{method:'HEAD'}).then(r=>{
     if(!r.ok)return;
     const hedef=document.querySelector('.sub-meta');if(!hedef)return;
-    const a=document.createElement('a');a.href=u;a.textContent='🍽 Neler yenir? Misafir rehberi →';
-    a.style.cssText='display:block;margin-top:10px;padding:10px 14px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:14px;text-decoration:none';
+    const a=document.createElement('a');a.href=u;
+    a.innerHTML='<span style="font-size:26px">🍽</span><span style="flex:1;line-height:1.25"><b style="display:block;font-size:16px">Burada neler yenir?</b><span style="font-size:12.5px;opacity:.92">Şehrin en çok sevilen yerleri · Misafir rehberi</span></span><b style="font-size:20px">→</b>';
+    a.style.cssText='display:flex;align-items:center;gap:12px;margin:12px 0 4px;padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,#ea580c,#f59e0b);color:#fff;text-decoration:none;box-shadow:0 6px 18px rgba(234,88,12,.35)';
     hedef.parentNode.insertBefore(a,hedef.nextSibling);
   }).catch(()=>{});
 })();
