@@ -91,6 +91,8 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
   border: 1px solid rgba(56,189,248,0.4);
 }
 .tum-btn:active { transform: scale(0.98); }
+.yenir-btn { min-height: 64px; background: linear-gradient(135deg,#ea580c,#f59e0b); border: 0; box-shadow: 0 6px 18px rgba(234,88,12,.35); font-size: 16px; }
+.yenir-btn span.ok { color: #fff; font-size: 20px; }
 .tum-btn span.ok { color: var(--accent); }
 .alt-baslik { font-size: 11.5px; font-weight: 700; color: var(--text-muted); letter-spacing: .06em; text-transform: uppercase; margin: 2px 2px 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -136,7 +138,7 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
 
   <script>
     const KLASOR = 'rehberler/'; // rehber dosyalarının bulunduğu klasör
-    const SABIT_ILLER = ['Gaziantep', 'İstanbul']; // listenin en üstünde sırayla gösterilecek iller
+    const SABIT_ILLER = ['Gaziantep', 'İstanbul']; // listenin en üstünde, bu sırayla gösterilecek iller
     const container = document.getElementById('rehberListesi');
     const searchInput = document.getElementById('searchInput');
     let tumRehberler = [];
@@ -241,7 +243,7 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
     const ilceAdlari = {};      // il -> Map(ilçe normalize -> düzgün yazılışı)
 
     // Gaziantep en sona işlenir: aynı isimli ilçelerde Gaziantep öncelikli olur.
-    const ilSirasi = Object.keys(ilIlceData).filter(i => !SABIT_ILLER.includes(i)).concat(SABIT_ILLER);
+    const ilSirasi = Object.keys(ilIlceData).filter(i => i !== 'Gaziantep').concat('Gaziantep');
     for (const il of ilSirasi) {
       ilSozlugu.set(normalize(il), il);
       ilceAdlari[il] = new Map();
@@ -292,13 +294,10 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
       const gruplar = {};
       tumRehberler.map(dosyaAnaliz).forEach(i => (gruplar[i.il] = gruplar[i.il] || []).push(i));
       const iller = Object.keys(gruplar).sort((a, b) => {
-        const ai = SABIT_ILLER.indexOf(a);
-        const bi = SABIT_ILLER.indexOf(b);
-        if (ai !== -1 && bi !== -1) return ai - bi;
-        if (ai !== -1) return -1;
-        if (bi !== -1) return 1;
         if (a === 'Diğer') return 1;
         if (b === 'Diğer') return -1;
+        const ia = SABIT_ILLER.indexOf(a), ib = SABIT_ILLER.indexOf(b);
+        if (ia >= 0 || ib >= 0) return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
         return a.localeCompare(b, 'tr');
       });
 
@@ -352,10 +351,10 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
           ic.appendChild(a);
           if (populer.includes(tumu.dosya)) {
             const y = document.createElement('a');
-            y.className = 'tum-btn';
+            y.className = 'tum-btn yenir-btn';
             y.href = 'populer/' + encodeURI(tumu.dosya.replace('-Tum-Ilceler', ''));
             const yt = document.createElement('span');
-            yt.textContent = '🍽  ' + ekDe(il) + ' neler yenir?';
+            yt.textContent = '🍽  ' + ekDe(il) + ' neler yenir? · En çok sevilen yerler';
             const yo = document.createElement('span');
             yo.className = 'ok'; yo.textContent = '→';
             y.append(yt, yo);
