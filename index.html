@@ -62,6 +62,7 @@ p.desc { color: var(--text-muted); font-size: 13.5px; margin: 2px 0 14px; line-h
 
 .harita-btn { display:flex; justify-content:space-between; align-items:center; text-decoration:none; color:#fff; font-weight:700; font-size:15px; padding:13px 16px; margin:4px 0 6px; border-radius:14px; background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(99,102,241,.22)); border:1px solid rgba(56,189,248,.4); }
 .harita-btn:active { transform: scale(.98); }
+.konum-btn { background:linear-gradient(135deg,rgba(34,197,94,.28),rgba(56,189,248,.22)); border-color:rgba(34,197,94,.55); }
 .search-wrap { position: sticky; top: 0; z-index: 5; padding: 6px 0 12px; background: linear-gradient(var(--bg) 70%, transparent); }
 .search-input {
   width: 100%; background: rgba(255,255,255,0.07); border: 1px solid var(--card-border);
@@ -117,6 +118,7 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
     </div>
     <p class="desc">Bölge ve mekan rehberleri. Bir ile dokunup rehberi seçin.</p>
 
+    <a href="harita.html?konum=1" class="harita-btn konum-btn">📍 Konumumu bul · yakınımdakileri göster <span>→</span></a>
     <a href="harita.html" class="harita-btn">🗺️ Haritadan seç <span>→</span></a>
     <p style="margin:2px 4px 12px;font-size:12.5px"><a href="puanlama.html" style="color:#94a3b8">ℹ️ Sıralamalar nasıl hesaplanıyor?</a></p>
 
