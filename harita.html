@@ -509,6 +509,7 @@ function konumBul() {
   }, {enableHighAccuracy: true, timeout: 15000, maximumAge: 60000});
 }
 document.getElementById('konum').onclick = konumBul;
+if (/[?&]konum=1/.test(location.search)) setTimeout(konumBul, 700);   // ana sayfadaki 'Konumumu bul' düğmesinden gelince otomatik başlar
 
 // ---- kaydırma ve yakınlaştırma ----
 let surukleme = false;
