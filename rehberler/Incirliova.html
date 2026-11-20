@@ -452,7 +452,7 @@ draw();
 </script>
 <script>/*populerLink*/
 (function(){
-  const m=location.pathname.match(/\/([^\/]+)-Tum-Ilceler\.html$/i);if(!m)return;
+  const m=location.pathname.match(/\/([^\/]+?)(?:-Tum-Ilceler)?\.html$/i);if(!m||/^(index|harita|bolge|puanlama)$/i.test(m[1]))return;
   const u='../populer/'+m[1]+'.html';
   fetch(u,{method:'HEAD'}).then(r=>{
     if(!r.ok)return;
