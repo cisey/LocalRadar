@@ -104,7 +104,7 @@ html[data-hv="6"] #map .leaflet-tile-pane{filter:saturate(.55) brightness(.92)}
 
 <div class="head">
   <h1>📡 Samsat · Local Radar</h1>
-  <div class="sub-meta">Veri tarihi: 05.11.2026 · <span id="yerSayisi">0</span> mekan</div>
+  <div class="sub-meta">Veri tarihi: 20.11.2026 · <span id="yerSayisi">0</span> mekan</div>
 </div>
 
 <div class="filters">
@@ -140,7 +140,7 @@ html[data-hv="6"] #map .leaflet-tile-pane{filter:saturate(.55) brightness(.92)}
 </div>
 
 <script>
-const V={"O": {"Yemek": ["Döner & Kebap", "Çiğ Köfte", "Pide & Lahmacun", "Fast food & Burger & Pizza", "Türk & Aile Restoranı", "Kafe & Kahve", "Kahvaltı", "Fırın & Tatlı", "Kasap"]}, "I": [{"n": "çilek dondurma", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Dondurma dükkanı", "a": "Uyanik Mah.,24", "f": "", "m": "Uyanik Mahallesi", "c": "Samsat", "l": "https://www.google.com/maps/place/%C3%A7ilek+dondurma/data=!4m7!3m6!1s0x1533719ecdea985d:0xd39af6c658055959!8m2!3d37.579209!4d38.482441!16s%2Fg%2F11vm3sr2fg!19sChIJXZjqzZ5xMxURWVkFWMb2mtM", "e": 37.579209, "b": 38.482441, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Samsat Kahve", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "Kahve dükkanı", "a": "", "f": "", "m": "Bilinmiyor", "c": "Samsat", "l": "https://www.google.com/maps/place/Samsat+Kahve/data=!4m7!3m6!1s0x1533656ed71c0d11:0xb2772013115060b3!8m2!3d37.63674!4d38.5184217!16s%2Fg%2F11nqm8cjj1!19sChIJEQ0c125lMxURs2BQERMgd7I", "e": 37.63674, "b": 38.5184217, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}]},O=V.O,I=V.I,ANA=Object.keys(O);
+const V={"O": {"Yemek": ["Döner & Kebap", "Çiğ Köfte", "Pide & Lahmacun", "Fast food & Burger & Pizza", "Türk & Aile Restoranı", "Balık & Deniz Ürünleri", "Kafe & Kahve", "Kahvaltı", "Fırın & Tatlı", "Kasap"]}, "I": [{"n": "çilek dondurma", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Dondurma dükkanı", "a": "Uyanik Mah.,24", "f": "", "m": "Uyanik Mahallesi", "c": "Samsat", "l": "https://www.google.com/maps/place/%C3%A7ilek+dondurma/data=!4m7!3m6!1s0x1533719ecdea985d:0xd39af6c658055959!8m2!3d37.579209!4d38.482441!16s%2Fg%2F11vm3sr2fg!19sChIJXZjqzZ5xMxURWVkFWMb2mtM", "e": 37.579209, "b": 38.482441, "w": 1, "A": "Yemek", "S": "Fırın & Tatlı"}, {"n": "Samsat Kahve", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "Kahve dükkanı", "a": "", "f": "", "m": "Bilinmiyor", "c": "Samsat", "l": "https://www.google.com/maps/place/Samsat+Kahve/data=!4m7!3m6!1s0x1533656ed71c0d11:0xb2772013115060b3!8m2!3d37.63674!4d38.5184217!16s%2Fg%2F11nqm8cjj1!19sChIJEQ0c125lMxURs2BQERMgd7I", "e": 37.63674, "b": 38.5184217, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}]},O=V.O,I=V.I,ANA=Object.keys(O);
 let ana='',alt='',map=null,katman=null;
 const HARITA='__MAP__';
 const RENK={'Yemek':'#fb923c','Gezilecek yerler':'#38bdf8','Alışveriş':'#34d399','Diğer':'#94a3b8'};
