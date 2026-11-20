@@ -104,7 +104,7 @@ html[data-hv="6"] #map .leaflet-tile-pane{filter:saturate(.55) brightness(.92)}
 
 <div class="head">
   <h1>📡 Akçadağ · Local Radar</h1>
-  <div class="sub-meta">Veri tarihi: 05.11.2026 · <span id="yerSayisi">0</span> mekan</div>
+  <div class="sub-meta">Veri tarihi: 20.11.2026 · <span id="yerSayisi">0</span> mekan</div>
 </div>
 
 <div class="filters">
@@ -140,7 +140,7 @@ html[data-hv="6"] #map .leaflet-tile-pane{filter:saturate(.55) brightness(.92)}
 </div>
 
 <script>
-const V={"O": {"Yemek": ["Döner & Kebap", "Çiğ Köfte", "Pide & Lahmacun", "Fast food & Burger & Pizza", "Türk & Aile Restoranı", "Kafe & Kahve", "Kahvaltı", "Fırın & Tatlı", "Kasap"]}, "I": [{"n": "NECO piknik ve dinlenme tesisi", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Akçadağ", "l": "https://www.google.com/maps/place/NECO+piknik+ve+dinlenme+tesisi/data=!4m7!3m6!1s0x4077d3ef5dc85615:0xe410b75f4733b1b4!8m2!3d38.2983841!4d38.035822!16s%2Fg%2F11vhj0s21f!19sChIJFVbIXe_Td0ARtLEzR1-3EOQ", "e": 38.2983841, "b": 38.035822, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "GIRGIR cafe restorant", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Aile restoranı", "a": "Gölpınar Köyü Yolu No:47", "f": "", "m": "Bilinmiyor", "c": "Akçadağ", "l": "https://www.google.com/maps/place/GIRGIR+cafe+restorant/data=!4m7!3m6!1s0x4077d30026733cb7:0xe7eee505def75bcf!8m2!3d38.300523!4d38.0286863!16s%2Fg%2F11mm8hdtxb!19sChIJtzxzJgDTd0ARz1v33gXl7uc", "e": 38.300523, "b": 38.0286863, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}]},O=V.O,I=V.I,ANA=Object.keys(O);
+const V={"O": {"Yemek": ["Döner & Kebap", "Çiğ Köfte", "Pide & Lahmacun", "Fast food & Burger & Pizza", "Türk & Aile Restoranı", "Balık & Deniz Ürünleri", "Kafe & Kahve", "Kahvaltı", "Fırın & Tatlı", "Kasap"]}, "I": [{"n": "NECO piknik ve dinlenme tesisi", "p": "5,0", "y": 1, "u": 0, "s": 4.091, "t": "", "a": "", "f": "", "m": "Bilinmiyor", "c": "Akçadağ", "l": "https://www.google.com/maps/place/NECO+piknik+ve+dinlenme+tesisi/data=!4m7!3m6!1s0x4077d3ef5dc85615:0xe410b75f4733b1b4!8m2!3d38.2983841!4d38.035822!16s%2Fg%2F11vhj0s21f!19sChIJFVbIXe_Td0ARtLEzR1-3EOQ", "e": 38.2983841, "b": 38.035822, "w": 1, "A": "Yemek", "S": "Türk & Aile Restoranı"}, {"n": "GIRGIR cafe restorant", "p": "0,0", "y": 0, "u": 1, "s": 0.0, "t": "Aile restoranı", "a": "Gölpınar Köyü Yolu No:47", "f": "", "m": "Bilinmiyor", "c": "Akçadağ", "l": "https://www.google.com/maps/place/GIRGIR+cafe+restorant/data=!4m7!3m6!1s0x4077d30026733cb7:0xe7eee505def75bcf!8m2!3d38.300523!4d38.0286863!16s%2Fg%2F11mm8hdtxb!19sChIJtzxzJgDTd0ARz1v33gXl7uc", "e": 38.300523, "b": 38.0286863, "w": 1, "A": "Yemek", "S": "Kafe & Kahve"}]},O=V.O,I=V.I,ANA=Object.keys(O);
 let ana='',alt='',map=null,katman=null;
 const HARITA='__MAP__';
 const RENK={'Yemek':'#fb923c','Gezilecek yerler':'#38bdf8','Alışveriş':'#34d399','Diğer':'#94a3b8'};
