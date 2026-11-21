@@ -32,7 +32,7 @@ h2{font-size:19px;margin:26px 0 10px;color:var(--accent)}
 .not{margin:-4px 0 10px;color:var(--muted);font-size:13px}
 .alt{margin-top:28px;padding:14px;border-radius:14px;background:var(--card);border:1px solid var(--line);font-size:13px;color:var(--muted)}
 .alt a{color:var(--accent);font-weight:700}
-</style></head><body><div class="w">
+</style><style>/*temaPaketi*/html[data-tema="light"]{--bg:#fff8ef;--card:#fff;--text:#2b1d12;--muted:#7a6a5c;--line:#f0e1cf;--accent:#c2410c;--bar:#fdba74;color-scheme:light}html[data-tema="dark"]{--bg:#1a120c;--card:#261a12;--text:#f6eadc;--muted:#b9a592;--line:#3a2a1e;--accent:#fb923c;--bar:#9a4a16;color-scheme:dark}.tema-btn{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;margin:0 0 6px 8px;vertical-align:middle}.tema-btn:hover{border-color:var(--muted)}html[data-tema="light"] #map .leaflet-tile-pane{filter:none!important}html[data-tema="light"] #map{background:#f3f4f6}html[data-tema="light"] #map .leaflet-bar a{background:#fff;color:#111827}html[data-tema="dark"] #map{background:#0f172a}html[data-tema="dark"] #map .leaflet-bar a{background:#1e293b;color:#e2e8f0}</style><script>/*temaPaketi*/try{var _t=localStorage.getItem('lr_tema');if(_t==='dark'||_t==='light')document.documentElement.dataset.tema=_t;}catch(e){}</script></head><body><div class="w">
 <header><a class="geri" href="../index.html">← Ana sayfa</a> <a class="geri" href="../rehberler/Zonguldak-Tum-Ilceler.html">← Zonguldak rehberi</a><br><small>Local Radar · Şehir lezzet rehberi</small><h1>Zonguldak&#x27;ta ne yenir, nerede yenir?</h1>
 <p>Zonguldak'a ilk kez gelenler için Google Haritalar'da en çok değerlendirilen ve 4,0 üzeri puan alan favori mekanlar. Sıralama yorum sayısı ağırlıklıdır, puanla dengelenir. Çubuklar yorum yoğunluğunu gösterir (logaritmik ölçek, kabaca kıyas içindir). 💎 = 4,7 ve üzeri puan. Güncelleme: 21.11.2026</p></header>
 <nav class="cip"><a href="#kacirma">🔥 Kaçırma</a><a href="#k0">🥙 Kebap</a><a href="#k2">🍕 Pide</a><a href="#k3">🍲 Restoran</a><a href="#k4">🐟 Balık</a><a href="#k5">🍳 Kahvaltı</a><a href="#k6">🍯 Tatlı</a><a href="#k7">☕ Kafe</a><a href="#k8">🍔 Fast food</a><a href="#dusuk">⚠️ Puanı düşük</a></nav>
@@ -40,4 +40,19 @@ h2{font-size:19px;margin:26px 0 10px;color:var(--accent)}
 <div class="alt">Aynı markanın şubeleri, sana yakın olanı seçebilmen için ayrı listelenir (en üstte aynı markadan en fazla 2 şube). Ulusal zincirler listelerin sonuna alınır. İlçeye göre filtre ve harita için
 <a href="../rehberler/Zonguldak-Tum-Ilceler.html">Zonguldak rehberine</a> ya da <a href="../index.html">ana sayfaya</a> göz at.
 Veriler Google Haritalar'dan alınmıştır, yorum sayısı popülerliği gösterir; kalite için puana da bak.</div>
-</div></body></html>
+</div><script>/*temaPaketi*/
+(function(){
+  var d=document.documentElement;
+  function efektif(){var t=d.dataset.tema;if(t)return t;return (window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}
+  var hedef=document.querySelector('a.back');
+  if(!hedef){var g=document.querySelectorAll('header a.geri');hedef=g[g.length-1];}
+  if(!hedef)return;
+  var b=document.createElement('button');b.type='button';b.className='tema-btn';
+  function yaz(){var k=efektif()==='dark';b.textContent=k?'☀️ Açık':'🌙 Koyu';
+    b.setAttribute('aria-label',k?'Açık temaya geç':'Koyu temaya geç');}
+  b.onclick=function(){var y=efektif()==='dark'?'light':'dark';d.dataset.tema=y;
+    try{localStorage.setItem('lr_tema',y);}catch(e){}yaz();};
+  hedef.insertAdjacentElement('afterend',b);yaz();
+})();
+</script>
+</body></html>
