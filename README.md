@@ -12,6 +12,8 @@ Bu depo, [Local Radar](https://github.com/cisey/local-radar) projesinin **canlı
 - 🌙 **Koyu tema:** Okunaklı yazılar, yumuşak geçişler ve kart tasarımı
 - 🔍 **Anlık arama:** İl, ilçe veya dosya adına göre rehber bulma; rehberin içinde mekan, yemek türü ve adres araması
 - 🗂️ **Akıllı gruplama:** Rehberler illere göre otomatik gruplanır, iller kapalı başlar
+- 🧭 **Doğru ilçe:** Her mekan, koordinatından gerçek il ve ilçesine yerleştirilir; komşu ilçenin mekanı yanlış rehberde görünmez
+- 🍴 **Neler yenir?:** Her il ve ilçe için en çok öne çıkan yemekleri gösteren sayfalar (`populer/`)
 - 📚 **Tüm İlçeler rehberi:** 75 ilin ilçeleri tek bir rehberde birleşir, aynı mekan bir kez görünür
 - ⭐ **En iyi 10 / 20:** Her rehberin en üstünde o bölgenin en iyi yerleri: ilçe rehberlerinde 10, il rehberlerinde 20 (aşağıda nasıl seçildiği yazıyor)
 - 👀 **Tümü görünümü:** Her kategoriden en iyi 7 yer, altında "tamamını gör" düğmesi. Büyük şehirlerde sayfa hızlı açılır, uzun listeler "Daha fazla göster" ile yüklenir
@@ -59,6 +61,12 @@ Tarama, geceleri gözetimsiz çalışan bir sırayla yapılır: ilçe listesi ve
 - **Yayın:** GitHub Pages
 - **Harita:** İl ve ilçe sınırları SVG olarak sayfanın içine gömülüdür, dış harita servisi gerekmez
 - **Rehber sayfaları:** Her rehber tek bir bağımsız HTML dosyasıdır; veri sayfanın içine gömülüdür
+
+## 🗺️ Veri Kaynakları ve Lisanslar
+
+- **Mekan verisi:** Herkese açık Google Haritalar verileri
+- **Harita altlığı:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) katkıcıları
+- **İlçe sınırları:** [geoBoundaries](https://www.geoboundaries.org/) (William & Mary geoLab), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) lisansı. Mekanların gerçek ilçesini belirlemek için kullanılır.
 
 ## 🤝 İlgili Projeler
 
