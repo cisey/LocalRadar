@@ -95,6 +95,7 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
 .yenir-btn { min-height: 64px; background: linear-gradient(135deg,#ea580c,#f59e0b); border: 0; box-shadow: 0 6px 18px rgba(234,88,12,.35); font-size: 16px; }
 .yenir-btn span.ok { color: #fff; font-size: 20px; }
 .tum-btn span.ok { color: var(--accent); }
+.tum-btn.yenir-btn span.ok { color: #fff; }
 .alt-baslik { font-size: 11.5px; font-weight: 700; color: var(--text-muted); letter-spacing: .06em; text-transform: uppercase; margin: 2px 2px 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
@@ -373,7 +374,6 @@ html[data-tema="light"] a[href="puanlama.html"] { color: var(--text-muted) !impo
           const o = document.createElement('span');
           o.className = 'ok'; o.textContent = '→';
           a.append(t, o);
-          ic.appendChild(a);
           if (populer.includes(tumu.dosya)) {
             const y = document.createElement('a');
             y.className = 'tum-btn yenir-btn';
@@ -385,6 +385,7 @@ html[data-tema="light"] a[href="puanlama.html"] { color: var(--text-muted) !impo
             y.append(yt, yo);
             ic.appendChild(y);
           }
+          ic.appendChild(a);
         }
 
         if (ilceler.length) {
