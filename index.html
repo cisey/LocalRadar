@@ -105,12 +105,35 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
 .chip:hover { border-color: rgba(255,255,255,0.2); background: var(--card-hover); }
 .chip:active { transform: scale(0.96); background: rgba(56,189,248,0.2); }
 .state-msg { text-align: center; color: var(--text-muted); padding: 40px 0; font-size: 14px; }
+
+/*temaPaketi*/
+.tema-btn { font: inherit; font-size: 13px; font-weight: 500; color: var(--text-muted); background: rgba(255,255,255,0.05);
+  padding: 6px 12px; border-radius: 20px; border: 1px solid var(--card-border); cursor: pointer; white-space: nowrap; }
+html[data-tema="light"] {
+  color-scheme: light;
+  --bg: #f3f4f6; --card-bg: rgba(255,255,255,0.92); --card-border: rgba(15,23,42,0.12); --card-hover: #e8edf4;
+  --text-main: #111827; --text-muted: #5b6678; --accent: #0369a1; --accent-glow: rgba(3,105,161,0.18);
+}
+html[data-tema="light"] body { background-image:
+  radial-gradient(at 0% 0%, rgba(56,189,248,0.14) 0px, transparent 50%),
+  radial-gradient(at 100% 100%, rgba(99,102,241,0.10) 0px, transparent 50%); }
+html[data-tema="light"] .back-btn, html[data-tema="light"] .tema-btn { background: rgba(15,23,42,0.05); }
+html[data-tema="light"] .search-input { background: #fff; color: #111827; }
+html[data-tema="light"] .search-input::placeholder { color: #94a3b8; }
+html[data-tema="light"] .harita-btn, html[data-tema="light"] .tum-btn { color: var(--text-main); }
+html[data-tema="light"] .yenir-btn { color: #fff; }
+html[data-tema="light"] .chip { color: #1f2937; background: #fff; }
+html[data-tema="light"] .chip:hover { background: var(--card-hover); border-color: rgba(15,23,42,0.25); }
+html[data-tema="light"] .chip:active { background: rgba(56,189,248,0.25); }
+html[data-tema="light"] a[href="puanlama.html"] { color: var(--text-muted) !important; }
 </style>
+<script>/*temaPaketi*/try{var _t=localStorage.getItem('tema');if(_t==='dark'||_t==='light')document.documentElement.dataset.tema=_t;}catch(e){}</script>
 </head>
 <body>
   <div class="container">
     <div class="top">
       <a href="/" class="back-btn">← Ana sayfa</a>
+      <button type="button" class="tema-btn" id="temaBtn" aria-label="Temayı değiştir"></button>
     </div>
     <div class="top" style="margin-bottom:4px">
       <div class="radar-icon">📡</div>
@@ -440,5 +463,15 @@ details[open] .chev { transform: rotate(90deg); color: var(--accent); }
           });
       });
   </script>
+<script>/*temaPaketi*/
+(function(){
+  var d=document.documentElement,b=document.getElementById('temaBtn');if(!b)return;
+  function yaz(){var k=(d.dataset.tema||'dark')==='dark';b.textContent=k?'\u2600\uFE0F Açık':'\uD83C\uDF19 Koyu';
+    b.setAttribute('aria-label',k?'Açık temaya geç':'Koyu temaya geç');}
+  b.onclick=function(){var y=(d.dataset.tema||'dark')==='dark'?'light':'dark';d.dataset.tema=y;
+    try{localStorage.setItem('tema',y);}catch(e){}yaz();};
+  yaz();
+})();
+</script>
 </body>
 </html>
