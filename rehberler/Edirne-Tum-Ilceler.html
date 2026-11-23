@@ -98,7 +98,7 @@ html[data-hv="6"] #map .leaflet-tile-pane{filter:saturate(.55) brightness(.92)}
 }
 </style>
 <style>/*haritaNormal*/html[data-hv="0"] #map .leaflet-tile-pane{filter:none}</style>
-<style>/*temaPaketi*/html[data-tema="light"]{--bg:#f3f4f6;--card:#ffffff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent-soft:rgba(37,99,235,.08);--gold:#d97706;color-scheme:light}html[data-tema="dark"]{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--line:#334155;--accent:#3b82f6;--accent-soft:rgba(59,130,246,.15);--gold:#fbbf24;color-scheme:dark}.tema-btn{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;margin:0 0 6px 8px;vertical-align:middle}.tema-btn:hover{border-color:var(--muted)}html[data-tema="light"] #map .leaflet-tile-pane{filter:none!important}html[data-tema="light"] #map{background:#f3f4f6}html[data-tema="light"] #map .leaflet-bar a{background:#fff;color:#111827}html[data-tema="dark"] #map{background:#0f172a}html[data-tema="dark"] #map .leaflet-bar a{background:#1e293b;color:#e2e8f0}</style><script>/*temaPaketi*/try{var _t=localStorage.getItem('tema');if(_t==='dark'||_t==='light')document.documentElement.dataset.tema=_t;}catch(e){}</script></head><body><div class="wrap">
+<style>/*temaPaketi*/html[data-tema="light"]{--bg:#f3f4f6;--card:#ffffff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#2563eb;--accent-soft:rgba(37,99,235,.08);--gold:#d97706;color-scheme:light}html[data-tema="dark"]{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--line:#334155;--accent:#3b82f6;--accent-soft:rgba(59,130,246,.15);--gold:#fbbf24;color-scheme:dark}.tema-btn{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;margin:0 0 6px 8px;vertical-align:middle}.tema-btn:hover{border-color:var(--muted)}html[data-tema="light"] #map .leaflet-tile-pane{filter:none!important}html[data-tema="light"] #map{background:#f3f4f6}html[data-tema="light"] #map .leaflet-bar a{background:#fff;color:#111827}html[data-tema="dark"] #map{background:#0f172a}html[data-tema="dark"] #map .leaflet-bar a{background:#1e293b;color:#e2e8f0}</style><script>/*temaPaketi*/try{var _t=localStorage.getItem('tema');if(_t==='dark'||_t==='light')document.documentElement.dataset.tema=_t;}catch(e){}</script><style>/*butonStil*/.reset{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:12.5px;color:var(--muted)}.reset:hover{border-color:var(--muted);color:var(--text)}</style></head><body><div class="wrap">
 
 <a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
 
@@ -310,7 +310,7 @@ list.addEventListener('click',e=>{
 });
 (function(){
   const r=document.querySelector('button.reset');if(!r)return;
-  const w=document.createElement('div');w.style.cssText='display:flex;justify-content:center;gap:14px';
+  const w=document.createElement('div');w.style.cssText='display:flex;justify-content:center;flex-wrap:wrap;gap:8px';
   const b=document.createElement('button');b.className='reset';b.textContent='🔗 Bu görünümü paylaş';
   b.onclick=()=>{
     hashYaz();const u=location.href;

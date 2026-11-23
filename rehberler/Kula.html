@@ -98,7 +98,7 @@ html[data-hv="6"] #map .leaflet-tile-pane{filter:saturate(.55) brightness(.92)}
 }
 </style>
 <style>/*haritaNormal*/html[data-hv="0"] #map .leaflet-tile-pane{filter:none}</style>
-</head><body><div class="wrap">
+<style>/*butonStil*/.reset{background:var(--card);border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:12.5px;color:var(--muted)}.reset:hover{border-color:var(--muted);color:var(--text)}</style></head><body><div class="wrap">
 
 <a class="back" href="https://cisey.github.io/LocalRadar/">← Rehberler</a>
 
@@ -310,7 +310,7 @@ list.addEventListener('click',e=>{
 });
 (function(){
   const r=document.querySelector('button.reset');if(!r)return;
-  const w=document.createElement('div');w.style.cssText='display:flex;justify-content:center;gap:14px';
+  const w=document.createElement('div');w.style.cssText='display:flex;justify-content:center;flex-wrap:wrap;gap:8px';
   const b=document.createElement('button');b.className='reset';b.textContent='🔗 Bu görünümü paylaş';
   b.onclick=()=>{
     hashYaz();const u=location.href;
