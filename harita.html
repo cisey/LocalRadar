@@ -48,6 +48,8 @@ a.ilce{background:#1f5f86;border:1px solid rgba(125,211,252,.5)}
 .arac{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .arac button{flex:1;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:#141b29;color:var(--text);font-size:14px;font-weight:600}
 .arac button.on{background:#1f5f86;border-color:#7dd3fc}
+.arac a.alink{flex:1;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:#141b29;color:var(--text);font-size:14px;font-weight:600;text-align:center;text-decoration:none}
+html[data-tema="light"] .arac a.alink{background:#fff}
 .seg{display:flex;flex:1;min-width:200px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .seg button{flex:1;border:0;border-radius:0;background:#141b29;min-width:0}
 .seg button.on{background:#1f5f86}
@@ -115,7 +117,7 @@ html[data-tema="light"] .ipucu span:last-child i{background:#cbd5e1!important;bo
     <svg id="svg" role="img" aria-label="Türkiye ilçe haritası"></svg>
     <div class="zoom"><button id="zi" aria-label="Yakınlaştır">+</button><button id="zo" aria-label="Uzaklaştır">−</button><button id="zr" class="kucuk" aria-label="Tüm Türkiye">TR</button></div>
   </div>
-  <div class="arac"><button id="konum">📍 Konumumu bul</button>
+  <div class="arac"><button id="konum">📍 Konumumu bul</button><a class="alink" href="yakinimda.html?mod=konum">📍 Yakınımdakiler</a><a class="alink" href="yakinimda.html?mod=harita">🗺️ Haritada nokta seç</a>
   <div class="ipucu"><span><i style="background:#1f5f86"></i>Rehberi var</span><span><i style="background:#1b2434;border:1px solid #334"></i>Henüz taranmadı</span></div>
   <select id="ilSec" class="sec-kutu"><option value="">Listeden il seç…</option></select>
   <div class="panel" id="panel"></div>
