@@ -90,7 +90,35 @@ svg .getiket text{fill:#f1f5f9;stroke:#0b0f17;stroke-width:3px;paint-order:strok
 .tf button small{color:var(--muted);margin-left:3px}
 .tf button.on{background:#1f5f86;border-color:#7dd3fc;font-weight:700}
 .sec-kutu{width:100%;margin-top:10px;padding:12px;border-radius:12px;background:#141b29;color:var(--text);border:1px solid var(--line);font-size:15px}
+/*temaPaketi*/
+.tema-btn{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--muted);cursor:pointer;margin:0 0 6px 8px;vertical-align:middle}
+html[data-tema="light"]{color-scheme:light;--bg:#f3f4f6;--card:#ffffff;--line:rgba(15,23,42,.14);--text:#111827;--muted:#5b6678;--accent:#0369a1}
+html[data-tema="light"] .tema-btn,html[data-tema="light"] a.geri{background:rgba(15,23,42,.05)}
+html[data-tema="light"] .harita{background:#e5eaf1}
+html[data-tema="light"] svg path{fill:#cbd5e1;stroke:#ffffff}
+html[data-tema="light"] svg path.dolu{fill:#93c9ea}
+html[data-tema="light"] svg path.il{stroke:#0369a1;stroke-opacity:.6}
+html[data-tema="light"] svg path.dolu.il{fill:#6db4de}
+html[data-tema="light"] svg path.sec{fill:#0ea5e9}
+html[data-tema="light"] svg path.sec.dolu{fill:#0284c7}
+html[data-tema="light"] svg path.il{stroke:#0369a1!important;stroke-opacity:.8}
+html[data-tema="light"] svg path.sec{fill:#0ea5e9!important}
+html[data-tema="light"] .zoom button{background:rgba(255,255,255,.95)}
+html[data-tema="light"] a.tum{color:var(--text)}
+html[data-tema="light"] a.ilce{color:#fff}
+html[data-tema="light"] .chips a,html[data-tema="light"] .yer,html[data-tema="light"] .chipbtn,html[data-tema="light"] .tf button,html[data-tema="light"] .sec-kutu,html[data-tema="light"] .arac button,html[data-tema="light"] .seg button,html[data-tema="light"] .bolgeler button{background:#fff}
+html[data-tema="light"] .arac button.on,html[data-tema="light"] .seg button.on,html[data-tema="light"] .tf button.on{background:#cfe9f7;border-color:#0369a1}
+html[data-tema="light"] .chips a.bu,html[data-tema="light"] .chipbtn{border-color:#0369a1}
+html[data-tema="light"] .yer .km{color:#0369a1}
+html[data-tema="light"] .et{color:#0369a1!important}
+html[data-tema="light"] .bolgeler button.on{border-color:#0369a1}
+html[data-tema="light"] svg .gout path,html[data-tema="light"] svg .gil path{stroke:#ffffff}
+html[data-tema="light"] svg.yakin .gout path{stroke:#64748b;stroke-opacity:.6}
+html[data-tema="light"] svg .getiket text{fill:#111827;stroke:#ffffff}
+html[data-tema="light"] .ipucu span:first-child i{background:#93c9ea!important}
+html[data-tema="light"] .ipucu span:last-child i{background:#cbd5e1!important;border:1px solid #94a3b8!important}
 </style>
+<script>/*temaPaketi*/try{var _t=localStorage.getItem('tema');if(_t==='dark'||_t==='light')document.documentElement.dataset.tema=_t;}catch(e){}</script>
 </head>
 <body>
 <div class="kap">
@@ -603,6 +631,17 @@ fetch('rehberler.json', { cache: 'no-cache' })
       .then(d => listeyiYukle(d.map(f => f.name)))
       .catch(() => { panel.className = 'panel acik'; panel.innerHTML = '<p class="bilgi">Rehber listesi yüklenemedi.</p>'; });
   });
+</script>
+<script>/*temaPaketi*/
+(function(){
+  var d=document.documentElement,h=document.querySelector('a.geri');if(!h)return;
+  var b=document.createElement('button');b.type='button';b.className='tema-btn';
+  function yaz(){var k=(d.dataset.tema||'dark')==='dark';b.textContent=k?'\u2600\uFE0F Açık':'\uD83C\uDF19 Koyu';
+    b.setAttribute('aria-label',k?'Açık temaya geç':'Koyu temaya geç');}
+  b.onclick=function(){var y=(d.dataset.tema||'dark')==='dark'?'light':'dark';d.dataset.tema=y;
+    try{localStorage.setItem('tema',y);}catch(e){}yaz();};
+  h.insertAdjacentElement('afterend',b);yaz();
+})();
 </script>
 </body>
 </html>
