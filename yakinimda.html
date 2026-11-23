@@ -591,7 +591,6 @@ function ciz(){
       </div>
       <div class="btn-kolon">
         <a class="map-btn" href="${esc(x.l)}" target="_blank" rel="noopener">Haritada Aç</a>
-        <a class="map-btn yol" href="${yolTarifi(x)}" target="_blank" rel="noopener">🧭 Yol tarifi</a>
       </div>
     </div>`).join('') + '</div>';
 
@@ -623,8 +622,7 @@ function neYesem(){
     <div class="on">${esc(x.n)}</div>
     <div class="om">★ ${esc(x.p)} · ${x.y} oy · 📍 ${mesafeYaz(x._d)}${x.t ? ' · ' + esc(x.t) : ''}</div>
     <div class="ob">
-      <a class="ana" href="${yolTarifi(x)}" target="_blank" rel="noopener">🧭 Yol tarifi</a>
-      <a href="${esc(x.l)}" target="_blank" rel="noopener">Haritada Aç</a>
+      <a class="ana" href="${esc(x.l)}" target="_blank" rel="noopener">Haritada Aç</a>
       <a href="${wa}" target="_blank" rel="noopener">💬 WhatsApp</a>
       <button type="button" id="yeniOneriBtn">🎲 Başka öner</button>
     </div>`;
