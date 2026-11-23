@@ -138,7 +138,7 @@ html:not([data-tema="light"]) #map .leaflet-tile-pane{filter:grayscale(85%) inve
       <button type="button" id="btnHarita">🗺️ Sokak Haritası</button>
     </div>
 
-    <div class="filtre-grup">
+    <div class="filtre-grup" id="filtreGrup">
       <div class="chips" id="capChips">
         <button type="button" data-cap="0.5">500 m</button>
         <button type="button" data-cap="1">1 km</button>
@@ -175,6 +175,8 @@ html:not([data-tema="light"]) #map .leaflet-tile-pane{filter:grayscale(85%) inve
     </div>
 
     <div class="oneri" id="oneri" style="display:none"></div>
+
+    <div class="uyari bilgi" id="haritaIpucu" style="display:none;text-align:center;font-size:15px">👆 <b>Haritada bir yere dokun</b>, çevresindeki mekanlar listelensin.</div>
 
     <div id="haritaKutu">
       <div id="map"></div>
@@ -459,6 +461,8 @@ async function konumaGoreYukle(lat, lon, manuelIl, opts){
   $('sonucAlani').style.display = '';
   $('oneri').style.display = 'none';
   $('uyari').style.display = 'none';
+  $('filtreGrup').style.display = '';
+  $('haritaIpucu').style.display = 'none';
   $('durum').textContent = 'Çevrendeki mekanlar yükleniyor…';
   $('listeKutu').innerHTML = '<div class="liste-kutu"><p class="bos">⏳ Rehber verileri okunuyor…</p></div>';
   yuklemeHatasi = 0;
@@ -531,6 +535,7 @@ function suzulmusMekanlar(){
 }
 
 function ciz(){
+  if (!aktifKonum) return;   // harita modunda nokta seçilmeden çizilecek bir şey yok
   const mp = parseFloat($('minPuan').value) || 0;
   const my = parseInt($('minYorum').value, 10) || 0;
   const q = fold($('ara').value.trim());
@@ -689,7 +694,9 @@ function haritaModu(){
   gorunum = 'harita';
   $('btnListe').classList.remove('on');
   $('btnHarita').classList.add('on');
-  $('durum').textContent = 'Haritada istediğin bir yere tıkla, etrafındaki mekanlar yüklensin.';
+  $('durum').textContent = 'Haritada istediğin bir yere dokun, etrafındaki mekanlar yüklensin.';
+  $('filtreGrup').style.display = 'none';
+  $('haritaIpucu').style.display = '';
   $('listeKutu').style.display = 'none';
   $('haritaKutu').style.display = 'block';
   haritaHazirla();
