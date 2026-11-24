@@ -318,7 +318,7 @@ list.addEventListener('click',e=>{
     else if(navigator.clipboard){navigator.clipboard.writeText(u).then(()=>{b.textContent='✓ Link kopyalandı';setTimeout(()=>{b.textContent='🔗 Bu görünümü paylaş'},2000)},()=>{prompt('Linki kopyala',u)});}
     else prompt('Linki kopyala',u);
   };
-  r.parentNode.insertBefore(w,r);w.appendChild(b);w.appendChild(r);
+  r.parentNode.insertBefore(w,r);w.appendChild(r);
 })();
 hashOku();
 
