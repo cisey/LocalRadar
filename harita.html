@@ -430,6 +430,7 @@ function ozetDoldur(il, ilce, dosya, jeton) {
         .map(x => [x, km(userPos.lat, userPos.lon, x.e, x.b)]).sort((a, b) => a[1] - b[1]);
       const say = {}; aday.forEach(([x]) => { say[x.S] = (say[x.S] || 0) + 1; });
       const tipler = Object.keys(say).sort((a, b) => say[b] - say[a]);
+      h += '<a class="alink" style="display:block;text-align:center;margin:8px 0" href="yakinimda.html?lat=' + userPos.lat.toFixed(5) + '&lon=' + userPos.lon.toFixed(5) + '">📋 Filtreli liste · Yakın ve İyi sıralama · 🎲 Ne yesem →</a>';
       h += '<div class="et" style="color:#7dd3fc">YAKINIMDAKİ İYİ YERLER (4,0+ puan, 100+ yorum)</div>';
       h += '<div class="tf" id="tfiltre"><button data-f="" class="on">Hepsi</button>' +
         tipler.map(t => '<button data-f="' + esc(t) + '">' + esc(t) + ' <small>' + say[t] + '</small></button>').join('') + '</div>';
@@ -524,6 +525,7 @@ function konumBul() {
   navigator.geolocation.getCurrentPosition(pos => {
     bt.textContent = '📍 Konumumu bul';
     userPos = {lat: pos.coords.latitude, lon: pos.coords.longitude};
+    document.querySelectorAll('a.alink[href^="yakinimda.html?mod=konum"]').forEach(a => { a.href = 'yakinimda.html?lat=' + userPos.lat.toFixed(5) + '&lon=' + userPos.lon.toFixed(5); });
     const C = Math.cos(39 * Math.PI / 180), x = (userPos.lon - 25.5) * C * 60, y = (42.3 - userPos.lat) * 60;
     const nokta = svg.createSVGPoint(); nokta.x = x; nokta.y = y;
     svg.querySelectorAll('circle.ben').forEach(c => c.remove());

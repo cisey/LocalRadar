@@ -107,7 +107,7 @@ html:not([data-tema="light"]) #map .leaflet-tile-pane{filter:grayscale(85%) inve
       <a class="pill" href="./">← Ana sayfa</a>
       <button type="button" class="pill" id="temaBtn">☀️ Açık</button>
     </div>
-    <a class="pill" href="harita.html">🗺️ Türkiye Haritası</a>
+    <a class="pill" id="haritaPill" href="harita.html">🗺️ İlçe Haritası</a>
   </div>
 
   <h1>📍 Yakınımdaki Mekanlar</h1>
@@ -366,14 +366,16 @@ function dosyaSecEski(hedefIl, siraliIller){
   return dosyalar;
 }
 
-function seritHazirla(hedefIl, tespitIlce){
+function seritHazirla(hedefIl, tespitIlce, ilceS){
   const l = [];
   const kayit = ilDosyaHaritasi[hedefIl];
   if (kayit) {
     if (kayit.tum) l.push({ ad: '📚 ' + hedefIl + ' · Tüm İlçeler Rehberi', dosya: kayit.tum });
     else if (kayit.tekler.length) l.push({ ad: '📍 ' + hedefIl + ' Rehberi', dosya: kayit.tekler[0] });
   }
-  if (tespitIlce) {
+  if (ilceS) {
+    l.unshift({ ad: '📍 ' + ilceS.ad + ' Rehberini Aç', dosya: ilceS.f });
+  } else if (tespitIlce && !INDEKS) {
     const fIlce = fold(tespitIlce);
     const ilceDosya = tumDosyalar.find(f => {
       const ff = fold(f.replace(/\.html?$/i,''));
@@ -382,6 +384,21 @@ function seritHazirla(hedefIl, tespitIlce){
     if (ilceDosya) l.unshift({ ad: '📍 ' + tespitIlce + ' Rehberini Aç', dosya: ilceDosya });
   }
   return l;
+}
+
+// Konumun hangi ilçe rehberine ait olduğunu rehber indeksinden bul (konum servisinin mahalle adına güvenme:
+// "Karşıyaka" gibi mahalle adları başka ilin ilçesiyle karışıyordu).
+function ilceBul(lat, lon){
+  if (!INDEKS) return null;
+  const pay = 0.01;
+  let en = null;
+  INDEKS.forEach(s => {
+    if (s.t || s.n < 5) return;
+    if (lat < s.b[0] - pay || lat > s.b[2] + pay || lon < s.b[1] - pay || lon > s.b[3] + pay) return;
+    const d = km(lat, lon, (s.b[0] + s.b[2]) / 2, (s.b[1] + s.b[3]) / 2);
+    if (!en || d < en.d) en = { d, ad: s.ad || s.f, f: s.f };
+  });
+  return en;
 }
 
 // Konuma en yakın "yoğun" (≥100 mekanlı) ilçe rehberi
@@ -455,9 +472,12 @@ function otoAyar(){
 }
 
 let aktifIl = null;
+let kaynakGps = false;
 async function konumaGoreYukle(lat, lon, manuelIl, opts){
   opts = opts || {};
   aktifKonum = { lat, lon };
+  if (!opts.koru) kaynakGps = !!opts.gps;
+  $('haritaPill').href = kaynakGps ? 'harita.html?konum=1' : 'harita.html';
   $('konumKart').style.display = 'none';
   $('degistirBtn').style.display = '';
   $('sonucAlani').style.display = '';
@@ -475,10 +495,11 @@ async function konumaGoreYukle(lat, lon, manuelIl, opts){
   const geo = await geoP;
   const hedefIl = manuelIl || geo.il || siraliIller[0].ad;
   aktifIl = manuelIl || null;
-  const tespitIlce = geo.ilce || '';
+  const ilceS = manuelIl ? null : ilceBul(lat, lon);
+  const tespitIlce = ilceS ? ilceS.ad : (INDEKS ? '' : (geo.ilce || ''));
   if (!dosyalar) dosyalar = dosyaSecEski(hedefIl, siraliIller);
 
-  $('rehberSerit').innerHTML = seritHazirla(hedefIl, tespitIlce).map(s =>
+  $('rehberSerit').innerHTML = seritHazirla(hedefIl, tespitIlce, ilceS).map(s =>
     `<a class="rehber-link" href="${yolu(s.dosya)}"><span>${esc(s.ad)}</span><span>→</span></a>`
   ).join('');
 
@@ -676,7 +697,7 @@ function konumIste(){
     return;
   }
   navigator.geolocation.getCurrentPosition(
-    pos => { ga('konum_izni', { sonuc: 'verildi' }); konumaGoreYukle(pos.coords.latitude, pos.coords.longitude, null); },
+    pos => { ga('konum_izni', { sonuc: 'verildi' }); konumaGoreYukle(pos.coords.latitude, pos.coords.longitude, null, { gps: true }); },
     () => {
       ga('konum_izni', { sonuc: 'reddedildi' });
       $('konumKart').style.display = '';
