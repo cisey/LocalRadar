@@ -58,12 +58,13 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   <p class="lead">Sıralamalar tek bir sayıya bakmaz. Hem Google puanına hem de kaç kişinin oy verdiğine bakar. Bu sayfa nasıl yaptığımızı sade bir dille anlatıyor.</p>
 
     <h2 class="ana" id="ozet" style="border-top:0;padding-top:0;margin-top:22px">Hangi sayfada hangi sıralama?</h2>
-  <p>Sitede üç farklı hesap kullanılıyor. Hangi sayfada hangisinin çalıştığı aşağıda. Sayfa adına dokununca ilgili bölüme geçersin.</p>
+  <p>Sitede dört farklı hesap kullanılıyor. Hangi sayfada hangisinin çalıştığı aşağıda. Sayfa adına dokununca ilgili bölüme geçersin.</p>
   <table>
     <tr><th>Sayfa</th><th>Ne gösteriyor?</th><th>Hesap</th></tr>
     <tr><td><a href="#rehber" style="color:var(--accent)">Rehberler</a> (ilçe ve il)</td><td>En iyi kutusu, kategori sekmeleri, haritadaki en güvenilir 3 yer</td><td>1. Güvenilir Skor</td></tr>
     <tr><td><a href="#yakinimda" style="color:var(--accent)">Yakınımdakiler</a></td><td>Konumuna yakın mekanlar. Varsayılan sıralama "Yakın ve İyi"</td><td>2. Yakın ve İyi (Güvenilir Skor + mesafe)</td></tr>
     <tr><td><a href="#neleryenir" style="color:var(--accent)">Neler yenir?</a></td><td>Şehrin klasikleri ve kategori listeleri</td><td>3. Meşhurluk skoru</td></tr>
+    <tr><td><a href="#ulusal" style="color:var(--accent)">Türkiye'nin En Popüler Yerleri</a></td><td>Türkiye Seçkisi (100 yer) ve 81 İlin Zirvesi</td><td>4. Ulusal skor (Seçki) / Güvenilir Skor (İl zirvesi)</td></tr>
   </table>
   <p>Puan, yorum ve mesafe gibi tek bir şeye bakan sıralamalar (En Yakın, Puan, Yorum) hesap sayılmaz, bunlar ilgili bölümde birer satırla anlatılıyor.</p>
 
@@ -249,6 +250,38 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
 
 <h3>⚠️ "Çok popüler ama puanı düşük" bölümü</h3>
   <p>Puan tabanının (4,0 ya da 3,8) altında kalan yerlerden <b>yorumu en çok olanlar</b>, ilk 8'e kadar ayrı bir bölümde gösterilir. Meşhur ama memnuniyeti düşük yerleri gitmeden önce bilmen için. Bu bölümde sıralama sadece yorum sayısına göredir.</p>
+
+  <h2 class="ana" id="ulusal">5️⃣ Türkiye'nin En Popüler Yerleri</h2>
+  <p>Bu sayfada iki ayrı liste var: <b>Türkiye Seçkisi</b> ve <b>81 İlin Zirvesi</b>. İkisi farklı sorulara cevap verir ve farklı hesaplanır.</p>
+
+<h3>Hangi yerler hiç değerlendirilmez?</h3>
+  <ul>
+    <li>Kapanmış olarak işaretli yerler</li>
+    <li>Ulusal zincirler</li>
+    <li>Adında ya da türünde yemek dışı işletme belli olanlar: çiçekçi, hediyelik eşya, rafting, binicilik, termal tesis, kamp alanı, nargile salonu, düğün salonu, konaklama tesisi, market, dinlenme tesisi, benzinlik, AVM</li>
+    <li>Adında alkollü mekan belli olanlar: meyhane, pub, birahane gibi</li>
+    <li>Puanı 5'in üstünde görünen hatalı kayıtlar</li>
+  </ul>
+
+<h3>🏆 Türkiye Seçkisi (ilk 100)</h3>
+  <p>Amaç, Türkiye genelinde öne çıkan yerleri küçük illeri ezmeden sıralamak. Şartlar: puan en az <b>4,2</b>, yorum en az <b>150</b>.</p>
+  <div class="formul">Skor = (0,6 × il içi popülerlik + 0,4 × Türkiye popülerliği) × (Güvenilir Skor − 3,5)</div>
+  <ul>
+    <li><b>İl içi popülerlik:</b> Yerin yorum sayısının logaritması, kendi ilinin en çok yorumlu yerinin logaritmasına bölünür (en fazla 1). İlin birincisi ikincisinin 3 katından fazla yorum aldıysa tavan olarak ikincisi kullanılır, böylece tek bir dev yer tüm ili ezmez.</li>
+    <li><b>Türkiye popülerliği:</b> Aynı hesap, bu sefer Türkiye'nin en çok yorumlu yerine göre.</li>
+    <li><b>Güvenilir Skor:</b> Burada K = 250 sabit. Az yorumlu yerin puanı Türkiye ortalamasına doğru çekilir.</li>
+  </ul>
+  <p>Yorum sayısında logaritma kullanıldığı için 30.000 yorumlu yer, 3.000 yorumlu yerin 10 katı değil, kabaca yarım basamak önünde sayılır.</p>
+  <p>Sıralamadan sonra liste şu sınırlarla doldurulur: İstanbul, Ankara ve İzmir'den en fazla <b>5</b>, diğer illerden en fazla <b>3</b> yer; her kategoriden en fazla <b>20</b> yer; aynı markadan <b>1</b> şube. Sınıra takılan yer atlanır, sıradakine geçilir. 100 yer dolunca liste biter.</p>
+  <div class="box"><b>Dikkat:</b> Bu sıralama küçük illerin zirvesini bilerek ödüllendirir. Bu yüzden küçük bir ildeki 700 yorumlu bir yer, büyük bir ildeki 1.400 yorumlu bir yerin önüne geçebilir.</div>
+
+<h3>🗺️ 81 İlin Zirvesi</h3>
+  <p>Amaç, her ilin kendi 1 numarasını göstermek. İller birbiriyle yarışmaz, il kotası ve kategori kotası yoktur.</p>
+  <ul>
+    <li>Önce puanı en az 4,2 ve yorumu en az 150 olan yerler arasından <b>Güvenilir Skoru en yüksek</b> olan seçilir. Kartta "İl zirvesi" yazar.</li>
+    <li>Böyle yer yoksa yorum şartı <b>80</b>'e indirilir. Kartta "80+ yorum" yazar.</li>
+    <li>Yine yoksa puan 4,0 ve yorum 30'a indirilir. Kartta "İlin en iyisi" yazar.</li>
+  </ul>
 
   <h2 class="ana" id="dikkat">Dikkat edilmesi gerekenler</h2>
   <ul>
