@@ -10,8 +10,10 @@ KARA_AD=re.compile(r'(?<![a-z])(cicekci|cicekcilik|hediyelik|rafting|binicilik|t
 KARA_TUR=re.compile(r'kamp|nargile|dugun|otel|pansiyon|konaklama|termal|hediyelik|cicek|rafting|binicilik|turizm|market|tesis|bungalow|plaj|havuz|lounge bar|gece kulubu')
 YEMEK_TUR=re.compile(r'restoran|lokanta|kebap|pide|kafe|cafe|kahvalti|firin|pastane|tatli|balik|kofte|et yemek|corba|kafeterya')
 ALKOL=re.compile(r'(?<![a-z])(meyhane|meyhanesi|pub|birahane|biraci|taverna|tavern|brewery|brewhouse|cocktail|kokteyl|wine|sarap|sarapci|rakici|gece kulubu|nightclub|night club)(?![a-z])')
+HARIC=re.compile(r'(?<![a-z])(gezi evi|nostalji gezi)(?![a-z])')   # yemek mekanı olmayanlar (elle eklenir)
 def kara(n,t):
     fa=C.fold(n);ft=C.fold(t)
+    if HARIC.search(fa):return True
     if KARA_AD.search(fa) or ALKOL.search(fa):return True
     return bool(KARA_TUR.search(ft)) and not YEMEK_TUR.search(ft)
 def temiz(n):
