@@ -9,16 +9,20 @@ Artemis Cafe Pub | Muğla | Bar | 209 yorum | 4.2
 Asri Kafe & Kır Bahçesi & Nargile | Balıkesir | Nargile Salonu | 157 yorum | 4.5
 Atgeç Meyhanesi | Muğla | Restoran | 900 yorum | 4.5
 Aura Lounge Cafe Hookah | İzmir | Nargile Salonu | 330 yorum | 4.8
+Avlu Balıkesir | Balıkesir | Alışveriş merkezi | 5307 yorum | 4.3
 Ayar Meyhanesi | Antalya | Türk restoranı | 5901 yorum | 4.7
 Ayazma Restaurant & Cocktail Bar | Çanakkale | Restoran | 355 yorum | 4.2
 AĞAÇLI TURİSTİK TESİSLERİ | Aksaray | Konaklama Tesisi | 719 yorum | 4.2
+BALIK PAZARI ÇALIŞ | Muğla | Restoran | 964 yorum | 4.6
 BEERBUS GASTRO PUB | Aydın | Restoran | 948 yorum | 4.6
 BIG BOSS PUB PİZZA | Muğla | Pizza restoranı | 409 yorum | 4.8
 Bab-ı Vefa Nargile haqqı hokkah | Erzurum | Nargile Salonu | 506 yorum | 4.4
+Bahadir Baklava | Ankara | Bakkal | 159 yorum | 4.3
 Balkan Evi Restoran & Meyhane | Bursa | Meyhane | 150 yorum | 4.5
 Balıkçı Meyhanesi Kaleiçi | Antalya | Restoran | 5904 yorum | 4.8
 Barbarian Medieval Tavern | Nevşehir | Restoran | 2281 yorum | 4.6
 Barracuda Restaurant Wine & Grill Bar | Muğla | Deniz mahsülleri restoranı | 424 yorum | 4.7
+Başkent Et Ve Tavuk Pazarı | Ankara | Mağazalar ve Alışveriş | 222 yorum | 4.5
 Başköşe Termal | Yalova | Türk restoranı | 329 yorum | 5.0
 Bern`s Kitchen & Gastro Pub | Antalya | Modern Avrupa Restoranı | 217 yorum | 4.3
 Bir Zamanlar Gastro Pub | İzmir | Kafe | 368 yorum | 4.2
@@ -28,9 +32,11 @@ Brits Pub | Muğla | Restoran | 377 yorum | 4.7
 Brooklyn Pub&Lounge | Mersin | Restoran | 1542 yorum | 4.3
 Burger Pub | İstanbul |  | 257 yorum | 4.5
 Burger Wine House | Nevşehir | Restoran | 246 yorum | 4.5
+BİTKİMİX Alışveriş Merkezi & Lokum & Kozmetik | Trabzon | Alışveriş merkezi | 396 yorum | 4.7
 COFFEE SHOT IRISH PUB MUDANYA | Bursa | Kafe | 549 yorum | 4.2
 Cafe Antre Pub | Nevşehir | Bar | 312 yorum | 4.7
 Cedre Restoran & Kokteyl | Antalya | Akdeniz mutfağı restoranı | 323 yorum | 4.5
+Cezayir Usta Döner Salonu - Balık Pazarı | Muğla | Dönerci | 355 yorum | 4.9
 Cielo Food & Cocktail | Balıkesir | Restoran | 405 yorum | 4.3
 Corner Lounge | Muğla | Nargile Salonu | 155 yorum | 4.2
 Cızz Bızz Balık Meyhane | İzmir | Meyhane | 1889 yorum | 4.8
@@ -46,22 +52,28 @@ ERHAN FİSH &MEAT PUB BALKON RESTAURANT | İstanbul | Restoran | 3854 yorum | 4.
 EVDE BURGER - PUB | İzmir | Hamburger restoranı | 1760 yorum | 4.9
 Erciyes Binicilik - Kayseri Kahvaltı | Kayseri | Kahvaltı restoranı | 2853 yorum | 4.3
 Erdem Sepetçioğlu Çekme Helva - Pastırma - Sucuk / Nasrullah Meydanı | Kastamonu | Gurme Marketi | 157 yorum | 4.6
+Eren Balıkçılık | Aydın | Bakkal | 176 yorum | 4.7
 Eski Ev Pub & Kitchen Vegan friendly | Muğla | Kahvaltı restoranı | 202 yorum | 4.9
 Eveli Cafe Activite Merkezi | Rize | Rafting | 465 yorum | 4.3
+Fethiye Fish Market - Balık Pazarı | Muğla | Balıkçı | 3041 yorum | 4.2
 Fiskos Myhane (Marmaris Meyhane) | Muğla | Akdeniz mutfağı restoranı | 574 yorum | 4.7
 Frida Pub | Antalya | Restoran | 950 yorum | 4.7
 Fıstık Pub | Antalya | Bistro | 1023 yorum | 4.2
 Go Burger Pub Kadıköy | İstanbul | Hamburger restoranı | 156 yorum | 4.3
 Hatay Meze Meyhane | Mersin | Türk restoranı | 256 yorum | 4.5
+Hatice'nin Doğal Çiftliği - Ezine Lezzetleri ve Kahvaltı | Çanakkale | Peynirci | 498 yorum | 4.9
 Haunedy Karadeniz Yöresel Ürünler Lokum & Tereyağı & Kuymak & Bal & Çay & Kahve & Hediyelik | Trabzon | Doğal Gıda Satış Yeri | 1016 yorum | 4.7
 Hisarönü Şarap Mahzeni Ve Restaurant | Nevşehir | Restoran | 805 yorum | 4.7
+Hyundai Arslanoğlu İskenderun | Hatay | Hyundai Bayii | 480 yorum | 4.6
 James Cook Cafe, Pub & Restoran | Ankara | Pub | 1083 yorum | 4.2
 Jandarma Sosyal Tesisleri | Aydın | Kat Hizmeti Sunulan Konaklama | 288 yorum | 4.4
 Jardinn Restaurant & Gastro Pub | Nevşehir | Restoran | 485 yorum | 4.4
 Jiks Pub cafe bar restaurant | Muğla | Restoran | 231 yorum | 4.5
 Jooy Pool Pub | Aydın | Fast food lokantası | 350 yorum | 4.6
+KARADAYI'NINYeri Organik Köylü Pazarı Köfte Kahvaltı | Manisa | Restoran | 337 yorum | 4.3
 KULA BİNİCİLİK (BAĞLUM-KEÇİÖREN AT ÇİFTLİĞİ-KAHVALTI) | Ankara | At Binme Hizmeti | 190 yorum | 4.6
 Kadıköy Kahvaltı ve Meyhane Bitez | Muğla | Kahvaltı restoranı | 180 yorum | 4.8
+Kalite Et Pazarı | Gaziantep | Et Lokantası | 219 yorum | 4.7
 Keyfi Cafe Düzce, Nargile salonu & cafe | Düzce | Nargile Salonu | 832 yorum | 4.8
 Kiss Bar Restaurant & Pub | Antalya | Restoran | 295 yorum | 4.8
 Konak Sea Garden Restoran & Düğün Salonu | Bursa | Düğün Hizmeti | 431 yorum | 4.4
@@ -74,6 +86,7 @@ Kırıkkale CİX Çiçek & Çikolata | Kırıkkale | Çiçekçi | 425 yorum | 5.
 LUQA Lounge | Kırşehir | Nargile Salonu | 367 yorum | 4.4
 La Florista Çiçek & Kahve | Düzce | Çiçekçi | 194 yorum | 5.0
 Letafet Meyhane | İzmir | Restoran | 444 yorum | 4.7
+Level PlayStation Cafe | Karaman | Video oyun salonu | 222 yorum | 4.7
 Lily's Pub & Bistro | Antalya | Bistro | 150 yorum | 4.7
 Lokanta biber ocakbaşı ve meyhane | İzmir | Türk restoranı | 153 yorum | 4.7
 Lucky Luke Steak house & pub | Antalya | Biftek restoranı | 512 yorum | 4.6
@@ -89,8 +102,11 @@ Master Sahne ® | Ocakbaşı | Yeni Nesil Meyhane | | Tekirdağ | Restoran | 189
 Matteo Pub & Ristorante | Denizli | İtalyan restoranı | 201 yorum | 4.3
 Mavra Gastro Pub | Antalya | Hamburger restoranı | 184 yorum | 4.9
 Mazi Nargile Cafe | Sivas | Nargile Salonu | 230 yorum | 4.7
+Memoli Döner Salı Pazarı | Tekirdağ | Dönerci | 504 yorum | 4.3
 Milas Karya Kahvaltı Bahçesi | Muğla | Düğün Hizmeti | 229 yorum | 4.3
 Moniq Restaurant & Cocktail Bar | Nevşehir | Restoran | 1013 yorum | 4.6
+Mudurnu Helva Fabrika Satış Mağazası | Bolu | Alışveriş merkezi | 275 yorum | 4.5
+Mumi Oyun Evi Ebeveyn Cafe | Kırşehir | Çocuk Oyun Salonu | 213 yorum | 4.6
 Mumi Restaurant & Ocakbaşı & Meyhane & Canlı Müzik & Eğlence | Antalya | Meyhane | 1678 yorum | 4.3
 Nar Pub & Kitchen | Muğla | Aile restoranı | 214 yorum | 4.3
 Noir Kitchen and Pub | Balıkesir | Restoran | 852 yorum | 4.4
@@ -107,6 +123,7 @@ Pub Time | Aydın | Pizza restoranı | 610 yorum | 4.5
 Ralli Restaurant Yeni Nesil Meyhane | Düzce | Meyhane | 154 yorum | 4.3
 Red Duck Cafe & Pub | Eskişehir | Restoran | 328 yorum | 4.9
 Ruhibey Meyhanesi 1949 | Antalya | Restoran | 1669 yorum | 4.3
+SUE COFFEE&BAKERY | Muğla | Alışveriş merkezi | 159 yorum | 4.4
 Sakal Kafe Pub | Ankara | Kafe | 1345 yorum | 4.2
 Salkım Kır Bahçesi Kahvaltı Salonu | İzmir | Düğün Salonu | 157 yorum | 4.7
 Salkım Ocakbaşı Meyhane Kaş | Antalya | Meyhane | 1313 yorum | 4.6
@@ -125,6 +142,7 @@ Suvla Winery / Bistro Wine Bar / Wine Shop | Çanakkale | Şarap İmalathanesi |
 TAVERNA 33 MÜZİKOL EĞLENCE MERKEZİ | Mersin | Restoran | 205 yorum | 4.4
 TAŞEV RESTAURANT/ Sanat ve Şarap Evi | Karabük | Restoran | 511 yorum | 4.4
 Taka Rafting Kır Lokantası | Rize | Restoran | 350 yorum | 4.3
+Tarihi Balık Pazarı Unlu Mamülleri (The Fırın) | Antalya | Pastane | 258 yorum | 4.4
 Tarihi Medrese Kahvehanesi | Konya | Nargile Salonu | 3349 yorum | 4.6
 Tarkan Stud binicilik & restoran | İstanbul | Binicilik Kulübü | 173 yorum | 4.6
 Tatvan kardelen çiçekçilik hediyecilik ve çikolata | Bitlis | Çiçekçi | 234 yorum | 4.6
@@ -145,11 +163,14 @@ Zeni Rafting Outdoor Adventure Company | Rize | Fast food lokantası | 692 yorum
 Zeytin Dalı Restoran - Ölüdeniz Ovacık Meyhane | Muğla | Meyhane | 155 yorum | 4.8
 Zeytuni Meyhane & Kahvaltı | İzmir | Meyhane | 300 yorum | 4.6
 Zindanaltı Meyhanesi | Edirne | Restoran | 719 yorum | 4.3
+Ziya Dede Kahve Cezerye Kuruyemiş | Mersin | Mağazalar ve Alışveriş | 244 yorum | 4.6
 Zoka Restaurant Yeni nesil eğlence, Yeni nesil meyhane | Muğla | Meyhane | 3583 yorum | 4.9
 dejong coffee and cocktail bar | Balıkesir | Kokteyl bar | 549 yorum | 4.9
 gela 14 Patisserie & Cocktail | Kayseri | Tatlıcı | 154 yorum | 4.5
 Çakmaklar Gıda Kuru Kahve Baharat | Niğde | Market | 171 yorum | 4.5
+Çelebioğulları Baklavacı Elmacı Pazarı | Gaziantep | Tatlıcı | 810 yorum | 4.4
 Çeşme Balıkçısı Tektekçii Meyhanesi | İzmir | Meyhane | 708 yorum | 4.3
 İmroz Şarap Evi | Çanakkale | Restoran | 348 yorum | 4.6
 Şerefe 41 Sığacık Meyhanesi - Meze & Balık | İzmir | Meyhane | 630 yorum | 4.8
 Şişarka Meyhane Alaçatı | İzmir | Türk restoranı | 504 yorum | 4.4
+ŞİRİNKÖY KAFE OYUN ALANI | Karabük | Çocuk Oyun Salonu | 179 yorum | 4.9

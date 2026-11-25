@@ -6,8 +6,8 @@ import local_radar_core as C
 BUY={'İstanbul','Ankara','İzmir'};KOTA_BUY,KOTA_DIGER,KOTA_KAT,TOPLAM=5,3,20,100
 MIN_P,MIN_Y,YEDEK_Y=4.2,150,80
 DUZ={'Adiyaman':'Adıyaman','Agri':'Ağrı','Aydin':'Aydın','Balikesir':'Balıkesir','Bartin':'Bartın','Bingol':'Bingöl','Canakkale':'Çanakkale','Cankiri':'Çankırı','Corum':'Çorum','Diyarbakir':'Diyarbakır','Duzce':'Düzce','Elazig':'Elazığ','Eskisehir':'Eskişehir','Gumushane':'Gümüşhane','Igdir':'Iğdır','Istanbul':'İstanbul','Izmir':'İzmir','Kahramanmaras':'Kahramanmaraş','Karabuk':'Karabük','Kirikkale':'Kırıkkale','Kirklareli':'Kırklareli','Kirsehir':'Kırşehir','Kutahya':'Kütahya','Mugla':'Muğla','Mus':'Muş','Nevsehir':'Nevşehir','Nigde':'Niğde','Sanliurfa':'Şanlıurfa','Sirnak':'Şırnak','Tekirdag':'Tekirdağ','Usak':'Uşak','Mardin':'Mardin','Antalya':'Antalya','Eskişehir':'Eskişehir','Afyonkarahisar':'Afyonkarahisar','Karaman':'Karaman','Kilis':'Kilis','Osmaniye':'Osmaniye','Hakkari':'Hakkâri','Hakkari':'Hakkâri'}
-KARA_AD=re.compile(r'(?<![a-z])(cicekci|cicekcilik|hediyelik|rafting|binicilik|termal|dinlenme|petrol|akaryakit|avm|otel|oteli|hotel)(?![a-z])')
-KARA_TUR=re.compile(r'kamp|nargile|dugun|otel|pansiyon|konaklama|termal|hediyelik|cicek|rafting|binicilik|turizm|market|tesis|bungalow|plaj|havuz|lounge bar|gece kulubu')
+KARA_AD=re.compile(r'(?<![a-z])(pazari|cicekci|cicekcilik|hediyelik|rafting|binicilik|termal|dinlenme|petrol|akaryakit|avm|otel|oteli|hotel)(?![a-z])')
+KARA_TUR=re.compile(r'bayi|bakkal|peynirci|alisveris|oyun salonu|kamp|nargile|dugun|otel|pansiyon|konaklama|termal|hediyelik|cicek|rafting|binicilik|turizm|market|tesis|bungalow|plaj|havuz|lounge bar|gece kulubu')
 YEMEK_TUR=re.compile(r'restoran|lokanta|kebap|pide|kafe|cafe|kahvalti|firin|pastane|tatli|balik|kofte|et yemek|corba|kafeterya')
 ALKOL=re.compile(r'(?<![a-z])(meyhane|meyhanesi|pub|birahane|biraci|taverna|tavern|brewery|brewhouse|cocktail|kokteyl|wine|sarap|sarapci|rakici|gece kulubu|nightclub|night club)(?![a-z])')
 HARIC=re.compile(r'(?<![a-z])(gezi evi|nostalji gezi)(?![a-z])')   # yemek mekanı olmayanlar (elle eklenir)
