@@ -117,7 +117,7 @@ html[data-tema="light"] .ipucu span:last-child i{background:#cbd5e1!important;bo
     <svg id="svg" role="img" aria-label="Türkiye ilçe haritası"></svg>
     <div class="zoom"><button id="zi" aria-label="Yakınlaştır">+</button><button id="zo" aria-label="Uzaklaştır">−</button><button id="zr" class="kucuk" aria-label="Tüm Türkiye">TR</button></div>
   </div>
-  <div class="arac"><button id="konum">📍 Konumumu bul</button><a class="alink" href="yakinimda.html?mod=konum">📍 Yakınımdakiler</a>
+  <div class="arac"><a class="alink" href="yakinimda.html?mod=konum">📍 Yakınımdakiler</a>
   <div class="ipucu"><span><i style="background:#1f5f86"></i>Rehberi var</span><span><i style="background:#1b2434;border:1px solid #334"></i>Henüz taranmadı</span></div>
   <select id="ilSec" class="sec-kutu"><option value="">Listeden il seç…</option></select>
   <div class="panel" id="panel"></div>
@@ -540,8 +540,8 @@ function konumBul() {
     panel.innerHTML = '<p class="bilgi">Konum alınamadı. Tarayıcının konum iznini açıp tekrar dene.</p>';
   }, {enableHighAccuracy: true, timeout: 15000, maximumAge: 60000});
 }
-document.getElementById('konum').onclick = konumBul;
-if (/[?&]konum=1/.test(location.search)) setTimeout(konumBul, 700);   // ana sayfadaki 'Konumumu bul' düğmesinden gelince otomatik başlar
+{ const kb = document.getElementById('konum'); if (kb) kb.onclick = konumBul; }
+if (/[?&]konum=1/.test(location.search)) location.replace('yakinimda.html?mod=konum');   // eski 'harita.html?konum=1' linkleri yeni sayfaya yönlenir;    // ana sayfadaki 'Konumumu bul' düğmesinden gelince otomatik başlar
 
 // ---- kaydırma ve yakınlaştırma ----
 let surukleme = false;
