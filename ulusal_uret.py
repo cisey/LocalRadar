@@ -1,28 +1,47 @@
-"""Türkiye'nin en popüler 100 yeri -> ulusal.html. Çalıştır: python3 ulusal_uret.py  (repo kökünden; local_radar_core yolu aşağıda)"""
-import re,json,glob,math,sys,collections,html
+"""Türkiye'nin En Popüler 100 Yeri -> ulusal.html (2 sekme: Türkiye Seçkisi + 81 İlin Zirvesi).
+Çalıştır (repo kökünden): python3 ulusal_uret.py   Gerekli: local_radar_core.py (local-radar deposu)."""
+import re,json,glob,math,sys,collections
 sys.path.insert(0,'/home/claude/cisey/local-radar')
 import local_radar_core as C
-BUY={'Istanbul','Ankara','Izmir'}
+BUY={'İstanbul','Ankara','İzmir'};KOTA_BUY,KOTA_DIGER,KOTA_KAT,TOPLAM=5,3,20,100
+MIN_P,MIN_Y,YEDEK_Y=4.2,150,80
+DUZ={'Adiyaman':'Adıyaman','Agri':'Ağrı','Aydin':'Aydın','Balikesir':'Balıkesir','Bartin':'Bartın','Bingol':'Bingöl','Canakkale':'Çanakkale','Cankiri':'Çankırı','Corum':'Çorum','Diyarbakir':'Diyarbakır','Duzce':'Düzce','Elazig':'Elazığ','Eskisehir':'Eskişehir','Gumushane':'Gümüşhane','Igdir':'Iğdır','Istanbul':'İstanbul','Izmir':'İzmir','Kahramanmaras':'Kahramanmaraş','Karabuk':'Karabük','Kirikkale':'Kırıkkale','Kirklareli':'Kırklareli','Kirsehir':'Kırşehir','Kutahya':'Kütahya','Mugla':'Muğla','Mus':'Muş','Nevsehir':'Nevşehir','Nigde':'Niğde','Sanliurfa':'Şanlıurfa','Sirnak':'Şırnak','Tekirdag':'Tekirdağ','Usak':'Uşak','Mardin':'Mardin','Antalya':'Antalya','Eskişehir':'Eskişehir','Afyonkarahisar':'Afyonkarahisar','Karaman':'Karaman','Kilis':'Kilis','Osmaniye':'Osmaniye','Hakkari':'Hakkâri','Hakkari':'Hakkâri'}
+KARA_AD=re.compile(r'(?<![a-z])(cicekci|cicekcilik|hediyelik|rafting|binicilik|termal|dinlenme|petrol|akaryakit|avm|otel|oteli|hotel)(?![a-z])')
+KARA_TUR=re.compile(r'kamp|nargile|dugun|otel|pansiyon|konaklama|termal|hediyelik|cicek|rafting|binicilik|turizm|market|tesis|bungalow|plaj|havuz|lounge bar|gece kulubu')
+YEMEK_TUR=re.compile(r'restoran|lokanta|kebap|pide|kafe|cafe|kahvalti|firin|pastane|tatli|balik|kofte|et yemek|corba|kafeterya')
+def kara(n,t):
+    fa=C.fold(n);ft=C.fold(t)
+    if KARA_AD.search(fa):return True
+    return bool(KARA_TUR.search(ft)) and not YEMEK_TUR.search(ft)
+def temiz(n):
+    n=re.split(r'\s*[|\[(]\s*',n)[0]
+    m=re.split(r'\s+[-–]\s+',n)
+    if len(m)>1 and len(m[0])>=3:n=m[0]
+    if len(n)>30 and ',' in n:n=n.split(',')[0]
+    return n.replace('_',' ').strip(' ,-')
 GEN=set('restaurant restoran lokantasi lokanta kebap kebab cafe kafe sirkeci sultanahmet pide salonu evi ocakbasi usta ustanin yeri'.split())
 def marka(n):
     w=[x for x in re.split(r'[^a-z0-9]+',C._populer_anahtar(n)) if x and x not in GEN]
     return ' '.join(w[:2]) or C._populer_anahtar(n)
-rows=[];ilmax={};ad={}
+rows=[];ilmax={};ad={};elenen=[]
 for f in sorted(glob.glob('rehberler/*-Tum-Ilceler.html')):
     il=f.split('/')[-1].replace('-Tum-Ilceler.html','')
     h=open(f,encoding='utf-8').read();i=h.find('const V=')
     try:v=json.JSONDecoder().raw_decode(h[i+8:])[0]
     except Exception:continue
-    m=re.search(r'<title>([^<·–-]+)',h);ad[il]=(m.group(1).strip() if m else il)
+    m=re.search(r'<title>([^<·–-]+)',h);a=(m.group(1).strip() if m else il);ad[il]=DUZ.get(a,DUZ.get(il,a))
     L=[]
     for x in v.get('I',[]):
         if x.get('S') not in C.POPULER_KATEGORILER or x.get('u') or not x.get('l'):continue
         try:p=float(str(x['p']).replace(',','.'))
         except:continue
-        n=C._PUA.sub('',x.get('n') or '').strip();y=x.get('y') or 0
-        if not(0<p<=5) or C._zincir_mi(n) or re.search(r'dinlenme|petrol|avm|otel',C.fold(n+' '+(x.get('t') or ''))):continue
-        L.append(dict(il=il,n=n,p=p,y=y,S=x['S'],c=x.get('c') or '',k=marka(n),l=x['l']))
-    if len(L)>=50:
+        n0=C._PUA.sub('',x.get('n') or '').strip();t=C._PUA.sub('',x.get('t') or '');y=x.get('y') or 0
+        if not(0<p<=5) or C._zincir_mi(n0) or re.search(r'dinlenme|petrol|avm|otel',C.fold(n0+' '+t)):continue
+        if kara(n0,t):
+            if p>=MIN_P and y>=MIN_Y:elenen.append('%s | %s | %s | %s yorum | %s'%(n0,ad[il],t,y,p))
+            continue
+        L.append(dict(il=il,n=temiz(n0),p=p,y=y,S=x['S'],c=x.get('c') or '',k=marka(n0),l=x['l']))
+    if L:
         ys=sorted((a['y'] for a in L),reverse=True)
         ilmax[il]=ys[1] if len(ys)>1 and ys[0]>3*ys[1] else ys[0]
         rows+=L
@@ -31,63 +50,28 @@ for r in rows:
     r['G']=(r['y']*r['p']+250*Cm)/(r['y']+250)
     rel=lambda m:min(1,math.log(r['y']+1)/math.log(m+1))
     r['sk']=(0.6*rel(ilmax[r['il']])+0.4*rel(TR))*(r['G']-3.5)
-ok=sorted([r for r in rows if 4.2<=r['p']<=5 and r['y']>=150],key=lambda r:-r['sk'])
+ok=sorted([r for r in rows if MIN_P<=r['p']<=5 and r['y']>=MIN_Y],key=lambda r:-r['sk'])
 out=[];ic=collections.Counter();kc=collections.Counter();br=set()
 for r in ok:
-    if ic[r['il']]>=(5 if r['il'] in BUY else 3) or kc[r['S']]>=20 or r['k'] in br:continue
-    out.append(r);ic[r['il']]+=1;kc[r['S']]+=1;br.add(r['k'])
-    if len(out)==100:break
-eksik=[]
-for il in sorted(ilmax,key=lambda a:ad[a]):
-    if ic[il]:continue
-    c=sorted([r for r in rows if r['il']==il and r['p']>=4.2 and r['y']>=80 and r['k'] not in br],key=lambda r:-r['G'])
-    if c:eksik.append(c[0])
-def kart(r,i=None):
-    return ('<a class="k" href="%s" target="_blank" rel="noopener"><div class="no">%s</div><div class="b"><div class="ad">%s</div>'
-     '<div class="alt">%s%s · %s</div><div class="pu"><b>★ %s</b> · %s yorum</div></div></a>')%(
-     html.escape(r['l'],True),i or '·',html.escape(r['n']),html.escape(ad[r['il']]),(' / '+html.escape(r['c'])) if r['c'] else '',html.escape(r['S']),
-     str(r['p']).replace('.',','),f"{r['y']:,}".replace(',','.'))
-ilopt=''.join('<option>%s</option>'%html.escape(a) for a in sorted({ad[r['il']] for r in out}))
-katopt=''.join('<option>%s</option>'%html.escape(a) for a in sorted({r['S'] for r in out}))
-kartlar=''.join(kart(r,i).replace('<a class="k"','<a class="k" data-il="%s" data-kat="%s"'%(html.escape(ad[r['il']],True),html.escape(r['S'],True)),1) for i,r in enumerate(out,1))
-ek=''.join(kart(r) for r in eksik)
-T=open('puanlama.html',encoding='utf-8').read()
-gt=T[T.find('<!-- Google tag'):T.find('<meta charset')]
-page=f'''<!DOCTYPE html>
-<html lang="tr"><head>
-{gt}<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<title>Türkiye'nin En Popüler 100 Yeri · Local Radar</title>
-<style>
-:root{{--bg:#0b0f17;--card:rgba(26,32,44,.7);--line:rgba(255,255,255,.08);--text:#f8fafc;--muted:#94a3b8;--accent:#38bdf8;--gold:#fbbf24}}
-*{{box-sizing:border-box;margin:0;padding:0}}
-body{{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5;padding-bottom:48px}}
-.wrap{{max-width:640px;margin:0 auto;padding:16px}}
-.back{{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;background:rgba(255,255,255,.05);padding:6px 12px;border-radius:20px;border:1px solid var(--line);margin-bottom:14px}}
-h1{{font-size:24px;font-weight:800;line-height:1.25;margin-bottom:6px}}h2{{font-size:17px;font-weight:800;margin:26px 0 8px;color:var(--gold)}}
-p{{color:#cbd5e1;font-size:14px;margin:8px 0}}.fl{{display:flex;gap:8px;margin:14px 0}}
-select{{flex:1;min-width:0;background:#1a202c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:14px}}
-.k{{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0;text-decoration:none;color:inherit}}
-.no{{min-width:34px;text-align:center;font-weight:800;font-size:16px;color:var(--gold)}}.ad{{font-weight:700;font-size:15px}}
-.alt{{color:var(--muted);font-size:12.5px}}.pu{{font-size:13px;color:#cbd5e1;margin-top:2px}}.pu b{{color:var(--gold)}}
-.not{{font-size:12.5px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:12px 0}}.not a{{color:var(--accent)}}
-</style></head><body><div class="wrap">
-<a class="back" href="index.html">← Ana sayfa</a>
-<h1>🏆 Türkiye'nin En Popüler 100 Yeri</h1>
-<p>Hem çok yorum alan hem yüksek puanlı, zincir olmayan yerler. Yorum sayısı il ölçeğine göre dengelenir; bu yüzden küçük illerin klasikleri de listeye girebilir.</p>
-<div class="fl"><select id="il"><option value="">Tüm iller</option>{ilopt}</select><select id="kat"><option value="">Tüm kategoriler</option>{katopt}</select></div>
-<div id="liste">{kartlar}</div>
-<h2>📍 Listede yeri olmayan illerin en iyisi</h2>
-<p>Bu illerde 150 yorum ve 4,2 puanı birlikte geçen yer ya çok az ya da yok. Burada eşik 80 yoruma indirildi.</p>
-{ek}
-<div class="not">Skorlar il ölçeğine göre dengelenmiştir; son tarama verisini yansıtır, taranmamış ilçeleri kapsamaz. Kuralların ayrıntısı için <a href="puanlama.html">Puanlama nasıl çalışır?</a> sayfasına bakın. Büyükşehirler (İstanbul, Ankara, İzmir) en fazla 5, diğer iller en fazla 3 yerle yer alır. Kategori başına en fazla 20 yer, marka başına 1 şube.</div>
-</div><script>
-var il=document.getElementById('il'),kat=document.getElementById('kat');
-function f(){{document.querySelectorAll('#liste .k').forEach(function(e){{e.style.display=((!il.value||e.dataset.il==il.value)&&(!kat.value||e.dataset.kat==kat.value))?'':'none'}})}}
-il.onchange=kat.onchange=f;
-</script></body></html>'''
-open('ulusal.html','w',encoding='utf-8').write(page)
-print(len(out),'liste',len(ic),'il',len(eksik),'eksik il ek',len(page)//1024,'KB')
-for i,r in enumerate(out[:12],1):print(i,r['n'],r['il'],r['c'])
-print([ (r['n'],ad[r['il']]) for r in eksik[:6]])
+    if ic[ad[r['il']]]>=(KOTA_BUY if ad[r['il']] in BUY else KOTA_DIGER) or kc[r['S']]>=KOTA_KAT or r['k'] in br:continue
+    out.append(r);ic[ad[r['il']]]+=1;kc[r['S']]+=1;br.add(r['k'])
+    if len(out)==TOPLAM:break
+def o(r,et=''):
+    return dict(ad=r['n'],il=ad[r['il']],ilce=r['c'] or 'Merkez',kat=r['S'],puan=r['p'],yorum=r['y'],link=r['l'],etiket=et)
+secki=[o(r) for r in out]
+zirve=[]
+for il in sorted(ilmax,key=lambda a:ad[a].replace('İ','I').lower()):
+    L=[r for r in rows if r['il']==il]
+    for (mp,my,et) in ((MIN_P,MIN_Y,'İl zirvesi'),(MIN_P,YEDEK_Y,'80+ yorum'),(4.0,30,'İlin en iyisi')):
+        c=[r for r in L if r['p']>=mp and r['y']>=my]
+        if c:break
+    else:c=L;et='İlin en iyisi'
+    zirve.append(o(max(c,key=lambda r:r['G']),et))
+veri=json.dumps(dict(secki=secki,zirve=zirve),ensure_ascii=False,separators=(',',':'))
+T=open('puanlama.html',encoding='utf-8').read();gt=T[T.find('<!-- Google tag'):T.find('<meta charset')]
+S=open('ulusal_sablon.html',encoding='utf-8').read()
+open('ulusal.html','w',encoding='utf-8').write(S.replace('__GTAG__',gt).replace('__VERI__',veri))
+open('ulusal_elenenler.txt','w',encoding='utf-8').write('\n'.join(sorted(set(elenen))))
+print(len(secki),'seçki',len(ic),'il;',len(zirve),'il zirve;',len(elenen),'kara listeye takılan aday')
+print(collections.Counter(z['etiket'] for z in zirve))
+print([ (s['ad'],s['il']) for s in secki[:10]])

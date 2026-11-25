@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+__GTAG__<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Türkiye'nin En Popüler Yerleri · Local Radar</title>
+<style>
+:root{--bg:#0b0f17;--card:rgba(26,32,44,.75);--line:rgba(255,255,255,.08);--text:#f8fafc;--muted:#94a3b8;--accent:#38bdf8;--gold:#fbbf24}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.45;padding-bottom:48px}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
+.back{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;background:rgba(255,255,255,.05);padding:6px 12px;border-radius:20px;border:1px solid var(--line);margin-bottom:14px}
+h1{font-size:23px;font-weight:800;line-height:1.25;margin-bottom:6px}
+.ac{color:#cbd5e1;font-size:13.5px;margin-bottom:14px}
+.sek{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:rgba(255,255,255,.04);padding:4px;border-radius:14px;border:1px solid var(--line);margin-bottom:12px}
+.sk{background:transparent;border:0;color:var(--muted);font-size:13.5px;font-weight:700;padding:10px 8px;border-radius:10px;cursor:pointer}
+.sk.a{background:#1e293b;color:var(--text)}
+.fl{display:flex;gap:8px;margin-bottom:8px}
+select{flex:1;min-width:0;background:#1a202c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13.5px}
+.dr{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin:6px 2px 10px}
+.sf{background:none;border:0;color:var(--accent);font-size:12px;cursor:pointer;display:none}
+.k{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0;text-decoration:none;color:inherit}
+.no{min-width:34px;text-align:center;font-weight:800;font-size:15px;color:var(--muted)}.no.t{color:var(--gold);font-size:17px}
+.rz{min-width:68px;max-width:68px;text-align:center;font-weight:800;font-size:11px;color:var(--gold);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.22);padding:5px 4px;border-radius:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.b{flex:1;min-width:0}.ad{font-weight:700;font-size:15px}.alt{color:var(--muted);font-size:12.5px;margin-top:2px}
+.pu{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;color:#cbd5e1;margin-top:4px}.pu b{color:var(--gold)}
+.et{font-size:11px;color:var(--accent);background:rgba(56,189,248,.12);padding:1px 7px;border-radius:6px}
+.ok{color:var(--muted);font-size:14px}
+.df{width:100%;margin-top:10px;padding:12px;background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line);border-radius:12px;font-size:13.5px;font-weight:600;cursor:pointer}
+.bos{text-align:center;color:var(--muted);font-size:14px;padding:28px 12px;background:var(--card);border-radius:14px;border:1px solid var(--line)}
+.not{font-size:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin-top:18px}.not a{color:var(--accent);text-decoration:none}
+</style></head><body><div class="wrap">
+<a class="back" href="index.html">← Ana sayfa</a>
+<h1>🏆 Türkiye'nin En Popüler Yerleri</h1>
+<p class="ac" id="ac"></p>
+<div class="sek"><button class="sk a" id="t1" type="button">🏆 Türkiye Seçkisi</button><button class="sk" id="t2" type="button">🗺️ 81 İlin Zirvesi</button></div>
+<div class="fl"><select id="il"></select><select id="kat"></select></div>
+<div class="dr"><span id="say"></span><button class="sf" id="sf" type="button">Filtreyi temizle</button></div>
+<div id="liste"></div>
+<button class="df" id="df" type="button" style="display:none"></button>
+<div class="not">Skorlar il ölçeğine göre dengelenmiştir; son tarama verisini yansıtır, taranmamış ilçeleri kapsamaz. Seçkide büyükşehirler (İstanbul, Ankara, İzmir) en fazla 5, diğer iller en fazla 3 yerle yer alır; kategori başına en fazla 20 yer, marka başına 1 şube. Kuralların ayrıntısı için <a href="puanlama.html">Puanlama nasıl çalışır?</a> sayfasına bakın.</div>
+</div>
+<script id="veri" type="application/json">__VERI__</script>
+<script>
+(function(){
+var H={secki:[],zirve:[]};try{H=JSON.parse(document.getElementById('veri').textContent)}catch(e){}
+var S='secki',N=25,ADIM=25,$=function(i){return document.getElementById(i)};
+var elIl=$('il'),elKat=$('kat');
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function doldur(){var k=H[S],oi=elIl.value,ok=elKat.value;
+ var il=Array.from(new Set(k.map(function(x){return x.il}))).sort(function(a,b){return a.localeCompare(b,'tr')});
+ var kt=Array.from(new Set(k.map(function(x){return x.kat}))).sort(function(a,b){return a.localeCompare(b,'tr')});
+ elIl.innerHTML='<option value="">Tüm iller ('+il.length+')</option>'+il.map(function(x){return'<option value="'+esc(x)+'">'+esc(x)+'</option>'}).join('');
+ elKat.innerHTML='<option value="">Tüm kategoriler</option>'+kt.map(function(x){return'<option value="'+esc(x)+'">'+esc(x)+'</option>'}).join('');
+ if(il.indexOf(oi)>-1)elIl.value=oi;if(kt.indexOf(ok)>-1)elKat.value=ok}
+function ciz(){var k=H[S],i=elIl.value,c=elKat.value,fv=!!(i||c);
+ var l=k.filter(function(m){return(!i||m.il===i)&&(!c||m.kat===c)});
+ $('sf').style.display=fv?'inline':'none';$('say').textContent=l.length+' mekan listeleniyor';
+ if(!l.length){$('liste').innerHTML='<div class="bos">Bu seçime uygun mekan bulunamadı.</div>';$('df').style.display='none';return}
+ var lim=fv?l.length:Math.min(N,l.length);
+ $('liste').innerHTML=l.slice(0,lim).map(function(m){var s=k.indexOf(m)+1;
+  var sol=S==='secki'?'<div class="no'+(s<=3?' t':'')+'">'+s+'</div>':'<div class="rz">'+esc(m.il.toLocaleUpperCase('tr-TR'))+'</div>';
+  return'<a class="k" href="'+esc(m.link)+'" target="_blank" rel="noopener">'+sol+'<div class="b"><div class="ad">'+esc(m.ad)+'</div><div class="alt">'+esc(m.il)+' / '+esc(m.ilce)+' · '+esc(m.kat)+'</div><div class="pu"><b>★ '+Number(m.puan).toFixed(1).replace('.',',')+'</b> · '+Number(m.yorum).toLocaleString('tr-TR')+' yorum '+(m.etiket?'<span class="et">'+esc(m.etiket)+'</span>':'')+'</div></div><div class="ok">↗</div></a>'}).join('');
+ var kalan=l.length-lim;if(!fv&&kalan>0){$('df').style.display='block';$('df').textContent='Daha fazla göster ('+kalan+' kaldı)'}else $('df').style.display='none'}
+function sek(x){S=x;N=ADIM;$('t1').classList.toggle('a',x==='secki');$('t2').classList.toggle('a',x==='zirve');
+ $('ac').textContent=x==='secki'?'İl ölçeğine göre dengelenmiş skorla Türkiye genelinde öne çıkan en iyi 100 yerel mekan.':'Her ilin kendi içindeki 1 numaralı mekanı. İller birbiriyle yarışmaz.';doldur();ciz()}
+$('t1').onclick=function(){sek('secki')};$('t2').onclick=function(){sek('zirve')};
+elIl.onchange=elKat.onchange=function(){N=ADIM;ciz()};
+$('sf').onclick=function(){elIl.value='';elKat.value='';ciz()};
+$('df').onclick=function(){N+=ADIM;ciz()};
+sek('secki');
+})();
+</script></body></html>
