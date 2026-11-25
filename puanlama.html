@@ -38,6 +38,8 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 .hesap input,.hesap select{width:100%;font:inherit;font-size:15px;color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .sonuc{font-size:22px;font-weight:800;color:var(--gold);margin-top:12px}
 .sonuc small{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+h2.ana{font-size:19px;margin:34px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
+h3{font-size:15.5px;font-weight:800;margin:20px 0 6px;color:var(--text)}
 /*temaPaketi*/
 .tema-btn{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--muted);cursor:pointer;margin:0 0 6px 8px;vertical-align:middle}
 html[data-tema="light"]{color-scheme:light;--bg:#f3f4f6;--card:rgba(255,255,255,.92);--line:rgba(15,23,42,.12);--text:#111827;--muted:#5b6678;--accent:#0369a1;--gold:#b45309}
@@ -53,9 +55,22 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
 <div class="wrap">
   <a class="back" href="./">← Ana sayfa</a>
   <h1>⭐ Puanlama nasıl çalışıyor?</h1>
-  <p class="lead">Rehberlerdeki sıralamalar tek bir sayıya bakmaz. Hem Google puanına hem de kaç kişinin oy verdiğine bakar. Bu sayfa nasıl yaptığımızı sade bir dille anlatıyor.</p>
+  <p class="lead">Sıralamalar tek bir sayıya bakmaz. Hem Google puanına hem de kaç kişinin oy verdiğine bakar. Bu sayfa nasıl yaptığımızı sade bir dille anlatıyor.</p>
 
-  <h2>Kısaca</h2>
+    <h2 class="ana" id="ozet" style="border-top:0;padding-top:0;margin-top:22px">Hangi sayfada hangi sıralama?</h2>
+  <p>Sitede üç farklı hesap kullanılıyor. Hangi sayfada hangisinin çalıştığı aşağıda. Sayfa adına dokununca ilgili bölüme geçersin.</p>
+  <table>
+    <tr><th>Sayfa</th><th>Ne gösteriyor?</th><th>Hesap</th></tr>
+    <tr><td><a href="#rehber" style="color:var(--accent)">Rehberler</a> (ilçe ve il)</td><td>En iyi kutusu, kategori sekmeleri, haritadaki en güvenilir 3 yer</td><td>1. Güvenilir Skor</td></tr>
+    <tr><td><a href="#yakinimda" style="color:var(--accent)">Yakınımdakiler</a></td><td>Konumuna yakın mekanlar. Varsayılan sıralama "Yakın ve İyi"</td><td>2. Yakın ve İyi (Güvenilir Skor + mesafe)</td></tr>
+    <tr><td><a href="#neleryenir" style="color:var(--accent)">Neler yenir?</a></td><td>Şehrin klasikleri ve kategori listeleri</td><td>3. Meşhurluk skoru</td></tr>
+  </table>
+  <p>Puan, yorum ve mesafe gibi tek bir şeye bakan sıralamalar (En Yakın, Puan, Yorum) hesap sayılmaz, bunlar ilgili bölümde birer satırla anlatılıyor.</p>
+
+  <h2 class="ana" id="guvenilir">1️⃣ Güvenilir Skor: temel hesap</h2>
+  <p>Rehberlerin ve Yakınımdakiler sayfasının temelinde bu hesap var. Puanı ve kaç kişinin oy verdiğini birlikte tartar.</p>
+
+<h3>Kısaca</h3>
   <div class="box">
     <ul>
       <li>Veriler <b>Google Haritalar'dan</b> gelir: bir yerin puanı ve yorum sayısı.</li>
@@ -64,16 +79,16 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </ul>
   </div>
 
-  <h2>Neden sadece puana bakmıyoruz?</h2>
+<h3>Neden sadece puana bakmıyoruz?</h3>
   <p>5,0 puanlı bir yerin 6 yorumu olabilir. Bu, arkadaşların yazdığı birkaç yorum da olabilir. 4,7 puanlı ve 8 bin yorumlu bir yer ise binlerce farklı kişinin gerçekten beğendiği bir yerdir. Sadece puana bakarsak ilki öne çıkar, bu da yanıltıcı olur.</p>
   <p>Sadece yorum sayısına bakmak da yanlış: 4,3 puanlı ama çok kalabalık bir yer, 5,0 puanlı ve 8 bin yorumlu bir yerin önüne geçebilir.</p>
 
-  <h2>Çözüm: "ortalama yorum" ekleme fikri</h2>
+<h3>Çözüm: "ortalama yorum" ekleme fikri</h3>
   <p>Her yere, ortalaması <b>4,0</b> olan bir miktar "varsayılan yorum" eklenmiş gibi hesap yaparız. Gerçek yorumu çok olan yerde bu eklenen kısım önemsizleşir. Az yorumlu yerde ise puanı 4,0'a doğru çeker.</p>
   <div class="formul">Skor = gerçek puan × (yorum ÷ (yorum + K)) + 4,0 × (K ÷ (yorum + K))</div>
   <p>Buradaki <b>K</b>, eklenen varsayılan yorum sayısıdır. K büyüdükçe az yorumlu yerler daha çok aşağı çekilir.</p>
 
-  <h2>K sayısı nasıl seçiliyor?</h2>
+<h3>K sayısı nasıl seçiliyor?</h3>
   <p>Tek bir sayı her yerde çalışmaz. İstanbul veya Gaziantep'te en popüler yerin 25 bin yorumu varken, küçük bir ilçede en kalabalık yerin 300 yorumu olabilir. Bu yüzden K, rehberin ölçeğine göre belirlenir:</p>
   <div class="box">
     <ul>
@@ -83,7 +98,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </ul>
   </div>
 
-  <h2>Örnek: Gaziantep (K ≈ 1.300)</h2>
+<h3>Örnek: Gaziantep (K ≈ 1.300)</h3>
   <table>
     <tr><th>Yer</th><th class="n">Puan</th><th class="n">Yorum</th><th class="n">Skor</th></tr>
     <tr><td>Ömer Kozan Baklava</td><td class="n">5,0</td><td class="n">8.244</td><td class="n">4,86</td></tr>
@@ -93,7 +108,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   </table>
   <p>300 yorumlu 5,0 puanlı bir yer, 22 bin yorumlu 4,6'lık Kelebek'in önüne geçemez. Çünkü 300 yorum, bu şehirde "yeterince kanıtlanmış" sayılmaz.</p>
 
-  <h2>Kendin dene</h2>
+<h3>Kendin dene</h3>
   <div class="box hesap">
     <label for="p">Google puanı</label>
     <input id="p" type="number" step="0.1" min="1" max="5" value="4.8" inputmode="decimal">
@@ -109,16 +124,18 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     <div class="sonuc"><span id="s">–</span><small id="a"></small></div>
   </div>
 
-  <h2>Bu sayfada</h2>
+
+  <h2 class="ana" id="rehber">2️⃣ Rehber sayfaları (ilçe ve il)</h2>
+  <p>Her ilçenin ve ilin kendi rehberinde Güvenilir Skor kullanılır.</p>
   <div class="box">
     <ul>
-      <li><a href="#yakinimda" style="color:var(--accent)">📍 Yakınımdakiler sayfası</a>: 5 sıralama, mesafe cezası, otomatik gevşetme</li>
-      <li><a href="#nesec" style="color:var(--accent)">🎲 "Ne yesem?" düğmeleri</a></li>
-      <li><a href="#neleryenir" style="color:var(--accent)">🍽️ "Neler yenir?" sayfaları</a>: şehrin klasikleri nasıl seçiliyor</li>
+      <li><b>⭐ En iyi kutusu</b>, <b>kategori sekmeleri</b> ve haritadaki <b>"en güvenilir 3 yer"</b> Güvenilir Skor ile sıralanır. Her birinde K'nın nasıl seçildiği yukarıdaki "K sayısı nasıl seçiliyor?" bölümünde.</li>
+      <li><b>Sıralama menüsünün</b> varsayılanı Güvenilir Skor'dur.</li>
+      <li><b>🎲 Ne yesem?</b> düğmesi: Sayfada seçili filtrelere uyan yerlerden, puanı <b>4,5 ve üzeri</b> ve en az <b>50 yorumlu</b> olanlar arasından <b>rastgele 3 öneri</b> verir. "Başka öner" dersen yeni 3 tanesini seçer.</li>
     </ul>
   </div>
 
-  <h2 id="yakinimda">📍 Yakınımdakiler sayfası</h2>
+  <h2 class="ana" id="yakinimda">3️⃣ Yakınımdakiler sayfası</h2>
   <p>Konumuna göre çevrendeki mekanları listeler. Konumunun çevresindeki rehberleri, komşu ilçe ya da il olsa bile, birlikte okur. Mesafeler <b>kuş uçuşu</b> (düz çizgi) hesaplanır, yürüyüş ya da araba yolu uzunluğu değildir.</p>
   <div class="box">
     <b>Açılışta seçili olanlar:</b>
@@ -131,7 +148,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     Hepsini sayfadan değiştirebilirsin.
   </div>
 
-  <h2>5 sıralama seçeneği</h2>
+<h3>5 sıralama seçeneği</h3>
   <div class="box">
     <ul>
       <li><b>🎯 Yakın ve İyi (varsayılan):</b> Güvenilir skora bir mesafe cezası ekler. Yakındaki iyi yerler öne çıkar, ama çok daha iyi bir yer biraz uzaksa yine de öne geçebilir.</li>
@@ -142,7 +159,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </ul>
   </div>
 
-  <h2>"Yakın ve İyi" nasıl hesaplanıyor?</h2>
+<h3>"Yakın ve İyi" nasıl hesaplanıyor?</h3>
   <div class="formul">Yakın ve İyi = Güvenilir skor − 0,3 × ln(1 + mesafe_km ÷ 0,5)</div>
   <p>Güvenilir skor, yukarıda anlatılan formülün aynısıdır. Üstüne mesafeye bağlı bir ceza çıkarılır. Ceza ilk yüz metrelerde çok küçüktür, uzaklaştıkça yavaş yavaş büyür:</p>
   <table>
@@ -152,10 +169,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   <p>Karşılaştırmak için: 4,9 puanlı bir yer ile 4,3 puanlı bir yer arasındaki fark 0,6'dır. Yani 4,9'luk yer 3 km uzaktaysa, hemen yanındaki 4,3'lük yerle yaklaşık eşit sayılır.</p>
   <div class="box">Ataşehir örneği (K = 250): Çorbacı Çağan Ay 4,8 puan, 644 yorum, 212 m uzakta. Güvenilir skoru 4,58, mesafe cezası 0,11, <b>Yakın ve İyi skoru 4,47</b>. Ethem Efendi Kahvaltı 4,9 puan, 2.903 yorum, 1,6 km uzakta. Güvenilir skoru 4,83 (Çağan Ay'dan yüksek), ama mesafe cezası 0,43, <b>Yakın ve İyi skoru 4,40</b>. Bu yüzden Yakın ve İyi'de Çağan Ay önde, Güvenilir Skor'da Ethem Efendi önde.</div>
 
-  <h2>Bu sayfadaki K, rehberlerdekinden farklı</h2>
+<h3>Bu sayfadaki K, rehberlerdekinden farklı</h3>
   <p>Rehberlerde K en az 250'dir (yukarıya bak). Yakınımdakiler sayfasında ise K, <b>çevrendeki mekanların yorum sayısına</b> göre belirlenir: çevrendeki yerler yorum sayısına göre dizilir ve üstteki dörtte birin sınırındaki değer alınır, ama <b>5 ile 250 arasında</b> tutulur. Sebep küçük yerler: Karkamış gibi en kalabalık yerin 60 yorumu olduğu yerlerde K = 250 olsaydı, bütün iyi yerler "yeterince kanıtlanmamış" sayılıp aşağı çekilirdi. Sonuçta aynı yer, rehberde ve Yakınımdakiler'de biraz farklı skor alabilir.</p>
 
-  <h2>Yakında az yer varsa ne oluyor?</h2>
+<h3>Yakında az yer varsa ne oluyor?</h3>
   <p>Sayfa en az <b>8 mekan</b> bulmaya çalışır. Açılışta 3 km, 4,0+ puan, 10+ yorum şartıyla 8 yer çıkmazsa şu sırayla gevşetir ve ne yaptığını sarı bir uyarı kutusunda yazar:</p>
   <div class="box">
     <ul>
@@ -166,21 +183,16 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   </div>
   <p>3 km içinde 8'den az yer varsa, uyarıda ayrıca <b>en yakın yoğun bölge</b> (en az 100 mekanlı en yakın ilçe rehberi) önerilir ve tek dokunuşla oraya geçebilirsin.</p>
 
-  <h2>Sınırın ötesindeki kayıtlar</h2>
+<h3>Sınırın ötesindeki kayıtlar</h3>
   <p>Karkamış gibi sınır kasabalarında Google, sınırın karşı tarafındaki (örneğin Cerablus, Suriye) mekanları da döndürebilir. Bunlara gidemeyeceğin için listeden çıkarılır ve uyarıda kaç kaydın gizlendiği yazılır. Şu an bu ayıklama Cerablus çevresi için tanımlıdır; diğer sınır bölgeleri için de gerektikçe eklenir.</p>
 
-  <h2 id="nesec">🎲 "Ne yesem?" düğmeleri</h2>
-  <div class="box">
-    <ul>
-      <li><b>Rehber sayfalarında:</b> Sayfada seçili filtrelere uyan yerlerden, puanı <b>4,5 ve üzeri</b> ve en az <b>50 yorumlu</b> olanlar arasından <b>rastgele 3 öneri</b> verir. "Başka öner" dersen yeni 3 tanesini seçer.</li>
-      <li><b>Yakınımdakiler sayfasında:</b> Filtrene uyan yerleri Yakın ve İyi skoruna göre dizer, <b>ilk 15'i arasından rastgele 1 tane</b> seçer. "Başka öner" dersen bir öncekinden farklı bir yer seçer.</li>
-    </ul>
-  </div>
+  <h3>🎲 "Ne yesem?" düğmesi</h3>
+  <p>Filtrene uyan yerleri Yakın ve İyi skoruna göre dizer, <b>ilk 15'i arasından rastgele 1 tane</b> seçer. "Başka öner" dersen bir öncekinden farklı bir yer seçer.</p>
 
-  <h2 id="neleryenir">🍽️ "Neler yenir?" sayfaları nasıl sıralanıyor?</h2>
+  <h2 class="ana" id="neleryenir">4️⃣ "Neler yenir?" sayfaları</h2>
   <p>Bu sayfalar, şehre ilk kez gelen biri için "şehrin klasikleri hangileri?" sorusuna cevap verir. Bu yüzden rehberlerdeki güvenilir skordan <b>farklı</b> çalışır: kaliteye olduğu kadar <b>meşhurluğa</b> da bakar. Çok yorum almış bir yer, aynı puandaki az yorumlu yerin açık ara önüne geçer.</p>
 
-  <h2>Hangi yerler giriyor?</h2>
+<h3>Hangi yerler giriyor?</h3>
   <div class="box">
     <ul>
       <li>Sadece <b>yemek içecek kategorileri</b>: Döner &amp; Kebap, Çiğ Köfte, Pide &amp; Lahmacun, Türk &amp; Aile Restoranı, Balık &amp; Deniz Ürünleri, Kahvaltı, Fırın &amp; Tatlı, Kafe &amp; Kahve, Fast food &amp; Burger &amp; Pizza.</li>
@@ -190,7 +202,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </ul>
   </div>
 
-  <h2>Skor nasıl hesaplanıyor?</h2>
+<h3>Meşhurluk skoru nasıl hesaplanıyor?</h3>
   <div class="formul">Düzeltilmiş puan = (yorum × puan + M × C) ÷ (yorum + M)<br>Skor = Düzeltilmiş puan × ln(yorum + 10)</div>
   <div class="box">
     <ul>
@@ -206,7 +218,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   </table>
   <p>Neler yenir sıralaması: <b>4,5 puanlı ve 8.000 yorumlu</b> yer birinci, 4,8 puanlı ve 2.000 yorumlu yer ikinci, 4,9 puanlı ama 300 yorumlu yer sonuncu. Rehberlerdeki güvenilir skorda ise 4,8 puanlı ve 2.000 yorumlu yer birinci olur. Yani "şehrin klasiği" ile "puanı en sağlam yer" her zaman aynı yer değildir, iki liste de bu yüzden var.</p>
 
-  <h2>🔥 "Kaçırma" bölümü (en üstteki liste)</h2>
+<h3>🔥 "Kaçırma" bölümü (en üstteki liste)</h3>
   <div class="box">
     <ul>
       <li><b>Ulusal zincirler girmez</b> (Komagene, Mado, Starbucks, Burger King gibi). Şehrin kendine ait yerleri öne çıksın diye.</li>
@@ -216,7 +228,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </ul>
   </div>
 
-  <h2>Kategori bölümleri (Kebap, Pide, Kafe…)</h2>
+<h3>Kategori bölümleri (Kebap, Pide, Kafe…)</h3>
   <div class="box">
     <ul>
       <li>Aynı skorla sıralanır, <b>ulusal zincirler listenin sonuna</b> alınır ("Ulusal zincir" etiketi taşırlar).</li>
@@ -225,7 +237,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </ul>
   </div>
 
-  <h2>Kartlardaki işaretler</h2>
+<h3>Kartlardaki işaretler</h3>
   <div class="box">
     <ul>
       <li><b>💎</b> Puanı 4,7 ve üzeri.</li>
@@ -235,10 +247,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </ul>
   </div>
 
-  <h2>⚠️ "Çok popüler ama puanı düşük" bölümü</h2>
+<h3>⚠️ "Çok popüler ama puanı düşük" bölümü</h3>
   <p>Puan tabanının (4,0 ya da 3,8) altında kalan yerlerden <b>yorumu en çok olanlar</b>, ilk 8'e kadar ayrı bir bölümde gösterilir. Meşhur ama memnuniyeti düşük yerleri gitmeden önce bilmen için. Bu bölümde sıralama sadece yorum sayısına göredir.</p>
 
-  <h2>Dikkat edilmesi gerekenler</h2>
+  <h2 class="ana" id="dikkat">Dikkat edilmesi gerekenler</h2>
   <ul>
     <li>Puanlar ve yorum sayıları Google Haritalar'dan tarama tarihinde alınır, sonradan değişebilir.</li>
     <li>Aynı mekan farklı taramalarda iki kez bulunmuşsa tek kayda indirilir (Google'ın mekan kimliğine göre). Aynı markanın gerçekten ayrı şubeleri ise ayrı mekan sayılır.</li>
@@ -246,6 +258,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     <li>Mekanlar kapanmış veya el değiştirmiş olabilir. Gitmeden önce Google Haritalar'dan kontrol etmek iyi olur.</li>
     <li>Bu bir "tavsiye listesi" değil, verilere dayalı bir <b>sıralamadır</b>. Zevkler farklıdır.</li>
   </ul>
+
 </div>
 <script>
 function hesapla(){
