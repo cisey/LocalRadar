@@ -109,6 +109,135 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     <div class="sonuc"><span id="s">–</span><small id="a"></small></div>
   </div>
 
+  <h2>Bu sayfada</h2>
+  <div class="box">
+    <ul>
+      <li><a href="#yakinimda" style="color:var(--accent)">📍 Yakınımdakiler sayfası</a>: 5 sıralama, mesafe cezası, otomatik gevşetme</li>
+      <li><a href="#nesec" style="color:var(--accent)">🎲 "Ne yesem?" düğmeleri</a></li>
+      <li><a href="#neleryenir" style="color:var(--accent)">🍽️ "Neler yenir?" sayfaları</a>: şehrin klasikleri nasıl seçiliyor</li>
+    </ul>
+  </div>
+
+  <h2 id="yakinimda">📍 Yakınımdakiler sayfası</h2>
+  <p>Konumuna göre çevrendeki mekanları listeler. Konumunun çevresindeki rehberleri, komşu ilçe ya da il olsa bile, birlikte okur. Mesafeler <b>kuş uçuşu</b> (düz çizgi) hesaplanır, yürüyüş ya da araba yolu uzunluğu değildir.</p>
+  <div class="box">
+    <b>Açılışta seçili olanlar:</b>
+    <ul>
+      <li>Arama alanı <b>3 km</b></li>
+      <li>En az <b>4,0 puan</b></li>
+      <li>En az <b>10 yorum</b></li>
+      <li>Sıralama: <b>Yakın ve İyi</b></li>
+    </ul>
+    Hepsini sayfadan değiştirebilirsin.
+  </div>
+
+  <h2>5 sıralama seçeneği</h2>
+  <div class="box">
+    <ul>
+      <li><b>🎯 Yakın ve İyi (varsayılan):</b> Güvenilir skora bir mesafe cezası ekler. Yakındaki iyi yerler öne çıkar, ama çok daha iyi bir yer biraz uzaksa yine de öne geçebilir.</li>
+      <li><b>📍 En Yakın:</b> Sadece mesafeye bakar. En yakın yer, kötü de olsa birinci olur.</li>
+      <li><b>⭐ Güvenilir Skor:</b> Puan ve yorum sayısını birlikte tartar, mesafeye <b>hiç bakmaz</b>. Uzaktaki çok beğenilen bir yer, yanındaki iyi bir yerin önüne geçebilir.</li>
+      <li><b>🏆 Puan (Yüksek):</b> Sadece Google puanına bakar. Eşitlikte yorumu çok olan öne geçer. Az yorumlu 5,0'lar öne çıkabilir, dikkat.</li>
+      <li><b>💬 Yorum (Çok):</b> Sadece yorum sayısına bakar. En kalabalık yerler önce gelir, puana bakmaz.</li>
+    </ul>
+  </div>
+
+  <h2>"Yakın ve İyi" nasıl hesaplanıyor?</h2>
+  <div class="formul">Yakın ve İyi = Güvenilir skor − 0,3 × ln(1 + mesafe_km ÷ 0,5)</div>
+  <p>Güvenilir skor, yukarıda anlatılan formülün aynısıdır. Üstüne mesafeye bağlı bir ceza çıkarılır. Ceza ilk yüz metrelerde çok küçüktür, uzaklaştıkça yavaş yavaş büyür:</p>
+  <table>
+    <tr><th>Mesafe</th><th class="n">Skordan düşen</th></tr>
+    <tr><td>100 m</td><td class="n">0,05</td></tr><tr><td>250 m</td><td class="n">0,12</td></tr><tr><td>500 m</td><td class="n">0,21</td></tr><tr><td>1 km</td><td class="n">0,33</td></tr><tr><td>3 km</td><td class="n">0,58</td></tr><tr><td>10 km</td><td class="n">0,91</td></tr><tr><td>25 km</td><td class="n">1,18</td></tr>
+  </table>
+  <p>Karşılaştırmak için: 4,9 puanlı bir yer ile 4,3 puanlı bir yer arasındaki fark 0,6'dır. Yani 4,9'luk yer 3 km uzaktaysa, hemen yanındaki 4,3'lük yerle yaklaşık eşit sayılır.</p>
+  <div class="box">Ataşehir örneği (K = 250): Çorbacı Çağan Ay 4,8 puan, 644 yorum, 212 m uzakta. Güvenilir skoru 4,58, mesafe cezası 0,11, <b>Yakın ve İyi skoru 4,47</b>. Ethem Efendi Kahvaltı 4,9 puan, 2.903 yorum, 1,6 km uzakta. Güvenilir skoru 4,83 (Çağan Ay'dan yüksek), ama mesafe cezası 0,43, <b>Yakın ve İyi skoru 4,40</b>. Bu yüzden Yakın ve İyi'de Çağan Ay önde, Güvenilir Skor'da Ethem Efendi önde.</div>
+
+  <h2>Bu sayfadaki K, rehberlerdekinden farklı</h2>
+  <p>Rehberlerde K en az 250'dir (yukarıya bak). Yakınımdakiler sayfasında ise K, <b>çevrendeki mekanların yorum sayısına</b> göre belirlenir: çevrendeki yerler yorum sayısına göre dizilir ve üstteki dörtte birin sınırındaki değer alınır, ama <b>5 ile 250 arasında</b> tutulur. Sebep küçük yerler: Karkamış gibi en kalabalık yerin 60 yorumu olduğu yerlerde K = 250 olsaydı, bütün iyi yerler "yeterince kanıtlanmamış" sayılıp aşağı çekilirdi. Sonuçta aynı yer, rehberde ve Yakınımdakiler'de biraz farklı skor alabilir.</p>
+
+  <h2>Yakında az yer varsa ne oluyor?</h2>
+  <p>Sayfa en az <b>8 mekan</b> bulmaya çalışır. Açılışta 3 km, 4,0+ puan, 10+ yorum şartıyla 8 yer çıkmazsa şu sırayla gevşetir ve ne yaptığını sarı bir uyarı kutusunda yazar:</p>
+  <div class="box">
+    <ul>
+      <li><b>1.</b> Önce arama alanını büyütür: 3 km, sonra 10 km, sonra 30 km, sonra tüm yüklenen bölge.</li>
+      <li><b>2.</b> Hâlâ 8 yer yoksa yorum şartını 3'e düşürür ve alanı yine kademeli büyütür.</li>
+      <li><b>3.</b> Hâlâ yoksa puan ve yorum şartını tamamen kaldırır.</li>
+    </ul>
+  </div>
+  <p>3 km içinde 8'den az yer varsa, uyarıda ayrıca <b>en yakın yoğun bölge</b> (en az 100 mekanlı en yakın ilçe rehberi) önerilir ve tek dokunuşla oraya geçebilirsin.</p>
+
+  <h2>Sınırın ötesindeki kayıtlar</h2>
+  <p>Karkamış gibi sınır kasabalarında Google, sınırın karşı tarafındaki (örneğin Cerablus, Suriye) mekanları da döndürebilir. Bunlara gidemeyeceğin için listeden çıkarılır ve uyarıda kaç kaydın gizlendiği yazılır. Şu an bu ayıklama sadece Cerablus çevresi için tanımlıdır. Başka bir sınır kasabasında karşı taraf mekanlar görürsen haber verirsen onu da ekleriz.</p>
+
+  <h2 id="nesec">🎲 "Ne yesem?" düğmeleri</h2>
+  <div class="box">
+    <ul>
+      <li><b>Rehber sayfalarında:</b> Sayfada seçili filtrelere uyan yerlerden, puanı <b>4,5 ve üzeri</b> ve en az <b>50 yorumlu</b> olanlar arasından <b>rastgele 3 öneri</b> verir. "Başka öner" dersen yeni 3 tanesini seçer.</li>
+      <li><b>Yakınımdakiler sayfasında:</b> Filtrene uyan yerleri Yakın ve İyi skoruna göre dizer, <b>ilk 15'i arasından rastgele 1 tane</b> seçer. "Başka öner" dersen bir öncekinden farklı bir yer seçer.</li>
+    </ul>
+  </div>
+
+  <h2 id="neleryenir">🍽️ "Neler yenir?" sayfaları nasıl sıralanıyor?</h2>
+  <p>Bu sayfalar, şehre ilk kez gelen biri için "şehrin klasikleri hangileri?" sorusuna cevap verir. Bu yüzden rehberlerdeki güvenilir skordan <b>farklı</b> çalışır: kaliteye olduğu kadar <b>meşhurluğa</b> da bakar. Çok yorum almış bir yer, aynı puandaki az yorumlu yerin açık ara önüne geçer.</p>
+
+  <h2>Hangi yerler giriyor?</h2>
+  <div class="box">
+    <ul>
+      <li>Sadece <b>yemek içecek kategorileri</b>: Döner &amp; Kebap, Çiğ Köfte, Pide &amp; Lahmacun, Türk &amp; Aile Restoranı, Balık &amp; Deniz Ürünleri, Kahvaltı, Fırın &amp; Tatlı, Kafe &amp; Kahve, Fast food &amp; Burger &amp; Pizza.</li>
+      <li>Kapanmış olarak işaretli yerler girmez.</li>
+      <li><b>Puan tabanı 4,0.</b> O şehirde 4,0 ve üzeri puanlı 12'den az yer varsa taban 3,8'e iner. Taban altındaki meşhur yerler ayrı bir bölümde gösterilir (aşağıya bak).</li>
+      <li>Şartlara uyan 5'ten az yer varsa o şehir için sayfa hiç oluşturulmaz.</li>
+    </ul>
+  </div>
+
+  <h2>Skor nasıl hesaplanıyor?</h2>
+  <div class="formul">Düzeltilmiş puan = (yorum × puan + M × C) ÷ (yorum + M)<br>Skor = Düzeltilmiş puan × ln(yorum + 10)</div>
+  <div class="box">
+    <ul>
+      <li><b>C</b> o şehirdeki uygun yerlerin <b>ortalama puanıdır</b>. (Rehberlerdeki gibi sabit 4,0 değil.)</li>
+      <li><b>M</b> o şehirdeki en kalabalık yerin yorumunun <b>%5'idir</b>, ama 20 ile 250 arasında tutulur. Az yorumlu yerin puanını şehir ortalamasına doğru çeker.</li>
+      <li><b>ln(yorum + 10)</b> yorum sayısının logaritmasıdır. Yorum sayısı her ikiye katlandığında skora aşağı yukarı aynı katkıyı yapar. Yani 100 yorumdan 200'e çıkmak ile 5.000'den 10.000'e çıkmak yaklaşık aynı değerdedir. Böylece çok yorumlu yerler sınırsız öne geçemez.</li>
+    </ul>
+  </div>
+  <p>Örnek (varsayımsal bir şehir: en kalabalık yer 20.000 yorumlu, ortalama puan 4,4):</p>
+  <table>
+    <tr><th>Yer</th><th class="n">Puan</th><th class="n">Yorum</th><th class="n">Neler yenir skoru</th><th class="n">Rehber skoru (K = 1.000)</th></tr>
+    <tr><td>Meşhur, 4,5 puan</td><td class="n">4,50</td><td class="n">8.000</td><td class="n">40,4</td><td class="n">4,44</td></tr><tr><td>Çok beğenilen, 4,8 puan</td><td class="n">4,80</td><td class="n">2.000</td><td class="n">36,2</td><td class="n">4,53</td></tr><tr><td>Küçük ama harika, 4,9 puan</td><td class="n">4,90</td><td class="n">300</td><td class="n">26,8</td><td class="n">4,21</td></tr>
+  </table>
+  <p>Neler yenir sıralaması: <b>4,5 puanlı ve 8.000 yorumlu</b> yer birinci, 4,8 puanlı ve 2.000 yorumlu yer ikinci, 4,9 puanlı ama 300 yorumlu yer sonuncu. Rehberlerdeki güvenilir skorda ise 4,8 puanlı ve 2.000 yorumlu yer birinci olur. Yani "şehrin klasiği" ile "puanı en sağlam yer" her zaman aynı yer değildir, iki liste de bu yüzden var.</p>
+
+  <h2>🔥 "Kaçırma" bölümü (en üstteki liste)</h2>
+  <div class="box">
+    <ul>
+      <li><b>Ulusal zincirler girmez</b> (Komagene, Mado, Starbucks, Burger King gibi). Şehrin kendine ait yerleri öne çıksın diye.</li>
+      <li>Listenin uzunluğu şehrin büyüklüğüne göre değişir. "Nitelikli" yer sayısına bakılır (zincir olmayan ve en az <b>eşik kadar yorumu olan</b>; eşik = en kalabalık yerin yorumunun %8'i, en az 30). 40 ve üzeri nitelikli yer varsa <b>12</b>, 20 ve üzeri varsa <b>8</b>, daha azsa <b>6</b> yer gösterilir.</li>
+      <li>Çeşitlilik için aynı kategoriden en fazla <b>4</b> yer, aynı markadan en fazla <b>2</b> şube girer. (Marka adı, adın "-", "(" ya da "," işaretinden önceki kısmıdır.)</li>
+      <li>12'lik listelerde ("büyük şehirler") altta "Devamını göster" açılır listesi vardır: 13. sıradan başlayıp en fazla 30'a kadar gider. Orada kategori başına sınır 8 olur, marka sınırı yine 2'dir.</li>
+    </ul>
+  </div>
+
+  <h2>Kategori bölümleri (Kebap, Pide, Kafe…)</h2>
+  <div class="box">
+    <ul>
+      <li>Aynı skorla sıralanır, <b>ulusal zincirler listenin sonuna</b> alınır ("Ulusal zincir" etiketi taşırlar).</li>
+      <li>Her kategoride bir alt yorum sınırı vardır: şehir eşiği, ama o kategorinin en kalabalık yerinin %30'unu geçmeyecek şekilde (küçük kategoriler boş kalmasın diye). Bu sınır hiçbir zaman 100'ün altına (şehir eşiği 100'den küçükse eşiğin altına) inmez.</li>
+      <li>Her kategoride en fazla <b>20</b> yer gösterilir. Kategoride 2'den az yer kalırsa o bölüm gösterilmez.</li>
+    </ul>
+  </div>
+
+  <h2>Kartlardaki işaretler</h2>
+  <div class="box">
+    <ul>
+      <li><b>💎</b> Puanı 4,7 ve üzeri.</li>
+      <li><b>Çubuk</b> yorum yoğunluğunu gösterir. Logaritmik ölçektedir: 100 yorum en kısa çubuk, şehirdeki en kalabalık yer tam dolu çubuktur. Kabaca kıyas içindir.</li>
+      <li><b>Lezzet etiketleri</b> (Beyran, Paça, Katmer, Küşleme, Ciğer gibi) mekanın adında ya da türünde bu kelimeler geçiyorsa otomatik eklenir. Menüye bakılarak yazılmaz.</li>
+      <li><b>Ulusal zincir</b> etiketi, bilinen zincir markalarının adıyla eşleşen yerlere konur.</li>
+    </ul>
+  </div>
+
+  <h2>⚠️ "Çok popüler ama puanı düşük" bölümü</h2>
+  <p>Puan tabanının (4,0 ya da 3,8) altında kalan yerlerden <b>yorumu en çok olanlar</b>, ilk 8'e kadar ayrı bir bölümde gösterilir. Meşhur ama memnuniyeti düşük yerleri gitmeden önce bilmen için. Bu bölümde sıralama sadece yorum sayısına göredir.</p>
+
   <h2>Dikkat edilmesi gerekenler</h2>
   <ul>
     <li>Puanlar ve yorum sayıları Google Haritalar'dan tarama tarihinde alınır, sonradan değişebilir.</li>
