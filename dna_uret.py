@@ -29,11 +29,11 @@ for il in sorted(il_k,key=lambda a:ad[a].replace('İ','I').lower()):
 veri=json.dumps(dict(kats=kats,tr=dict(pay={k:round(100*trpay[k],1) for k in kats},p=round(trp,2),y=int(try_),n=N),iller=iller),ensure_ascii=False,separators=(',',':'))
 S=open('ulusal_sablon.html',encoding='utf-8').read()
 CSS='''.sec{display:flex;gap:8px;margin-bottom:12px}.kr{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}
-.kr a{color:var(--accent);text-decoration:none}.kr h2{font-size:16px;margin-bottom:4px}.ozet{font-size:13px;color:#cbd5e1;margin:4px 0 8px}.ozet b{color:var(--gold)}
+.kr a{color:var(--accent);text-decoration:none}.kr h2{font-size:16px;margin-bottom:4px}.ozet{font-size:13px;color:var(--soft);margin:4px 0 8px}.ozet b{color:var(--gold)}
 .sat{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:center;font-size:12px;margin:6px 0}.sat .kn{color:var(--muted);line-height:1.2}
-.bar{height:9px;border-radius:5px;background:rgba(255,255,255,.07);position:relative;overflow:hidden;margin:2px 0}.bar i{display:block;height:100%;border-radius:5px;background:var(--accent)}.bar.b2 i{background:var(--gold)}
-.sy{font-size:11px;color:#cbd5e1}.kis{font-size:11px;color:#fbbf24;background:rgba(251,191,36,.12);border-radius:6px;padding:1px 7px;margin-left:6px}
-.mt{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#cbd5e1;margin-top:6px}.mt b{color:var(--gold)}.lg{display:flex;gap:12px;font-size:12px;color:var(--muted);margin:2px 0 6px}.lg span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;background:var(--accent)}.lg span.l2:before{background:var(--gold)}
+.bar{height:9px;border-radius:5px;background:var(--tint);position:relative;overflow:hidden;margin:2px 0}.bar i{display:block;height:100%;border-radius:5px;background:var(--accent)}.bar.b2 i{background:var(--gold)}
+.sy{font-size:11px;color:var(--soft)}.kis{font-size:11px;color:#fbbf24;background:rgba(251,191,36,.12);border-radius:6px;padding:1px 7px;margin-left:6px}
+.mt{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--soft);margin-top:6px}.mt b{color:var(--gold)}.lg{display:flex;gap:12px;font-size:12px;color:var(--muted);margin:2px 0 6px}.lg span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;background:var(--accent)}.lg span.l2:before{background:var(--gold)}
 '''
 S=S.replace('</style>',CSS+'</style>',1)
 S=re.sub(r'<div class="sek">.*?</div>\n','',S,flags=re.S)

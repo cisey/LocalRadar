@@ -36,8 +36,8 @@ for k,_ in GR:
 veri=json.dumps(dict(gruplar=gruplar),ensure_ascii=False,separators=(',',':'))
 S=open('ulusal_sablon.html',encoding='utf-8').read()
 S=re.sub(r'<div class="sek">.*?</div>\n','<div class="chips" id="chips"></div>\n',S,flags=re.S)
-S=S.replace('</style>','.geo{background:#1e293b;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}</style>',1)
-S=S.replace('</style>','.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.ch{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);font-size:13px;font-weight:700;padding:7px 12px;border-radius:20px;cursor:pointer}.ch.a{background:#1e293b;color:var(--text);border-color:var(--gold)}</style>',1)
+S=S.replace('</style>','.geo{background:var(--btn);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}</style>',1)
+S=S.replace('</style>','.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}.ch{background:var(--tint);border:1px solid var(--line);color:var(--muted);font-size:13px;font-weight:700;padding:7px 12px;border-radius:20px;cursor:pointer}.ch.a{background:var(--btn);color:var(--text);border-color:var(--gold)}</style>',1)
 S=S.replace("Türkiye'nin En Popüler Yerleri · Local Radar","Tek İşin Ustaları · Local Radar").replace("🏆 Türkiye'nin En Popüler Yerleri","🍽️ Tek İşin Ustaları")
 S=S.replace('<div class="fl"><select id="il"></select><select id="kat"></select></div>','<div class="fl"><select id="il"></select><button type="button" class="geo" id="geo">📍 Yakından uzağa</button></div>')
 a=S.index('<div class="not">');b=S.index('</div>',a)+6

@@ -35,7 +35,7 @@ for f,r,ort in adaylar:
 veri=json.dumps(dict(secki=out,zirve=[]),ensure_ascii=False,separators=(',',':'))
 S=open('ulusal_sablon.html',encoding='utf-8').read()
 S=re.sub(r'<div class="sek">.*?</div>\n','',S,flags=re.S)
-S=S.replace('</style>','.geo{background:#1e293b;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}</style>',1)
+S=S.replace('</style>','.geo{background:var(--btn);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}</style>',1)
 S=S.replace('<div class="fl"><select id="il"></select><select id="kat"></select></div>','<div class="fl"><select id="il"></select><select id="kat"></select><button type="button" class="geo" id="geo">📍 Yakından uzağa</button></div>')
 S=S.replace("var S='secki',","""var __g=false;function __km(a,b,c,d){var r=Math.PI/180,x=(d-b)*r*Math.cos((a+c)/2*r),y=(c-a)*r;return 6371*Math.sqrt(x*x+y*y)}
 function __geo(cb){var g=$('geo');if(__g){__g=false;window.__pos=null;g.textContent='📍 Yakından uzağa';cb();return}

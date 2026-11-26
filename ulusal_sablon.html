@@ -2,35 +2,42 @@
 <html lang="tr"><head>
 __GTAG__<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="dark light">
 <title>Türkiye'nin En Popüler Yerleri · Local Radar</title>
 <style>
-:root{--bg:#0b0f17;--card:rgba(26,32,44,.75);--line:rgba(255,255,255,.08);--text:#f8fafc;--muted:#94a3b8;--accent:#38bdf8;--gold:#fbbf24}
+:root{--bg:#0b0f17;--card:rgba(26,32,44,.7);--line:rgba(255,255,255,.08);--text:#f8fafc;--muted:#94a3b8;--accent:#38bdf8;--gold:#fbbf24;--soft:#cbd5e1;--btn:#1e293b;--sel:#1a202c;--tint:rgba(255,255,255,.05);--rozet:rgba(251,191,36,.1)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.45;padding-bottom:48px}
-.wrap{max-width:640px;margin:0 auto;padding:16px}
-.back{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;background:rgba(255,255,255,.05);padding:6px 12px;border-radius:20px;border:1px solid var(--line);margin-bottom:14px}
+body{background-color:var(--bg);background-image:radial-gradient(at 0% 0%,rgba(56,189,248,.12) 0,transparent 50%),radial-gradient(at 100% 100%,rgba(99,102,241,.12) 0,transparent 50%);background-attachment:fixed;color:var(--text);font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;line-height:1.45;min-height:100vh;-webkit-font-smoothing:antialiased;padding-bottom:48px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:14px}.top .back{margin-bottom:0}
+.tema-btn{font:inherit;font-size:13px;font-weight:500;color:var(--muted);background:var(--tint);padding:6px 12px;border-radius:20px;border:1px solid var(--line);cursor:pointer;white-space:nowrap}
+html[data-tema="light"]{color-scheme:light;--bg:#f3f4f6;--card:rgba(255,255,255,.92);--line:rgba(15,23,42,.12);--text:#111827;--muted:#5b6678;--accent:#0369a1;--gold:#b45309;--soft:#374151;--btn:#e2e8f0;--sel:#fff;--tint:rgba(15,23,42,.05);--rozet:rgba(180,83,9,.1)}
+html[data-tema="light"] .et{background:rgba(3,105,161,.1)}
+.wrap{max-width:580px;margin:0 auto;padding:16px}
+.back{display:inline-block;color:var(--muted);text-decoration:none;font-size:13px;background:var(--tint);padding:6px 12px;border-radius:20px;border:1px solid var(--line);margin-bottom:14px}
 h1{font-size:23px;font-weight:800;line-height:1.25;margin-bottom:6px}
-.ac{color:#cbd5e1;font-size:13.5px;margin-bottom:14px}
-.sek{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:rgba(255,255,255,.04);padding:4px;border-radius:14px;border:1px solid var(--line);margin-bottom:12px}
+.ac{color:var(--soft);font-size:13.5px;margin-bottom:14px}
+.sek{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--tint);padding:4px;border-radius:14px;border:1px solid var(--line);margin-bottom:12px}
 .sk{background:transparent;border:0;color:var(--muted);font-size:13.5px;font-weight:700;padding:10px 8px;border-radius:10px;cursor:pointer}
-.sk.a{background:#1e293b;color:var(--text)}
+.sk.a{background:var(--btn);color:var(--text)}
 .fl{display:flex;gap:8px;margin-bottom:8px}
-select{flex:1;min-width:0;background:#1a202c;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13.5px}
+select{flex:1;min-width:0;background:var(--sel);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px;font-size:13.5px}
 .dr{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin:6px 2px 10px}
 .sf{background:none;border:0;color:var(--accent);font-size:12px;cursor:pointer;display:none}
 .k{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0;text-decoration:none;color:inherit}
 .no{min-width:34px;text-align:center;font-weight:800;font-size:15px;color:var(--muted)}.no.t{color:var(--gold);font-size:17px}
-.rz{min-width:68px;max-width:68px;text-align:center;font-weight:800;font-size:11px;color:var(--gold);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.22);padding:5px 4px;border-radius:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rz{min-width:68px;max-width:68px;text-align:center;font-weight:800;font-size:11px;color:var(--gold);background:var(--rozet);border:1px solid rgba(251,191,36,.22);padding:5px 4px;border-radius:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .b{flex:1;min-width:0}.ad{font-weight:700;font-size:15px}.alt{color:var(--muted);font-size:12.5px;margin-top:2px}
-.pu{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;color:#cbd5e1;margin-top:4px}.pu b{color:var(--gold)}
+.pu{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:12.5px;color:var(--soft);margin-top:4px}.pu b{color:var(--gold)}
 .et{font-size:11px;color:var(--accent);background:rgba(56,189,248,.12);padding:1px 7px;border-radius:6px}
 .ok{color:var(--muted);font-size:14px}
-.df{width:100%;margin-top:10px;padding:12px;background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line);border-radius:12px;font-size:13.5px;font-weight:600;cursor:pointer}
+.df{width:100%;margin-top:10px;padding:12px;background:var(--tint);color:var(--text);border:1px solid var(--line);border-radius:12px;font-size:13.5px;font-weight:600;cursor:pointer}
 .bos{text-align:center;color:var(--muted);font-size:14px;padding:28px 12px;background:var(--card);border-radius:14px;border:1px solid var(--line)}
 .not{font-size:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin-top:18px}.not a{color:var(--accent);text-decoration:none}
-</style></head><body><div class="wrap">
-<a class="back" href="index.html">← Ana sayfa</a>
+</style>
+<script>try{var _t=localStorage.getItem('tema');if(_t==='dark'||_t==='light')document.documentElement.dataset.tema=_t;}catch(e){}</script></head><body><div class="wrap">
+<div class="top"><a class="back" href="index.html">← Ana sayfa</a><button type="button" class="tema-btn" id="temaBtn" aria-label="Temayı değiştir"></button></div>
 <h1>🏆 Türkiye'nin En Popüler Yerleri</h1>
 <p class="ac" id="ac"></p>
 <div class="sek"><button class="sk a" id="t1" type="button">🏆 Türkiye Seçkisi</button><button class="sk" id="t2" type="button">🗺️ 81 İlin Zirvesi</button></div>
@@ -76,4 +83,6 @@ sek('secki');
  var bul=function(){for(var i=0;i<elIl.options.length;i++){if(f(elIl.options[i].value)===f(q))return elIl.options[i].value}return''};
  var v=bul();if(!v&&H.zirve&&H.zirve.length){sek('zirve');v=bul()}if(v){elIl.value=v;ciz()}})();
 })();
-</script></body></html>
+</script>
+<script>(function(){var d=document.documentElement,b=document.getElementById('temaBtn');if(!b)return;function yaz(){var k=(d.dataset.tema||'dark')==='dark';b.textContent=k?'\u2600\uFE0F Açık':'\uD83C\uDF19 Koyu';b.setAttribute('aria-label',k?'Açık temaya geç':'Koyu temaya geç')}
+b.onclick=function(){var y=(d.dataset.tema||'dark')==='dark'?'light':'dark';d.dataset.tema=y;try{localStorage.setItem('tema',y)}catch(e){}yaz()};yaz()})();</script></body></html>

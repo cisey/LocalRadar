@@ -227,7 +227,7 @@ def sayfa(veri, cikti):
     )
     S = S.replace(
         "</style>",
-        ".geo{background:#1e293b;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}.k.vur{outline:2px solid var(--gold)}</style>",
+        ".geo{background:var(--btn);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}.k.vur{outline:2px solid var(--gold)}</style>",
         1,
     )
     a = S.index('<div class="not">')
