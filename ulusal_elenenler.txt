@@ -1,176 +1,344 @@
-2 Kadeh Meyhane | İzmir | Balık Restoranı | 177 yorum | 4.8
-ANAMUR BELEDİYESİ 82 SOSYAL TESİSLERİ | Mersin | Düğün Salonu | 252 yorum | 4.2
-Adaya Karşı - Bir Başka Meyhane | Çanakkale | Restoran | 230 yorum | 4.2
-Afitap Meyhane Bodrum | Muğla | Restoran | 256 yorum | 4.6
-Akçakoca Mangal Kavlan Kamping | Düzce | Kamp Alanı | 503 yorum | 4.3
-Alakop Plaj & Cafe HBB | Hatay | Plaj Kulübü | 174 yorum | 4.3
-Alaçatı Rum Meyhanesi & Restaurant | Eskişehir | Meyhane | 574 yorum | 4.3
-Artemis Cafe Pub | Muğla | Bar | 209 yorum | 4.2
-Asri Kafe & Kır Bahçesi & Nargile | Balıkesir | Nargile Salonu | 157 yorum | 4.5
-Atgeç Meyhanesi | Muğla | Restoran | 900 yorum | 4.5
-Aura Lounge Cafe Hookah | İzmir | Nargile Salonu | 330 yorum | 4.8
-Avlu Balıkesir | Balıkesir | Alışveriş merkezi | 5307 yorum | 4.3
-Ayar Meyhanesi | Antalya | Türk restoranı | 5901 yorum | 4.7
-Ayazma Restaurant & Cocktail Bar | Çanakkale | Restoran | 355 yorum | 4.2
-AĞAÇLI TURİSTİK TESİSLERİ | Aksaray | Konaklama Tesisi | 719 yorum | 4.2
+100 Burger-Kentpark | Ankara | Hamburger restoranı | 1014 yorum | 4.2
+48R Bar & Bistro | Muğla | Bar | 412 yorum | 4.6
+ANGORA RESTAURANT and Bar | Muğla | Eklektik Restoran | 205 yorum | 4.6
+Address Restaurant & Cafe Bar | Muğla | Kafe | 1645 yorum | 4.3
+Afişe Sahne Kafe Bar | Balıkesir | Eğlence Merkezi | 153 yorum | 4.4
+Aldente Beach Bar Restaurant | Aydın | Restoran | 279 yorum | 4.2
+Altuntabak Restaurant Cafe Bar | Muğla | Restoran | 2718 yorum | 4.4
+Alya Steak House Bar | Antalya | Biftek restoranı | 204 yorum | 4.6
+Anastasia Garden Restaurant&cafe& kahvaltı &bar | İstanbul | Türk restoranı | 433 yorum | 4.6
+Andy's Restaurant & Bar | Muğla | Restoran | 419 yorum | 4.5
+Arkadaşlar İçin Bar-Cafe-Beach | Muğla | Fast food lokantası | 416 yorum | 4.6
+Arti's Restoran Bar | Aydın | Kebap Restoranı | 359 yorum | 4.3
+Atlantis Bar& Restoran | Antalya | Restoran | 170 yorum | 4.7
+Avlu124 Coffee Bar | Çanakkale | Kahve dükkanı | 602 yorum | 4.6
 BALIK PAZARI ÇALIŞ | Muğla | Restoran | 964 yorum | 4.6
-BEERBUS GASTRO PUB | Aydın | Restoran | 948 yorum | 4.6
-BIG BOSS PUB PİZZA | Muğla | Pizza restoranı | 409 yorum | 4.8
-Bab-ı Vefa Nargile haqqı hokkah | Erzurum | Nargile Salonu | 506 yorum | 4.4
-Bahadir Baklava | Ankara | Bakkal | 159 yorum | 4.3
-Balkan Evi Restoran & Meyhane | Bursa | Meyhane | 150 yorum | 4.5
-Balıkçı Meyhanesi Kaleiçi | Antalya | Restoran | 5904 yorum | 4.8
-Barbarian Medieval Tavern | Nevşehir | Restoran | 2281 yorum | 4.6
-Barracuda Restaurant Wine & Grill Bar | Muğla | Deniz mahsülleri restoranı | 424 yorum | 4.7
-Başkent Et Ve Tavuk Pazarı | Ankara | Mağazalar ve Alışveriş | 222 yorum | 4.5
+BALKES CAFE BAR RESTORANT | Balıkesir | Aile restoranı | 163 yorum | 4.5
+BEYLER PARK TIR KAMYON TAKSİ DİN. TES. | Çorum | Restoran | 224 yorum | 4.7
+BILL COSBY RESTAURANT & BAR TİTREYENGÖL | Antalya | Biftek restoranı | 509 yorum | 4.7
+Babel Terrace75 Restoran&Bar&Cafe | Diyarbakır | Restoran | 451 yorum | 4.2
+Basta Street Food Bar | İstanbul | Fast food lokantası | 3692 yorum | 4.2
 Başköşe Termal | Yalova | Türk restoranı | 329 yorum | 5.0
-Bern`s Kitchen & Gastro Pub | Antalya | Modern Avrupa Restoranı | 217 yorum | 4.3
-Bir Zamanlar Gastro Pub | İzmir | Kafe | 368 yorum | 4.2
-Bodrum kalabalık meyhane | Muğla | Restoran | 188 yorum | 4.4
-Botanic (Cocktail&Coffee) | Mersin | Kokteyl bar | 217 yorum | 4.5
-Brits Pub | Muğla | Restoran | 377 yorum | 4.7
-Brooklyn Pub&Lounge | Mersin | Restoran | 1542 yorum | 4.3
-Burger Pub | İstanbul |  | 257 yorum | 4.5
-Burger Wine House | Nevşehir | Restoran | 246 yorum | 4.5
-BİTKİMİX Alışveriş Merkezi & Lokum & Kozmetik | Trabzon | Alışveriş merkezi | 396 yorum | 4.7
-COFFEE SHOT IRISH PUB MUDANYA | Bursa | Kafe | 549 yorum | 4.2
-Cafe Antre Pub | Nevşehir | Bar | 312 yorum | 4.7
-Cedre Restoran & Kokteyl | Antalya | Akdeniz mutfağı restoranı | 323 yorum | 4.5
+Begonia Naboen Restaurant Bar | Antalya | Restoran | 315 yorum | 4.3
+Bill COSBY BAR RESTAURANT | Antalya | Restoran | 927 yorum | 4.7
+Bistro Dolphine's restaurant Cafe%bar | Antalya | Eklektik Restoran | 191 yorum | 4.6
+Blackboard cafe&bar | Adana | Fast food lokantası | 478 yorum | 4.6
+Blue Hawaii Restaurant Steak House &Bar | Antalya | Biftek restoranı | 2471 yorum | 4.9
+Bonjo Cafe & Bar | Balıkesir | Kafe | 202 yorum | 4.6
+Brothers Cafe & Bar | İzmir | Restoran | 191 yorum | 4.3
+Burger Yiyelim | Afyonkarahisar | Hamburger restoranı | 3580 yorum | 4.7
+Burger Yiyelim | Aydın | Hamburger restoranı | 390 yorum | 4.8
+Burger Yiyelim | Bursa | Hamburger restoranı | 187 yorum | 4.9
+Burger Yiyelim | Denizli | Hamburger restoranı | 639 yorum | 4.8
+Burger Yiyelim | Eskişehir | Fast food lokantası | 1447 yorum | 4.4
+Burger Yiyelim | Gaziantep | Fast food lokantası | 243 yorum | 4.5
+Burger Yiyelim | Kocaeli | Hamburger restoranı | 608 yorum | 4.9
+Burger Yiyelim | Muğla | Hamburger restoranı | 199 yorum | 4.4
+Burger Yiyelim | Muğla | Hamburger restoranı | 533 yorum | 4.4
+Burger Yiyelim | İstanbul | Hamburger restoranı | 1007 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 1119 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 1150 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 1323 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 1620 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 1626 yorum | 4.5
+Burger Yiyelim | İstanbul | Hamburger restoranı | 168 yorum | 4.5
+Burger Yiyelim | İstanbul | Hamburger restoranı | 1729 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 187 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 2147 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 2272 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 2358 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 2658 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 2981 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 309 yorum | 4.5
+Burger Yiyelim | İstanbul | Hamburger restoranı | 322 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 363 yorum | 4.5
+Burger Yiyelim | İstanbul | Hamburger restoranı | 386 yorum | 4.7
+Burger Yiyelim | İstanbul | Hamburger restoranı | 393 yorum | 4.6
+Burger Yiyelim | İstanbul | Hamburger restoranı | 426 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 445 yorum | 4.4
+Burger Yiyelim | İstanbul | Hamburger restoranı | 452 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 471 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 519 yorum | 4.8
+Burger Yiyelim | İstanbul | Hamburger restoranı | 538 yorum | 4.4
+Burger Yiyelim | İstanbul | Hamburger restoranı | 6009 yorum | 4.3
+Burger Yiyelim | İstanbul | Hamburger restoranı | 778 yorum | 4.2
+Burger Yiyelim | İstanbul | Hamburger restoranı | 922 yorum | 4.2
+Burger Yiyelim | İzmir | Hamburger restoranı | 349 yorum | 4.2
+CAPELLA KÜNEFE DONDURMA VE VİTAMİN BAR | Gaziantep | Tatlıcı | 569 yorum | 4.8
+Cafe Harmony Hookah Bar&Bistro | Nevşehir | Kafe | 549 yorum | 4.8
+Captain Pirate Restaurant Bar | Antalya | Restoran | 1707 yorum | 4.6
+Caretta Restaurant & Bar | Muğla | Restoran | 176 yorum | 4.2
 Cezayir Usta Döner Salonu - Balık Pazarı | Muğla | Dönerci | 355 yorum | 4.9
-Cielo Food & Cocktail | Balıkesir | Restoran | 405 yorum | 4.3
-Corner Lounge | Muğla | Nargile Salonu | 155 yorum | 4.2
-Cızz Bızz Balık Meyhane | İzmir | Meyhane | 1889 yorum | 4.8
+Cimino Restaurant Cafe & Bar | Aydın | Restoran | 762 yorum | 4.5
+Co Co Cafe Bar | Antalya | Kafe | 340 yorum | 4.9
+Curly's Demeter Restaurant & Bar | Muğla | Pizza restoranı | 415 yorum | 4.6
 Daday Atlı Terapi ve Binicilik Merkezi | Kastamonu | Restoran | 163 yorum | 4.3
+Dalga Restoran Bar | Muğla | Restoran | 186 yorum | 4.2
+Dali Cafe Bar Belek | Antalya | Bar | 622 yorum | 4.5
+Dedemin Tatları Tahin - Pekmez ve Helva , Soğuk Baklava ve Yeni Nesil Pasta Lokum | İstanbul | Tatlıcı | 818 yorum | 4.9
+Dejavu Lounge Restaurant Cafe Bar | Antalya | Kafe | 332 yorum | 4.3
+Deniz Cafe kentpark | Eskişehir |  | 277 yorum | 4.3
+Denizatı Restaurant & Bar | Muğla | Akdeniz mutfağı restoranı | 1717 yorum | 4.4
 Derebeyi Rafting Konaklama ve Çadır - Karavan Kampı - Tant Camping | Rize | Restoran | 1862 yorum | 4.8
-Develi Çiçek - Çikolata - Çelenk Süheyla'm Çiçek & Çikolata | Kayseri | Çiçekçi | 413 yorum | 5.0
-Diamond Pub Cafe Restaurant | Muğla | Tatlıcı | 1046 yorum | 4.2
+Dergah Cafe&Bar Ocakbaşı Restoran | Manisa | Mangal | 183 yorum | 4.2
+Dila's Kitchen - Bar (Pizza & Pasta & Cocktails) | Muğla | Pizza restoranı | 411 yorum | 4.9
 Doğa Binicilik Ve Restoran | Konya | Restoran | 157 yorum | 4.5
-Dry Cocktail Bar - Datça | Muğla | Kafe | 318 yorum | 4.8
-Dublin Cafe & Irish Pub | Eskişehir | İrlanda pub'ı | 2454 yorum | 4.3
-Dükkan Coffee Cocktail Bar | Antalya | Bar | 206 yorum | 4.7
-ERHAN FİSH &MEAT PUB BALKON RESTAURANT | İstanbul | Restoran | 3854 yorum | 4.8
-EVDE BURGER - PUB | İzmir | Hamburger restoranı | 1760 yorum | 4.9
+Efe Cafe Bar | Muğla | Fast food lokantası | 154 yorum | 4.5
 Erciyes Binicilik - Kayseri Kahvaltı | Kayseri | Kahvaltı restoranı | 2853 yorum | 4.3
 Erdem Sepetçioğlu Çekme Helva - Pastırma - Sucuk / Nasrullah Meydanı | Kastamonu | Gurme Marketi | 157 yorum | 4.6
-Eren Balıkçılık | Aydın | Bakkal | 176 yorum | 4.7
-Eski Ev Pub & Kitchen Vegan friendly | Muğla | Kahvaltı restoranı | 202 yorum | 4.9
-Eveli Cafe Activite Merkezi | Rize | Rafting | 465 yorum | 4.3
+Espressolab Adıyaman Merkez Dedeman | Adıyaman | Kahve dükkanı | 372 yorum | 4.8
+Espressolab Afyonkarahisar | Afyonkarahisar | Kahve dükkanı | 511 yorum | 4.6
+Espressolab Afyonkarahisar İstasyon Caddesi | Afyonkarahisar | Kahve dükkanı | 521 yorum | 4.8
+Espressolab Akzirve Strada | İstanbul | Kahve dükkanı | 464 yorum | 4.5
+Espressolab Alanya | Antalya | Kahve dükkanı | 262 yorum | 4.4
+Espressolab Antalya Land of Legends | Antalya | Kahve dükkanı | 163 yorum | 4.5
+Espressolab Arnavutköy İslambey | İstanbul | Kahve dükkanı | 340 yorum | 4.6
+Espressolab Aydın Didim | Aydın | Kahve dükkanı | 333 yorum | 4.5
+Espressolab Aydın Ops Mall | Aydın | Kahve dükkanı | 658 yorum | 4.7
+Espressolab Bahçeşehir | İstanbul | Kahve dükkanı | 729 yorum | 4.4
+Espressolab Balıkesir Yaşam Kent | Balıkesir | Kahve dükkanı | 151 yorum | 4.5
+Espressolab Başakşehir 5. Etap | İstanbul | Kahve dükkanı | 599 yorum | 4.5
+Espressolab Başakşehir Mavera Comfort | İstanbul | Kahve dükkanı | 337 yorum | 4.5
+Espressolab Başakşehir | İstanbul | Kahve dükkanı | 1018 yorum | 4.5
+Espressolab Beykent First Avenue | İstanbul | Kahve dükkanı | 933 yorum | 4.5
+Espressolab Beylikdüzü Demir Country | İstanbul | Kahve dükkanı | 388 yorum | 4.5
+Espressolab Beylikdüzü Makyol | İstanbul | Kahve dükkanı | 623 yorum | 4.5
+Espressolab Bodrum Marina | Muğla | Kahve dükkanı | 483 yorum | 4.5
+Espressolab Diyarbakır Mahabad Bulvarı | Diyarbakır | Kahve dükkanı | 263 yorum | 4.5
+Espressolab Diyarbakır Stadyolu | Diyarbakır | Kahve dükkanı | 641 yorum | 4.5
+Espressolab Diyarbakır Suriçi | Diyarbakır | Kahve dükkanı | 199 yorum | 4.6
+Espressolab Düzce | Düzce | Kahve dükkanı | 303 yorum | 4.5
+Espressolab Edirne Merkez | Edirne | Kahve dükkanı | 1028 yorum | 4.7
+Espressolab Edirne İstasyon Mahallesi | Edirne | Kahve dükkanı | 451 yorum | 4.8
+Espressolab Elazığ | Elazığ | Kahve dükkanı | 710 yorum | 4.7
+Espressolab Emirgan | İstanbul | Kahve dükkanı | 786 yorum | 4.6
+Espressolab Erzurum Atatürk Üniversitesi | Erzurum | Kahve dükkanı | 213 yorum | 4.7
+Espressolab Erzurum Palandöken | Erzurum | Kahve dükkanı | 276 yorum | 4.4
+Espressolab Esenyurt Akbatı | İstanbul | Kahve dükkanı | 221 yorum | 4.6
+Espressolab Esenyurt City Center | İstanbul | Kahve dükkanı | 171 yorum | 4.5
+Espressolab Esenyurt Lotus | İstanbul | Kahve dükkanı | 242 yorum | 4.5
+Espressolab Eskişehir Tepebaşı | Eskişehir | Kahve dükkanı | 382 yorum | 4.5
+Espressolab Forum Aydın | Aydın | Kahve dükkanı | 178 yorum | 4.8
+Espressolab Forum İstanbul | İstanbul | Kahve dükkanı | 366 yorum | 4.5
+Espressolab Gaziantep Batıkent | Gaziantep | Kahve dükkanı | 816 yorum | 4.6
+Espressolab Gaziantep Osmangazi | Gaziantep | Kahve dükkanı | 355 yorum | 4.7
+Espressolab Gebze Merkez | Kocaeli | Kahve dükkanı | 189 yorum | 4.5
+Espressolab Giresun Sahil | Giresun | Kahve dükkanı | 221 yorum | 4.6
+Espressolab Giresun | Giresun | Kahve dükkanı | 392 yorum | 4.8
+Espressolab Göktürk Arcadium | İstanbul | Kahve dükkanı | 544 yorum | 4.9
+Espressolab Göktürk Nefes Koru | İstanbul | Kahve dükkanı | 194 yorum | 4.5
+Espressolab Kahramanmaraş | Kahramanmaraş | Kahve dükkanı | 372 yorum | 4.6
+Espressolab Karabük | Karabük | Kahve dükkanı | 386 yorum | 4.6
+Espressolab Kastamonu | Kastamonu | Kahve dükkanı | 231 yorum | 4.5
+Espressolab Kayaşehir | İstanbul | Kahve dükkanı | 592 yorum | 4.5
+Espressolab Kayseri Park | Kayseri | Kahve dükkanı | 553 yorum | 4.6
+Espressolab Kayseri | Kayseri | Kahve dükkanı | 630 yorum | 4.3
+Espressolab Kocaeli Umuttepe | Kocaeli | Kahve dükkanı | 419 yorum | 4.5
+Espressolab Konya Melikşah Caddesi | Konya | Kahve dükkanı | 496 yorum | 4.6
+Espressolab Konya | Konya | Kahve dükkanı | 1603 yorum | 4.4
+Espressolab Kütahya Merkez | Kütahya | Kahve dükkanı | 232 yorum | 4.7
+Espressolab Kırklareli İstasyon Mahallesi | Kırklareli | Kahve dükkanı | 209 yorum | 4.5
+Espressolab Kırşehir Yenice | Kırşehir | Kahve dükkanı | 153 yorum | 4.5
+Espressolab Malatya Yeşilyurt | Malatya | Kahve dükkanı | 414 yorum | 4.5
+Espressolab Maslak Kapital | İstanbul | Kahve dükkanı | 250 yorum | 4.5
+Espressolab Mersin | Mersin | Kahve dükkanı | 631 yorum | 4.5
+Espressolab Mimaroba | İstanbul | Kahve dükkanı | 273 yorum | 4.5
+Espressolab Nevşehir Ortahisar | Nevşehir | Kahve dükkanı | 383 yorum | 4.5
+Espressolab Ordu | Ordu | Kahve dükkanı | 504 yorum | 4.5
+Espressolab Ordu Ünye | Ordu | Kahve dükkanı | 206 yorum | 4.8
+Espressolab Pendik Saat Kulesi | İstanbul | Kahve dükkanı | 427 yorum | 4.5
+Espressolab Pendik | İstanbul | Kahve dükkanı | 620 yorum | 4.5
+Espressolab Rize Merkez | Rize | Kahve dükkanı | 249 yorum | 4.7
+Espressolab Rumeli Hisarı | İstanbul | Kahve dükkanı | 1268 yorum | 4.4
+Espressolab Safranbolu | Karabük | Kahve dükkanı | 170 yorum | 4.6
+Espressolab Sakarya Akyazı | Sakarya | Kahve dükkanı | 272 yorum | 4.5
+Espressolab Sakarya Geyve | Sakarya | Kahve dükkanı | 204 yorum | 4.6
+Espressolab Sakarya Hendek | Sakarya | Kahve dükkanı | 168 yorum | 4.7
+Espressolab Sakarya Karasu | Sakarya | Kahve dükkanı | 400 yorum | 4.5
+Espressolab Sakarya Serdivan | Sakarya | Kahve dükkanı | 573 yorum | 4.4
+Espressolab Sarıyer Eski Büyükdere İskelesi | İstanbul | Kahve dükkanı | 2571 yorum | 4.5
+Espressolab Sarıyer Merkez | İstanbul | Kahve dükkanı | 380 yorum | 4.5
+Espressolab Sivas Cumhuriyet Üniversitesi | Sivas | Kahve dükkanı | 657 yorum | 4.5
+Espressolab Tarabya | İstanbul | Kahve dükkanı | 1339 yorum | 4.6
+Espressolab Tekirdağ Çerkezköy | Tekirdağ | Kahve dükkanı | 370 yorum | 4.5
+Espressolab Tekirdağ Çorlu | Tekirdağ | Kahve dükkanı | 518 yorum | 4.5
+Espressolab Trabzon Bordo Mavi | Trabzon | Kahve dükkanı | 1076 yorum | 4.3
+Espressolab Trabzon | Trabzon | Kahve dükkanı | 1061 yorum | 4.4
+Espressolab Tuzla Evora | İstanbul | Kahve dükkanı | 524 yorum | 4.6
+Espressolab Tuzla Marina | İstanbul | Kafe | 218 yorum | 4.5
+Espressolab Van İpekyolu | Van | Kahve dükkanı | 261 yorum | 4.5
+Espressolab Watergarden | İstanbul | Kahve dükkanı | 884 yorum | 4.5
+Espressolab Yalova Merkez | Yalova | Kahve dükkanı | 259 yorum | 4.6
+Espressolab Çorum | Çorum | Kahve dükkanı | 254 yorum | 4.8
+Espressolab Ümraniye Alemdağ | İstanbul | Kahve dükkanı | 1184 yorum | 4.5
+Espressolab Ürgüp | Nevşehir | Kahve dükkanı | 886 yorum | 4.5
+Espressolab İstanbul Üniversitesi Avcılar | İstanbul | Kahve dükkanı | 186 yorum | 4.5
+Espressolab İstinye Marina | İstanbul | Kahve dükkanı | 788 yorum | 4.4
+Espressolab Şanlıurfa Şenevler | Şanlıurfa | Kahve dükkanı | 347 yorum | 4.5
+Espressolab Şile | İstanbul | Kahve dükkanı | 540 yorum | 4.6
 Fethiye Fish Market - Balık Pazarı | Muğla | Balıkçı | 3041 yorum | 4.2
-Fiskos Myhane (Marmaris Meyhane) | Muğla | Akdeniz mutfağı restoranı | 574 yorum | 4.7
-Frida Pub | Antalya | Restoran | 950 yorum | 4.7
-Fıstık Pub | Antalya | Bistro | 1023 yorum | 4.2
-Go Burger Pub Kadıköy | İstanbul | Hamburger restoranı | 156 yorum | 4.3
-Hatay Meze Meyhane | Mersin | Türk restoranı | 256 yorum | 4.5
-Hatice'nin Doğal Çiftliği - Ezine Lezzetleri ve Kahvaltı | Çanakkale | Peynirci | 498 yorum | 4.9
+Fiyaka Cafe & Bar | Çanakkale | Restoran | 366 yorum | 4.4
+Flora Steak House Restaurant & Bar Kumköy | Antalya | Pizza restoranı | 914 yorum | 5.0
+Florida Restaurant & Bar | Muğla | Restoran | 737 yorum | 4.5
+Flying Horse Karaoke Sports Bar Restaurant | Antalya | Restoran | 298 yorum | 4.5
+GUSTA BAR&GRİLL | Muğla | Restoran | 719 yorum | 4.8
+Giant Stride Shop & Cafe & Bar | Antalya | Kafe | 574 yorum | 4.8
+Gondol Ristorante Café Bar | Aydın | Restoran | 166 yorum | 4.5
+Green Garden Apartments Restaurant Bakery & Bar | Muğla |  | 165 yorum | 4.9
+Gumbet Dragon Chinese and Indian Restaurant & Sushi Bar | Muğla | Çin restoranı | 1538 yorum | 4.8
+HMBRGR Armada | Ankara | Hamburger restoranı | 1682 yorum | 4.5
+Hangover Cafe Bar | Çanakkale | Bar | 1705 yorum | 4.3
+Harami Yaylası Garden Bungalov ve Restoran | Tokat |  | 802 yorum | 4.5
+Harmony Restaurant Cafe Bar | Antalya | Restoran | 237 yorum | 4.5
 Haunedy Karadeniz Yöresel Ürünler Lokum & Tereyağı & Kuymak & Bal & Çay & Kahve & Hediyelik | Trabzon | Doğal Gıda Satış Yeri | 1016 yorum | 4.7
-Hisarönü Şarap Mahzeni Ve Restaurant | Nevşehir | Restoran | 805 yorum | 4.7
-Hyundai Arslanoğlu İskenderun | Hatay | Hyundai Bayii | 480 yorum | 4.6
-James Cook Cafe, Pub & Restoran | Ankara | Pub | 1083 yorum | 4.2
-Jandarma Sosyal Tesisleri | Aydın | Kat Hizmeti Sunulan Konaklama | 288 yorum | 4.4
-Jardinn Restaurant & Gastro Pub | Nevşehir | Restoran | 485 yorum | 4.4
-Jiks Pub cafe bar restaurant | Muğla | Restoran | 231 yorum | 4.5
-Jooy Pool Pub | Aydın | Fast food lokantası | 350 yorum | 4.6
+Hawaii Restaurant & Karaoke Bar | Antalya | Pizza restoranı | 259 yorum | 4.5
+Helles Cafe&Bar | Çanakkale | Kafe | 168 yorum | 4.2
+Hideaway Bar&Cafe | Antalya | Bar | 303 yorum | 4.5
+IL Ponte Italian Kitchen & Bar | Muğla | İtalyan restoranı | 616 yorum | 4.9
 KARADAYI'NINYeri Organik Köylü Pazarı Köfte Kahvaltı | Manisa | Restoran | 337 yorum | 4.3
 KULA BİNİCİLİK (BAĞLUM-KEÇİÖREN AT ÇİFTLİĞİ-KAHVALTI) | Ankara | At Binme Hizmeti | 190 yorum | 4.6
-Kadıköy Kahvaltı ve Meyhane Bitez | Muğla | Kahvaltı restoranı | 180 yorum | 4.8
+Kahverengi Cafe&Bar&Bistro | Edirne | Kafe | 245 yorum | 4.6
 Kalite Et Pazarı | Gaziantep | Et Lokantası | 219 yorum | 4.7
-Keyfi Cafe Düzce, Nargile salonu & cafe | Düzce | Nargile Salonu | 832 yorum | 4.8
-Kiss Bar Restaurant & Pub | Antalya | Restoran | 295 yorum | 4.8
+Kasila Pizza Bar (il capo 1869) | İzmir | Pizza restoranı | 315 yorum | 4.3
+Kayadibi Cafe ve Bungalov | Rize |  | 286 yorum | 4.8
+Kayis Restaurant & Bar | Antalya | Restoran | 268 yorum | 4.6
+Ketchup Aydın -Restoran - Bar - Cafe | Aydın | Restoran | 695 yorum | 4.2
+Klava cafe & lounge & bar | Çanakkale | Restoran | 228 yorum | 4.3
 Konak Sea Garden Restoran & Düğün Salonu | Bursa | Düğün Hizmeti | 431 yorum | 4.4
+KotitAyder Bungalov & Restaurant | Rize |  | 324 yorum | 4.5
+Kristall Bar & Lounge | Antalya | Restoran | 278 yorum | 4.6
 Ktü Sahil Tesisleri | Trabzon | Turistik Pansiyon | 1590 yorum | 4.3
-Kukla Cafe&Pub | Muğla | Pub | 524 yorum | 4.2
-Kuzey Ege Kafası Yeni Nesil Meyhane | Balıkesir | Restoran | 442 yorum | 4.2
-Köşk Pub Restoran | Ordu | Türk restoranı | 271 yorum | 4.3
-Kül Meyhane & Restoran | Ankara | Meyhane | 471 yorum | 4.4
-Kırıkkale CİX Çiçek & Çikolata | Kırıkkale | Çiçekçi | 425 yorum | 5.0
-LUQA Lounge | Kırşehir | Nargile Salonu | 367 yorum | 4.4
-La Florista Çiçek & Kahve | Düzce | Çiçekçi | 194 yorum | 5.0
-Letafet Meyhane | İzmir | Restoran | 444 yorum | 4.7
-Level PlayStation Cafe | Karaman | Video oyun salonu | 222 yorum | 4.7
-Lily's Pub & Bistro | Antalya | Bistro | 150 yorum | 4.7
-Lokanta biber ocakbaşı ve meyhane | İzmir | Türk restoranı | 153 yorum | 4.7
-Lucky Luke Steak house & pub | Antalya | Biftek restoranı | 512 yorum | 4.6
-MANOS GREEK TAVERN KAŞ | Antalya | Restoran | 682 yorum | 4.4
-MARJİN BİSTRO PUB | Bursa | Restoran | 314 yorum | 4.7
-Madam Hestia Meyhanesi | İzmir | Restoran | 718 yorum | 4.6
-Malibu Nargile Cafe | Mersin | Nargile Salonu | 205 yorum | 4.2
-Malikane Social pub | Manisa | Restoran | 163 yorum | 4.3
-Manidar Balık Restoran Meyhane | İstanbul | Meyhane | 224 yorum | 4.8
+Kudamm Burger and Grill Bar | İzmir | Restoran | 404 yorum | 4.3
+Kuytu Köşe Nargile Cafe & Bar | Nevşehir | Kafe | 178 yorum | 4.3
+Köşem Cafe & Restaurant & Bar | Muğla | Kafe | 348 yorum | 4.5
+Kılıç Atlı Truzim | Kastamonu | Restoran | 681 yorum | 4.8
+LEON Restaurant & Coctail Bar | Antalya | Restoran | 343 yorum | 4.5
+La Perla Steak House & Sky Sports Bar | Antalya | Biftek restoranı | 1113 yorum | 4.7
+La Spezia Bistro Bar & Restaurant | Antalya | İtalyan restoranı | 672 yorum | 4.7
+LabFood&Bar | İstanbul | Hamburger restoranı | 381 yorum | 4.3
+Ladies Beach Restaurant Cafe & Bar | Aydın | Restoran | 552 yorum | 4.8
+Le Shener’s Restaurant & Gastro Bar (5* Turistik Tesis) | Trabzon | Avrupa Restoranı | 1128 yorum | 4.4
+Liberty Restaurant & Bar | Muğla | Türk restoranı | 292 yorum | 4.6
+Liman Cafe & Bar | Antalya | Kafe | 230 yorum | 4.7
+Limon Ağacı Kadınlar Denizi Cafe & Bar | Aydın | Restoran | 241 yorum | 4.2
+MADAĞ BUNGALOV & RESTORAN | Rize |  | 321 yorum | 4.5
+MARINE ERA RESTO-BAR | Antalya | Akdeniz mutfağı restoranı | 318 yorum | 4.2
+Madam Sofia Cafe & Bar | İstanbul | Pizza restoranı | 489 yorum | 4.3
+Mama Jo coffee & bar | Mersin | Pub | 314 yorum | 4.2
 Masal Garden Kır Düğünü ve Yöresel Kahvaltı Bahçesi | Sakarya | Düğün Planlamacısı | 520 yorum | 4.4
 Masal Life Kir Bahcesi Kahvalti Nargile Cafe | Hatay | Düğün Hizmeti | 247 yorum | 4.2
-Master Sahne ® | Ocakbaşı | Yeni Nesil Meyhane | | Tekirdağ | Restoran | 189 yorum | 4.2
-Matteo Pub & Ristorante | Denizli | İtalyan restoranı | 201 yorum | 4.3
-Mavra Gastro Pub | Antalya | Hamburger restoranı | 184 yorum | 4.9
-Mazi Nargile Cafe | Sivas | Nargile Salonu | 230 yorum | 4.7
+Masiva Et & Balık Restaurant Bungalov Evler | Tunceli | Turistik Yer | 356 yorum | 4.6
 Memoli Döner Salı Pazarı | Tekirdağ | Dönerci | 504 yorum | 4.3
+Memos Restaurant-Bar, Oba/Alanya | Antalya | Restoran | 319 yorum | 4.4
+Meteor Rooftop Bar & Restaurant | Nevşehir | Restoran | 573 yorum | 4.8
+Metis Cafe & Bar | Aydın | Kafe | 163 yorum | 4.4
+Midye Bar | Çanakkale | Deniz mahsülleri restoranı | 189 yorum | 4.2
 Milas Karya Kahvaltı Bahçesi | Muğla | Düğün Hizmeti | 229 yorum | 4.3
-Moniq Restaurant & Cocktail Bar | Nevşehir | Restoran | 1013 yorum | 4.6
-Mudurnu Helva Fabrika Satış Mağazası | Bolu | Alışveriş merkezi | 275 yorum | 4.5
-Mumi Oyun Evi Ebeveyn Cafe | Kırşehir | Çocuk Oyun Salonu | 213 yorum | 4.6
-Mumi Restaurant & Ocakbaşı & Meyhane & Canlı Müzik & Eğlence | Antalya | Meyhane | 1678 yorum | 4.3
-Nar Pub & Kitchen | Muğla | Aile restoranı | 214 yorum | 4.3
-Noir Kitchen and Pub | Balıkesir | Restoran | 852 yorum | 4.4
+Mira Cafe Bar | Hatay | Kafe | 176 yorum | 4.4
+Modatepe Restoran & Bungalov | Trabzon | Kahvaltı restoranı | 1500 yorum | 4.4
+Mydonose Cafe&Bar | Nevşehir | Kafe | 274 yorum | 4.5
+Nobel 1(kaleiçi) Cafe & Bar & Restoran | Antalya | Restoran | 511 yorum | 4.4
 Nostalji Gezi Evi | Karabük | Kafe | 1733 yorum | 5.0
-Olimbera Yaşam Parkı Kahvaltı & Kırdüğünü | Balıkesir | Düğün Salonu | 274 yorum | 4.6
-Oxygen Pub | Antalya | Restoran | 464 yorum | 4.6
-PASHA “Turk’s Pub & Live Music” | İstanbul | Restoran | 214 yorum | 4.6
+Novikov Istanbul Restaurant & Bar | İstanbul | Eklektik Restoran | 2057 yorum | 4.2
+Nuvia Bostanlı Breakfast - Kitchen & Bar | İzmir | Kahvaltı restoranı | 7074 yorum | 4.6
+ORDU CASA DI ARTE BUNGALOV & CAFE | Ordu |  | 475 yorum | 4.9
+OSES ÇİĞKÖFTE | Adana | Restoran | 180 yorum | 4.3
+Obicà Mozzarella Bar | İstanbul | İtalyan restoranı | 1625 yorum | 4.5
+Old House Cafe & Bar | Antalya | Bar | 261 yorum | 4.5
+Omnia Tapas Bar | Adana | Fast food lokantası | 171 yorum | 4.7
+Orange grove Restaurant & Bar | Antalya | Restoran | 278 yorum | 4.4
+Oses Mersin Pozcu | Mersin | Restoran | 164 yorum | 4.4
+Oses Çiğ Köfte Genel Merkez | İstanbul | Çiğ Köfteci | 307 yorum | 4.3
+Oses Çiğ Köfte Nevşehir Üniversite | Nevşehir | Çiğ Köfteci | 194 yorum | 4.8
+Oses Çiğ Köfte Sarıçam Gültepe (Yeni Stadyum) | Adana | Çiğ Köfteci | 188 yorum | 4.5
+Oses Çiğ Köfte | Adana | Çiğ Köfteci | 158 yorum | 4.2
+Oses Çiğ Köfte | Konya | Çiğ Köfteci | 204 yorum | 4.7
+Oses Çiğ Köfte | Mersin | Çiğ Köfteci | 164 yorum | 4.2
+Oses Çiğ Köfte | İstanbul | Çiğ Köfteci | 179 yorum | 4.3
+Oses Çiğ köfte | İstanbul | Çiğ Köfteci | 346 yorum | 5.0
+Oses Çiğköfte Kazımkarabekir | Kayseri | Restoran | 190 yorum | 4.9
+Oses Çiğköfte Yaka cd | Konya | Çiğ Köfteci | 157 yorum | 5.0
+Oses Çiğköfte | Tekirdağ | Restoran | 268 yorum | 4.5
+Ottoman Restaurant Bar | Antalya | Yemekli bar | 291 yorum | 4.3
+Ovacık Anahita Bungalov & Restoran | Tunceli |  | 488 yorum | 4.6
+Palm Beach Cafe Restaurant-bar | Aydın | Restoran | 465 yorum | 4.4
 Pamukkale Üniversitesi Sosyal Tesisleri | Denizli | Turistik Pansiyon | 620 yorum | 4.4
-Parkozak Kahvaltı evi & Düğün Salonu | İzmir | Düğün Salonu | 509 yorum | 4.2
-Pasha Shisha Lounge | İzmir | Nargile Salonu | 269 yorum | 4.7
-Peruş'un Meyhane Lezzetleri ~ Çeşme Ciğercisi | İzmir | Meyhane | 334 yorum | 4.8
-Piyal Wine House & Italian Restaurant | Mardin | Restoran | 703 yorum | 4.9
-Pub Time | Aydın | Pizza restoranı | 610 yorum | 4.5
-Ralli Restaurant Yeni Nesil Meyhane | Düzce | Meyhane | 154 yorum | 4.3
-Red Duck Cafe & Pub | Eskişehir | Restoran | 328 yorum | 4.9
-Ruhibey Meyhanesi 1949 | Antalya | Restoran | 1669 yorum | 4.3
-SUE COFFEE&BAKERY | Muğla | Alışveriş merkezi | 159 yorum | 4.4
-Sakal Kafe Pub | Ankara | Kafe | 1345 yorum | 4.2
-Salkım Kır Bahçesi Kahvaltı Salonu | İzmir | Düğün Salonu | 157 yorum | 4.7
-Salkım Ocakbaşı Meyhane Kaş | Antalya | Meyhane | 1313 yorum | 4.6
-Sarah Restoran Fun&Pub | Muğla | Restoran | 206 yorum | 4.6
-Sarıgerme Restorant Karaoke Pub | Muğla | Türk restoranı | 154 yorum | 4.5
-Sayende Meyhane Gökçeada | Çanakkale | Balık Restoranı | 339 yorum | 4.6
-Siirt Garden Çiçekçilik , Hediyelik Eşya ve Çikolata | Siirt | Çiçekçi | 209 yorum | 4.9
-Sir Williams Pub & Bistro | Antalya | Pizza restoranı | 238 yorum | 4.8
-Sir Winston Cafe Pub Aliağa | İzmir | Restoran | 461 yorum | 4.2
-So Big Gastro Pub Adana | Adana | Fast food lokantası | 700 yorum | 4.2
-Solem Restaurant Dine & Wine | Nevşehir | Türk restoranı | 226 yorum | 4.8
-Some Where Else The Irish Pub | Aydın | Pizza restoranı | 447 yorum | 4.6
-Spenta Pizza Restaurant & Cocktail Bar | İstanbul | Pizza restoranı | 431 yorum | 4.7
-Sunset Wine Garden Uçhisar | Nevşehir | Restoran | 652 yorum | 4.7
-Suvla Winery / Bistro Wine Bar / Wine Shop | Çanakkale | Şarap İmalathanesi | 986 yorum | 4.2
-TAVERNA 33 MÜZİKOL EĞLENCE MERKEZİ | Mersin | Restoran | 205 yorum | 4.4
-TAŞEV RESTAURANT/ Sanat ve Şarap Evi | Karabük | Restoran | 511 yorum | 4.4
+Patio Glamping Assos | Çanakkale | Restoran | 168 yorum | 5.0
+Pavrona Bungalov/Dağ evi/Cafe | Rize | Restoran | 204 yorum | 4.9
+Piccadilly Restaurant & Bar | Muğla | Eklektik Restoran | 473 yorum | 4.4
+Pine side Steak &house restaurant & bar | Antalya | Biftek restoranı | 501 yorum | 5.0
+Pio Gastro Bar & Bistro | Antalya | Restoran | 776 yorum | 4.2
+Pizza Point Bistro Cafe-Bar | Antalya | Pizza restoranı | 249 yorum | 4.9
+Pizza italiante Armada | Ankara | Pizza restoranı | 5371 yorum | 4.9
+Plomada Dağ Evi & Bungalov | Giresun | Aile restoranı | 155 yorum | 4.6
+Punto Shot Bar Pizza | Edirne | Pizza restoranı | 1063 yorum | 4.8
+ROMA RESTORANT & BAR | Muğla | Restoran | 371 yorum | 4.2
+RUF Restoran & Bar | Kocaeli | Türk restoranı | 243 yorum | 4.4
+Ramiz ve Ziyafet Kuzu çevirme oksijen 3 | Kocaeli | Restoran | 818 yorum | 4.4
+Red Castle Steakhouse & Bar | Antalya | Restoran | 827 yorum | 4.5
+Reis Restoran Cafe Bar | Aydın | Meyhane | 169 yorum | 4.6
+Rooftop by Castle | Bar & Restaurant | Nevşehir | Restoran | 1104 yorum | 4.8
+SUR GRILL & BAR | Antalya | Restoran | 633 yorum | 4.4
+Sail Coffee Roastery & Bar | Muğla | Kahve dükkanı | 188 yorum | 4.3
+Sarıgerme Paradise Restaurant Bar & Cafe | Muğla | Eklektik Restoran | 387 yorum | 4.6
+Sarıkamış allahuekber dağları | Erzurum | Restoran | 1707 yorum | 4.7
+Serenade Restaurant Bar | Antalya | Restoran | 2505 yorum | 4.9
+Sherwood Kafe Bar Restoran | İzmir | Restoran | 1029 yorum | 4.3
+Side Korner Restaurant & Bar | Antalya | Restoran | 377 yorum | 4.7
+Sifla Bungalov & Restoran | Trabzon |  | 192 yorum | 4.9
+Sindoman Cafe&Bar | Yalova | Öğle Yemeği Restoranı | 320 yorum | 4.2
+Sky Safran restaurant bar | Antalya | Restoran | 2941 yorum | 4.9
+Sokak Karaköy Restaurant & Bar | İstanbul | Deniz mahsülleri restoranı | 218 yorum | 4.8
+Special Restoran Cafe Bar | Aydın | Restoran | 190 yorum | 4.4
+Stella Beach Restaurant & Bar | Muğla | Akdeniz mutfağı restoranı | 1004 yorum | 4.2
+Sunny Restaurant, Cafe & Bar | Antalya | Kafe | 192 yorum | 4.3
+Sunset Restoran Bar | Muğla | Restoran | 169 yorum | 4.4
+Surf Bar restaurant | Antalya | Restoran | 1617 yorum | 4.8
+Süreyya Restoran & Çakıl Bungalov | İstanbul | Restoran | 194 yorum | 4.4
+SİDE ORFOZ RESTAURANT & BAR | Antalya | Restoran | 1339 yorum | 4.6
+TAPA CAFE & BAR | Muğla | Restoran | 150 yorum | 4.4
+TWINS RESTAURANT & BAR | Antalya | Restoran | 477 yorum | 4.6
+Tahin Restoran Hisarüstü | İstanbul | Lübnan restoranı | 677 yorum | 4.3
 Taka Rafting Kır Lokantası | Rize | Restoran | 350 yorum | 4.3
 Tarihi Balık Pazarı Unlu Mamülleri (The Fırın) | Antalya | Pastane | 258 yorum | 4.4
-Tarihi Medrese Kahvehanesi | Konya | Nargile Salonu | 3349 yorum | 4.6
-Tarkan Stud binicilik & restoran | İstanbul | Binicilik Kulübü | 173 yorum | 4.6
-Tatvan kardelen çiçekçilik hediyecilik ve çikolata | Bitlis | Çiçekçi | 234 yorum | 4.6
-Tax Meyhane & Restaurant | İzmir | Türk restoranı | 277 yorum | 4.9
-Taşköprü Belediyesi Sosyal Tesisleri Ve Düğün Salonu | Kastamonu | Düğün Salonu | 181 yorum | 4.3
-The GATE 1341 PUB & RESTORAN | İstanbul | Pizza restoranı | 228 yorum | 4.8
-The Most Coffee and Shisha | Adana | Nargile Salonu | 191 yorum | 4.5
-The Royal Castle Pub&Steakhouse | Antalya | Et Lokantası | 561 yorum | 4.7
+Tayfa Restaurant & Bar Kuşadası | Aydın | Restoran | 416 yorum | 4.8
+Teona Çağlayan Bungalov & Restoran | Rize |  | 288 yorum | 4.7
+Tepedebiyer Restoran & Bungalov ( Dağ Evi ) | Rize |  | 1148 yorum | 4.6
+The Faulty Friends Rest Bar | Antalya | Restoran | 207 yorum | 4.7
+The King's Kitchen & Bar | Antalya | Restoran | 189 yorum | 4.6
+The Reef Bar Bistro Club | Muğla | Bar | 259 yorum | 4.3
+The Turkish Ivy Restaurant & Bar | Muğla | Restoran | 241 yorum | 4.2
+Three Bells Korean Restaurant Karaoke Bar | Muğla | Kore restoranı | 173 yorum | 4.5
+Ti Bone restaurant Steak House & Bar | Antalya | Biftek restoranı | 471 yorum | 4.9
+Tin Tin Cafe Bar | Muğla | Restoran | 161 yorum | 4.8
+Tius Bar | İzmir | Kafe | 306 yorum | 4.3
+Toscana Garden Bungalov & Kahvaltı | İzmir |  | 198 yorum | 4.8
 Tulpar Park Binicilik Kulübü | Eskişehir | Restoran | 917 yorum | 4.5
-Tyna Pub Restaurant | İzmir | Pizza restoranı | 1282 yorum | 4.2
-UB Hookah Lounge | Sivas | Nargile Salonu | 207 yorum | 4.4
-YEZİ COFFEE-WINE-FOOD | Muğla | Kahve dükkanı | 301 yorum | 4.6
-Yelken Restaurant & Meyhane | Antalya | Meyhane | 1979 yorum | 4.3
-Yemenli Meyhanesi | Antalya | Restoran | 2052 yorum | 4.3
-Yeni Tavukçu Lokantası Meyhanesi Gimart | Ankara | Restoran | 518 yorum | 4.5
-Yılka Beach and Cafe Bar | Antalya | Plaj Kulübü | 466 yorum | 4.9
+Vanesa cafe Bar bistro | İstanbul | Kafe | 383 yorum | 4.5
+Vargo Restaurant & Bar | Edirne | Restoran | 402 yorum | 4.8
+Veranda Restaurant&Bar | Muğla | Türk restoranı | 334 yorum | 4.8
+Vettur Cafe & Bar | Aydın | Kafe | 185 yorum | 4.4
+Via Cafe & Bungalov | Rize |  | 282 yorum | 4.9
+Viking Beach Bar | Muğla | Türk restoranı | 296 yorum | 4.5
+WE RA Alaçatı Restaurant Bar | İzmir | Kafe | 243 yorum | 4.6
+Woops Cafe&bar | Denizli | Bar | 1155 yorum | 4.2
+YAS-INN Restaurant & Bar | Aydın | İngiliz Restoranı | 259 yorum | 4.5
+Yeni Eski Cafe Bar | Aydın | Kafe | 959 yorum | 4.2
+You2 RestaurantBar Marmaris Since 2004 | Muğla | Biftek restoranı | 296 yorum | 4.6
+Yunus Cafe Bar | Muğla | Restoran | 1258 yorum | 4.3
+ZEBRA RESTAURANT BAR | İstanbul | Restoran | 5308 yorum | 4.7
+ZEUS BAR & RESTAURANT | Antalya | Restoran | 150 yorum | 4.7
 Zeni Rafting Outdoor Adventure Company | Rize | Fast food lokantası | 692 yorum | 4.3
-Zeytin Dalı Restoran - Ölüdeniz Ovacık Meyhane | Muğla | Meyhane | 155 yorum | 4.8
-Zeytuni Meyhane & Kahvaltı | İzmir | Meyhane | 300 yorum | 4.6
-Zindanaltı Meyhanesi | Edirne | Restoran | 719 yorum | 4.3
-Ziya Dede Kahve Cezerye Kuruyemiş | Mersin | Mağazalar ve Alışveriş | 244 yorum | 4.6
-Zoka Restaurant Yeni nesil eğlence, Yeni nesil meyhane | Muğla | Meyhane | 3583 yorum | 4.9
-dejong coffee and cocktail bar | Balıkesir | Kokteyl bar | 549 yorum | 4.9
-gela 14 Patisserie & Cocktail | Kayseri | Tatlıcı | 154 yorum | 4.5
+ZeytinAltı Extra Cafe Bar & Bistro | Antalya | Restoran | 789 yorum | 4.3
+Zezemere bungalov evleri Artvin Borçka | Artvin | Restoran | 158 yorum | 4.4
+Zivera Köy Kahvaltısı ve Bungalov | Trabzon |  | 972 yorum | 4.5
+cello's garden restaurant&cafe bar | Antalya | Restoran | 370 yorum | 4.7
 Çakmaklar Gıda Kuru Kahve Baharat | Niğde | Market | 171 yorum | 4.5
 Çelebioğulları Baklavacı Elmacı Pazarı | Gaziantep | Tatlıcı | 810 yorum | 4.4
-Çeşme Balıkçısı Tektekçii Meyhanesi | İzmir | Meyhane | 708 yorum | 4.3
-İmroz Şarap Evi | Çanakkale | Restoran | 348 yorum | 4.6
-Şerefe 41 Sığacık Meyhanesi - Meze & Balık | İzmir | Meyhane | 630 yorum | 4.8
-Şişarka Meyhane Alaçatı | İzmir | Türk restoranı | 504 yorum | 4.4
-ŞİRİNKÖY KAFE OYUN ALANI | Karabük | Çocuk Oyun Salonu | 179 yorum | 4.9
+Çiy Teras Bar & Restaurant | İzmir | Restoran | 373 yorum | 4.2
+Çiğköftem Harbiye | İstanbul | Vegan Restoranı | 238 yorum | 4.4
+Çınarlı Bahçe Sinop Kahvaltı Restoranı&Bungalov Konaklama | Sinop | Kahvaltı restoranı | 515 yorum | 4.7
+Ötzi’s Bar Restaurant | Antalya | Restoran | 236 yorum | 4.3
+İstanbul Restaurant Bar | Antalya | Pizza restoranı | 306 yorum | 4.7
+İxir Restaurant & Sport Bar | Antalya | Restoran | 161 yorum | 4.8
+Şamdan restaurant & Bar | Muğla | Restoran | 182 yorum | 4.3

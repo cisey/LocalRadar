@@ -40,7 +40,7 @@ select{flex:1;min-width:0;background:#1a202c;color:var(--text);border:1px solid 
 <button class="df" id="df" type="button" style="display:none"></button>
 <div class="not"><b>Nasıl seçildi?</b><br>
 <b>Türkiye Seçkisi:</b> Zincirler, kapanmış yerler, alkollü mekanlar (meyhane, pub gibi) ve yemek dışı işletmeler çıkarıldıktan sonra puanı en az 4,2 ve yorumu en az 150 olan yerler değerlendirilir. Sıralama; hem kendi ilindeki hem Türkiye genelindeki popülerliği, az yorumlu yerlerin puanını ortalamaya çeken Güvenilir Skor ile birleştirir. Böylece küçük illerin klasikleri de büyük şehirlerle yarışabilir. Büyükşehirlerden (İstanbul, Ankara, İzmir) en fazla 5, diğer illerden en fazla 3 yer girer; kategori başına en fazla 20 yer, marka başına 1 şube.<br>
-<b>81 İlin Zirvesi:</b> Her il sadece kendi içinde yarışır. Önce 4,2 puan ve 150 yorum şartını geçenler arasından Güvenilir Skoru en yüksek olan seçilir. Yoksa yorum şartı 80'e, o da yoksa 4,0 puan ve 30 yoruma indirilir; kartta hangi şartın kullanıldığı yazar.<br>
+<b>81 İlin Zirvesi:</b> Her il sadece kendi içinde yarışır. Önce 4,2 puan ve 150 yorum şartını geçenler arasından Seçki'deki aynı skora (popülerlik × Güvenilir Skor) göre en yüksek olan seçilir. Yoksa yorum şartı 80'e, o da yoksa 4,0 puan ve 30 yoruma indirilir; kartta bu yazar. Kartın altındaki "2.382 yerden #1" ifadesi, o ilde taranan yer sayısıdır; soldaki kutu plaka kodudur.<br>
 Veri son taramayı yansıtır, taranmamış ilçeleri kapsamaz. Ayrıntılı anlatım: <a href="puanlama.html#ulusal">Puanlama nasıl çalışır?</a></div>
 </div>
 <script id="veri" type="application/json">__VERI__</script>
@@ -62,7 +62,7 @@ function ciz(){var k=H[S],i=elIl.value,c=elKat.value,fv=!!(i||c);
  if(!l.length){$('liste').innerHTML='<div class="bos">Bu seçime uygun mekan bulunamadı.</div>';$('df').style.display='none';return}
  var lim=fv?l.length:Math.min(N,l.length);
  $('liste').innerHTML=l.slice(0,lim).map(function(m){var s=k.indexOf(m)+1;
-  var sol=S==='secki'?'<div class="no'+(s<=3?' t':'')+'">'+s+'</div>':'<div class="rz">'+esc(m.il.toLocaleUpperCase('tr-TR'))+'</div>';
+  var sol=S==='secki'?'<div class="no'+(s<=3?' t':'')+'">'+s+'</div>':'<div class="rz">'+esc(m.plaka||m.il.toLocaleUpperCase('tr-TR'))+'</div>';
   return'<a class="k" href="'+esc(m.link)+'" target="_blank" rel="noopener">'+sol+'<div class="b"><div class="ad">'+esc(m.ad)+'</div><div class="alt">'+esc(m.il)+' / '+esc(m.ilce)+' · '+esc(m.kat)+'</div><div class="pu"><b>★ '+Number(m.puan).toFixed(1).replace('.',',')+'</b> · '+Number(m.yorum).toLocaleString('tr-TR')+' yorum '+(m.etiket?'<span class="et">'+esc(m.etiket)+'</span>':'')+'</div></div><div class="ok">↗</div></a>'}).join('');
  var kalan=l.length-lim;if(!fv&&kalan>0){$('df').style.display='block';$('df').textContent='Daha fazla göster ('+kalan+' kaldı)'}else $('df').style.display='none'}
 function sek(x){S=x;N=ADIM;$('t1').classList.toggle('a',x==='secki');$('t2').classList.toggle('a',x==='zirve');
@@ -72,5 +72,8 @@ elIl.onchange=elKat.onchange=function(){N=ADIM;ciz()};
 $('sf').onclick=function(){elIl.value='';elKat.value='';ciz()};
 $('df').onclick=function(){N+=ADIM;ciz()};
 sek('secki');
+(function(){var q=new URLSearchParams(location.search).get('il');if(!q)return;var f=function(s){return String(s).toLocaleLowerCase('tr').replace(/[çğıöşü]/g,function(c){return{'ç':'c','ğ':'g','ı':'i','ö':'o','ş':'s','ü':'u'}[c]})};
+ var bul=function(){for(var i=0;i<elIl.options.length;i++){if(f(elIl.options[i].value)===f(q))return elIl.options[i].value}return''};
+ var v=bul();if(!v&&H.zirve&&H.zirve.length){sek('zirve');v=bul()}if(v){elIl.value=v;ciz()}})();
 })();
 </script></body></html>
