@@ -35,6 +35,22 @@ for k in sorted({r['S'] for r in yer}):
     if c:
         r=max(c,key=lambda r:r['G']);d=yrow(r,'');d['sol']='';d['ad']=r['ad'];d['alt']=k+' · '+r['il']+' / '+r['ilce'];kat.append(d)
 B.append(dict(b='Kategorilerin şampiyonları',a='Her kategoride 500+ yorumlu yerler arasından Güvenilir Skor\'u en yüksek olan.',s=kat))
+kyr=[]
+for k in sorted({r['S'] for r in yer}):
+    r=max([r for r in yer if r['S']==k],key=lambda r:r['y']);d=yrow(r);d['alt']=k+' · '+r['il']+' / '+r['ilce'];kyr.append(d)
+B.append(dict(b='Kategorilerin en çok yorumlu yeri',a='Her kategoride en çok yorum alan işletme (zincirler hariç).',s=kyr))
+UV=json.loads(re.search(r'type="application/json"[^>]*>(.*?)</script>',open('ustalar.html',encoding='utf-8').read(),re.S).group(1))
+def urow(g,m,sag):return dict(sol='',ad=m['ad'],alt=g['ad']+' · '+m['il']+' / '+m['ilce'],sag=sag,l=m['link'])
+B.append(dict(b='Her yemeğin ustası',a='Tek İşin Ustaları\'ndaki 20 yemek grubunun birincisi (Güvenilir Skor\'a göre).',s=[urow(g,g['liste'][0],'★ '+fmt(g['liste'][0]['puan'])+' · '+bin_(g['liste'][0]['yorum'])+' yorum') for g in UV['gruplar'] if g['liste']]))
+yu=[]
+for g in UV['gruplar']:
+    if g['liste']:
+        m=max(g['liste'],key=lambda m:m['yorum']);yu.append(urow(g,m,'★ '+fmt(m['puan'])+' · '+bin_(m['yorum'])+' yorum'))
+B.append(dict(b='Her yemeğin en çok yorumlu ustası',a='20 yemek grubunun en çok yorum almış yeri (gruptaki ilk 60 içinden).',s=yu))
+ily=[]
+for i in sorted({r['il'] for r in yer}):
+    r=max([r for r in yer if r['il']==i],key=lambda r:r['y']);d=yrow(r);d['alt']=r['il']+' / '+r['ilce']+' · '+r['S'];ily.append((r['y'],d))
+B.append(dict(b='81 ilin en çok yorumlu yeri',a='Her ilde en çok yorum alan yer, yoruma göre sıralı.',s=[dict(d,sol=str(n+1)) for n,(y,d) in enumerate(sorted(ily,key=lambda t:-t[0]))]))
 # il rekorları
 il_k=collections.defaultdict(collections.Counter);il_p=collections.defaultdict(list);il_y=collections.defaultdict(list)
 for r in yer:il_k[r['il']][r['S']]+=1;il_p[r['il']].append(r['p']);il_y[r['il']].append(r['y'])
