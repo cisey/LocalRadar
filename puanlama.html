@@ -38,6 +38,14 @@ td.n{text-align:right;font-variant-numeric:tabular-nums}
 .hesap input,.hesap select{width:100%;font:inherit;font-size:15px;color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .sonuc{font-size:22px;font-weight:800;color:var(--gold);margin-top:12px}
 .sonuc small{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:2px}
+details.bol{margin:10px 0;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+details.bol>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;font-size:16.5px;font-weight:800}
+details.bol>summary::-webkit-details-marker{display:none}
+details.bol>summary:after{content:"›";font-size:22px;color:var(--muted);transition:transform .2s}
+details.bol[open]>summary:after{transform:rotate(90deg);color:var(--accent)}
+details.bol[open]{border-color:rgba(56,189,248,.28)}
+details.bol .ic{padding:0 16px 16px}details.bol .ic>h3:first-child{margin-top:4px}
+.hepsi{background:none;border:0;color:var(--accent);font:inherit;font-size:13px;font-weight:700;cursor:pointer;margin:14px 2px 0;padding:0}
 h2.ana{font-size:19px;margin:34px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
 h3{font-size:15.5px;font-weight:800;margin:20px 0 6px;color:var(--text)}
 /*temaPaketi*/
@@ -73,7 +81,9 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   </table>
   <p>Puan, yorum ve mesafe gibi tek bir şeye bakan sıralamalar (En Yakın, Puan, Yorum) hesap sayılmaz, bunlar ilgili bölümde birer satırla anlatılıyor.</p>
 
-  <h2 class="ana" id="guvenilir">1️⃣ Güvenilir Skor: temel hesap</h2>
+  <button type="button" class="hepsi" id="hepsi">Tümünü aç</button>
+  <details class="bol" id="guvenilir"><summary>1️⃣ Güvenilir Skor: temel hesap</summary>
+<div class="ic">
   <p>Rehberlerin ve Yakınımdakiler sayfasının temelinde bu hesap var. Puanı ve kaç kişinin oy verdiğini birlikte tartar.</p>
 
 <h3>Kısaca</h3>
@@ -130,9 +140,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     </select>
     <div class="sonuc"><span id="s">–</span><small id="a"></small></div>
   </div>
+</div></details>
 
-
-  <h2 class="ana" id="rehber">2️⃣ Rehber sayfaları (ilçe ve il)</h2>
+  <details class="bol" id="rehber"><summary>2️⃣ Rehber sayfaları (ilçe ve il)</summary>
+<div class="ic">
   <p>Her ilçenin ve ilin kendi rehberinde Güvenilir Skor kullanılır.</p>
   <div class="box">
     <ul>
@@ -141,8 +152,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
       <li><b>🎲 Ne yesem?</b> düğmesi: Sayfada seçili filtrelere uyan yerlerden, puanı <b>4,5 ve üzeri</b> ve en az <b>50 yorumlu</b> olanlar arasından <b>rastgele 3 öneri</b> verir. "Başka öner" dersen yeni 3 tanesini seçer.</li>
     </ul>
   </div>
+</div></details>
 
-  <h2 class="ana" id="yakinimda">3️⃣ Yakınımdakiler sayfası</h2>
+  <details class="bol" id="yakinimda"><summary>3️⃣ Yakınımdakiler sayfası</summary>
+<div class="ic">
   <p>Konumuna göre çevrendeki mekanları listeler. Konumunun çevresindeki rehberleri, komşu ilçe ya da il olsa bile, birlikte okur. Mesafeler <b>kuş uçuşu</b> (düz çizgi) hesaplanır, yürüyüş ya da araba yolu uzunluğu değildir.</p>
   <div class="box">
     <b>Açılışta seçili olanlar:</b>
@@ -195,8 +208,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
 
   <h3>🎲 "Ne yesem?" düğmesi</h3>
   <p>Filtrene uyan yerleri Yakın ve İyi skoruna göre dizer, <b>ilk 15'i arasından rastgele 1 tane</b> seçer. "Başka öner" dersen bir öncekinden farklı bir yer seçer.</p>
+</div></details>
 
-  <h2 class="ana" id="neleryenir">4️⃣ "Neler yenir?" sayfaları</h2>
+  <details class="bol" id="neleryenir"><summary>4️⃣ "Neler yenir?" sayfaları</summary>
+<div class="ic">
   <p>Bu sayfalar, şehre ilk kez gelen biri için "şehrin klasikleri hangileri?" sorusuna cevap verir. Bu yüzden rehberlerdeki güvenilir skordan <b>farklı</b> çalışır: kaliteye olduğu kadar <b>meşhurluğa</b> da bakar. Çok yorum almış bir yer, aynı puandaki az yorumlu yerin açık ara önüne geçer.</p>
 
 <h3>Hangi yerler giriyor?</h3>
@@ -256,8 +271,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
 
 <h3>⚠️ "Çok popüler ama puanı düşük" bölümü</h3>
   <p>Puan tabanının (4,0 ya da 3,8) altında kalan yerlerden <b>yorumu en çok olanlar</b>, ilk 8'e kadar ayrı bir bölümde gösterilir. Meşhur ama memnuniyeti düşük yerleri gitmeden önce bilmen için. Bu bölümde sıralama sadece yorum sayısına göredir.</p>
+</div></details>
 
-  <h2 class="ana" id="ulusal">5️⃣ Türkiye'nin En Popüler Yerleri</h2>
+  <details class="bol" id="ulusal"><summary>5️⃣ Türkiye'nin En Popüler Yerleri</summary>
+<div class="ic">
   <p>Bu sayfada iki ayrı liste var: <b>Türkiye Seçkisi</b> ve <b>81 İlin Zirvesi</b>. İkisi farklı sorulara cevap verir ve farklı hesaplanır.</p>
 
 <h3>Hangi yerler hiç değerlendirilmez?</h3>
@@ -288,8 +305,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     <li>Böyle yer yoksa yorum şartı <b>80</b>'e indirilir. Yazının sonuna "80+ yorum" eklenir.</li>
     <li>Yine yoksa puan 4,0 ve yorum 30'a indirilir. Yazının sonuna "az yorumlu" eklenir.</li>
   </ul>
+</div></details>
 
-  <h2 class="ana" id="gizli">6️⃣ Gizli Cevherler</h2>
+  <details class="bol" id="gizli"><summary>6️⃣ Gizli Cevherler</summary>
+<div class="ic">
   <p>Bu sayfa, Türkiye'nin En Popüler Yerleri'nin tersini yapar: herkesin bildiği yerleri değil, yorumu azdan ortaya olan ama puanı kendi ilinin ortalamasının belirgin üstünde kalan yerleri gösterir.</p>
 
 <h3>Hangi yerler değerlendirilir?</h3>
@@ -305,8 +324,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   <p>Güvenilir Skor'da K = 150 kullanılır, yani az yorumlu yerin puanı <b>aynı ildeki aynı türden yerlerin</b> ortalamasına doğru çekilir (çiğ köfteci çiğ köftecilerle, kebapçı kebapçılarla kıyaslanır). Ortalama, o türden en az 50 yorumlu yerlerden hesaplanır; ilde en az 8 tane yoksa Türkiye ortalaması kullanılır. Fark en az <b>+0,2</b> olan yerler kalır ve fark büyükten küçüğe sıralanır. Kartta "Benzerlerinden +0,6" gibi görünür.</p>
   <p>Liste şu sınırlarla 100 yere tamamlanır: İstanbul, Ankara ve İzmir'den en fazla 5, diğer illerden en fazla 3 yer; her kategoriden en fazla 20 yer; aynı markadan 1 şube.</p>
   <div class="box"><b>Dikkat:</b> Az yorumlu yerler daha kolay kapanır ve puanları daha kolay oynar. Gitmeden önce Haritalar'dan güncel durumuna bakmak iyi olur.</div>
+</div></details>
 
-  <h2 class="ana" id="ustalar">7️⃣ Tek İşin Ustaları</h2>
+  <details class="bol" id="ustalar"><summary>7️⃣ Tek İşin Ustaları</summary>
+<div class="ic">
   <p>Her şeyi yapan lokantalar yerine tek bir yemeğe odaklanan yerleri, yemek grubuna göre listeler: çorba, ciğer, tantuni, katmer, kebap, döner gibi 20 grup var.</p>
 
 <h3>Bir yer hangi gruba giriyor?</h3>
@@ -321,8 +342,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   <div class="formul">Güvenilir Skor = (yorum × puan + 250 × grup ortalaması) ÷ (yorum + 250)</div>
   <p>Az yorumlu yerin puanı, o yemek grubunun ortalamasına doğru çekilir. Her grupta en iyi <b>60</b> yer gösterilir; bir ilden en fazla <b>10</b> yer, aynı markadan <b>1</b> şube girer.</p>
   <div class="box"><b>Dikkat:</b> Grup adı mekanın ad ve türünden tahmin edilir, bu yüzden küçük sapmalar olabilir (ör. şırdancı yerler çorba grubunda çıkabilir). Katmer gibi bir ile ait yemeklerde liste doğal olarak o ilde yoğunlaşır.</div>
+</div></details>
 
-  <h2 class="ana" id="dna">8️⃣ İllerin Lezzet DNA'sı</h2>
+  <details class="bol" id="dna"><summary>8️⃣ İllerin Lezzet DNA'sı</summary>
+<div class="ic">
   <p>Bu sayfa bir sıralama yapmaz; bir ilin yemek kültürünün hangi kategoride yoğunlaştığını gösterir ve iki ili yan yana koyar.</p>
 
 <h3>Ne hesaplanıyor?</h3>
@@ -332,8 +355,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     <li><b>Ortanca puan ve ortanca yorum:</b> ildeki yerlerin tam ortadaki değeri. İlin puan verme alışkanlığını ve yorum hacmini gösterir.</li>
   </ul>
   <div class="box"><b>Dikkat:</b> Taranan yeri 300'ün altında olan illerde oranlar sapabilir, bu illerde "kısmi veri" etiketi görünür. Balık ve Kahvaltı gibi Türkiye'de payı küçük kategorilerde küçük farklar bile büyük "kat" değeri verir.</div>
+</div></details>
 
-  <h2 class="ana" id="ilce">9️⃣ İlçesinin Yıldızları</h2>
+  <details class="bol" id="ilce"><summary>9️⃣ İlçesinin Yıldızları</summary>
+<div class="ic">
   <p>"İl merkezinden çıkınca sırf yemek için yola çıkmaya değer, kendi ilçesini tek başına taşıyan yerler hangileri?" sorusuna cevap verir. Her ilçeden en fazla bir yer girer.</p>
 
 <h3>Hangi ilçeler değerlendirilir?</h3>
@@ -351,8 +376,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   </ul>
   <p>Liste Güvenilir Skor'a göre sıralanır. "Yakından uzağa" düğmesi, konumunu kullanarak yakın ilçelerin yıldızlarını öne alır. Konum bilgin cihazından çıkmaz.</p>
   <div class="box"><b>Dikkat:</b> Turistik küçük ilçelerde (Gökçeada, Sapanca gibi) yorum hacmi yüksektir; bu yerler tatilcilerin tercihidir, yerel halkın değil.</div>
+</div></details>
 
-  <h2 class="ana" id="yol">🔟 Yol Üstü Lezzet Molası</h2>
+  <details class="bol" id="yol"><summary>🔟 Yol Üstü Lezzet Molası</summary>
+<div class="ic">
   <p>"Şu şehirler arasında giderken nerede yemek yemeliyim?" sorusuna cevap verir. 20 ana güzergâh (İstanbul → Ankara, Ankara → Konya, Gaziantep → Diyarbakır gibi) için hazırlanır; güzergâhı ters çevirip dönüş yönünde de görebilirsin.</p>
 
 <h3>Bir yer yol üstü sayılır mı?</h3>
@@ -365,8 +392,10 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
 <h3>Nasıl seçilir?</h3>
   <p>Yol boyunca her <b>40 km'lik dilimden</b> Güvenilir Skor'u en yüksek <b>3 yer</b> seçilir (aynı markadan 1 şube). Böylece mola önerileri yol boyunca eşit aralıklarla dağılır. Kartın solundaki sayı, yolun o noktasının başlangıçtan kaç km sonra olduğunu gösterir. "Konumuma en yakın molaya git" düğmesi listede sana en yakın yeri bulur.</p>
   <div class="box"><b>Dikkat:</b> Sapma mesafeleri kuş uçuşudur. Ücretli otoyollarda bariyer nedeniyle gerçek çıkış daha uzakta olabilir; sapmadan önce Haritalar'dan giriş ve park durumuna bakın.</div>
+</div></details>
 
-  <h2 class="ana" id="dikkat">Dikkat edilmesi gerekenler</h2>
+  <details class="bol" id="dikkat"><summary>Dikkat edilmesi gerekenler</summary>
+<div class="ic">
   <ul>
     <li>Puanlar ve yorum sayıları Google Haritalar'dan tarama tarihinde alınır, sonradan değişebilir.</li>
     <li>Aynı mekan farklı taramalarda iki kez bulunmuşsa tek kayda indirilir (Google'ın mekan kimliğine göre). Aynı markanın gerçekten ayrı şubeleri ise ayrı mekan sayılır.</li>
@@ -374,6 +403,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     <li>Mekanlar kapanmış veya el değiştirmiş olabilir. Gitmeden önce Google Haritalar'dan kontrol etmek iyi olur.</li>
     <li>Bu bir "tavsiye listesi" değil, verilere dayalı bir <b>sıralamadır</b>. Zevkler farklıdır.</li>
   </ul>
+</div></details>
 
 </div>
 <script>
@@ -398,5 +428,9 @@ function hesapla(){
   h.insertAdjacentElement('afterend',b);yaz();
 })();
 </script>
+<script>(function(){var D=function(){return document.querySelectorAll('details.bol')},b=document.getElementById('hepsi');
+function ac(){var h=decodeURIComponent(location.hash.slice(1));if(!h)return;var e=document.getElementById(h);if(!e)return;var d=e.tagName==='DETAILS'?e:e.closest('details.bol');if(d){d.open=true;setTimeout(function(){e.scrollIntoView()},30)}}
+b.onclick=function(){var k=b.textContent==='Tümünü aç';D().forEach(function(d){d.open=k});b.textContent=k?'Tümünü kapat':'Tümünü aç'};
+window.addEventListener('hashchange',ac);ac()})();</script>
 </body>
 </html>
