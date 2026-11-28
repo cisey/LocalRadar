@@ -23,6 +23,26 @@ def km(a,b,c,d):
 byil=collections.defaultdict(list)
 for r in yer:byil[r['il']].append(r)
 kume=[]
+MAXKUME=25
+def bol(M):
+    """25'ten büyük kümeyi k-means ile parçalara ayır; her parça kuralı sağlamalı."""
+    if len(M)<=MAXKUME:return [M]
+    k=-(-len(M)//MAXKUME);ms=[(m['e'],m['b']) for m in M]
+    c=[ms[0]]
+    while len(c)<k:c.append(max(ms,key=lambda p:min(km(p[0],p[1],q[0],q[1]) for q in c)))
+    for _ in range(12):
+        g=[[] for _ in c]
+        for m,p in zip(M,ms):g[min(range(k),key=lambda t:km(p[0],p[1],c[t][0],c[t][1]))].append(m)
+        c=[(sum(m['e'] for m in x)/len(x),sum(m['b'] for m in x)/len(x)) if x else c[t] for t,x in enumerate(g)]
+    return [x for x in g if len(x)>=MIN_N and len({m['S'] for m in x})>=MIN_KAT]
+def ekle(M):
+    e=sum(m['e'] for m in M)/len(M);b=sum(m['b'] for m in M)/len(M)
+    ic=collections.Counter(m['ilce'] for m in M if m['ilce']).most_common(1)
+    kat=collections.Counter(m['S'] for m in M)
+    M.sort(key=lambda m:-m['G'])
+    kume.append(dict(il=il,ilce=ic[0][0] if ic else 'Merkez',e=round(e,4),b=round(b,4),n=len(M),kat=dict(kat.most_common()),puan=sum(sorted((m['v'] for m in M),reverse=True)[:12]),
+        mekan=[dict(ad=m['ad'],p=m['p'],y=m['y'],kat=m['S'],l=m['l']) for m in M[:MAXY+4]]))
+
 for il,L in byil.items():
     cell=collections.defaultdict(list)
     for i,r in enumerate(L):cell[(int(r['e']*100),int(r['b']*100))].append(i)
@@ -42,13 +62,10 @@ for il,L in byil.items():
             if L[j]['k'] in gor:continue
             gor.add(L[j]['k']);u2.append(j)
         if len(u2)<MIN_N or len({L[j]['S'] for j in u2})<MIN_KAT:continue
-        M=[L[j] for j in u2];kullan.update(uyeler)
-        e=sum(m['e'] for m in M)/len(M);b=sum(m['b'] for m in M)/len(M)
-        ic=collections.Counter(m['ilce'] for m in M if m['ilce']).most_common(1)
-        kat=collections.Counter(m['S'] for m in M)
-        M.sort(key=lambda m:-m['G'])
-        kume.append(dict(il=il,ilce=ic[0][0] if ic else 'Merkez',e=round(e,4),b=round(b,4),n=len(M),kat=dict(kat.most_common()),puan=sum(sorted((m['v'] for m in M),reverse=True)[:12]),
-            mekan=[dict(ad=m['ad'],p=m['p'],y=m['y'],kat=m['S'],l=m['l']) for m in M[:MAXY+4]]))
+        M0=[L[j] for j in u2];kullan.update(uyeler)
+        for M in bol(M0):
+            ekle(M)
+        continue
 kume.sort(key=lambda k:-k['puan'])
 sayac=collections.Counter();out=[]
 for k in kume:
@@ -61,7 +78,7 @@ S=S.replace("Türkiye'nin En Popüler Yerleri · Local Radar","Yürünebilir Lez
 S=S.replace('<div class="fl"><select id="il"></select><select id="kat"></select></div>','<div class="fl"><select id="il"></select><button type="button" class="geo" id="geo">📍 Yakından uzağa</button></div>')
 S=S.replace('</style>','.geo{background:var(--btn);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:0 12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}.kc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:8px 0}.kc .ti{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.04em}.kc .bs{font-weight:800;font-size:16px;margin:2px 0}.kc .kt{color:var(--muted);font-size:12.5px}.kc ol{margin:8px 0 0 18px;font-size:13.5px}.kc li{margin:3px 0}.kc li a{color:var(--text);text-decoration:none;font-weight:600}.kc li small{color:var(--muted)}.kc li b{color:var(--gold)}.bt{display:flex;gap:8px;margin-top:10px}.bt a,.bt button{flex:1;text-align:center;background:var(--btn);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 6px;font:inherit;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer}</style>',1)
 a=S.index('<div class="not">');b=S.index('</div>',a)+6
-S=S[:a]+'''<div class="not"><b>Nasıl seçildi?</b><br>Zincirler, kapanmış yerler, alkollü mekanlar, büfe/tost/fast food ve yemek dışı işletmeler çıkarılır; puanı en az 4,3 ve yorumu en az 100 olan yerler değerlendirilir. Bir mekanın 250 metre çevresinde, aynı markadan tek şube sayılarak en az 5 kaliteli mekan ve en az 2 farklı kategori varsa o nokta bir küme olur (5 çiğ köfteci yan yana küme sayılmaz). Birbirine geçen kümelerden yalnızca kalite toplamı yüksek olan kalır. Büyükşehirlerden en fazla 15 (İstanbul) ya da 10 (Ankara, İzmir), diğer illerden 5 küme gösterilir. "Bölgeye yol tarifi", kümedeki mekanların ortalama konumunu Haritalar'da açar; park yerini oraya yakın seçersin. Ayrıntılar: <a href="puanlama.html#kumeler">Puanlama nasıl çalışır?</a></div>'''+S[b:]
+S=S[:a]+'''<div class="not"><b>Nasıl seçildi?</b><br>Zincirler, kapanmış yerler, alkollü mekanlar, büfe/tost/fast food ve yemek dışı işletmeler çıkarılır; puanı en az 4,3 ve yorumu en az 100 olan yerler değerlendirilir. Bir mekanın 250 metre çevresinde, aynı markadan tek şube sayılarak en az 5 kaliteli mekan ve en az 2 farklı kategori varsa o nokta bir küme olur (5 çiğ köfteci yan yana küme sayılmaz). Birbirine geçen kümelerden yalnızca kalite toplamı yüksek olan kalır; 25'ten çok mekanı olan büyük kümeler konuma göre iki ya da daha fazla yürünebilir parçaya bölünür. Büyükşehirlerden en fazla 15 (İstanbul) ya da 10 (Ankara, İzmir), diğer illerden 5 küme gösterilir. "Bölgeye yol tarifi", kümedeki mekanların ortalama konumunu Haritalar'da açar; park yerini oraya yakın seçersin. Ayrıntılar: <a href="puanlama.html#kumeler">Puanlama nasıl çalışır?</a></div>'''+S[b:]
 j0=S.index('<script>\n');j1=S.index('</script>',j0)
 js='''<script>
 (function(){
