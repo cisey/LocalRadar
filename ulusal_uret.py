@@ -11,7 +11,7 @@ DUZ={'Adiyaman':'Adıyaman','Agri':'Ağrı','Aydin':'Aydın','Balikesir':'Balık
 KARA_AD=re.compile(r'(?<![a-z])(bungalov|glamping|truzim|oksijen|allahuekber|din\W*tes|tahin|armada|kentpark|cepa|panora|ankamall|pazari|cicekci|cicekcilik|hediyelik|rafting|binicilik|termal|dinlenme|petrol|akaryakit|avm|otel|oteli|hotel)(?![a-z])')
 KARA_TUR=re.compile(r'bayi|bakkal|peynirci|alisveris|oyun salonu|kamp|nargile|dugun|otel|pansiyon|konaklama|termal|hediyelik|cicek|rafting|binicilik|turizm|market|tesis|bungalow|plaj|havuz|lounge bar|gece kulubu')
 YEMEK_TUR=re.compile(r'restoran|lokanta|kebap|pide|kafe|cafe|kahvalti|firin|pastane|tatli|balik|kofte|et yemek|corba|kafeterya')
-ALKOL=re.compile(r'(?<![a-z])bar(?![a-z])|(restaurant|restoran|cafe|kafe|lounge|gastro|pub)\s*(&|ve)?\s*bar(?![a-z])|(?<![a-z])(meyhane|meyhanesi|pub|birahane|biraci|taverna|tavern|brewery|brewhouse|cocktail|kokteyl|wine|sarap|sarapci|rakici|gece kulubu|nightclub|night club)(?![a-z])')
+ALKOL=re.compile(r'(?<![a-z])bar(?![a-z])|(restaurant|restoran|cafe|kafe|lounge|gastro|pub)\s*(&|ve)?\s*bar(?![a-z])|(?<![a-z])(meyhane|meyhanesi|pub|birahane|biraci|taverna|tavern|brewery|brewhouse|cocktails?|kokteyl(?:ler)?|wine|sarap|sarapci|rakici|gece kulubu|nightclub|night club)(?![a-z])')
 HARIC=re.compile(r'(?<![a-z])(gezi evi|nostalji gezi)(?![a-z])')   # yemek mekanı olmayanlar (elle eklenir)
 ZINCIR_EK=re.compile(r'(?<![a-z])(oses|cigkoftem|espressolab|burger yiyelim)(?![a-z])')
 def kara(n,t):

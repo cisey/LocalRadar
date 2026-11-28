@@ -3,6 +3,7 @@
 ANGORA RESTAURANT and Bar | Muğla | Eklektik Restoran | 205 yorum | 4.6
 Address Restaurant & Cafe Bar | Muğla | Kafe | 1645 yorum | 4.3
 Afişe Sahne Kafe Bar | Balıkesir | Eğlence Merkezi | 153 yorum | 4.4
+Alaçatı Wellness Garden Coffee & Cocktails / Lunch & Dinner | İzmir | Restoran | 157 yorum | 5.0
 Aldente Beach Bar Restaurant | Aydın | Restoran | 279 yorum | 4.2
 Altuntabak Restaurant Cafe Bar | Muğla | Restoran | 2718 yorum | 4.4
 Alya Steak House Bar | Antalya | Biftek restoranı | 204 yorum | 4.6
@@ -65,6 +66,7 @@ Burger Yiyelim | İstanbul | Hamburger restoranı | 778 yorum | 4.2
 Burger Yiyelim | İstanbul | Hamburger restoranı | 922 yorum | 4.2
 Burger Yiyelim | İzmir | Hamburger restoranı | 349 yorum | 4.2
 CAPELLA KÜNEFE DONDURMA VE VİTAMİN BAR | Gaziantep | Tatlıcı | 569 yorum | 4.8
+Cactus Coffee & Cocktails | Cunda - Ayvalık | Balıkesir | Kokteyl bar | 836 yorum | 4.4
 Cafe Harmony Hookah Bar&Bistro | Nevşehir | Kafe | 549 yorum | 4.8
 Captain Pirate Restaurant Bar | Antalya | Restoran | 1707 yorum | 4.6
 Caretta Restaurant & Bar | Muğla | Restoran | 176 yorum | 4.2
@@ -235,6 +237,7 @@ Metis Cafe & Bar | Aydın | Kafe | 163 yorum | 4.4
 Midye Bar | Çanakkale | Deniz mahsülleri restoranı | 189 yorum | 4.2
 Milas Karya Kahvaltı Bahçesi | Muğla | Düğün Hizmeti | 229 yorum | 4.3
 Mira Cafe Bar | Hatay | Kafe | 176 yorum | 4.4
+Misti Fresh Drinks & Cocktails | Antalya | Kafe | 277 yorum | 5.0
 Modatepe Restoran & Bungalov | Trabzon | Kahvaltı restoranı | 1500 yorum | 4.4
 Mydonose Cafe&Bar | Nevşehir | Kafe | 274 yorum | 4.5
 Nobel 1(kaleiçi) Cafe & Bar & Restoran | Antalya | Restoran | 511 yorum | 4.4
@@ -306,6 +309,7 @@ Teona Çağlayan Bungalov & Restoran | Rize |  | 288 yorum | 4.7
 Tepedebiyer Restoran & Bungalov ( Dağ Evi ) | Rize |  | 1148 yorum | 4.6
 The Faulty Friends Rest Bar | Antalya | Restoran | 207 yorum | 4.7
 The King's Kitchen & Bar | Antalya | Restoran | 189 yorum | 4.6
+The Lombak cafe & cocktails | Antalya | Kahve dükkanı | 203 yorum | 4.9
 The Reef Bar Bistro Club | Muğla | Bar | 259 yorum | 4.3
 The Turkish Ivy Restaurant & Bar | Muğla | Restoran | 241 yorum | 4.2
 Three Bells Korean Restaurant Karaoke Bar | Muğla | Kore restoranı | 173 yorum | 4.5
@@ -339,6 +343,7 @@ cello's garden restaurant&cafe bar | Antalya | Restoran | 370 yorum | 4.7
 Çiğköftem Harbiye | İstanbul | Vegan Restoranı | 238 yorum | 4.4
 Çınarlı Bahçe Sinop Kahvaltı Restoranı&Bungalov Konaklama | Sinop | Kahvaltı restoranı | 515 yorum | 4.7
 Ötzi’s Bar Restaurant | Antalya | Restoran | 236 yorum | 4.3
+İnsomnia Coffee & Cocktails | Muğla | Kahve dükkanı | 165 yorum | 4.8
 İstanbul Restaurant Bar | Antalya | Pizza restoranı | 306 yorum | 4.7
 İxir Restaurant & Sport Bar | Antalya | Restoran | 161 yorum | 4.8
 Şamdan restaurant & Bar | Muğla | Restoran | 182 yorum | 4.3
