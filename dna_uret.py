@@ -63,7 +63,7 @@ S=S.replace("Türkiye'nin En Popüler Yerleri · Local Radar","İllerin Lezzet D
 S=S.replace('<p class="ac" id="ac"></p>','<p class="ac" id="ac">Bir ilin yemek kültürü hangi kategoride yoğunlaşıyor? Bir il seç, istersen ikinci bir ille karşılaştır.</p>')
 S=S.replace('<div class="fl"><select id="il"></select><select id="kat"></select></div>','<div class="sec"><select id="il1"></select><select id="il2"></select></div>')
 a=S.index('<div class="dr">');b=S.index('<div class="not">')
-S=S[:a]+'<div id="kart"></div>\n<div id="rek"></div>\n'+S[b:]
+S=S[:a]+'<div id="kart"></div>\n'+S[b:]
 a=S.index('<div class="not">');b=S.index('</div>',a)+6
 S=S[:a]+'''<div class="not"><b>Nasıl hesaplandı?</b><br>Her ilde taranan yerlerin (zincirler, kapanmışlar, alkollü ve yemek dışı yerler çıkarılmış) kategori dağılımı hesaplanır. Çubuklar ilin payını, "Türkiye'ye göre" değeri bu payın Türkiye ortalamasının kaç katı olduğunu gösterir (ör. 1,8× = ortalamanın 1,8 katı). Ortanca puan ve ortanca yorum, il içindeki yerlerin tam ortadaki değeridir. Taranan yeri 300'ün altında olan illerde oranlar sapabilir, bu illerde "kısmi veri" etiketi görünür. Ayrıntılar: <a href="puanlama.html#dna">Puanlama nasıl çalışır?</a></div>'''+S[b:]
 j0=S.index('<script>\n');j1=S.index('</script>',j0)
@@ -89,18 +89,9 @@ function ciz(){var a=I[+$('il1').value],bi=$('il2').value,b=bi===''?null:I[+bi],
   h+='<div class="sat"><div class="kn">'+esc(k)+'<div class="sy">TR %'+f1(H.tr.pay[k])+'</div></div><div>'+bar(a.pay[k])+'<div class="sy">%'+f1(a.pay[k])+' · '+f1(a.endeks[k])+'×'+'</div>'+(b?bar(b.pay[k],1)+'<div class="sy">%'+f1(b.pay[k])+' · '+f1(b.endeks[k])+'×</div>':'')+'</div></div>'});
  h+='</div>';var q=encodeURIComponent(a.il);
  if(a.en&&a.en.length){h+='<div class="kr"><h2>'+esc(a.il)+'\\'in en\\'leri</h2>'+a.en.map(function(e){return'<div class="ozet"><b>'+esc(e[0])+':</b> '+(e[3]?'<a href="'+esc(e[3])+'" target="_blank" rel="noopener">'+esc(e[1])+'</a>':esc(e[1]))+' <small>('+esc(e[2])+')</small></div>'}).join('')+'</div>'}
- h+='<div class="kr"><div class="ozet"><b>'+esc(a.il)+'</b> için: <a href="gizli.html?il='+q+'">💎 Gizli cevherler</a> · <a href="ulusal.html?il='+q+'">🏆 En popülerler</a> · <a href="ilce.html?il='+q+'">⭐ İlçe yıldızları</a> · <a href="rehberler/'+esc(a.f)+'-Tum-Ilceler.html">📖 İl rehberi</a></div></div>';
+ h+='<div class="kr"><div class="ozet"><b>'+esc(a.il)+'</b> için: <a href="gizli.html?il='+q+'">💎 Gizli cevherler</a> · <a href="ulusal.html?il='+q+'">🏆 En popülerler</a> · <a href="ilce.html?il='+q+'">⭐ İlçe yıldızları</a> · <a href="rehberler/'+esc(a.f)+'-Tum-Ilceler.html">📖 İl rehberi</a> · <a href="enler.html">🏅 Türkiye\\'nin en\\'leri</a></div></div>';
  $('kart').innerHTML=h;try{var u=new URLSearchParams(location.search);u.set('il1',a.il);if(b)u.set('il2',b.il);else u.delete('il2');history.replaceState(null,'','?'+u.toString())}catch(e){}}
-function rekor(){var T=I.filter(function(x){return!x.kismi}),r=[];
- function en(t,fn,asc,fmt){var s=T.slice().sort(function(a,b){return asc?fn(a)-fn(b):fn(b)-fn(a)})[0];r.push('<div class="ozet"><b>'+t+':</b> '+esc(s.il)+' <small>('+fmt(s)+')</small></div>')}
- en('Tatlı yoğunluğu en yüksek il',function(x){return x.endeks['Fırın & Tatlı']},0,function(x){return f1(x.endeks['Fırın & Tatlı'])+'× TR'});
- en('Kebap/döner payı en yüksek il',function(x){return x.pay['Döner & Kebap']},0,function(x){return '%'+f1(x.pay['Döner & Kebap'])});
- en('Balık payı en yüksek il',function(x){return x.pay['Balık & Deniz Ürünleri']},0,function(x){return '%'+f1(x.pay['Balık & Deniz Ürünleri'])});
- en('En cömert puan veren il',function(x){return x.p},0,function(x){return 'ortanca '+f1(x.p.toFixed(2))});
- en('En zor beğenen il',function(x){return x.p},1,function(x){return 'ortanca '+f1(x.p.toFixed(2))});
- en('En çok yorum yazılan il',function(x){return x.y},0,function(x){return 'ortanca '+x.y+' yorum'});
- $('rek').innerHTML='<div class="kr"><h2>Türkiye\\'nin en\\'leri</h2>'+r.join('')+'<div class="sy">Yalnızca 300+ yeri taranmış iller karşılaştırılır.</div></div>'}
-$('rek')&&rekor();
+
 $('il1').onchange=$('il2').onchange=ciz;
 var __f=function(s){return String(s).toLocaleLowerCase('tr').replace(/[çğıöşü]/g,function(c){return{'ç':'c','ğ':'g','ı':'i','ö':'o','ş':'s','ü':'u'}[c]})};
 var qs=new URLSearchParams(location.search),q1=qs.get('il1'),q2=qs.get('il2');
