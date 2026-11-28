@@ -2,7 +2,7 @@
 import re,json,glob,collections,statistics
 src=open('ulusal_uret.py',encoding='utf-8').read();exec(src[:src.index('rows=[]')])
 KISMI=300
-il_k=collections.defaultdict(collections.Counter);il_p=collections.defaultdict(list);il_y=collections.defaultdict(list);ad={}
+il_yer=collections.defaultdict(list);il_k=collections.defaultdict(collections.Counter);il_p=collections.defaultdict(list);il_y=collections.defaultdict(list);ad={}
 for f in sorted(glob.glob('rehberler/*-Tum-Ilceler.html')):
     il=__import__('os').path.basename(f).replace('-Tum-Ilceler.html','')
     h=open(f,encoding='utf-8').read();v=json.JSONDecoder().raw_decode(h[h.find('const V=')+8:])[0]
@@ -14,7 +14,7 @@ for f in sorted(glob.glob('rehberler/*-Tum-Ilceler.html')):
         try:p=float(str(x['p']).replace(',','.'))
         except:continue
         if not(0<p<=5):continue
-        il_k[il][x['S']]+=1;il_p[il].append(p);il_y[il].append(x.get('y') or 0)
+        il_yer[il].append(dict(ad=temiz(n0),p=p,y=x.get('y') or 0,S=x['S'],c=(x.get('c') or '').strip(),l=x.get('l') or ''));il_k[il][x['S']]+=1;il_p[il].append(p);il_y[il].append(x.get('y') or 0)
 tum=collections.Counter()
 for c in il_k.values():tum.update(c)
 N=sum(tum.values());kats=[k for k,_ in tum.most_common()]
@@ -26,6 +26,28 @@ for il in sorted(il_k,key=lambda a:ad[a].replace('İ','I').lower()):
     if n<20:continue
     pay={k:round(100*il_k[il][k]/n,1) for k in kats}
     iller.append(dict(f=il,il=ad[il],n=n,kismi=n<KISMI,pay=pay,endeks={k:round(pay[k]/100/trpay[k],2) for k in kats},p=round(statistics.median(il_p[il]),2),y=int(statistics.median(il_y[il]))))
+def sira(key,rev=True):
+    L=sorted([d for d in iller if not d['kismi']],key=key,reverse=rev);return {d['f']:i+1 for i,d in enumerate(L)},len(L)
+psira,pn=sira(lambda d:d['p']);ysira,yn=sira(lambda d:d['y'])
+def fmt(x):return str(round(x,1)).replace('.',',')
+for d in iller:
+    P=il_yer[d['f']];en=[]
+    t=max(P,key=lambda r:r['y']);en.append(['En çok yorum alan yer',t['ad'],f"{t['y']:,} yorum".replace(',','.'),t['l']])
+    for mn in (300,100,30):
+        c=[r for r in P if r['y']>=mn]
+        if c:break
+    if c:
+        t=max(c,key=lambda r:(r['p'],r['y']));en.append([f'En yüksek puanlı yer ({mn}+ yorum)',t['ad'],'★ '+fmt(t['p'])+' · '+format(t['y'],',').replace(',','.')+' yorum',t['l']])
+    uyg=[k for k in kats if trpay[k]>=0.03]
+    top=max(uyg,key=lambda k:d['endeks'][k]);en.append(['En yoğun lezzet',top,'Türkiye ortalamasının '+fmt(d['endeks'][top])+' katı · %'+fmt(d['pay'][top]),''])
+    kc=[r for r in P if r['S']==top and r['y']>=100]
+    if kc:
+        t=max(kc,key=lambda r:r['p']*min(1,r['y']/500)+r['y']/1e6);en.append([f'{top} şampiyonu',t['ad'],'★ '+fmt(t['p'])+' · '+format(t['y'],',').replace(',','.')+' yorum',t['l']])
+    low=min(uyg,key=lambda k:d['endeks'][k]);en.append(['En az bulunan',low,f"Türkiye ortalamasının {fmt(d['endeks'][low]*100)[:-2] if False else round(d['endeks'][low]*100)}%'i" if False else f"Türkiye ortalamasının %{round(d['endeks'][low]*100)}'i düzeyinde",''])
+    ic=collections.Counter(r['c'] for r in P if r['c']).most_common(1)
+    if ic:en.append(['En çok mekanı olan ilçe',ic[0][0],f"{ic[0][1]:,} mekan".replace(',','.'),''])
+    if d['f'] in psira:en.append(['Puan cömertliği',f"{psira[d['f']]}. sıra",f"Ortanca puan {str(d['p']).replace('.',',')} · {pn} il içinde",''])
+    d['en']=en
 veri=json.dumps(dict(kats=kats,tr=dict(pay={k:round(100*trpay[k],1) for k in kats},p=round(trp,2),y=int(try_),n=N),iller=iller),ensure_ascii=False,separators=(',',':'))
 S=open('ulusal_sablon.html',encoding='utf-8').read()
 CSS='''.sec{display:flex;gap:8px;margin-bottom:12px}.kr{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}
@@ -66,6 +88,7 @@ function ciz(){var a=I[+$('il1').value],bi=$('il2').value,b=bi===''?null:I[+bi],
  H.kats.slice().sort(function(x,y){return a.endeks[y]-a.endeks[x]}).forEach(function(k){
   h+='<div class="sat"><div class="kn">'+esc(k)+'<div class="sy">TR %'+f1(H.tr.pay[k])+'</div></div><div>'+bar(a.pay[k])+'<div class="sy">%'+f1(a.pay[k])+' · '+f1(a.endeks[k])+'×'+'</div>'+(b?bar(b.pay[k],1)+'<div class="sy">%'+f1(b.pay[k])+' · '+f1(b.endeks[k])+'×</div>':'')+'</div></div>'});
  h+='</div>';var q=encodeURIComponent(a.il);
+ if(a.en&&a.en.length){h+='<div class="kr"><h2>'+esc(a.il)+'\\'in en\\'leri</h2>'+a.en.map(function(e){return'<div class="ozet"><b>'+esc(e[0])+':</b> '+(e[3]?'<a href="'+esc(e[3])+'" target="_blank" rel="noopener">'+esc(e[1])+'</a>':esc(e[1]))+' <small>('+esc(e[2])+')</small></div>'}).join('')+'</div>'}
  h+='<div class="kr"><div class="ozet"><b>'+esc(a.il)+'</b> için: <a href="gizli.html?il='+q+'">💎 Gizli cevherler</a> · <a href="ulusal.html?il='+q+'">🏆 En popülerler</a> · <a href="ilce.html?il='+q+'">⭐ İlçe yıldızları</a> · <a href="rehberler/'+esc(a.f)+'-Tum-Ilceler.html">📖 İl rehberi</a></div></div>';
  $('kart').innerHTML=h;try{var u=new URLSearchParams(location.search);u.set('il1',a.il);if(b)u.set('il2',b.il);else u.delete('il2');history.replaceState(null,'','?'+u.toString())}catch(e){}}
 function rekor(){var T=I.filter(function(x){return!x.kismi}),r=[];
