@@ -66,7 +66,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   <p class="lead">Sıralamalar tek bir sayıya bakmaz. Hem Google puanına hem de kaç kişinin oy verdiğine bakar. Bu sayfa nasıl yaptığımızı sade bir dille anlatıyor.</p>
 
     <h2 class="ana" id="ozet" style="border-top:0;padding-top:0;margin-top:22px">Hangi sayfada hangi sıralama?</h2>
-  <p>Sitede on farklı hesap kullanılıyor. Hangi sayfada hangisinin çalıştığı aşağıda. Sayfa adına dokununca ilgili bölüme geçersin.</p>
+  <p>Sitede on bir farklı hesap kullanılıyor. Hangi sayfada hangisinin çalıştığı aşağıda. Sayfa adına dokununca ilgili bölüme geçersin.</p>
   <table>
     <tr><th>Sayfa</th><th>Ne gösteriyor?</th><th>Hesap</th></tr>
     <tr><td><a href="#rehber" style="color:var(--accent)">Rehberler</a> (ilçe ve il)</td><td>En iyi kutusu, kategori sekmeleri, haritadaki en güvenilir 3 yer</td><td>Güvenilir Skor</td></tr>
@@ -79,6 +79,7 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
     <tr><td><a href="#ilce" style="color:var(--accent)">İlçesinin Yıldızları</a></td><td>Küçük ilçelerde kendi ilçesini tek başına taşıyan yerler</td><td>İlçe baskınlığı + Güvenilir Skor</td></tr>
     <tr><td><a href="#yol" style="color:var(--accent)">Yol Üstü Lezzet Molası</a></td><td>Şehirlerarası güzergâh boyunca mola yerleri</td><td>Yola yakınlık + Güvenilir Skor</td></tr>
     <tr><td><a href="#kumeler" style="color:var(--accent)">Yürünebilir Lezzet Kümeleri</a></td><td>Arabayı bir kez park edip yürüyerek gezilebilen mekan grupları</td><td>250 m yoğunluk + Güvenilir Skor</td></tr>
+    <tr><td><a href="#enler" style="color:var(--accent)">Türkiye'nin En'leri</a></td><td>Rekorlar: en çok yorumlu yerler, kategori şampiyonları, il ve ilçe rekorları</td><td>Yorum sayısı, Güvenilir Skor, paylar ve ortancalar</td></tr>
   </table>
   <p>Puan, yorum ve mesafe gibi tek bir şeye bakan sıralamalar (En Yakın, Puan, Yorum) hesap sayılmaz, bunlar ilgili bölümde birer satırla anlatılıyor.</p>
 
@@ -414,6 +415,18 @@ html[data-tema="light"] .hesap input,html[data-tema="light"] .hesap select{backg
   </ul>
   <p>Kartta kümedeki en iyi 5 mekan görünür; "En iyi 12 mekan" düğmesi listeyi genişletir. "Bölgeye yol tarifi", kümedeki mekanların ortalama konumunu Haritalar'da açar.</p>
   <div class="box"><b>Dikkat:</b> Parçalara bölünmüş kümeler birbirine komşu olabilir. Park yeri garantisi yoktur, yola çıkmadan Haritalar'dan kontrol edin.</div>
+</div></details>
+
+  <details class="bol" id="enler"><summary>1️⃣2️⃣ Türkiye'nin En'leri</summary>
+<div class="ic">
+  <p>Tek sayfada Türkiye çapında rekorlar ve şampiyonlar. Zincirler, kapanmışlar, alkollü mekanlar ve yemek dışı işletmeler çıkarılmış verinin tamamı kullanılır.</p>
+  <ul>
+    <li><b>En çok yorum alan 10 yer:</b> Yorum sayısına göre, aynı markadan tek şube.</li>
+    <li><b>En yüksek puanlı 10 yer:</b> En az 2.000 yorumu olanlar arasından Güvenilir Skor'a göre (K = 250).</li>
+    <li><b>Kategori şampiyonları:</b> Her kategoride en az 500 yorumu olanlar arasından Güvenilir Skor'u en yüksek yer.</li>
+    <li><b>İl rekorları:</b> Kategori payları (tatlı, kebap, balık, kafe gibi), ortanca puan ve ortanca yorum sayısı. Yalnızca 300+ yeri taranmış iller karşılaştırılır.</li>
+    <li><b>İlçe rekorları:</b> En kalabalık ilçeler; 100'den çok mekanı olan ilçelerde ortanca puanı en yüksek ve en düşük olan, en çok yorum yazılan ilçe.</li>
+  </ul>
 </div></details>
 
   <details class="bol" id="dikkat"><summary>Dikkat edilmesi gerekenler</summary>
