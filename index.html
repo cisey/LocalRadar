@@ -61,6 +61,11 @@ h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.
 p.desc { color: var(--text-muted); font-size: 13.5px; margin: 2px 0 14px; line-height: 1.45; }
 
 .harita-btn { display:flex; justify-content:space-between; align-items:center; text-decoration:none; color:#fff; font-weight:700; font-size:15px; padding:13px 16px; margin:4px 0 6px; border-radius:14px; background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(99,102,241,.22)); border:1px solid rgba(56,189,248,.4); }
+.izgara { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:2px 0 8px; }
+.mini { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; text-align:center; text-decoration:none; color:#fff; font-weight:700; font-size:13.5px; line-height:1.2; padding:12px 8px; border-radius:14px; background:linear-gradient(135deg,rgba(56,189,248,.2),rgba(99,102,241,.2)); border:1px solid rgba(56,189,248,.35); }
+.mini i { font-style:normal; font-size:22px; }
+.mini:active { transform: scale(.98); }
+html[data-tema="light"] .mini { color: var(--text-main); }
 .harita-btn:active { transform: scale(.98); }
 .konum-btn { background:linear-gradient(135deg,rgba(34,197,94,.28),rgba(56,189,248,.22)); border-color:rgba(34,197,94,.55); }
 .search-wrap { position: sticky; top: 0; z-index: 5; padding: 6px 0 12px; background: linear-gradient(var(--bg) 70%, transparent); }
@@ -148,14 +153,16 @@ html[data-tema="light"] a[href="puanlama.html"] { color: var(--text-muted) !impo
     <p class="desc">Bölge ve mekan rehberleri. Bir ile dokunup rehberi seçin.</p>
 
     <a href="yakinimda.html?mod=konum" class="harita-btn konum-btn">📍 Yakınımdakiler · Konumuma Göre <span>→</span></a>
-    <a href="ulusal.html" class="harita-btn">🏆 Türkiye'nin En Popüler Yerleri <span>→</span></a>
-    <a href="gizli.html" class="harita-btn">💎 Gizli Cevherler · Az Bilinenler <span>→</span></a>
-    <a href="ustalar.html" class="harita-btn">🍽️ Tek İşin Ustaları <span>→</span></a>
-    <a href="dna.html" class="harita-btn">🧬 İllerin Lezzet DNA'sı <span>→</span></a>
-    <a href="ilce.html" class="harita-btn">⭐ İlçesinin Yıldızları <span>→</span></a>
-    <a href="yol.html" class="harita-btn">🛣️ Yol Üstü Lezzet Molası <span>→</span></a>
-    <a href="kumeler.html" class="harita-btn">🚶 Yürünebilir Lezzet Kümeleri <span>→</span></a>
-    <a href="enler.html" class="harita-btn">🏅 Türkiye'nin En'leri <span>→</span></a>
+    <div class="izgara">
+      <a href="ulusal.html" class="mini"><i>🏆</i>En Popülerler</a>
+      <a href="gizli.html" class="mini"><i>💎</i>Gizli Cevherler</a>
+      <a href="ustalar.html" class="mini"><i>🍽️</i>Tek İşin Ustaları</a>
+      <a href="ilce.html" class="mini"><i>⭐</i>İlçesinin Yıldızları</a>
+      <a href="yol.html" class="mini"><i>🛣️</i>Yol Üstü Molası</a>
+      <a href="kumeler.html" class="mini"><i>🚶</i>Yürünebilir Kümeler</a>
+      <a href="dna.html" class="mini"><i>🧬</i>Lezzet DNA'sı</a>
+      <a href="enler.html" class="mini"><i>🏅</i>Türkiye'nin En'leri</a>
+    </div>
     <p style="margin:2px 4px 12px;font-size:12.5px"><a href="puanlama.html" style="color:#94a3b8">ℹ️ Sıralamalar nasıl hesaplanıyor?</a></p>
 
     <div class="search-wrap" id="searchWrap">
